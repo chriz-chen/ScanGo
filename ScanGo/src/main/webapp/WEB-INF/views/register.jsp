@@ -11,6 +11,7 @@
 			<sp:form modelAttribute="registerUser"
 				action="${pageContext.request.contextPath}/mvc/register"
 				cssClass="login-form common-form mx-auto" method="post">
+				<p class="text-center text-danger">${ error }</p>
 				<div class="section-header mb-3">
 					<h2 class="section-heading text-center">Register</h2>
 				</div>

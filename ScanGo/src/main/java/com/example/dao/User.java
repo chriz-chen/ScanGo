@@ -1,10 +1,9 @@
-package com.example.bean;
+package com.example.dao;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.example.validate.NotExistUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,20 +12,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterUser {
+public class User {
 
-	@NotEmpty(message = "請輸入姓")
+	private Integer userId;
+	
 	private String firstName;
 	
-	@NotEmpty(message = "請輸入名")
 	private String lastName;
 	
-	@Email(message = "Email格式不符")
-	@NotEmpty(message = "請輸入Email")
-	@NotExistUser(message = "用戶已存在")
 	private String email;
 
-	@NotEmpty(message = "請輸入密碼")
-	@Size(min = 6, max = 20)
 	private String password;
 }
+

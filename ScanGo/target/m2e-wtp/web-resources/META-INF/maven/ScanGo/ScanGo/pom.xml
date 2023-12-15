@@ -273,6 +273,13 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.2.0.Final</version>
 		</dependency>
+		<!-- BCYPT-->
+		<dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>0.4</version>
+		</dependency>		
+		
 	</dependencies>
 
 </project>
