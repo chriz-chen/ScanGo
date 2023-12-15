@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Target( { METHOD, FIELD })
 @Retention(RUNTIME)
 public @interface NotExistUser {
-    String message() default "Invalid phone number";
+    String message() default "this account was registered";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
