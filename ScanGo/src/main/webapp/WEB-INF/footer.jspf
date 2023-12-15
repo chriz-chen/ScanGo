@@ -13,5 +13,5 @@
 
 <%@ include file="/WEB-INF/fragments/newsletter_subscribe.jspf" %>
 
-<script src="assets/js/vendor.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/vendor.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>

@@ -26,7 +26,7 @@
                     <div class="col-12 mt-3">
                         <a href="#" class="text_14 d-block">Forgot your password?</a>
                         <button type="submit" class="btn-primary d-block mt-4 btn-signin">SIGN IN</button>
-                        <a href="register.jsp" class="btn-secondary mt-2 btn-signin">CREATE AN ACCOUNT</a>
+                        <a href="${pageContext.request.contextPath}/mvc/register" class="btn-secondary mt-2 btn-signin">CREATE AN ACCOUNT</a>
                     </div>
                 </div>
             </form>

@@ -26,6 +26,14 @@
 	</properties>
 
 	<dependencies>
+		
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.24</version>
+		    <scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -251,6 +259,19 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.15.2</version>
+		</dependency>
+
+		<!--Bean Validation-->
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>2.0.1.Final</version>
+		</dependency>
+		<!--hibernate-validator-->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.2.0.Final</version>
 		</dependency>
 	</dependencies>
 

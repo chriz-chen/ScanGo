@@ -8,7 +8,7 @@
                  <div class="col-lg-3 col-md-4 col-4">
                      <div class="header-logo">
                          <a href="index.html" class="logo-main">
-                             <img src="assets/img/logo.png" loading="lazy" alt="bisum">
+                             <img src="${pageContext.request.contextPath}/assets/img/logo.png" loading="lazy" alt="bisum">
                          </a>
                      </div>
                  </div>
@@ -174,7 +174,7 @@
                                                      class="mega-menu-header d-flex align-items-center justify-content-between">
                                                      <a class="mega-menu-img nav-link-sub nav-text-sub"
                                                          href="collection-left-sidebar.html">
-                                                         <img class="menu-img" src="assets/img/menu/1.jpg" alt="img">
+                                                         <img class="menu-img" src="${pageContext.request.contextPath}/assets/img/menu/1.jpg" alt="img">
                                                          <h2 class="img-menu-heading text_16 mt-2">Featured
                                                              Collection</h2>
                                                          <div

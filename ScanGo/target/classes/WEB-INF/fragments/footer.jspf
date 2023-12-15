@@ -20,11 +20,11 @@
                                 </span>
                             </h4>
                             <ul class="footer-menu list-unstyled mb-0 d-md-block">
-                                <li class="footer-menu-item"><a href="about-us.html">About us</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Press center</a></li>
-                                <li class="footer-menu-item"><a href="blog.html">Our magazine</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Our group</a></li>
-                                <li class="footer-menu-item"><a href="about-us.html">Work with us</a></li>
+                                <li class="footer-menu-item"><a href="${pageContext.request.contextPath}/about-us.html">About us</a></li>
+                                <li class="footer-menu-item"><a href="${pageContext.request.contextPath}/about-us.html">Press center</a></li>
+                                <li class="footer-menu-item"><a href="${pageContext.request.contextPath}/blog.html">Our magazine</a></li>
+                                <li class="footer-menu-item"><a href="${pageContext.request.contextPath}/about-us.html">Our group</a></li>
+                                <li class="footer-menu-item"><a href="${pageContext.request.contextPath}/about-us.html">Work with us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-6 col-12 footer-widget">
                         <div class="footer-widget-inner">
                             <h4 class="footer-logo">
-                                <a href="/"><img src="assets/img/logo-accent.png" alt="bisum"></a>
+                                <a href="/"><img src="${pageContext.request.contextPath}/assets/img/logo-accent.png" alt="bisum"></a>
                             </h4>
                             <div class="footer-newsletter">
                                 <p class="footer-text mb-3">Stay up to date with all the news.</p>
