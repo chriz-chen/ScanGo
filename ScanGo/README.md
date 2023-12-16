@@ -21,3 +21,7 @@
 	```
 	
 	(2) 透過 <http://localhost:8080/ScanGo/avators/{XXX}.png> 即可讀取該台機器中的 C:/uploads/avator/{XXX}.png 檔案
+
+##### 6. Html QR Code: <https://scanapp.org/html5-qrcode-docs/docs/intro> <https://codesandbox.io/search?refinementList%5Btemplate%5D=&refinementList%5Bnpm_dependencies.dependency%5D%5B0%5D=html5-qrcode&page=1&configure%5BhitsPerPage%5D=12>
+
+
