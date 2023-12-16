@@ -1,4 +1,4 @@
-package com.example.servlet;
+package com.example.controller;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller()
 @RequestMapping(value = "/logout")
-public class LogoutServlet {
+public class LogoutController {
 
 	@GetMapping
 	public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
