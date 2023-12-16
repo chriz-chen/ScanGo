@@ -3,7 +3,6 @@ package com.example.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Optional<User> findUserById(Integer userId) {
-		String sql = "select userId,firstName,lastName,email,password,avator FROM User where userId = ?";
+		String sql = "select userId,firstName,lastName,email,password,avator,createDate FROM User where userId = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), userId));
 		} catch (Exception e) {
@@ -34,13 +33,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findAllUsers() {
-		String sql = "select userId,firstName,lastName,email,password,avator FROM User";
+		String sql = "select userId,firstName,lastName,email,password,avator,createDate FROM User";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper(User.class));
 	}
 
 	@Override
 	public Optional<User> findUserByEmail(String email) {
-		String sql = "select userId,firstName,lastName,email,password,avator FROM User where email = ?";
+		String sql = "select userId,firstName,lastName,email,password,avator,createDate FROM User where email = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
 		} catch (Exception e) {

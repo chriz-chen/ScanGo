@@ -1,9 +1,6 @@
 package com.example.dao;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +22,7 @@ public class User {
 	private String password;
 	
 	private String avator;
+	
+	private Date createDate;
 }
 

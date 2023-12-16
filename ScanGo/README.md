@@ -24,4 +24,11 @@
 
 ##### 6. Html QR Code: <https://scanapp.org/html5-qrcode-docs/docs/intro> <https://codesandbox.io/search?refinementList%5Btemplate%5D=&refinementList%5Bnpm_dependencies.dependency%5D%5B0%5D=html5-qrcode&page=1&configure%5BhitsPerPage%5D=12>
 
+##### 7. 改 MySQL 全域時區：
+
+```
+SELECT @@global.time_zone;
+set @@global.time_zone = '+8:00';
+```
+
 
