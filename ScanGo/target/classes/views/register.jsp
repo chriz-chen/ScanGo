@@ -10,7 +10,10 @@
 		<div class="container">
 			<sp:form modelAttribute="registerUser"
 				action="${pageContext.request.contextPath}/mvc/register"
-				cssClass="login-form common-form mx-auto" method="post">
+				cssClass="login-form common-form mx-auto" 
+				method="post"
+				enctype="multipart/form-data">
+				
 				<p class="text-center text-danger">${ error }</p>
 				<div class="section-header mb-3">
 					<h2 class="section-heading text-center">Register</h2>
@@ -50,6 +53,20 @@
 								<sp:errors path="password" cssClass="text-danger text-nowrap text-end" />
 							</div>
 							<sp:input type="password" path="password" />
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							<div class="d-flex justify-content-between">
+								<label class="label d-inline btn btn-outline-primary w-100">Picture
+									<sp:input 
+									   type="file" path="avator"
+									   cssClass="d-none"
+									   accept=".jpg, .jpeg, .png, .gif" /> 上傳檔案
+									</label>
+								</label>
+								<sp:errors path="avator" cssClass="text-danger text-nowrap text-end" />
+							</div>
 						</fieldset>
 					</div>
 					<div class="col-12 mt-3">

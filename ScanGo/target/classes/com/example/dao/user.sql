@@ -3,5 +3,6 @@ create table if not exists User (
     firstName varchar(100) not null,
     lastName varchar(100) not null,
     email varchar(100) not null,
-    password varchar(100) not null
+    password varchar(100) not null,
+    avator varchar(2000) not null
 );
