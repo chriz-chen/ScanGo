@@ -17,11 +17,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginUser {
 
-	@Email(message = "Email格式不符")
 	@NotEmpty(message = "請輸入Email")
 	private String email;
 
 	@NotEmpty(message = "請輸入密碼")
-	@Size(min = 6, max = 20)
 	private String password;
 }

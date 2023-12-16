@@ -30,6 +30,13 @@
 									src="${ pageContext.request.contextPath }/avators/${ sessionScope.avator }"
 									class="rounded-circle" style="width: 25px; height: 25px"
 									alt="Avatar" />
+									
+							     <span class="mx-2 text-white">${ sessionScope.lastName } ,${ sessionScope.firstName } </span>
+							     
+							     <a class="announcement-login announcement-text text-white"
+									href="${ pageContext.request.contextPath }/mvc/logout">
+									<span>Logout</span>
+								 </a>
 							</c:when>
 							<c:otherwise>
 								<a class="announcement-login announcement-text text-white"
