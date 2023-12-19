@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * http://localhost:8080/ServletToSpring/mvc/hello/spring
- * http://localhost:8080/ServletToSpring/mvc/hello/spring2
  */
 @Controller
 @RequestMapping("/hello")
