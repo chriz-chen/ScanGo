@@ -18,7 +18,6 @@
                 <div class="section-header mb-3">
                     <h2 class="section-heading text-center">Login</h2>
                 </div>
-                
                 <div class="row">
                     <div class="col-12">
                         <fieldset>
