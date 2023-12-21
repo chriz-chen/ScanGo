@@ -1,4 +1,4 @@
-package com.example.dao;
+package com.example.entity;
 
 import java.util.Date;
 

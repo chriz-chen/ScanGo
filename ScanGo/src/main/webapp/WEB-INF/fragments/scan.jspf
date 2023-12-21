@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<style>
+	.scan-icon {
+	    position: fixed;
+	    bottom: 45px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    
+	}
+	
+	.scan-icon img {
+	    width: 75px; 
+	    height: auto; 
+	}
+</style>
+
+<!-- scan icon -->
+<div class="scan-icon">
+	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal"
+		data-bs-target="#reader_modal" onclick="handleClickAdvanced()">
+</div>
+
+<!-- scan icon end -->
+
+<!-- scan modal -->
+<div class="modal fade" id="reader_modal" tabindex="-1"
+	aria-labelledby="reader_modal" aria-hidden="true">
+	<div class="modal-dialog" style="width: 350px; height: 350px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Scan Product</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close" onclick="handleStop()"></button>
+			</div>
+			<div class="modal-body">
+				<div id="reader" class="mx-auto"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" onclick="save()">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- scan modal end-->
+
+
+<script>
+
+        var cart = [];
+
+        // 儲存，此時呼叫 Web API，進行購物車存取動作
+        function save() {
+            console.log(cart);
+        }
+
+        function handleStop() {
+            html5QrCode
+                .stop()
+                .then((res) => {
+                    html5QrCode.clear();
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+
+        function handleClickAdvanced() {
+            html5QrCode.start(
+                { facingMode: "environment" },
+                { fps: 10, qrbox: { width: 300, height: 250 } },
+                (decodedText, decodedResult) => {
+                    console.log(decodedText, decodedResult);
+                    if (confirm(decodedText, decodedResult)) {
+                        cart.push(decodedText);
+                    }
+                }
+            );
+        }
+
+        var html5QrCode = new Html5Qrcode("reader");
+    </script>

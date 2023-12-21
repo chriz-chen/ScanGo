@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.bean.LoginUser;
-import com.example.dao.User;
 import com.example.dao.UserDAO;
+import com.example.entity.User;
 
 @Controller
 @RequestMapping("/login")
