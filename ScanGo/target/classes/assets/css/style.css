@@ -3329,6 +3329,7 @@ blockquote {
   .footer-heading {
     pointer-events: none; } }
 
+/*
 @media (min-width: 992px) {
   .main-menu .menu-list-item.active .icon,
   .main-menu .menu-list-item:hover .icon {
@@ -3436,7 +3437,7 @@ blockquote {
     top: 100%; }
   .newsltter-content-1 {
     padding-left: 97px; } }
-
+*/
 @media (min-width: 1520px) {
   .article-arrows .arrow-slider {
     left: -68px; }
@@ -3507,7 +3508,7 @@ blockquote {
   .scattered-item .scattered-details {
     max-width: 320px; } }
 
-@media (max-width: 991px) {
+@media (max-width: 991px) OR (min-width: 992px){
   .about-banner-wrapper {
     padding: 60px; }
   .header-top,
