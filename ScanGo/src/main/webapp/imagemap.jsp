@@ -64,6 +64,7 @@
 		});
 	});
 </script>
+
 <div class="map d-flex flex-column justify-content-start align-items-center mt-2">
 	<div>
 		<h3>商店平面圖</h3>
@@ -85,7 +86,8 @@
 		</figcaption>
 	</div>
 </div>
-<%@ include file="/WEB-INF/fragments/footer.jspf"%>
+
+<%@ include file="/WEB-INF/footer.jspf"%>
 
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
