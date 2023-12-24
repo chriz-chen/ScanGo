@@ -778,12 +778,20 @@ button,
 
 .main-menu .nav-link {
   padding: 0; }
+  
+.offcanvas-header {
+  background-color: rgb(31, 65, 144);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
 
 .drawer-heading {
   margin-bottom: 0;
   font-weight: 600;
-  font-size: 20px;
-  color: var(--body-color); }
+  font-size: 24px;
+  color: rgb(245, 248, 251); 
+  }
 
 .cart-content-area {
   height: 100%; }
@@ -3596,7 +3604,7 @@ blockquote {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
   .menu-list-item {
-    padding: 0.8rem 1rem;
+    padding: 1.2rem 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .icon-menu-back {
     margin-left: -.7rem;
