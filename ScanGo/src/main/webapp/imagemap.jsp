@@ -16,20 +16,21 @@
 		font-size: 20px;
 	}
 	
-	img {
+	img[usemap] {
 		width: 400px;
 		height: auto;
+		z-index:100;
 	}
 	
 	body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+	    display: flex;
+	    flex-direction: column;
+	    min-height: 100vh;
 	}
 	
 	
 	footer {
-	z-index: 1;
+		z-index: 1;
 	}
 	
 	
@@ -63,10 +64,11 @@
 		});
 	});
 </script>
+
 <div class="map d-flex flex-column justify-content-start align-items-center mt-2">
 	<div>
 		<h3>商店平面圖</h3>
-		<img src="assets/img/imagemap.png" usemap="#image-map">
+		<img src="assets/img/imagemap.png" usemap="#image-map" id="imagemap">
 		<map name="image-map">
 			<area target="" alt="Grocery" title="Grocery" href=""
 				coords="50,172,442,791" shape="rect">
@@ -76,7 +78,7 @@
 				coords="60,999,974,1337" shape="rect">
 		</map>
 	</div>
-	<div class="position-absolute bottom-0 w-100" style="height:200px; overflow: hidden;z-index:99">
+	<div class="position-fixed bottom-0 w-100 rounded" style="height:200px; overflow: hidden; z-index:99">
 		<figcaption class="p-4">
 			<h4></h4>
 			<hr>
@@ -84,7 +86,8 @@
 		</figcaption>
 	</div>
 </div>
-<%@ include file="/WEB-INF/fragments/footer.jspf"%>
+
+<%@ include file="/WEB-INF/footer.jspf"%>
 
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
