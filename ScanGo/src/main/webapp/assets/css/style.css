@@ -212,6 +212,12 @@ input[type="number"] {
 /*============================================================================
     Template Common CSS
 ==============================================================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -715,7 +721,7 @@ button,
 .nav-link {
   color: #000;
   font-weight: 500;
-  font-size: 15px; }
+  font-size: 18px; }
 
 .nav-text-sub {
   font-size: 14px;
@@ -3781,8 +3787,7 @@ blockquote {
     padding-bottom: 25px; }
   .footer-top {
     padding: 100px 0 65px; }
-  .mt-100 {
-    margin-top: 80px; }
+
   .pt-100 {
     padding-top: 80px; }
   .pb-100 {
