@@ -5,7 +5,7 @@
 
 <style>
 	figcaption {
-		background-color: rgba(0, 0, 0, 0.499);
+		background-color: rgba(0, 0, 0, 0.7);
 		height:200px;
 		transform: translate(0, 200px);
 		transition: transform 0.5s, opacity 0.5s;
@@ -20,6 +20,20 @@
 		width: 400px;
 		height: auto;
 	}
+	
+	body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+	}
+	
+	
+	footer {
+	z-index: 1;
+	}
+	
+	
+	
 </style>
 <script>
 	// 定義不同區域的 HTML 片段
@@ -35,6 +49,7 @@
 			fillOpacity : 0.3,
 			mapKey : 'alt',
 			isSelectable : false,
+			onClick: null, // 試著禁用 onClick 事件
 			onMouseover : function(data) {
 				$('figcaption').css('transform', 'translate(0, 0)');
 				$('figcaption').parent().removeClass('opacity-0');
@@ -61,7 +76,7 @@
 				coords="60,999,974,1337" shape="rect">
 		</map>
 	</div>
-	<div class="position-absolute bottom-0 w-100 " style="height:200px; overflow: hidden;z-index:99">
+	<div class="position-absolute bottom-0 w-100" style="height:200px; overflow: hidden;z-index:99">
 		<figcaption class="p-4">
 			<h4></h4>
 			<hr>
@@ -69,7 +84,6 @@
 		</figcaption>
 	</div>
 </div>
-<%@ include file="/WEB-INF/fragments/scan.jspf"%>
 <%@ include file="/WEB-INF/fragments/footer.jspf"%>
 
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>

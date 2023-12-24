@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!-- footer -->
-    <footer class="overflow-hidden footer-style-2 position-fixed bottom-0 w-100">
-        <div class="footer-bottom bg-5">
-            <div class="container">
-                <div
-                    class="footer-bottom-inner d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
-                    <ul class="footer-bottom-menu list-unstyled d-flex flex-wrap align-items-center mb-0">
-                        <li class="footer-menu-item"><a href="about-us.html">ScanGo© 2023</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer end -->
+<footer class="mt-auto overflow-hidden footer-style-2 bottom-0">
+	<div class="footer-bottom bg-5">
+		<div class="container">
+			<div
+				class="footer-bottom-inner d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
+				<ul
+					class="footer-bottom-menu list-unstyled d-flex flex-wrap align-items-center mb-0">
+					<li class="footer-menu-item"><a href="about-us.html">ScanGo©
+							2023</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- footer end -->
