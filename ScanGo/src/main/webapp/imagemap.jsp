@@ -11,6 +11,10 @@
 		transition: transform 0.5s, opacity 0.5s;
 		color: #fff;
 	}
+	
+	figcaption h4 {
+    color: #fff;
+	}
 
 	figcaption p {
 		font-size: 20px;
@@ -39,7 +43,7 @@
 <script>
 	// 定義不同區域的 HTML 片段
 	var areaContent = {
-		Grocery : '<ul><li>Product 1</li><li>Product 2</li><li>Product 3</li></ul>',
+		Grocery : '<ul><li><a href="./index.jsp">Product 1</li></a><li>Product 2</li><li><a href="./index.jsp">Product 1</li></a></ul>',
 		Snack : '<ul><li>Snack 1</li><li>Snack 2</li><li>Snack 3</li></ul>',
 		Appliance : '<ul><li>Appliance 1</li><li>Appliance 2</li><li>Appliance 3</li></ul>'
 	};
@@ -50,8 +54,7 @@
 			fillOpacity : 0.3,
 			mapKey : 'alt',
 			isSelectable : false,
-			onClick: null, // 試著禁用 onClick 事件
-			onMouseover : function(data) {
+			onClick : function(data) {
 				$('figcaption').css('transform', 'translate(0, 0)');
 				$('figcaption').parent().removeClass('opacity-0');
 				$('figcaption').parent().addClass('opacity-100');
@@ -65,7 +68,7 @@
 	});
 </script>
 
-<div class="map d-flex flex-column justify-content-start align-items-center mt-2">
+<div class="map d-flex flex-column justify-content-start align-items-center mt-4">
 	<div>
 		<h3>商店平面圖</h3>
 		<img src="assets/img/imagemap.png" usemap="#image-map" id="imagemap">
@@ -84,6 +87,7 @@
 			<hr>
 			<p></p>
 		</figcaption>
+		
 	</div>
 </div>
 
