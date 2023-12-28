@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 
 <style>
+.cart-drawer-heading {
+	color: white; /* Set the title color to white */
+	font-size: 22px; /* Set the font size to 18 pixels (adjust as needed) */
+}
 .product-remove-area .product-remove {
     color: red; /* 將刪除按鈕顏色設置為紅色 */
 }
