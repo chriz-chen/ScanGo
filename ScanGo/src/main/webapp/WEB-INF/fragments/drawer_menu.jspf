@@ -54,7 +54,7 @@
 				    </a>
 				</li>
                 <li class="utilty-menu-item d-flex align-items-center">
-                    <a class="announcement-login announcement-text" href="${ pageContext.request.contextPath }/mvc/logout">
+                    <a class="announcement-login announcement-text" href="${ pageContext.request.contextPath }/mvc/views/register.jsp">
                         <span class="utilty-icon-wrapper">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
