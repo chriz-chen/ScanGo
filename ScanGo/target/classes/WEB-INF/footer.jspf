@@ -9,8 +9,6 @@
 
 <%@ include file="/WEB-INF/fragments/drawer_cart.jspf" %>
 
-<%@ include file="/WEB-INF/fragments/product_quickview.jspf" %>
-
 
 <script src="${pageContext.request.contextPath}/assets/js/vendor.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
