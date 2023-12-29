@@ -37,11 +37,30 @@ footer {
 }
 </style>
 <script>
+
 	// 定義不同區域的 HTML 片段
 	var areaContent = {
-		Grocery : '<ul><li><a href="./index.jsp">Product 1</li></a><li>Product 2</li><li><a href="./index.jsp">Product 1</li></a></ul>',
-		Snack : '<ul><li>Snack 1</li><li>Snack 2</li><li>Snack 3</li></ul>',
-		Appliance : '<ul><li>Appliance 1</li><li>Appliance 2</li><li>Appliance 3</li></ul>'
+		Grocery : `
+			<ul>
+				<li><a href="/ScanGo/mvc/product">Product 1</a></li>
+				<li><a href="/ScanGo/index.jsp">Product 2</a></li>
+				<li><a href="/ScanGo/index.jsp">Product 3</a></li>
+			</ul>
+		`,
+		Snack : `
+			<ul>
+				<li>Snack 1</li>
+				<li>Snack 2</li>
+				<li>Snack 3</li>
+			</ul>
+		`,
+		Appliance : `
+			<ul>
+				<li>Appliance 1</li>
+				<li>Appliance 2</li>
+				<li>Appliance 3</li>
+			</ul>
+		`
 	};
 
 	$(function() {
