@@ -115,7 +115,7 @@ footer {
 		class="map d-flex flex-column justify-content-start align-items-center mt-4">
 		<div>
 			<h3>商店平面圖</h3>
-			<img src="assets/img/imagemap.png" usemap="#image-map" id="imagemap">
+			<img src="/ScanGo/assets/img/imagemap.png" usemap="#image-map" id="imagemap">
 			<map name="image-map">
 				<area target="" alt="Grocery" title="Grocery" href=""
 					coords="50,172,442,791" shape="rect">

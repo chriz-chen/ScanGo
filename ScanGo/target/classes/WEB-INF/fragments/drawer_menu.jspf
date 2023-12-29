@@ -16,7 +16,7 @@
                 <ul class="main-menu list-unstyled">
                     <li class="menu-list-item nav-item hover">
                         <div class="mega-menu-header">
-                            <a class="nav-link active" href="${ pageContext.request.contextPath }/imagemap.jsp">
+                            <a class="nav-link active" href="/ScanGo/mvc/imagemap">
                                 商品地圖
                             </a>
                         </div>
