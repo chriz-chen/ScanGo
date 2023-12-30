@@ -8,7 +8,7 @@
                  <div class="col-4">
                      <div class="header-logo">
                          <a href="${pageContext.request.contextPath}/index.jsp" class="logo-main">
-                             <img src="assets/img/logo.png" loading="lazy" alt="scango">
+                             <img src="/ScanGo/assets/img/logo.png" loading="lazy" alt="scango">
                          </a>
                      </div>
                  </div>

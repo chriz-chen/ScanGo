@@ -76,9 +76,11 @@ footer {
 				$('figcaption').find('h4').text(data.key);
 				$('figcaption').find('p').html(areaContent[data.key]);
 			},
-			onMouseout : function(data) {
-				$('figcaption').css('transform', 'translate(0, 200px)');
-			}
+		});
+		
+		// figcaption 區塊消失：商品地圖點選時、空白區域點選時
+		$('img[usemap],.blank').on('click',function() {
+			$('figcaption').css('transform', 'translate(0, 200px)');
 		});
 	});
 </script>
@@ -110,29 +112,31 @@ footer {
 		</div>
 	</div>
 	<!-- breadcrumb end -->
+	
 	<!-- 平面圖 -->
-	<div
-		class="map d-flex flex-column justify-content-start align-items-center mt-4">
-		<div>
-			<h3>商店平面圖</h3>
-			<img src="/ScanGo/assets/img/imagemap.png" usemap="#image-map" id="imagemap">
-			<map name="image-map">
-				<area target="" alt="Grocery" title="Grocery" href=""
-					coords="50,172,442,791" shape="rect">
-				<area target="" alt="Snack" title="Snack" href=""
-					coords="554,344,968,938" shape="rect">
-				<area target="" alt="Appliance" title="Appliance" href=""
-					coords="60,999,974,1337" shape="rect">
-			</map>
+	<div class="map d-flex flex-column justify-content-start mt-4">
+		<div class="d-flex">
+			<div class="flex-grow-1 blank"></div>
+			<div class="">
+				<h3>商店平面圖</h3>
+				<img src="/ScanGo/assets/img/imagemap.png" usemap="#image-map" id="imagemap">
+				<map name="image-map">
+					<area target="" alt="Grocery" title="Grocery" href="" coords="50,172,442,791" shape="rect">
+					<area target="" alt="Snack" title="Snack" href="" coords="554,344,968,938" shape="rect">
+					<area target="" alt="Appliance" title="Appliance" href="" coords="60,999,974,1337" shape="rect">
+					<!-- 加這一行，解決手機點選，會自動顯示 area 最後一個區塊的怪問題 -->
+					<area target="" alt="Other" title="" href="" coords="0,0,0,0" shape="rect">
+				</map>
+			</div>
+			<div class="flex-grow-1 blank"></div>
 		</div>
-		<div class="position-fixed bottom-0 w-100 rounded"
-			style="height: 200px; overflow: hidden; z-index: 99">
+
+		<div class="position-fixed bottom-0 w-100 rounded" style="height: 200px; overflow: hidden; z-index: 99">
 			<figcaption class="p-4">
 				<h4></h4>
 				<hr>
 				<p></p>
 			</figcaption>
-
 		</div>
 	</div>
 	<!-- 平面圖 end -->
