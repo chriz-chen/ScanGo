@@ -14,6 +14,14 @@
         <div class="offcanvas-body p-0 d-flex flex-column justify-content-between">
             <nav class="site-navigation">
                 <ul class="main-menu list-unstyled">
+                	<li class="menu-list-item nav-item hover">
+                        <div class="mega-menu-header">
+                            <a class="nav-link active" href="/ScanGo/index.jsp">
+                                首頁
+                            </a>
+                        </div>
+                    </li>
+                    
                     <li class="menu-list-item nav-item hover">
                         <div class="mega-menu-header">
                             <a class="nav-link active" href="/ScanGo/mvc/imagemap">
@@ -31,7 +39,7 @@
                     </li>
 
                     <li class="menu-list-item nav-item hover">
-                        <a class="nav-link" href="blog.html">優惠券</a>
+                        <a class="nav-link" href="/ScanGo/coupon.jsp">優惠券</a>
                     </li>
 
                     <li class="menu-list-item nav-item hover">
@@ -73,6 +81,7 @@
 					    </a>
 					</li>
 				</c:if>
+				<c:if test="${empty isLogin}">
                 <li class="utilty-menu-item d-flex align-items-center">
                     <a class="announcement-login announcement-text" href="${ pageContext.request.contextPath }/mvc/register">
                         <span class="utilty-icon-wrapper">
@@ -85,6 +94,7 @@
                         <span class="ms-2 h6">註冊</span>
                     </a>
                 </li>
+                </c:if>
             </ul>
         </div>
     </div>

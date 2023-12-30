@@ -2826,24 +2826,9 @@ blockquote {
 .contact-box-wrapper {
   margin-top: -30px; }
 
-.contact-title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #000; }
 
-.contact-info {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.69;
-  letter-spacing: 0.5px;
-  color: #000;
-  opacity: 0.8;
-  margin-bottom: 0;
-  margin-top: 0px;
-  display: block; }
 
-.contact-item {
+.coupon-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2856,7 +2841,7 @@ blockquote {
   min-width: 56px;
   margin-right: 20px; }
 
-.contact-item {
+.coupon-item {
   border: 1px solid #00234D;
   border-radius: 4px;
   -webkit-transition: all 0.3s;
@@ -2865,11 +2850,11 @@ blockquote {
   background-color: transparent;
   padding: 16px; }
 
-.contact-item:hover {
+.coupon-item:hover {
   background-color: var(--primary-color); }
 
-.contact-item:hover .contact-title,
-.contact-item:hover .contact-info {
+.coupon-item:hover .coupon-title,
+.coupon-item:hover .coupon-info {
   color: #fff; }
 
 .contact-item:hover .contact-icon svg path {
