@@ -111,11 +111,11 @@ footer {
 				<div class="flex-grow-1 blank"></div>
 				<div class="">
 					<h3>商店平面圖</h3>
-					<img src="/ScanGo/assets/img/imagemap.png" usemap="#image-map" id="imagemap">
+					<img src="/ScanGo/assets/img/imagemap_new2.png" usemap="#image-map" id="imagemap">
 					<map name="image-map">
-						<area target="" alt="Grocery" title="Grocery" href="" coords="50,172,442,791" shape="rect">
-						<area target="" alt="Snack" title="Snack" href="" coords="554,344,968,938" shape="rect">
-						<area target="" alt="Appliance" title="Appliance" href="" coords="60,999,974,1337" shape="rect">
+					    <area target="" alt="Grocery" title="Grocery" href="" coords="168,370,159,373,152,377,148,383,146,390,145,398,145,854,147,860,149,865,153,870,158,874,165,877,176,878,437,878,446,875,453,871,458,865,462,858,463,848,463,834,463,394,460,383,455,377,449,371,438,370" shape="poly">
+					    <area target="" alt="Snack" title="Snack" href="" coords="605,473,595,477,589,483,584,491,584,502,584,961,586,968,588,973,594,978,603,982,612,983,911,983,919,981,925,976,930,970,933,965,934,947,933,494,930,485,925,478,920,474,909,473" shape="poly">
+					    <area target="" alt="Appliance" title="Appliance" href="" coords="167,1068,158,1071,153,1075,148,1082,145,1089,145,1100,145,1321,146,1328,149,1334,153,1339,158,1343,164,1346,176,1347,826,1347,835,1345,841,1340,847,1334,850,1326,850,1309,851,1090,847,1083,842,1075,836,1070,829,1068" shape="poly">
 						<!-- 加這一行，解決手機點選，會自動顯示 area 最後一個區塊的怪問題 -->
 						<area target="" alt="Other" title="" href="" coords="0,0,0,0" shape="rect">
 					</map>
