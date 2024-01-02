@@ -167,7 +167,7 @@ main {
 								<div class="shipping-address-area billing-area">
 									<div
 										class="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
-										<a href="cart.jsp"
+										<a href="/ScanGo/mvc/cart"
 											class="checkout-page-btn minicart-btn btn-secondary">回到購物車</a>
 										<a href="payment.jsp"
 											class="checkout-page-btn minicart-btn btn-primary">確認並結帳</a>
