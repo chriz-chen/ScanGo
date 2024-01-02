@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.example.entity.User;
+
 @Component("userDaoImpl")
 public class UserDAOImpl implements UserDAO {
 

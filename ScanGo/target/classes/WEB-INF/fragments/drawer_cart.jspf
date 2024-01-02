@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<style>
+.cart-drawer-heading {
+	color: white; /* Set the title color to white */
+	font-size: 22px; /* Set the font size to 18 pixels (adjust as needed) */
+}
+.product-remove-area .product-remove {
+    color: red; /* 將刪除按鈕顏色設置為紅色 */
+}
+</style>
 <!-- drawer cart start -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="drawer-cart">
     <div class="offcanvas-header border-btm-black">
-        <h5 class="cart-drawer-heading text_16">Your Cart (04)</h5>
+        <h5 class="cart-drawer-heading text_16">您的購物車 (04)</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
             aria-label="Close"></button>
     </div>
@@ -18,7 +27,7 @@
                     </div>
                     <div class="product-info">
                         <h2 class="product-title"><a href="#">Eliot Reversible Sectional</a></h2>
-                        <p class="product-vendor">XS / Dove Gray</p>
+                        <p class="product-vendor">XS / 淺灰</p>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
                                 <button class="qty-btn dec-qty"><img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg"
@@ -29,7 +38,7 @@
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">$580.00</div>
-                                <a href="#" class="product-remove">Remove</a>
+                                <a href="#" class="product-remove">刪除</a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +50,7 @@
                     </div>
                     <div class="product-info">
                         <h2 class="product-title"><a href="#">Vita Lounge Chair</a></h2>
-                        <p class="product-vendor">XS / Pink</p>
+                        <p class="product-vendor">XS / 粉紅</p>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
                                 <button class="qty-btn dec-qty"><img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg"
@@ -52,7 +61,7 @@
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">$580.00</div>
-                                <a href="#" class="product-remove">Remove</a>
+                                <a href="#" class="product-remove">刪除</a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +73,7 @@
                     </div>
                     <div class="product-info">
                         <h2 class="product-title"><a href="#">Sarno Dining Chair</a></h2>
-                        <p class="product-vendor">XS / Dove Gray</p>
+                        <p class="product-vendor">XS / 淺灰</p>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
                                 <button class="qty-btn dec-qty"><img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg"
@@ -75,7 +84,7 @@
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">$580.00</div>
-                                <a href="#" class="product-remove">Remove</a>
+                                <a href="#" class="product-remove">刪除</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +96,7 @@
                     </div>
                     <div class="product-info">
                         <h2 class="product-title"><a href="#">Vita Lounge Chair</a></h2>
-                        <p class="product-vendor">XS / Dove Gray</p>
+                        <p class="product-vendor">XS / 淺灰</p>
                         <div class="misc d-flex align-items-end justify-content-between">
                             <div class="quantity d-flex align-items-center justify-content-between">
                                 <button class="qty-btn dec-qty"><img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg"
@@ -98,7 +107,7 @@
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div class="product-price">$580.00</div>
-                                <a href="#" class="product-remove">Remove</a>
+                                <a href="#" class="product-remove">刪除</a>
                             </div>
                         </div>
                     </div>
@@ -107,15 +116,12 @@
             <div class="minicart-footer">
                 <div class="minicart-calc-area">
                     <div class="minicart-calc d-flex align-items-center justify-content-between">
-                        <span class="cart-subtotal mb-0">Subtotal</span>
-                        <span class="cart-subprice">$1548.00</span>
+                        <span class="cart-subtotal mb-0">總金額</span>
+                        <span class="cart-subprice">$1900.00</span>
                     </div>
-                    <p class="cart-taxes text-center my-4">Taxes and shipping will be calculated at checkout.
-                    </p>
                 </div>
-                <div class="minicart-btn-area d-flex align-items-center justify-content-between">
-                    <a href="cart.html" class="minicart-btn btn-secondary">View Cart</a>
-                    <a href="checkout.html" class="minicart-btn btn-primary">Checkout</a>
+                <div class="minicart-btn-area d-flex align-items-center justify-content-center">
+                    <a href="checkout.jsp" class="minicart-btn btn-primary">我要結帳</a>
                 </div>
             </div>
         </div>

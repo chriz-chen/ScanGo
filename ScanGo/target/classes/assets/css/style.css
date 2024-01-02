@@ -212,6 +212,12 @@ input[type="number"] {
 /*============================================================================
     Template Common CSS
 ==============================================================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -715,7 +721,7 @@ button,
 .nav-link {
   color: #000;
   font-weight: 500;
-  font-size: 15px; }
+  font-size: 18px; }
 
 .nav-text-sub {
   font-size: 14px;
@@ -772,12 +778,20 @@ button,
 
 .main-menu .nav-link {
   padding: 0; }
+  
+.offcanvas-header {
+  background-color: rgb(31, 65, 144);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
 
 .drawer-heading {
   margin-bottom: 0;
   font-weight: 600;
-  font-size: 20px;
-  color: var(--body-color); }
+  font-size: 24px;
+  color: rgb(245, 248, 251); 
+  }
 
 .cart-content-area {
   height: 100%; }
@@ -2812,24 +2826,9 @@ blockquote {
 .contact-box-wrapper {
   margin-top: -30px; }
 
-.contact-title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #000; }
 
-.contact-info {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.69;
-  letter-spacing: 0.5px;
-  color: #000;
-  opacity: 0.8;
-  margin-bottom: 0;
-  margin-top: 0px;
-  display: block; }
 
-.contact-item {
+.coupon-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2842,7 +2841,7 @@ blockquote {
   min-width: 56px;
   margin-right: 20px; }
 
-.contact-item {
+.coupon-item {
   border: 1px solid #00234D;
   border-radius: 4px;
   -webkit-transition: all 0.3s;
@@ -2851,11 +2850,11 @@ blockquote {
   background-color: transparent;
   padding: 16px; }
 
-.contact-item:hover {
+.coupon-item:hover {
   background-color: var(--primary-color); }
 
-.contact-item:hover .contact-title,
-.contact-item:hover .contact-info {
+.coupon-item:hover .coupon-title,
+.coupon-item:hover .coupon-info {
   color: #fff; }
 
 .contact-item:hover .contact-icon svg path {
@@ -3322,7 +3321,7 @@ blockquote {
 @media (min-width: 768px) {
   .footer-heading {
     pointer-events: none; } }
-
+/*
 @media (min-width: 992px) {
   .main-menu .menu-list-item.active .icon,
   .main-menu .menu-list-item:hover .icon {
@@ -3430,6 +3429,7 @@ blockquote {
     top: 100%; }
   .newsltter-content-1 {
     padding-left: 97px; } }
+*/
 
 @media (min-width: 1520px) {
   .article-arrows .arrow-slider {
@@ -3501,7 +3501,7 @@ blockquote {
   .scattered-item .scattered-details {
     max-width: 320px; } }
 
-@media (max-width: 991px) {
+@media (max-width: 991px) or (min-width: 992px) {
   .about-banner-wrapper {
     padding: 60px; }
   .header-top,
@@ -3590,7 +3590,7 @@ blockquote {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
   .menu-list-item {
-    padding: 0.8rem 1rem;
+    padding: 1.2rem 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .icon-menu-back {
     margin-left: -.7rem;
@@ -3781,8 +3781,7 @@ blockquote {
     padding-bottom: 25px; }
   .footer-top {
     padding: 100px 0 65px; }
-  .mt-100 {
-    margin-top: 80px; }
+
   .pt-100 {
     padding-top: 80px; }
   .pb-100 {
@@ -4017,7 +4016,7 @@ blockquote {
 
 @media (max-width: 400px) {
   .offcanvas {
-    max-width: 100vw; }
+    max-width: 85vw; }
   .newsletter-modal-heading {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap; }

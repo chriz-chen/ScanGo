@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.bean.RegisterUser;
-import com.example.dao.User;
 import com.example.dao.UserDAO;
+import com.example.entity.User;
 
 @Controller
 @RequestMapping("/register")
