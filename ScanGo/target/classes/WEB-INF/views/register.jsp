@@ -10,20 +10,20 @@
 		<div class="container">
 			<sp:form modelAttribute="registerUser"
 				action="${pageContext.request.contextPath}/mvc/register"
-				cssClass="login-form common-form mx-auto" 
-				method="post"
+				cssClass="login-form common-form mx-auto" method="post"
 				enctype="multipart/form-data">
-				
+
 				<p class="text-center text-danger">${ error }</p>
 				<div class="section-header mb-3">
-					<h2 class="section-heading text-center">Register</h2>
+					<h2 class="section-heading text-center">會員註冊</h2>
 				</div>
 				<div class="row">
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<label class="label d-inline">First name</label>
-								<sp:errors path="firstName" cssClass="text-danger text-nowrap text-end" />
+								<label class="label d-inline">帳號</label>
+								<sp:errors path="firstName"
+									cssClass="text-danger text-nowrap text-end" />
 							</div>
 							<sp:input type="text" path="firstName" />
 						</fieldset>
@@ -31,26 +31,9 @@
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<label class="label d-inline">Last name</label>
-								<sp:errors path="lastName" cssClass="text-danger text-nowrap text-end" />
-							</div>
-							<sp:input type="text" path="lastName" />
-						</fieldset>
-					</div>
-					<div class="col-12">
-						<fieldset>
-							<div class="d-flex justify-content-between">
-								<label class="label">Email address</label>
-								<sp:errors path="email" cssClass="text-danger text-nowrap text-end" />
-							</div>
-							<sp:input type="email" path="email" />
-						</fieldset>
-					</div>
-					<div class="col-12">
-						<fieldset>
-							<div class="d-flex justify-content-between">
-								<label class="label d-inline">Password</label>
-								<sp:errors path="password" cssClass="text-danger text-nowrap text-end" />
+								<label class="label d-inline">密碼</label>
+								<sp:errors path="password"
+									cssClass="text-danger text-nowrap text-end" />
 							</div>
 							<sp:input type="password" path="password" />
 						</fieldset>
@@ -58,19 +41,27 @@
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
+								<label class="label">信箱</label>
+								<sp:errors path="email"
+									cssClass="text-danger text-nowrap text-end" />
+							</div>
+							<sp:input type="email" path="email" />
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							<div class="d-flex justify-content-between">
 								<label class="label d-inline btn btn-outline-primary w-100">Picture
-									<sp:input 
-									   type="file" path="avator"
-									   cssClass="d-none"
-									   accept=".jpg, .jpeg, .png, .gif" /> 上傳檔案
-									</label>
-								</label>
-								<sp:errors path="avator" cssClass="text-danger text-nowrap text-end" />
+									<sp:input type="file" path="avator" cssClass="d-none"
+										accept=".jpg, .jpeg, .png, .gif" /> 上傳檔案
+								</label> </label>
+								<sp:errors path="avator"
+									cssClass="text-danger text-nowrap text-end" />
 							</div>
 						</fieldset>
 					</div>
 					<div class="col-12 mt-3">
-						<button type="submit" class="btn-primary d-block mt-3 btn-signin">CREATE</button>
+						<button type="submit" class="btn-primary d-block mt-3 btn-signin">建立</button>
 					</div>
 				</div>
 			</sp:form>
