@@ -2,15 +2,14 @@
 	pageEncoding="UTF-8"%>
 
 <!-- footer -->
-<footer class="mt-auto overflow-hidden footer-style-2 bottom-0">
+<footer class="mt-auto overflow-hidden footer-style-2">
 	<div class="footer-bottom bg-5">
 		<div class="container">
 			<div
 				class="footer-bottom-inner d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
 				<ul
 					class="footer-bottom-menu list-unstyled d-flex flex-wrap align-items-center mb-0">
-					<li class="footer-menu-item"><a href="about-us.html">ScanGo©
-							2023</a></li>
+					<li class="footer-menu-item"><a href="about-us.html">ScanGo©2023</a></li>
 				</ul>
 			</div>
 		</div>

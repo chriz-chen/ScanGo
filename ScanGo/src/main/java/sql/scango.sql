@@ -53,26 +53,40 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `scango`.`USER` ;
 
-CREATE TABLE IF NOT EXISTS `scango`.`USER` (
-  `userId` INT NOT NULL AUTO_INCREMENT,
-  `userName` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `level` INT NOT NULL,
-  `createTime` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE INDEX `userName_UNIQUE` (`userName` ASC) VISIBLE,
-  INDEX `level_fk_idx` (`level` ASC) VISIBLE,
-  CONSTRAINT `userName_fk`
-    FOREIGN KEY (`userName`)
-    REFERENCES `scango`.`USERINFO` (`userName`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `level_fk`
-    FOREIGN KEY (`level`)
-    REFERENCES `scango`.`LEVEL` (`levelId'`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- 修改後
+CREATE TABLE `User` (
+  `userId` int NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `avator` varchar(2000) NOT NULL,
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+
+
+-- 修改前
+--CREATE TABLE IF NOT EXISTS `scango`.`USER` (
+--  `userId` INT NOT NULL AUTO_INCREMENT,
+--  `userName` VARCHAR(45) NOT NULL,
+--  `password` VARCHAR(45) NOT NULL,
+--  `level` INT NOT NULL,
+--  `createTime` TIMESTAMP NOT NULL,
+--  PRIMARY KEY (`userId`),
+--  UNIQUE INDEX `userName_UNIQUE` (`userName` ASC) VISIBLE,
+--  INDEX `level_fk_idx` (`level` ASC) VISIBLE,
+--  CONSTRAINT `userName_fk`
+--    FOREIGN KEY (`userName`)
+--    REFERENCES `scango`.`USERINFO` (`userName`)
+--    ON DELETE NO ACTION
+--    ON UPDATE NO ACTION,
+--  CONSTRAINT `level_fk`
+--    FOREIGN KEY (`level`)
+--    REFERENCES `scango`.`LEVEL` (`levelId'`)
+--    ON DELETE NO ACTION
+--    ON UPDATE NO ACTION)
+--ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
