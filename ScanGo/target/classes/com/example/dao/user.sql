@@ -1,10 +1,13 @@
 create table if not exists User (
 	userId int not null primary key auto_increment,
-    firstName varchar(100) not null,
-    lastName varchar(100) not null,
-    email varchar(100) not null,
+    username varchar(50) not null,
     password varchar(100) not null,
-    avator varchar(2000) not null,
+    email varchar(100) not null,
+    phone varchar(50) not null,
+    birthday timestamp not null,
+    level int,
+    authType enum('local', 'github', 'google') default 'local',
+    authId varchar(100)
     createDate timestamp not null default current_timestamp
 );
 
