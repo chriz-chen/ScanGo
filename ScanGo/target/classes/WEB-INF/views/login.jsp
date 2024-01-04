@@ -22,10 +22,10 @@
                     <div class="col-12">
                         <fieldset>
                         	<div class="d-flex justify-content-between">
-								<label class="label">帳號 (信箱)</label>
-								<sp:errors path="email" cssClass="text-danger text-nowrap text-end" />
+								<label class="label">帳號</label>
+								<sp:errors path="username" cssClass="text-danger text-nowrap text-end" />
 							</div>
-                            <sp:input type="email" path="email" />
+                            <sp:input type="text" path="username" />
                         </fieldset>
                     </div>
                     <div class="col-12">
