@@ -16,7 +16,7 @@ public class CartController {
 	@Qualifier("cartDaoImpl")
 	private CartDAO cartDao;
 	
-	@GetMapping("/cart")
+	@GetMapping("/cart{ userId }")
 	public String showCart() {
 		
 		return "cart";
