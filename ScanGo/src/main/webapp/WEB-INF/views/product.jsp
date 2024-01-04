@@ -3,6 +3,17 @@
       
 <%@ include file="/WEB-INF/header.jspf" %>
 
+
+<h2>Enter User ID</h2>
+    <form action="/showCart" method="post">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <br>
+        <button type="submit">Show Cart</button>
+    </form>
+
+
+
 <main id="MainContent" class="content-for-layout">
     <div class="product-page mt-100">
         <div class="container">
