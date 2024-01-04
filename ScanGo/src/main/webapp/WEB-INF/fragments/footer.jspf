@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!-- footer -->
-<footer class="mt-auto overflow-hidden footer-style-2">
+<footer class="mt-auto overflow-hidden footer-style-2 position-fixed bottom-0 vw-100">
 	<div class="footer-bottom bg-5">
 		<div class="container">
 			<div
