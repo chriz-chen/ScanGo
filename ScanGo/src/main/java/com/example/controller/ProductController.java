@@ -19,23 +19,23 @@ import com.example.entity.Cart;
  * http://localhost:8080/ScanGo/mvc/product/      (2) X
  * http://localhost:8080/ScanGo/mvc/product/hello (3) X
  */
-@Controller
-@RequestMapping("/product")
-public class ProductController {
-
-	@Autowired
-	@Qualifier("cartDaoImpl")
-	private CartDAO cartDao;
-	
-	@GetMapping()
-	public String showProduct() {
-		return "product";
-	}
-	
-	@PostMapping("/showCart")
-    public String showCart(@RequestParam Integer userId, Model model) {
-        List<Cart> carts = cartDao.findCartsByUserId(userId);
-        model.addAttribute("carts", carts);
-        return "cart";
-    }
-}
+//@Controller
+//@RequestMapping("/product")
+//public class ProductController {
+//
+//	@Autowired
+//	@Qualifier("cartDaoImpl")
+//	private CartDAO cartDao;
+//	
+//	@GetMapping()
+//	public String showProduct() {
+//		return "product";
+//	}
+//	
+//	@PostMapping("/showCart")
+//    public String showCart(@RequestParam Integer userId, Model model) {
+//        List<Cart> carts = cartDao.findCartsByUserId(userId);
+//        model.addAttribute("carts", carts);
+//        return "cart";
+//    }
+//}

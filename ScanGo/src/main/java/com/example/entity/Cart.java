@@ -1,10 +1,15 @@
 package com.example.entity;
 
+import java.util.List;
+
 public class Cart {
 
 	private Integer userId;
 	private Integer productId;
 	private Integer productQuantity;
+
+	private Product product; 
+
 	
 	public Cart() {
 		
@@ -38,6 +43,14 @@ public class Cart {
 
 	public void setProductQuantity(Integer productQuantity) {
 		this.productQuantity = productQuantity;
+	}
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	

@@ -5,7 +5,7 @@
 
 
 <h2>Enter User ID</h2>
-    <form action="/showCart" method="post">
+    <form action="${pageContext.request.contextPath}/mvc/showCart" method="post">
         <label for="userId">User ID:</label>
         <input type="text" id="userId" name="userId" required>
         <br>
