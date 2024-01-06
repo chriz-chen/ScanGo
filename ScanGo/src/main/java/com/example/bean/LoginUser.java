@@ -22,4 +22,5 @@ public class LoginUser {
 
 	@NotEmpty(message = "請輸入密碼")
 	private String password;
+	
 }
