@@ -55,6 +55,16 @@ public class RegisterController {
 			return "register";
 		}
 		
+		// 驗證密碼和再次確認密碼是否相同
+		if (!registerUser.getPassword().equals(registerUser.getConfirmPassword())) {
+	        result.rejectValue("confirmPassword", "error.confirmPassword", "兩次密碼不一致");
+	        return "register";
+	    }
+		// 檢查其他錯誤
+	    if (result.hasErrors()) {
+	        return "register";
+	    }
+		
 // 		處理大頭照
 //		MultipartFile multipartFile = registerUser.getAvator();
 //		String avator = registerUser.getEmail()+"-"+multipartFile.getOriginalFilename();

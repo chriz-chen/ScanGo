@@ -7,7 +7,7 @@ create table if not exists User (
     birthday timestamp not null,
     level int,
     authType enum('local', 'github', 'google') default 'local',
-    authId varchar(100)
+    authId varchar(100),
     createDate timestamp not null default current_timestamp
 );
 

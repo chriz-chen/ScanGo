@@ -40,15 +40,14 @@
 					</div>
 					<div class="col-12">
 						<fieldset>
-							<div class="d-flex justify-content-between">
-								<h4 class="label d-inline">密碼再次確認</h4>
-								<sp:errors path="password"
+						    <div class="d-flex justify-content-between">
+						        <h4 class="label confirmPassword">再次確認密碼</h4>
+						        <sp:errors path="confirmPassword"
 									cssClass="text-danger text-nowrap text-end" />
-							</div>
-							<sp:input type="password" path="password" />
-						</fieldset>
-					</div>
-					
+						    </div>
+						    <sp:input type="password" path="confirmPassword" />
+					    </fieldset>
+					</div>   
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
@@ -76,7 +75,7 @@
 								<sp:errors path="birthday"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" path="birthday" />
+							<sp:input type="date" path="birthday" />
 						</fieldset>
 					</div>
 					
