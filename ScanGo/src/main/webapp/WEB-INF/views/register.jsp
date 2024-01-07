@@ -41,7 +41,7 @@
 					<div class="col-12">
 						<fieldset>
 						    <div class="d-flex justify-content-between">
-						        <h4 class="label confirmPassword">再次確認密碼</h4>
+						        <h4 class="label confirmPassword">密碼再次確認</h4>
 						        <sp:errors path="confirmPassword"
 									cssClass="text-danger text-nowrap text-end" />
 						    </div>

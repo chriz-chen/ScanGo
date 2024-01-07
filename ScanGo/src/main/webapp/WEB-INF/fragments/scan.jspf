@@ -35,7 +35,7 @@
 					aria-label="Close" onclick="handleStop()"></button>
 			</div>
 			<div class="modal-body">
-				<div id="reader" class="mx-auto"></div>
+				<div id="reader" class="weight: mx-auto"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" onclick="save()">加入購物車</button>
@@ -70,7 +70,7 @@
         function handleClickAdvanced() {
             html5QrCode.start(
                 { facingMode: "environment" },
-                { fps: 10, qrbox: { width: 300, height: 250 } },
+                { fps: 10, qrbox: { width: 200, height: 200 } },
                 (decodedText, decodedResult) => {
                     console.log(decodedText, decodedResult);
                     if (confirm(decodedText, decodedResult)) {
@@ -81,4 +81,4 @@
         }
 
         var html5QrCode = new Html5Qrcode("reader");
-    </script>
+</script>
