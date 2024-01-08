@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.CartDAO;
 import com.example.entity.Cart;
+
 
 @Controller
 @RequestMapping
@@ -49,4 +52,27 @@ public class CartController {
         model.addAttribute("carts", carts);
         return "cart";
     }
+	
+	@PostMapping("/addCartByPost")
+	public String addToCart(@RequestParam("userId") Integer userId,
+							@RequestParam("productId") Integer productId,
+							@RequestParam("productQuantity") Integer productQuantity,
+							HttpSession session, Model model) {
+		// 建立購物項目
+		Cart cart = new Cart();
+		cart.setUserId(userId);
+		cart.setProductId(productId);
+		cart.setProductQuantity(productQuantity);
+			
+		// 新增購物車項目
+		cartDao.addCart(cart);
+
+		return "product";
+	}
+	
+	
+	
 }
+
+
+

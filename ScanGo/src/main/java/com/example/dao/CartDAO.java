@@ -15,6 +15,9 @@ public interface CartDAO {
 	//查詢所有購物車資料(多筆)
 	List<Cart> findAllCart();
 	
+	//新增購物車項目資料
+	void addCart(Cart cart);
+	
 	//查詢所有商品(多筆)
 	List<Product> findAllProducts();
 		

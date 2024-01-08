@@ -28,7 +28,7 @@ public class CartDAOImpl implements CartDAO {
 		});
 		return carts;
 	}
-
+	
 	@Override
 	public List<Cart> findAllCart() {
 		String sql = "select * from cart";
@@ -49,6 +49,19 @@ public class CartDAOImpl implements CartDAO {
 			return Optional.ofNullable(product);
 		} catch (EmptyResultDataAccessException e) {
 			return Optional.empty();
+		}
+	}
+
+	@Override
+	public void addCart(Cart cart) {
+		String sql1 = "select count(*) as count from cart where userId = ? and productId = ?";
+		int count = jdbcTemplate.queryForObject(sql1, Integer.class, cart.getUserId(), cart.getProductId());
+		if(count == 0) {
+			String sql2 = "insert into cart(userId, productId, productQuantity) values(?, ?, ?)";
+			jdbcTemplate.update(sql2, cart.getUserId(), cart.getProductId(), cart.getProductQuantity());
+		} else {
+			String sql3 = "update cart set productQuantity = productQuantity + ? where userId = ? and productId = ?";
+			jdbcTemplate.update(sql3, cart.getProductQuantity(), cart.getUserId(), cart.getProductId());
 		}
 	}
 	
