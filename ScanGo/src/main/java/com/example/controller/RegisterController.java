@@ -29,15 +29,15 @@ import com.example.entity.User;
 @RequestMapping("/register")
 public class RegisterController {
 
-	private static final Path upPath = Paths.get("C:\\uploads\\avator");
-	
-	static {
-		try {
-			Files.createDirectories(upPath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//  處理使用者大頭照
+//	private static final Path upPath = Paths.get("C:\\uploads\\avator");
+//	static {
+//		try {
+//			Files.createDirectories(upPath);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	@Autowired
 	@Qualifier("userDaoImpl")
@@ -55,21 +55,32 @@ public class RegisterController {
 			return "register";
 		}
 		
-		// 處理大頭照
-		MultipartFile multipartFile = registerUser.getAvator();
-		String avator = registerUser.getEmail()+"-"+multipartFile.getOriginalFilename();
-		Path picPath = upPath.resolve(avator);
-		Files.copy(multipartFile.getInputStream(), picPath, StandardCopyOption.REPLACE_EXISTING);
+		// 驗證密碼和再次確認密碼是否相同
+		if (!registerUser.getPassword().equals(registerUser.getConfirmPassword())) {
+	        result.rejectValue("confirmPassword", "error.confirmPassword", "兩次密碼不一致");
+	        return "register";
+	    }
+		// 檢查其他錯誤
+	    if (result.hasErrors()) {
+	        return "register";
+	    }
+		
+// 		處理大頭照
+//		MultipartFile multipartFile = registerUser.getAvator();
+//		String avator = registerUser.getEmail()+"-"+multipartFile.getOriginalFilename();
+//		Path picPath = upPath.resolve(avator);
+//		Files.copy(multipartFile.getInputStream(), picPath, StandardCopyOption.REPLACE_EXISTING);
 		
 		// 新增用戶資訊至資料庫
 		User user = new User();
-		user.setFirstName(registerUser.getFirstName());
-		user.setLastName(registerUser.getLastName());
-		user.setEmail(registerUser.getEmail());
+		user.setUsername(registerUser.getUsername());
 		user.setPassword(BCrypt.hashpw(registerUser.getPassword(), BCrypt.gensalt()));
-		user.setAvator(avator);
+		user.setEmail(registerUser.getEmail());
+		user.setPhone(registerUser.getPhone());
+		user.setBirthday(registerUser.getBirthday());
+		//user.setAvator(avator);
 
-		int rowCount = userDAO.save(user);
+		int rowCount = userDAO.addUser(user);
 		
 		if(rowCount == 0) {
 			model.addAttribute("error","新增失敗，請通知管理員");
