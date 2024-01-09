@@ -32,6 +32,15 @@
 									<h4 class="about-service-title">信箱</h4>
 									<p class="about-service-subtitle">XXXXXXXXXXXXXXXXX</p>
 								</div>
+								<div class="about-service-content text-center">
+									<h4 class="about-service-title">手機</h4>
+									<p class="about-service-subtitle">XXXXXXXXXXXXXXXXX</p>
+								</div>
+								<div class="about-service-content text-center">
+									<h4 class="about-service-title">生日</h4>
+									<p class="about-service-subtitle">XXXXXXXXXXXXXXXXX</p>
+								</div>
+								<button type="submit" class="btn btn-primary">更改密碼</button>
 							</div>
 						</div>
 					</div>

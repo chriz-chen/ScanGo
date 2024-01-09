@@ -15,23 +15,23 @@
 
 				<p class="text-center text-danger">${ error }</p>
 				<div class="section-header mb-3">
-					<h2 class="section-heading text-center">會員註冊</h2>
+					<h2 class="section-heading text-center">註冊帳號</h2>
 				</div>
 				<div class="row">
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<label class="label d-inline">帳號</label>
-								<sp:errors path="firstName"
+								<h4 class="label d-inline">帳號</h4>
+								<sp:errors path="username"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" path="firstName" />
+							<sp:input type="text" path="username" />
 						</fieldset>
 					</div>
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<label class="label d-inline">密碼</label>
+								<h4 class="label d-inline">密碼</h4>
 								<sp:errors path="password"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
@@ -40,8 +40,18 @@
 					</div>
 					<div class="col-12">
 						<fieldset>
+						    <div class="d-flex justify-content-between">
+						        <h4 class="label confirmPassword">密碼再次確認</h4>
+						        <sp:errors path="confirmPassword"
+									cssClass="text-danger text-nowrap text-end" />
+						    </div>
+						    <sp:input type="password" path="confirmPassword" />
+					    </fieldset>
+					</div>   
+					<div class="col-12">
+						<fieldset>
 							<div class="d-flex justify-content-between">
-								<label class="label">信箱</label>
+								<h4 class="label">信箱</h4>
 								<sp:errors path="email"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
@@ -49,6 +59,29 @@
 						</fieldset>
 					</div>
 					<div class="col-12">
+						<fieldset>
+							<div class="d-flex justify-content-between">
+								<h4 class="label">手機</h4>
+								<sp:errors path="phone"
+									cssClass="text-danger text-nowrap text-end" />
+							</div>
+							<sp:input type="text" path="phone" />
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							<div class="d-flex justify-content-between">
+								<h4 class="label d-inline">生日</h4>
+								<sp:errors path="birthday"
+									cssClass="text-danger text-nowrap text-end" />
+							</div>
+							<sp:input type="date" path="birthday" />
+						</fieldset>
+					</div>
+					
+					
+					
+					<%-- <div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
 								<label class="label d-inline btn btn-outline-primary w-100">Picture
@@ -59,9 +92,9 @@
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
 						</fieldset>
-					</div>
+					</div> --%>
 					<div class="col-12 mt-3">
-						<button type="submit" class="btn-primary d-block mt-3 btn-signin">建立</button>
+						<button type="submit" class="btn-primary d-block mt-3 btn-signin">加入會員</button>
 					</div>
 				</div>
 			</sp:form>

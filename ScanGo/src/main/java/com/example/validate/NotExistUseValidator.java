@@ -18,7 +18,7 @@ public class NotExistUseValidator implements ConstraintValidator<NotExistUser, S
 	
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
-		return !userDAO.findUserByEmail(value).isPresent();
+		return !userDAO.findUserByUsername(value).isPresent();
 	}
 
 }
