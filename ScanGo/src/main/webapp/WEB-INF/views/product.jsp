@@ -15,7 +15,7 @@
     <form class="product-form" action="${pageContext.request.contextPath}/mvc/addCartByPost" method="post">
 		<div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
 		<input type="hidden" name="userId" value="3">
-		<input type="hidden" name="productId" value="2">
+		<input type="hidden" name="productId" value="4">
 		<input type="text" name="productQuantity" reqired>
 			<button type="submit" class="position-relative btn-atc btn-add-to-cart loader">ADD TO CART</button>
 				<a href="#" class="product-wishlist">

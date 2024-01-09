@@ -14,7 +14,7 @@
                  </div>
                  <div class="col-lg-3 col-md-8 col-8">
                      <div class="header-action d-flex align-items-center justify-content-end">
-                         <a class="header-action-item header-cart" href="ScanGo/mvc/drawer_cart" data-bs-toggle="offcanvas">
+                         <a class="header-action-item header-cart" href="#drawer-cart" data-bs-toggle="offcanvas">
                              <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                  <path
