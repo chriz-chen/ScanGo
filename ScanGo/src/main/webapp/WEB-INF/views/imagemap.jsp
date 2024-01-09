@@ -44,7 +44,7 @@ footer {
 			<ul>
 				<li><a href="/ScanGo/mvc/product">Product 1</a></li>
 				<li><a href="/ScanGo/index.jsp">Product 2</a></li>
-				<li><a href="/ScanGo/index.jsp">Product 3</a></li>
+				<li><a href="${pageContext.request.contextPath}/mvc/product2">Product 3</a></li>
 			</ul>
 		`,
 		Snack : `
