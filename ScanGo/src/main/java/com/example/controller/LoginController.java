@@ -53,8 +53,6 @@ public class LoginController {
 		session.setMaxInactiveInterval(60 * 15); // 15分鐘：如果在指定的一段時間內，沒有任何的請求進來，session會失效。
 		session.setAttribute("isLogin", true);
 		session.setAttribute("user", user);
-		session.setAttribute("username", user.getUsername());
-		session.setAttribute("userId", user.getUserId());
 		return "redirect:/";
 	}
 }
