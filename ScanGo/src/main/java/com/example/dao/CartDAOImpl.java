@@ -19,6 +19,7 @@ public class CartDAOImpl implements CartDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
+	//根據使用者ID來查找其所有購物車資料(多筆)
 	@Override
 	public List<Cart> findCartsByUserId(Integer userId) {
 		String sql = "select * from cart where userId = ?";
@@ -29,18 +30,21 @@ public class CartDAOImpl implements CartDAO {
 		return carts;
 	}
 	
+	//查詢所有購物車資料(多筆)
 	@Override
 	public List<Cart> findAllCart() {
 		String sql = "select * from cart";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class));
 	}
 	
+	//查詢所有商品(多筆)
 	@Override
 	public List<Product> findAllProducts() {
 		String sql = "select * from product";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
 	}
 
+	//根據產品ID來查找商品(單筆)
 	@Override
 	public Optional<Product> findProductById(Integer productId) {
 		String sql = "select * from product where productId = ?";
@@ -52,6 +56,7 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
+	//新增購物車項目資料
 	@Override
 	public void addCart(Cart cart) {
 		String sql1 = "select count(*) as count from cart where userId = ? and productId = ?";

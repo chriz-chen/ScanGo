@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.CartDAO;
 import com.example.entity.Cart;
+import com.example.entity.User;
 
 
 @Controller
@@ -26,8 +27,12 @@ public class CartController {
 	private CartDAO cartDao;
 	
 	@GetMapping("/cart")
-	public String cartPage() {
-		
+	public String cartPage(HttpSession session, Model model) {
+		//  先找到 user 登入者
+		User user = (User)session.getAttribute("user");
+			
+		List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
+		model.addAttribute("carts", carts);
 		return "cart";
 	}
 	
@@ -46,12 +51,15 @@ public class CartController {
 		return "product";
 	}
 	
-	@PostMapping("/showCart")
-    public String showCart(@RequestParam Integer userId, Model model) {
-        List<Cart> carts = cartDao.findCartsByUserId(userId);
-        model.addAttribute("carts", carts);
-        return "cart";
-    }
+//	@PostMapping("/showCart")
+//    public String showCart(HttpSession session, Model model) {
+//		//  先找到 user 登入者
+//		User user = (User)session.getAttribute("user");
+//		
+//        List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
+//        model.addAttribute("carts", carts);
+//        return "cart";
+//    }
 	
 	@PostMapping("/addCartByPost")
 	public String addToCart(@RequestParam("userId") Integer userId,
