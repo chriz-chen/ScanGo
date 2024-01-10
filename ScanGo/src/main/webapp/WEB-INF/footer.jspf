@@ -7,7 +7,7 @@
 
 <%@ include file="/WEB-INF/fragments/drawer_menu.jspf" %>
 
-<%@ include file="/WEB-INF/fragments/drawer_cart.jspf" %>
+<%@ include file="/WEB-INF/views/drawer_cart.jspf" %>
 
 
 <script src="${pageContext.request.contextPath}/assets/js/vendor.js"></script>

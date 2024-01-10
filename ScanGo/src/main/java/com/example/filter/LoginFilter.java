@@ -22,19 +22,21 @@ public class LoginFilter extends HttpFilter {
 		if (urlString.endsWith("login.jsp") 
 				|| urlString.endsWith("login") 
 				|| urlString.endsWith("register") 
+				|| urlString.endsWith("imagemap")
 				|| urlString.indexOf("/images") >= 0 
-				|| urlString.indexOf("/avator") >= 0
-				|| urlString.endsWith(".css") || urlString.endsWith(".js")) {
+				|| urlString.endsWith(".css") 
+				|| urlString.endsWith(".js")
+				|| urlString.endsWith("/getcode")) {
 			chain.doFilter(request, response);
 			return;
 		}
 
 		HttpSession session = request.getSession();
 		boolean isLogin = session.getAttribute("isLogin") == null ? false : (boolean) session.getAttribute("isLogin");
-//		if (!isLogin) {
-//			response.sendRedirect(request.getContextPath() + "/mvc/login");
-//			return;
-//		}
+		if (!isLogin) {
+			response.sendRedirect(request.getContextPath() + "/mvc/login");
+			return;
+		}
 
 		chain.doFilter(request, response);
 
