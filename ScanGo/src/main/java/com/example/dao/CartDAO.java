@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.entity.Cart;
 import com.example.entity.Product;
+import com.example.entity.Category;
 
 
 public interface CartDAO {
@@ -23,4 +24,7 @@ public interface CartDAO {
 		
 	//根據產品ID來查找商品(單筆)
 	Optional<Product> findProductById(Integer productId);
+	
+	//根據類別ID來查找商品(多筆)
+	List<Product> findProductsByCategoryId(Integer categoryId);
 }

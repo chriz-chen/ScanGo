@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.entity.Cart;
 import com.example.entity.Product;
+import com.example.entity.Category;
 
 
 @Component("cartDaoImpl")
@@ -54,6 +55,13 @@ public class CartDAOImpl implements CartDAO {
 		} catch (EmptyResultDataAccessException e) {
 			return Optional.empty();
 		}
+	}
+
+	//根據類別ID來查找商品(多筆)
+	@Override
+	public List<Product> findProductsByCategoryId(Integer categoryId) {
+		String sql = "select productName, price, unit from product where categoryId = ?";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), categoryId);
 	}
 
 	//新增購物車項目資料

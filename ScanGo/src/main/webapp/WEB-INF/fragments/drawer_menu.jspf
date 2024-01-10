@@ -24,7 +24,7 @@
                     
                     <li class="menu-list-item nav-item hover">
                         <div class="mega-menu-header">
-                            <a class="nav-link active" href="/ScanGo/mvc/imagemap">
+                            <a class="nav-link active" href="./imagemap.jsp">
                                 商店平面圖
                             </a>
                         </div>
@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="menu-list-item nav-item hover">
-                        <a class="nav-link" href="/ScanGo/mvc/product">購物紀錄</a>
+                        <a class="nav-link" href="./product3.jsp">購物紀錄</a>
                     </li>
                 </ul>
             </nav>

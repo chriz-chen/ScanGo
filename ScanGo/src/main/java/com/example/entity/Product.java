@@ -5,16 +5,21 @@ public class Product {
 	private Integer productId;
 	private String productName;
 	private Integer price;
+	private String unit;
+	private Integer categoryId;
 	private Integer inventory;
 	
 	public Product() {
 		
 	}
 	
-	public Product(Integer productId, String productName, Integer price, Integer inventory) {
+	public Product(Integer productId, String productName, Integer price, String unit, Integer categoryId,
+			Integer inventory) {
 		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
+		this.unit = unit;
+		this.categoryId = categoryId;
 		this.inventory = inventory;
 	}
 
@@ -40,6 +45,22 @@ public class Product {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public Integer getInventory() {

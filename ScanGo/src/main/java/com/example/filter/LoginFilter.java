@@ -31,10 +31,10 @@ public class LoginFilter extends HttpFilter {
 
 		HttpSession session = request.getSession();
 		boolean isLogin = session.getAttribute("isLogin") == null ? false : (boolean) session.getAttribute("isLogin");
-		if (!isLogin) {
-			response.sendRedirect(request.getContextPath() + "/mvc/login");
-			return;
-		}
+//		if (!isLogin) {
+//			response.sendRedirect(request.getContextPath() + "/mvc/login");
+//			return;
+//		}
 
 		chain.doFilter(request, response);
 

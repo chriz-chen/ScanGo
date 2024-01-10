@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dao.CartDAO;
 import com.example.entity.Cart;
+import com.example.entity.Product;
 import com.example.entity.User;
 
 
@@ -46,20 +48,13 @@ public class CartController {
 		return "payment";
 	}
 	
-	@GetMapping("/product")
-	public String showProduct() {
-		return "product";
+	@GetMapping("/searchProduct/{categoryId}")
+	public String showProduct(@PathVariable("categoryId") Integer categoryId,
+							  Model model) {
+		List<Product> products = cartDao.findProductsByCategoryId(categoryId);
+		model.addAttribute("products", products);
+		return "product3";
 	}
-	
-//	@PostMapping("/showCart")
-//    public String showCart(HttpSession session, Model model) {
-//		//  先找到 user 登入者
-//		User user = (User)session.getAttribute("user");
-//		
-//        List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
-//        model.addAttribute("carts", carts);
-//        return "cart";
-//    }
 	
 	@PostMapping("/addCartByPost")
 	public String addToCart(@RequestParam("userId") Integer userId,
