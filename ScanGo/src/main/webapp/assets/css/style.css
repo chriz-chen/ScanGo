@@ -2823,7 +2823,7 @@ blockquote {
   padding: 90px;
   background: #00234D; }
 
-.contact-box-wrapper {
+.coupon-box-wrapper {
   margin-top: -30px; }
 
 
@@ -2837,7 +2837,7 @@ blockquote {
   align-items: center;
   margin-top: 30px; }
 
-.contact-icon {
+.coupon-icon {
   min-width: 56px;
   margin-right: 20px; }
 
@@ -2857,11 +2857,11 @@ blockquote {
 .coupon-item:hover .coupon-info {
   color: #fff; }
 
-.contact-item:hover .contact-icon svg path {
+.coupon-item:hover .coupon-icon svg path {
   fill: #fff; }
 
-.contact-form input,
-.contact-form textarea {
+.coupon-form input,
+.coupon-form textarea {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.69;
@@ -2877,13 +2877,13 @@ blockquote {
   padding: 16px;
   margin-top: 24px; }
 
-.contact-form input {
+.coupon-form input {
   height: 44px; }
 
-.contact-submit-btn {
+.coupon-submit-btn {
   width: 160px; }
 
-.contact-form-area {
+.coupon-form-area {
   padding: 64px;
   -webkit-box-shadow: 0px 0px 8px rgba(12, 18, 38, 0.06);
   box-shadow: 0px 0px 8px rgba(12, 18, 38, 0.06); }
@@ -3914,7 +3914,7 @@ blockquote {
   .about-hero-img {
     margin-top: 20px; }
   .about-service-wrapper,
-  .contact-form-area {
+  .coupon-form-area {
     padding: 40px 20px; }
   .cart-table,
   .cart-table thead,

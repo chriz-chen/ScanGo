@@ -37,11 +37,11 @@ margin-bottom: 10px;
 	</div>
 	<!-- breadcrumb end -->
 	<!-- coupon start -->
-			<div class="coupon-area container mt-4">
+			<div class="coupon-area container mt-4 vh-100">
 				<div class="row justify-content-center">
 					<div class="col-12">
 						<div class="coupon-item">
-							<div class="contact-icon">
+							<div class="coupon-icon">
 								<img alt="coupon" src="/ScanGo/assets/img/coupon/coupon.png" width="50" height="50">
 							</div>
 							<div class="coupon-details">
@@ -54,7 +54,7 @@ margin-bottom: 10px;
 					
 					<div class="col-12">
 						<div class="coupon-item">
-							<div class="contact-icon">
+							<div class="coupon-icon">
 								<img alt="" src="/ScanGo/assets/img/coupon/coupon.png" width="50" height="50">
 							</div>
 							<div class="coupon-details">
@@ -67,7 +67,7 @@ margin-bottom: 10px;
 					
 					<div class="col-12">
 						<div class="coupon-item">
-							<div class="contact-icon">
+							<div class="coupon-icon">
 								<img alt="" src="/ScanGo/assets/img/coupon/coupon.png" width="50" height="50">
 							</div>
 							<div class="coupon-details">
@@ -85,7 +85,7 @@ margin-bottom: 10px;
 			</div>
 		</div>
 	</div>
-	<!-- contact box end -->
+	<!-- coupon box end -->
 </body>
 
 	<%@ include file="/WEB-INF/footer.jspf"%>

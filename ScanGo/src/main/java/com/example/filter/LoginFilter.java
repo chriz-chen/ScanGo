@@ -22,7 +22,7 @@ public class LoginFilter extends HttpFilter {
 		if (urlString.endsWith("login.jsp") 
 				|| urlString.endsWith("login") 
 				|| urlString.endsWith("register") 
-				|| urlString.endsWith("imagemap")
+				|| urlString.endsWith("imagemap.jsp")
 				|| urlString.indexOf("/images") >= 0 
 				|| urlString.endsWith(".css") 
 				|| urlString.endsWith(".js")
