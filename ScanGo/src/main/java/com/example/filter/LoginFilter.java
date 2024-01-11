@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(value = { "/mvc/*" })
+import com.example.entity.User;
+
+@WebFilter(value = { "/*" })
 public class LoginFilter extends HttpFilter {
 
 	@Override
@@ -32,8 +34,8 @@ public class LoginFilter extends HttpFilter {
 		}
 
 		HttpSession session = request.getSession();
-		boolean isLogin = session.getAttribute("isLogin") == null ? false : (boolean) session.getAttribute("isLogin");
-		if (!isLogin) {
+		User user = session.getAttribute("user") == null ? null : (User) session.getAttribute("user");
+		if (user == null) {
 			response.sendRedirect(request.getContextPath() + "/mvc/login");
 			return;
 		}
