@@ -60,7 +60,7 @@ public class CartDAOImpl implements CartDAO {
 	//根據類別ID來查找商品(多筆)
 	@Override
 	public List<Product> findProductsByCategoryId(Integer categoryId) {
-		String sql = "select productName, price, unit from product where categoryId = ?";
+		String sql = "select * from product where categoryId = ?";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), categoryId);
 	}
 

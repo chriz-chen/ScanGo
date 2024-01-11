@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,20 +58,24 @@ public class CartController {
 	}
 	
 	@PostMapping("/addCartByPost")
-	public String addToCart(@RequestParam("userId") Integer userId,
-							@RequestParam("productId") Integer productId,
+	public String addToCart(@RequestParam("productId") Integer productId,
 							@RequestParam("productQuantity") Integer productQuantity,
-							HttpSession session, Model model) {
+							HttpSession session, Model model,
+							HttpServletRequest request) {
+		// 先找到 user 登入者
+		User user = (User)session.getAttribute("user");
+		
 		// 建立購物項目
 		Cart cart = new Cart();
-		cart.setUserId(userId);
+		cart.setUserId(user.getUserId());
 		cart.setProductId(productId);
 		cart.setProductQuantity(productQuantity);
 			
 		// 新增購物車項目
 		cartDao.addCart(cart);
-
-		return "product";
+		
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 	
 	
