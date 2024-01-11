@@ -54,7 +54,7 @@ public class CartController {
 							  Model model) {
 		List<Product> products = cartDao.findProductsByCategoryId(categoryId);
 		model.addAttribute("products", products);
-		return "product";
+		return "/product";
 	}
 	
 	@PostMapping("/addCartByPost")

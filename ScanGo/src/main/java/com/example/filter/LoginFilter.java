@@ -26,7 +26,8 @@ public class LoginFilter extends HttpFilter {
 				|| urlString.indexOf("/images") >= 0 
 				|| urlString.endsWith(".css") 
 				|| urlString.endsWith(".js")
-				|| urlString.endsWith("/getcode")) {
+				|| urlString.endsWith("/getcode")
+				|| urlString.contains("/searchProduct")) {
 			chain.doFilter(request, response);
 			return;
 		}
