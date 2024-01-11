@@ -35,9 +35,6 @@ body {
 footer {
 	z-index: 1;
 }
-
-
-
 </style>
 <script>
 
@@ -47,14 +44,14 @@ footer {
 			<ul>
 				<li><a href="/ScanGo/mvc/product">Product 1</a></li>
 				<li><a href="/ScanGo/index.jsp">Product 2</a></li>
-				<li><a href="./product3.jsp">Product 3</a></li>
+				<li><a href="/ScanGo/index.jsp">Product 3</a></li>
 			</ul>
 		`,
 		Snack : `
 			<ul>
 				<li>Snack 1</li>
 				<li>Snack 2</li>
-				<li><a href="${pageContext.request.contextPath}/mvc/searchProduct/6">Snack 3</li>
+				<li>Snack 3</li>
 			</ul>
 		`,
 		Appliance : `
