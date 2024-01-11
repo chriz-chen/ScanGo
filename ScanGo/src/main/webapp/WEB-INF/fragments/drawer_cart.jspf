@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="minicart-btn-area d-flex align-items-center justify-content-center">
-                    <a href="checkout.jsp" class="minicart-btn btn-primary">我要結帳</a>
+                    <a href="/ScanGo/mvc/checkout" class="minicart-btn btn-primary">我要結帳</a>
                 </div>
             </div>
         </div>

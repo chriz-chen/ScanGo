@@ -3,6 +3,31 @@
       
 <%@ include file="/WEB-INF/header.jspf" %>
 
+
+<h2>Enter User ID</h2>
+    <form action="${pageContext.request.contextPath}/mvc/showCart" method="post">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <br>
+        <button type="submit">Show Cart</button>
+    </form>
+    
+    <form class="product-form" action="${pageContext.request.contextPath}/mvc/addCartByPost" method="post">
+		<div class="product-form-buttons d-flex align-items-center justify-content-between mt-4">
+		<input type="hidden" name="userId" value="3">
+		<input type="hidden" name="productId" value="4">
+		<input type="text" name="productQuantity" reqired>
+			<button type="submit" class="position-relative btn-atc btn-add-to-cart loader">ADD TO CART</button>
+				<a href="#" class="product-wishlist">
+					<svg class="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+					</svg>
+				</a>
+		</div>
+	</form>
+    
+
+<!-- ------------------------------------------------------------------------------------------------------------- -->
+
 <main id="MainContent" class="content-for-layout">
     <div class="product-page mt-100">
         <div class="container">
