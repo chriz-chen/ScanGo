@@ -51,7 +51,7 @@ footer {
 			<ul>
 				<li>Snack 1</li>
 				<li>Snack 2</li>
-				<li><a href="${pageContext.request.contextPath}/searchProduct/6">Snack 3</a></li>
+				<li><a href="${pageContext.request.contextPath}/mvc/searchProduct/6">Snack 3</a></li>
 			</ul>
 		`,
 		Appliance : `
