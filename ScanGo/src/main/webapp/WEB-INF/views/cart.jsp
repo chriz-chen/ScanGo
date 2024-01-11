@@ -72,7 +72,7 @@ main {
 									<tr class="cart-item">
 										<td class="cart-item-media">
 											<div class="mini-img-wrapper">
-												<img class="mini-img" src="path/to/placeholder-image.jpg"
+												<img class="mini-img" src="/ScanGo/image/product/snack/soda/coke.png"
 													alt="img">
 											</div>
 										</td>
