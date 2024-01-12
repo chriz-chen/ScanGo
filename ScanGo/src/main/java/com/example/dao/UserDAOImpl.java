@@ -43,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
 	//	4. 根據使用者名稱查找使用者(登入用-單筆)	
 	@Override
 	public Optional<User> findUserByUsername(String username) {
-		String sql = "select userId, username, password, email, phone, createDate FROM User where username = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM User where username = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username));
 		} catch (Exception e) {

@@ -1,10 +1,13 @@
 package com.example.util;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -46,15 +49,24 @@ public class GenerateQRCode {
 	}
 	
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {
-		String str = "https://picsum.photos/id/684/600/400";
-		String path = "product-1.png";
-		String charset = "UTF-8";
-		Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
-		hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-		generateQRcode(str, path, charset, hashMap, 200, 200);
-		System.out.println("QR Code created successfully.");
 		
-		String qrCodeString = readQRcode(path,charset);
-		System.out.println(qrCodeString);
+		// 製作 QR Code
+		for (int i=1; i<=10; i++) {
+			String str = "http://localhost:8080/ScanGo/mvc/product/"+i;
+			String path = "src/main/webapp/QRCode/product"+i+".png";
+			String charset = "UTF-8";
+			Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
+			hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+			generateQRcode(str, path, charset, hashMap, 200, 200);
+			System.out.println("QR Code created successfully.");
+		}
+		
+		// 顯示 QR Code 資訊
+		for (int i=1; i<=10; i++) {
+			String path = "src/main/webapp/QRCode/product"+i+".png";
+			String charset = "UTF-8";
+			String qrCodeString = readQRcode(path,charset);
+			System.out.println(qrCodeString);
+		}
 	}
 }
