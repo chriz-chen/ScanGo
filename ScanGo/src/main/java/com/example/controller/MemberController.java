@@ -28,7 +28,7 @@ public class MemberController {
 	@ResponseBody
 	public String findAllSessionNames(HttpSession session) {
 		StringBuilder names = new StringBuilder();
-		// 目前系統中在使用的
+		// 目前系統中在使用的 Session 屬性名稱
 		Enumeration<String> sessionAttrNames = session.getAttributeNames();
 		while (sessionAttrNames.hasMoreElements()) {
 			String name = (String) sessionAttrNames.nextElement();
