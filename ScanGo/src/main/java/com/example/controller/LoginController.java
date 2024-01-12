@@ -94,28 +94,31 @@ public class LoginController {
 						BindingResult result,
 						@RequestParam("code") String code, 
 						Model model,HttpSession session) {
-		
+		// 如果表單驗證有錯誤，返回登入頁面
 		if(result.hasErrors()) {
 			return "login";
 		}
 		
-		//比對驗證碼
+		// 比對驗證碼
 		if(!code.equals(session.getAttribute("code")+"")) {
 			session.invalidate(); // session 過期失效
 			model.addAttribute("errorMessage", "驗證碼錯誤");
 			return "login";
 		}
 		
+		// 從資料庫中查詢使用者資料
 		Optional<User> optUser = userDAO.findUserByUsername(loginUser.getUsername());
+		// 如果使用者不存在或密碼錯誤，返回登入頁面
 		if(!optUser.isPresent() ||  ! BCrypt.checkpw(loginUser.getPassword(),optUser.get().getPassword())) {
 			model.addAttribute("errorMessage", "帳號或密碼錯誤");
 			return "login";
 		}
 		
+		// 登入成功，將使用者資訊存入Session，並設定Session有效時間為30分鐘
 		User user = optUser.get();
 		session.setMaxInactiveInterval(60 * 30); // 30分鐘：如果在指定的一段時間內，沒有任何的請求進來，session會失效。
 		session.setAttribute("user", user);
-		return "redirect:/";
+		return "redirect:/"; // 重導向到首頁
 	}
 	
 	
