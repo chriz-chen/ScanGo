@@ -48,23 +48,23 @@ public class LoginController {
 	private void getCodeImage(HttpSession session, HttpServletResponse response) throws IOException {
 		// 產生一個驗證碼 code
 		Random random = new Random();
-		String code1 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code2 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code3 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code4 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
+		String code1 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code2 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code3 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code4 = String.format("%c", (char)(random.nextInt(26) + 65));
 		
 		String code  = code1+code2+code3+code4;
 		session.setAttribute("code", code);
 		
 		// Java 2D 產生圖檔
 		// 1. 建立圖像暫存區
-		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_BGR);
+		BufferedImage img = new BufferedImage(90, 35, BufferedImage.TYPE_INT_BGR);
 		// 2. 建立畫布
 		Graphics g = img.getGraphics();
 		// 3. 設定顏色
 		g.setColor(Color.YELLOW);
 		// 4. 塗滿背景
-		g.fillRect(0, 0, 80, 30);
+		g.fillRect(0, 0, 90, 35);
 		// 5. 設定顏色
 		g.setColor(Color.BLACK);
 		// 6. 設定自型
@@ -74,10 +74,10 @@ public class LoginController {
 		// 8. 干擾線
 		g.setColor(Color.RED);
 		for(int i=0;i<10;i++) {
-			int x1 = random.nextInt(80);
-			int y1 = random.nextInt(30);
-			int x2 = random.nextInt(80);
-			int y2 = random.nextInt(30);
+			int x1 = random.nextInt(90);
+			int y1 = random.nextInt(35);
+			int x2 = random.nextInt(90);
+			int y2 = random.nextInt(35);
 			g.drawLine(x1, y1, x2, y2);
 		}
 		

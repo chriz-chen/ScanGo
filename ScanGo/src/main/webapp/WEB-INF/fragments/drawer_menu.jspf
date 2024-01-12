@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="menu-list-item nav-item hover">
-                        <a class="nav-link" href="contact.html">購物紀錄</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/mvc/cart">購物紀錄</a>
                     </li>
                 </ul>
             </nav>
