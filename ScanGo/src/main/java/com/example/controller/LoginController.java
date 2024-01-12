@@ -90,7 +90,10 @@ public class LoginController {
 	
 	// 前台登入處理
 	@PostMapping()
-	public String login(@ModelAttribute @Valid LoginUser loginUser, BindingResult result, @RequestParam("code") String code, Model model,HttpSession session) {
+	public String login(@ModelAttribute @Valid LoginUser loginUser, 
+						BindingResult result,
+						@RequestParam("code") String code, 
+						Model model,HttpSession session) {
 		
 		if(result.hasErrors()) {
 			return "login";
@@ -111,10 +114,7 @@ public class LoginController {
 		
 		User user = optUser.get();
 		session.setMaxInactiveInterval(60 * 30); // 30分鐘：如果在指定的一段時間內，沒有任何的請求進來，session會失效。
-		session.setAttribute("isLogin", true);
 		session.setAttribute("user", user);
-		//session.setAttribute("username", user.getUsername());
-		//session.setAttribute("userId", user.getUserId());
 		return "redirect:/";
 	}
 	
