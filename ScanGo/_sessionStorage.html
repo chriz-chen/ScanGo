@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+
+    <body>
+
+        <P id="show"></P>
+
+    </body>
+
+    <script>
+            
+            let cartitems = [
+                {
+                    id: 1,
+                    name: '汽水'
+                },
+                {
+                    id: 2,
+                    name: '肉片'
+                }
+            ]
+
+            sessionStorage.setItem("cartitems", JSON.stringify(cartitems));
+
+            console.log( sessionStorage.getItem("cartitems"));
+
+            $('#show').text(sessionStorage.getItem("cartitems"));
+
+    </script>
+
+
+</body>
+</html>
