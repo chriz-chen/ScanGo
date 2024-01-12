@@ -50,7 +50,7 @@ main {
 </header>
 
 <main id="MainContent" class="content-for-layout">
-	<div class="cart-page">
+	<div class="cart-page vh-100">
 		<div class="container">
 			<div class="cart-page-wrapper">
 				<div class="row">

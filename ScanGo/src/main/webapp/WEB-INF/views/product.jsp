@@ -127,7 +127,7 @@
 												<div class="input-group mb-3">
 													<button type="button" class="btn btn-danger"
 														onclick="decreaseQuantity()">-</button>
-													<input type="text" name="productQuantity"
+													<input type="text" name="productQuantity" disabled="disabled" 
 														class="form-control input-number" value="1" min="1"
 														max="${product.inventory}">
 													<button type="button" class="btn btn-success"

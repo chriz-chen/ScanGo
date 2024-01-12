@@ -48,23 +48,23 @@ public class LoginController {
 	private void getCodeImage(HttpSession session, HttpServletResponse response) throws IOException {
 		// 產生一個驗證碼 code
 		Random random = new Random();
-		String code1 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code2 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code3 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code4 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
+		String code1 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code2 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code3 = String.format("%c", (char)(random.nextInt(26) + 65));
+		String code4 = String.format("%c", (char)(random.nextInt(26) + 65));
 		
 		String code  = code1+code2+code3+code4;
 		session.setAttribute("code", code);
 		
 		// Java 2D 產生圖檔
 		// 1. 建立圖像暫存區
-		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_BGR);
+		BufferedImage img = new BufferedImage(90, 35, BufferedImage.TYPE_INT_BGR);
 		// 2. 建立畫布
 		Graphics g = img.getGraphics();
 		// 3. 設定顏色
 		g.setColor(Color.YELLOW);
 		// 4. 塗滿背景
-		g.fillRect(0, 0, 80, 30);
+		g.fillRect(0, 0, 90, 35);
 		// 5. 設定顏色
 		g.setColor(Color.BLACK);
 		// 6. 設定自型
@@ -74,10 +74,10 @@ public class LoginController {
 		// 8. 干擾線
 		g.setColor(Color.RED);
 		for(int i=0;i<10;i++) {
-			int x1 = random.nextInt(80);
-			int y1 = random.nextInt(30);
-			int x2 = random.nextInt(80);
-			int y2 = random.nextInt(30);
+			int x1 = random.nextInt(90);
+			int y1 = random.nextInt(35);
+			int x2 = random.nextInt(90);
+			int y2 = random.nextInt(35);
 			g.drawLine(x1, y1, x2, y2);
 		}
 		
@@ -90,32 +90,35 @@ public class LoginController {
 	
 	// 前台登入處理
 	@PostMapping()
-	public String login(@ModelAttribute @Valid LoginUser loginUser, BindingResult result, @RequestParam("code") String code, Model model,HttpSession session) {
-		
+	public String login(@ModelAttribute @Valid LoginUser loginUser, 
+						BindingResult result,
+						@RequestParam("code") String code, 
+						Model model,HttpSession session) {
+		// 如果表單驗證有錯誤，返回登入頁面
 		if(result.hasErrors()) {
 			return "login";
 		}
 		
-		//比對驗證碼
+		// 比對驗證碼
 		if(!code.equals(session.getAttribute("code")+"")) {
 			session.invalidate(); // session 過期失效
 			model.addAttribute("errorMessage", "驗證碼錯誤");
 			return "login";
 		}
 		
+		// 從資料庫中查詢使用者資料
 		Optional<User> optUser = userDAO.findUserByUsername(loginUser.getUsername());
+		// 如果使用者不存在或密碼錯誤，返回登入頁面
 		if(!optUser.isPresent() ||  ! BCrypt.checkpw(loginUser.getPassword(),optUser.get().getPassword())) {
 			model.addAttribute("errorMessage", "帳號或密碼錯誤");
 			return "login";
 		}
 		
+		// 登入成功，將使用者資訊存入Session，並設定Session有效時間為30分鐘
 		User user = optUser.get();
 		session.setMaxInactiveInterval(60 * 30); // 30分鐘：如果在指定的一段時間內，沒有任何的請求進來，session會失效。
-		session.setAttribute("isLogin", true);
 		session.setAttribute("user", user);
-		//session.setAttribute("username", user.getUsername());
-		//session.setAttribute("userId", user.getUserId());
-		return "redirect:/";
+		return "redirect:/"; // 重導向到首頁
 	}
 	
 	

@@ -49,7 +49,7 @@
             </nav>
             <ul class="utility-menu list-unstyled ">
 
-				<c:if test="${empty isLogin}">
+				<c:if test="${empty user}">
 					<li class="utilty-menu-item d-flex align-items-center">
 					    <a class="announcement-login announcement-text" href="${pageContext.request.contextPath}/mvc/login">
 					        <span class="utilty-icon-wrapper">
@@ -65,7 +65,7 @@
 					    </a>
 					</li>
 				</c:if>
-				<c:if test="${not empty isLogin}">
+				<c:if test="${not empty user}">
 					<li class="utilty-menu-item d-flex align-items-center">
 					    <a class="announcement-login announcement-text" href="${pageContext.request.contextPath}/mvc/logout">
 					        <span class="utilty-icon-wrapper">
@@ -81,7 +81,7 @@
 					    </a>
 					</li>
 				</c:if>
-				<c:if test="${empty isLogin}">
+				<c:if test="${empty user}">
                 <li class="utilty-menu-item d-flex align-items-center">
                     <a class="announcement-login announcement-text" href="${ pageContext.request.contextPath }/mvc/register">
                         <span class="utilty-icon-wrapper">
