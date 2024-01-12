@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.example.entity.User;
 
-@WebFilter(value = { "/*" })
+@WebFilter(value = { "/mvc/*" })
 public class LoginFilter extends HttpFilter {
 
 	@Override
