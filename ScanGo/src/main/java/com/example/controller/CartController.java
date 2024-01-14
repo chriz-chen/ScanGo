@@ -33,10 +33,48 @@ public class CartController {
 	public String cartPage(HttpSession session, Model model) {
 		//  先找到 user 登入者
 		User user = (User)session.getAttribute("user");
-			
+		
+		Integer totalPrice = 0;
 		List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
+		for(Cart cart : carts) {
+			cart.getProduct().setPrice((cart.getProduct().getPrice()) * (cart.getProductQuantity()));
+			totalPrice += ((cart.getProduct().getPrice()));
+		}
 		model.addAttribute("carts", carts);
+		model.addAttribute("totalPrice", totalPrice);
 		return "cart";
+	}
+	
+	@PostMapping("/updateCartByPost")
+	public String updateCart(@RequestParam("situation") String situation,
+							 @RequestParam("productId") Integer productId,
+							 @RequestParam("productQuantity") Integer productQuantity,
+	                         HttpSession session) {
+		//  先找到 user 登入者
+		User user = (User)session.getAttribute("user");
+		
+		if(situation.equals("+")) {
+			productQuantity = productQuantity + 1;
+		}else if(situation.equals("-")) {
+			productQuantity = productQuantity - 1;
+			if(productQuantity <= 0) {
+				productQuantity = 1;
+			}
+		}
+
+		cartDao.updateCartItemQuantity(user.getUserId(), productId, productQuantity);
+		
+		return "redirect:/mvc/cart";
+	}
+	
+	@PostMapping("/removeFromCart")
+	public String removeFromCart(@RequestParam("productId") Integer productId,
+			                     HttpSession session) {
+		//  先找到 user 登入者
+		User user = (User)session.getAttribute("user");
+		
+		cartDao.removeFromCart(user.getUserId(), productId);
+		return "redirect:/mvc/cart";
 	}
 	
 	@GetMapping("/checkout")
@@ -47,14 +85,6 @@ public class CartController {
 	@GetMapping("/payment")
 	public String showPayment() {
 		return "payment";
-	}
-	
-	@GetMapping("/searchProduct/{categoryId}")
-	public String showProduct(@PathVariable("categoryId") Integer categoryId,
-							  Model model) {
-		List<Product> products = cartDao.findProductsByCategoryId(categoryId);
-		model.addAttribute("products", products);
-		return "product";
 	}
 	
 	@PostMapping("/addCartByPost")
