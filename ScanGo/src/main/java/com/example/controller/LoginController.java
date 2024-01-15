@@ -94,17 +94,17 @@ public class LoginController {
 						BindingResult result,
 						@RequestParam("code") String code, 
 						Model model,HttpSession session) {
-		// 如果表單驗證有錯誤，返回登入頁面
-		if(result.hasErrors()) {
-			return "login";
-		}
+//		// 如果表單驗證有錯誤，返回登入頁面
+//		if(result.hasErrors()) {
+//			return "login";
+//		}
 		
 		// 比對驗證碼
-		if(!code.equals(session.getAttribute("code")+"")) {
-			session.invalidate(); // session 過期失效
-			model.addAttribute("errorMessage", "驗證碼錯誤");
-			return "login";
-		}
+//		if(!code.equals(session.getAttribute("code")+"")) {
+//			session.invalidate(); // session 過期失效
+//			model.addAttribute("errorMessage", "驗證碼錯誤");
+//			return "login";
+//		}
 		
 		// 從資料庫中查詢使用者資料
 		Optional<User> optUser = userDAO.findUserByUsername(loginUser.getUsername());

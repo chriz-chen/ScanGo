@@ -29,4 +29,6 @@ public class ProductController {
 	public Product getProductInfo(@PathVariable("productId") Integer productId) {
 		return productDaoImpl.findProductById(productId).get();
 	}
+	
+	
 }
