@@ -87,7 +87,7 @@
 		    	  productQuantity :$('#productQuantity').val(),
 		      },
 			}).done( function ( result ){
-			    console.log(result);
+			    alert(result);
 			});
 		}
 
