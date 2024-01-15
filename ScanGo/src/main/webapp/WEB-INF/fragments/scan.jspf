@@ -88,6 +88,11 @@
                     // Show toast
                     var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2000 });
                     toast.show();
+                    
+                    // 清空
+                    $('#productInfo .productId').text('');
+		            $('#productInfo .productName').text('');
+		            $('#productInfo .productPrice').text(0);
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error:', errorThrown);
@@ -109,32 +114,16 @@
         }
 
         function handleClickAdvanced() {
-        	/*
-        	$.ajax({
-		        url: 'http://localhost:8080/ScanGo/mvc/product/3',                // 要載入的資料格式檔案
-		        dataType: 'json',                // 資料格式檔案的類型
-		        success: function ( data ){
-		            // console.log(data);
-		            $('#productInfo .productId').text(data['productId']);
-		            $('#productInfo .productName').text(data['productName']);
-		            $('#productInfo .productPrice').text(data['price']);
-		            
-		         	// 設置表單中的 productId	
-		            $('#productId').val(data['productId']);     
-		        }
-		    });
-        	*/
-
             html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
                 (decodedText, decodedResult) => {
-                    console.log(decodedText, decodedResult);
+                    //console.log(decodedText, decodedResult);
                     // 確定有掃描到QRCode會去做的事情
                     if (confirm(decodedText, decodedResult)) {
                         cart.push(decodedText);
                         $.ajax({
-            		        url: decodedText,                // 要載入的資料格式檔案
+            		        url: decodedText,                // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
             		        dataType: 'json',                // 資料格式檔案的類型
             		        success: function ( data ){
             		            // console.log(data);
