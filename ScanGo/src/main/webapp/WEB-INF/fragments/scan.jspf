@@ -18,8 +18,7 @@
 
 <!-- scan icon -->
 <div class="scan-icon">
-	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal"
-		data-bs-target="#reader_modal" onclick="handleClickAdvanced()">
+	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal" data-bs-target="#reader_modal" onclick="openScan()">
 </div>
 
 <!-- scan icon end -->
@@ -44,23 +43,21 @@
 			<!-- modal-header -->
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close" onclick="handleStop()"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
 			</div>
 			<!-- modal-body -->
 			<div class="modal-body">
 				<div id="reader" class="width: mx-auto"></div>
-				<div id="productInfo">
-					1.productName:<span class="productName"></span><br>
-					2.productPrice:<span class="productPrice"></span><br>
-					3.productQty: <input class="text-center productQuantity"
-						type="number" id="productQuantity" name="productQuantity"
-						value="1" /><br>
+				<div>
+				    <input type="hidden" id="productId" name="productId" value="">
+					1.productName:<span  id="productName"></span><br>
+					2.productPrice:<span id="productPrice"></span><br>
+					3.productQty: 
+					<input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/><br>
 				</div>
 			</div>
 			<!-- modal-footer -->
 			<div class="modal-footer">
-				<input type="hidden" name="productId" id="productId" value="">
 				<div class="d-flex justify-content-end">
 					<button type="button" class="btn btn-primary" onclick="addCart()">加入購物車</button>
 				</div>
@@ -72,37 +69,27 @@
 <!-- scan modal end-->
 <script>
 
-		function addCart() {
-            $.ajax({
-                url: '${pageContext.request.contextPath}/mvc/addCartByPost',
-                type: 'post',
-                data: { 
-                    productId: $('#productId').val(),
-                    productQuantity: $('#productQuantity').val(),
-                },
-                success: function (result, textStatus, xhr) {
-                    if (xhr.status == 200 && result.indexOf('<head>')>=0) {
-                        window.location.href = '/ScanGo/mvc/login';
-                        return;
-                    }
-                    // Show toast
-                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2000 });
-                    toast.show();
-                    
-                    // 清空
-                    $('#productInfo .productId').text('');
-		            $('#productInfo .productName').text('');
-		            $('#productInfo .productPrice').text(0);
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log('Error:', errorThrown);
+		var html5QrCode = new Html5Qrcode("reader");
+        
+		function openScan() {
+            html5QrCode.start(
+                { facingMode: "environment" },
+                { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
+                (decodedText, decodedResult) => {
+                      $.ajax({
+          		        url: decodedText,                // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
+          		        dataType: 'json',                // 資料格式檔案的類型
+          		        success: function ( data ){
+          		            $('#productId').val(data['productId']);
+          		            $('#productName').text(data['productName']);
+          		            $('#productPrice').text(data['price']);
+          		        }
+          		    });
                 }
-            });
-		}
-
-        var cart = [];
-
-        function handleStop() {
+            );
+        }
+        
+        function closeScan() {
             html5QrCode
                 .stop()
                 .then((res) => {
@@ -112,34 +99,33 @@
                     console.log(err.message);
                 });
         }
-
-        function handleClickAdvanced() {
-            html5QrCode.start(
-                { facingMode: "environment" },
-                { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
-                (decodedText, decodedResult) => {
-                    //console.log(decodedText, decodedResult);
-                    // 確定有掃描到QRCode會去做的事情
-                    //if (confirm(decodedText, decodedResult)) {
-                        cart.push(decodedText);
-                        $.ajax({
-            		        url: decodedText,                // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
-            		        dataType: 'json',                // 資料格式檔案的類型
-            		        success: function ( data ){
-            		            // console.log(data);
-            		            $('#productInfo .productId').text(data['productId']);
-            		            $('#productInfo .productName').text(data['productName']);
-            		            $('#productInfo .productPrice').text(data['price']);
-            		            
-            		         	// 設置表單中的 productId	
-            		            $('#productId').val(data['productId']); 
-            		        }
-            		    });
-                    //}
+ 
+		function addCart() {
+            $.ajax({
+                url: '${pageContext.request.contextPath}/mvc/addCartByPost',
+                type: 'post',
+                data: { 
+                    productId: $('#productId').val(),
+                    productQuantity: $('#productQuantity').val(),
+                },
+                success: function (result) {
+                    if (result != 'ok') {
+                        window.location.href = '/ScanGo/mvc/login';
+                        return;
+                    }
+                    
+                    // toast
+                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2000 });
+                    toast.show();
+                    
+                    // 清空欄位
+                    $('#productInfo .productId').text('');
+		            $('#productInfo .productName').text('');
+		            $('#productInfo .productPrice').text(0);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error:', errorThrown);
                 }
-            );
-        	
-        }
-
-        var html5QrCode = new Html5Qrcode("reader");
+            });
+		}
 </script>
