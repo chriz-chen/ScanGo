@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,7 +59,7 @@ public class CartController {
 		return "product";
 	}
 	
-	@PostMapping("/addCartByPost")
+	@PostMapping(value = "/addCartByPost")
 	@ResponseBody
 	public String addToCart(@RequestParam("productId") Integer productId,
 							@RequestParam("productQuantity") Integer productQuantity,
@@ -76,7 +77,6 @@ public class CartController {
 		// 新增購物車項目
 		cartDao.addCart(cart);
 		
-		//String referer = request.getHeader("Referer");
 		return "OK";
 	}
 	
