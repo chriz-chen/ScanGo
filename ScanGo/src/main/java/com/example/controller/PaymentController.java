@@ -76,7 +76,7 @@ public class PaymentController {
 			orderDao.addOrderItem(orderItem);
 		}
 		
-		orderDao.updateOrderTotalPrice(checkoutPrice, orders.get().getOrderId(), user.getUserId());
+		//orderDao.updateOrderTotalPrice(checkoutPrice, orders.get().getOrderId(), user.getUserId());
 		cartDao.removeCartByUserId(user.getUserId());
 		return "redirect:/";
 	}
