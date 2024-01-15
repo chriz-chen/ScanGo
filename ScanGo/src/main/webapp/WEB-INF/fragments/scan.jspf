@@ -144,9 +144,6 @@
             		            
             		         	// 設置表單中的 productId	
             		            $('#productId').val(data['productId']); 
-            		         	
-            		         	$('#toast').addClass("show");
-            		         	$('#toast').removeClass("hide");
             		        }
             		    });
                     }
