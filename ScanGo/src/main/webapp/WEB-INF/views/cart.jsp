@@ -116,7 +116,6 @@ main {
 													<button type="submit" class="qty-btn dec-qty">+</button>
 												</form>
 											</div>
-										</form>
 										</td>
 										
 										
@@ -151,12 +150,12 @@ main {
 								</div>
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">折扣</h4>
-									<p class="subtotal-value">$100</p>
+									<p class="subtotal-value"></p>
 								</div>
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p class="subtotal-value">$1000</p>
+									<p class="subtotal-value"></p>
 								</div>
 								<div class="d-flex justify-content-center mt-4">
 									<a href="checkout.jsp"

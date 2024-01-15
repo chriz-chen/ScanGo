@@ -22,6 +22,9 @@ public interface CartDAO {
 	//修改購物車商品數量
 	Boolean updateCartItemQuantity(Integer userId, Integer productId, Integer productQuantity);
 	
+	//根據使用者ID來刪除該使用者全部購物車(結帳用)
+	Boolean removeCartByUserId(Integer userId);
+	
 	//根據使用者ID及商品ID來刪除購物車中的項目
 	Boolean removeFromCart(Integer userId, Integer productId);
 }

@@ -9,24 +9,22 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dao.CartDAO;
 import com.example.entity.Cart;
 import com.example.entity.User;
 
-
 @Controller
 @RequestMapping
-public class PaymentController {
-	
+public class CheckoutController {
+
 	@Autowired
 	@Qualifier("cartDaoImpl")
 	private CartDAO cartDao;
 	
-	@GetMapping("/payment")
-	public String showPayment(HttpSession session, Model model) {
+	@GetMapping("/checkout")
+	public String checkoutPage(HttpSession session, Model model) {
 		//  先找到 user 登入者
 		User user = (User)session.getAttribute("user");
 		
@@ -38,20 +36,6 @@ public class PaymentController {
 		}
 		model.addAttribute("checkouts", checkouts);
 		model.addAttribute("checkoutPrice", checkoutPrice);
-		
-		return "payment";
+		return "checkout";
 	}
-	
-	@PostMapping("addToOrder")
-	public String addToOrder(HttpSession session) {
-		//  先找到 user 登入者
-		User user = (User)session.getAttribute("user");
-		
-		
-		
-		cartDao.removeCartByUserId(user.getUserId());
-		return "redirect:/";
-	}
-
-	
 }

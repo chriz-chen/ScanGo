@@ -77,21 +77,10 @@ public class CartController {
 		return "redirect:/mvc/cart";
 	}
 	
-	@GetMapping("/checkout")
-	public String showCheckout() {
-		return "checkout";
-	}
-	
-	@GetMapping("/payment")
-	public String showPayment() {
-		return "payment";
-	}
-	
 	@PostMapping("/addCartByPost")
 	public String addToCart(@RequestParam("productId") Integer productId,
 							@RequestParam("productQuantity") Integer productQuantity,
-							HttpSession session, Model model,
-							HttpServletRequest request) {
+							HttpSession session, HttpServletRequest request) {
 		// 先找到 user 登入者
 		User user = (User)session.getAttribute("user");
 		

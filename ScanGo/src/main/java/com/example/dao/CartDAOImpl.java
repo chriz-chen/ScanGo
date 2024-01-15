@@ -53,6 +53,7 @@ public class CartDAOImpl implements CartDAO {
 		}
 	}
 
+	//修改購物車商品數量
 	@Override
 	public Boolean updateCartItemQuantity(Integer userId, Integer productId, Integer productQuantity) {
 		String sql = "update cart set productQuantity = ? where userId = ? and productId = ?";
@@ -60,10 +61,19 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 	@Override
+	public Boolean removeCartByUserId(Integer userId) {
+		String sql = "delete from cart where userId = ?";
+		return jdbcTemplate.update(sql, userId) == 1;
+	}
+
+	//根據使用者ID及商品ID來刪除購物車中的項目
+	@Override
 	public Boolean removeFromCart(Integer userId, Integer productId) {
 		String sql = "delete from cart where userId = ? && productId = ?";
 		return jdbcTemplate.update(sql, userId, productId) == 1;
 	}
+	
+	
 	
 	
 	

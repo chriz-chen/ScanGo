@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+
 <%@ include file="/WEB-INF/fragments/html_head.jspf"%>
 
 <link rel="stylesheet"
@@ -10,6 +12,15 @@
 /* 添加一個自定義的樣式，命名為custom-font-size */
 .custom-font-size {
 	font-size: 26px; /* 設置初始字體大小 */
+}
+
+.product-price {
+    float: right;
+    font-size: 16px;
+}
+
+.product-vendor {
+	font-size: 15px;
 }
 
 main {
@@ -81,70 +92,36 @@ main {
 						<div class="cart-total-area checkout-summary-area">
 							<h3 class="d-none d-lg-block mb-0 text-center heading_24 mb-4">
 								商品總覽
-								</h4>
-
+								</h3>
+								<fn:forEach var="cartItem" items="${checkouts}">
 								<div class="minicart-item d-flex">
 									<div class="mini-img-wrapper">
 										<img class="mini-img"
-											src="assets/img/products/furniture/1.jpg" alt="img">
+											src="/ScanGo/image/product/snack/soda/coke.png" alt="img">
 									</div>
 									<div class="product-info">
 										<h2 class="product-title">
-											<a href="#">Eliot Reversible Sectional</a>
+											<a href="#">${cartItem.product.productName}</a>
+											<span class="product-price">$${cartItem.product.price}</span>
 										</h2>
-										<p class="product-vendor">$580 x 1</p>
+										<p class="product-vendor">x ${cartItem.productQuantity}</p>
 									</div>
 								</div>
-								<div class="minicart-item d-flex">
-									<div class="mini-img-wrapper">
-										<img class="mini-img"
-											src="assets/img/products/furniture/2.jpg" alt="img">
-									</div>
-									<div class="product-info">
-										<h2 class="product-title">
-											<a href="#">Eliot Reversible Sectional</a>
-										</h2>
-										<p class="product-vendor">$370 x 1</p>
-									</div>
-								</div>
-								<div class="minicart-item d-flex">
-									<div class="mini-img-wrapper">
-										<img class="mini-img"
-											src="assets/img/products/furniture/3.jpg" alt="img">
-									</div>
-									<div class="product-info">
-										<h2 class="product-title">
-											<a href="#">Eliot Reversible Sectional</a>
-										</h2>
-										<p class="product-vendor">$580 x 1</p>
-									</div>
-								</div>
-								<div class="minicart-item d-flex">
-									<div class="mini-img-wrapper">
-										<img class="mini-img"
-											src="assets/img/products/furniture/4.jpg" alt="img">
-									</div>
-									<div class="product-info">
-										<h2 class="product-title">
-											<a href="#">Eliot Reversible Sectional</a>
-										</h2>
-										<p class="product-vendor">$370 x 1</p>
-									</div>
-								</div>
+								</fn:forEach>
 
 								<div class="cart-total-box mt-4 bg-transparent p-0">
 									<div class="subtotal-item subtotal-box">
 										<h4 class="subtotal-title">小計</h4>
-										<p class="subtotal-value">$1900.00</p>
+										<p class="subtotal-value">$${checkoutPrice}</p>
 									</div>
 									<div class="subtotal-item discount-box">
 										<h4 class="subtotal-title">折扣</h4>
-										<p class="subtotal-value">- $100.00</p>
+										<p class="subtotal-value"></p>
 									</div>
 									<hr />
 									<div class="subtotal-item discount-box">
 										<h4 class="subtotal-title">總計</h4>
-										<p class="subtotal-value">$1800.00</p>
+										<p class="subtotal-value">$${checkoutPrice}</p>
 									</div>
 
 
