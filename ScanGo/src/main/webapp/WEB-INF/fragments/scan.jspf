@@ -71,6 +71,11 @@
 <!-- scan modal end-->
 <script>
 		function openScan() {
+			
+			if(html5QrCode == null) {
+                html5QrCode = new Html5Qrcode("reader");
+			}
+			
             html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
@@ -94,7 +99,6 @@
                .then((res) => {
                    html5QrCode.clear();
                    html5QrCode = null;
-                   html5QrCode = new Html5Qrcode("reader");
                })
                .catch((err) => {
                    console.log(err.message);
