@@ -31,7 +31,7 @@
 		<div class="modal-content">
 			<!-- 購物車Toast -->
 			<div id="toast" class="toast hide bg-warning"
-				style="position: absolute !important; top: -5em !important; width: 100% !important; z-index:99 !important"
+				style="position: absolute !important; top: -5em !important; width: 100% !important;"
 				data-bs-autohide="true">
 				<div class="toast-header">
 					<strong class="me-auto">購物車訊息</strong>
