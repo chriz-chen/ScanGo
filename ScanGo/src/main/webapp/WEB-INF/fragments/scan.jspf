@@ -71,10 +71,11 @@
 <!-- scan modal end-->
 <script>
 
-		var html5QrCode = new Html5Qrcode("reader");
+		$(document).ready(function() {
+			var html5QrCode = new Html5Qrcode("reader");
+		});
 
 		function openScan() {
-			html5QrCode = new Html5Qrcode("reader");
             html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
