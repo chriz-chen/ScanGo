@@ -29,40 +29,36 @@
 	aria-labelledby="reader_modal" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
+			<!-- 購物車Toast -->
+			<div id="toast" class="toast hide"
+				style="position: absolute !important; top: -50% !important; width: 100% !important;"
+				data-bs-autohide="true">
+				<div class="toast-header">
+					<strong class="me-auto">購物車訊息</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+				</div>
+				<div class="toast-body">
+					<p>加入成功</p>
+				</div>
+			</div>
+			<!-- modal-header -->
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close" onclick="handleStop()"></button>
 			</div>
-			<!--
-			<form class="product-form" action="${pageContext.request.contextPath}/mvc/addCartByPost" method="post">
-				<div class="modal-body">
-					<div id="reader" class="width: mx-auto"></div>
-					<div id="productInfo">
-						1.productId:<span class="productId" id="productId" name="productId"></span><br> 
-						2.productName:<span class="productName"></span><br> 
-						3.productPrice:<span class="productPrice"></span><br> 
-						4.productQty:
-						<input class="text-center productQuantity" type="number" id="productQuantity" name="productQuantity" value="1" /><br>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="hidden" name="productId" id="form_productIdInput" value="">
-					<div class="d-flex justify-content-end">
-						<button type="button" class="btn btn-primary" onclick="addCart()">加入購物車</button>
-					</div>
-				</div>
-			</form>
-			  -->
-		  	<div class="modal-body">
+			<!-- modal-body -->
+			<div class="modal-body">
 				<div id="reader" class="width: mx-auto"></div>
 				<div id="productInfo">
-					1.productName:<span class="productName"></span><br> 
-					2.productPrice:<span class="productPrice"></span><br> 
-					3.productQty:
-					<input class="text-center productQuantity" type="number" id="productQuantity" name="productQuantity" value="1" /><br>
+					1.productName:<span class="productName"></span><br>
+					2.productPrice:<span class="productPrice"></span><br>
+					3.productQty: <input class="text-center productQuantity"
+						type="number" id="productQuantity" name="productQuantity"
+						value="1" /><br>
 				</div>
 			</div>
+			<!-- modal-footer -->
 			<div class="modal-footer">
 				<input type="hidden" name="productId" id="productId" value="">
 				<div class="d-flex justify-content-end">
@@ -74,21 +70,29 @@
 </div>
 
 <!-- scan modal end-->
-
-
 <script>
 
 		function addCart() {
-			$.ajax({
-		      url: '${pageContext.request.contextPath}/mvc/addCartByPost',
-		      type: 'post',
-		      data: { 
-		    	  productId :$('#productId').val(),
-		    	  productQuantity :$('#productQuantity').val(),
-		      },
-			}).done( function ( result ){
-			    alert(result);
-			});
+            $.ajax({
+                url: '${pageContext.request.contextPath}/mvc/addCartByPost',
+                type: 'post',
+                data: { 
+                    productId: $('#productId').val(),
+                    productQuantity: $('#productQuantity').val(),
+                },
+                success: function (result, textStatus, xhr) {
+                    if (xhr.status == 200 && result.indexOf('<head>')>=0) {
+                        window.location.href = '/ScanGo/mvc/login';
+                        return;
+                    }
+                    // Show toast
+                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2000 });
+                    toast.show();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error:', errorThrown);
+                }
+            });
 		}
 
         var cart = [];
@@ -105,7 +109,6 @@
         }
 
         function handleClickAdvanced() {
-        	
         	/*
         	$.ajax({
 		        url: 'http://localhost:8080/ScanGo/mvc/product/3',                // 要載入的資料格式檔案
@@ -117,12 +120,12 @@
 		            $('#productInfo .productPrice').text(data['price']);
 		            
 		         	// 設置表單中的 productId	
-		            $('#productId').val(data['productId']);       		        
+		            $('#productId').val(data['productId']);     
 		        }
 		    });
         	*/
-        	
-		 	html5QrCode.start(
+
+            html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
                 (decodedText, decodedResult) => {
@@ -140,7 +143,10 @@
             		            $('#productInfo .productPrice').text(data['price']);
             		            
             		         	// 設置表單中的 productId	
-            		            $('#productId').val(data['productId']);  
+            		            $('#productId').val(data['productId']); 
+            		         	
+            		         	$('#toast').addClass("show");
+            		         	$('#toast').removeClass("hide");
             		        }
             		    });
                     //}
