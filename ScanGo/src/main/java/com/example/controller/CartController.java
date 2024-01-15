@@ -77,7 +77,7 @@ public class CartController {
 		// 新增購物車項目
 		cartDao.addCart(cart);
 		
-		return "OK";
+		return "ok";
 	}
 	
 	
