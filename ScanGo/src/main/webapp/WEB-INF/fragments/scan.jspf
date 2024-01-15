@@ -95,7 +95,6 @@
                .stop()
                .then((res) => {
                    html5QrCode.clear();
-                   openScan();
                })
                .catch((err) => {
                    console.log(err.message);
