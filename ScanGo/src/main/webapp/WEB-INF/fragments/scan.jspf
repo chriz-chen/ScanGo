@@ -103,17 +103,17 @@
         
         function closeScan() {
         	$("#loading").show();
+        	html5QrCode
+            .stop()
+            .then((res) => {
+                html5QrCode.clear();
+                html5QrCode = null;
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
         	pause(2000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
-            html5QrCode
-               .stop()
-               .then((res) => {
-                   html5QrCode.clear();
-                   html5QrCode = null;
-                   $("#loading").hide();
-               })
-               .catch((err) => {
-                   console.log(err.message);
-               });
+        	$("#loading").hide();
         }
  
 		function addCart() {
