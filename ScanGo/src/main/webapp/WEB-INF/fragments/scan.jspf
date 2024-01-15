@@ -43,14 +43,14 @@
 			<!-- modal-header -->
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
+				<div id="loading" class="spinner-border text-primary" role="status" style="display:none">
+				     <span class="visually-hidden">Loading...</span>
+				</div>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
 			</div>
 			<!-- modal-body -->
 			
 			<div class="modal-body">
-				<div id="loading" class="spinner-border text-primary" role="status" style="display:none">
-				     <span class="visually-hidden">Loading...</span>
-				</div>
 				<StrictMode>
 					<div id="reader" class="width: mx-auto"></div>
 				</StrictMode>
