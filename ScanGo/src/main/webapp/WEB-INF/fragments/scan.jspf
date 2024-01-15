@@ -43,7 +43,6 @@
 			<!-- modal-header -->
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
-				<span id="loading">鏡頭關閉中...</span>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
 			</div>
 			<!-- modal-body -->
@@ -77,11 +76,9 @@
 		}
 		
 		function openScan() {
-			
 			if(html5QrCode == null) {
                 html5QrCode = new Html5Qrcode("reader");
 			}
-			
             html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
@@ -100,18 +97,16 @@
         }
         
         function closeScan() {
-        	$("#loading").show();
         	html5QrCode
-            .stop()
-            .then((res) => {
-                html5QrCode.clear();
-                html5QrCode = null;
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+	            .stop()
+	            .then((res) => {
+	                html5QrCode.clear();
+	                html5QrCode = null;
+	            })
+	            .catch((err) => {
+	                console.log(err.message);
+	            });
         	pause(2000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
-        	$("#loading").hide();
         }
  
 		function addCart() {
