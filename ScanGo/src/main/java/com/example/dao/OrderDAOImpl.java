@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.example.entity.OrderItem;
 import com.example.entity.Orders;
 
 @Component("orderDaoImpl")
@@ -18,10 +19,16 @@ public class OrderDAOImpl implements OrderDAO {
 	
 	@Override
 	public void addOrder(Integer userId, Integer orderTotalPrice) {
-		String sql = "insert into orders (userId, orderTotalPrice) values (?, ?)";
-		jdbcTemplate.update(sql, userId, orderTotalPrice);
+		String sql1 = "insert into orders (userId, orderTotalPrice) values (?, ?)";
+		jdbcTemplate.update(sql1, userId, orderTotalPrice);
 	}
 	
+	@Override
+	public Boolean updateOrderTotalPrice(Integer orderId, Integer userId, Integer orderTotalPrice) {
+		String sql = "update orders set orderTotalPrice = ? where orederId = ? and userId = ?";
+		return jdbcTemplate.update(sql, orderTotalPrice, orderId, userId) == 1;
+	}
+
 	@Override
 	public Optional<Orders> findOrderByUserId(Integer userId) {
 		String sql = "select * from orders where userId = ?";
@@ -37,10 +44,10 @@ public class OrderDAOImpl implements OrderDAO {
 
 
 	@Override
-	public void addOrderItem(Integer orderId, Integer productId, Integer productPrice, Integer itemQuantity,
-			Integer itemPrice) {
+	public void addOrderItem(OrderItem orderItem) {
 		String sql = "insert into orderItem (orderId, productId, productPrice, itemQuantity, itemPrice) values(?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, orderId, productId, productPrice, itemQuantity, itemPrice);
+		jdbcTemplate.update(sql, orderItem.getOrderId(), orderItem.getProductId(), orderItem.getProductPrice(),
+							orderItem.getItemQuantity(), orderItem.getItemPrice());
 	}
 
 	
