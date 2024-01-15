@@ -134,7 +134,11 @@ main {
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">取消</button>
-				<a href="index.jsp" class="btn btn-primary">確認</a>
+				<form class="payment-form"
+					  action="${pageContext.request.contextPath}/mvc/addToOrder"
+					  method="post">
+				<button type="submit">確認</button>
+				</form>
 			</div>
 		</div>
 	</div>

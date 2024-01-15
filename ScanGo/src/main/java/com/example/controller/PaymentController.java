@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dao.CartDAO;
+import com.example.dao.OrderDAO;
 import com.example.entity.Cart;
+import com.example.entity.OrderItem;
+import com.example.entity.Orders;
 import com.example.entity.User;
 
 
@@ -24,6 +28,11 @@ public class PaymentController {
 	@Autowired
 	@Qualifier("cartDaoImpl")
 	private CartDAO cartDao;
+	
+	@Autowired
+	@Qualifier("orderDaoImpl")
+	private OrderDAO orderDao;
+	
 	
 	@GetMapping("/payment")
 	public String showPayment(HttpSession session, Model model) {
@@ -43,11 +52,24 @@ public class PaymentController {
 	}
 	
 	@PostMapping("addToOrder")
-	public String addToOrder(HttpSession session) {
+	public String addToOrder(HttpSession session, Model model) {
 		//  先找到 user 登入者
 		User user = (User)session.getAttribute("user");
 		
+		Integer checkoutPrice = 0;
+		List<Cart> cart = cartDao.findCartsByUserId(user.getUserId());
+		for(Cart carts : cart) {
+			carts.getProduct().setPrice((carts.getProduct().getPrice()) * (carts.getProductQuantity()));
+			checkoutPrice += ((carts.getProduct().getPrice()));
+		}
 		
+		orderDao.addOrder(user.getUserId(), checkoutPrice);
+		
+		Optional<Orders> orders = orderDao.findOrderByUserId(user.getUserId());
+		
+		OrderItem orderItem = new OrderItem();
+		orderItem.setOrderId(orders.get().getOrderId());
+
 		
 		cartDao.removeCartByUserId(user.getUserId());
 		return "redirect:/";

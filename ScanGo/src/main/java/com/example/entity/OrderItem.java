@@ -8,6 +8,8 @@ public class OrderItem {
 	private Integer itemQuantity;
 	private Integer itemPrice;
 	
+	private Product product;
+	
 	public OrderItem() {
 		
 	}
@@ -61,5 +63,12 @@ public class OrderItem {
 		this.itemPrice = itemPrice;
 	}
 	
-	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 }
