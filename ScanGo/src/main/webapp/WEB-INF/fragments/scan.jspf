@@ -92,8 +92,8 @@
             html5QrCode
                 .stop()
                 .then((res) => {
-                    html5QrCode.clear();
-                    html5QrCode = new Html5Qrcode("reader");
+                    //html5QrCode.clear();
+                    //html5QrCode = new Html5Qrcode("reader");
                 })
                 .catch((err) => {
                     console.log(err.message);
