@@ -128,8 +128,8 @@
                 (decodedText, decodedResult) => {
                     console.log(decodedText, decodedResult);
                     // 確定有掃描到QRCode會去做的事情
-                    if (confirm(decodedText, decodedResult)) {
-                        cart.push(decodedText);
+                    //if (confirm(decodedText, decodedResult)) {
+                        //cart.push(decodedText);
                         $.ajax({
             		        url: decodedText,                // 要載入的資料格式檔案
             		        dataType: 'json',                // 資料格式檔案的類型
@@ -143,7 +143,7 @@
             		            $('#productId').val(data['productId']);  
             		        }
             		    });
-                    }
+                    //}
                 }
             );
         	
