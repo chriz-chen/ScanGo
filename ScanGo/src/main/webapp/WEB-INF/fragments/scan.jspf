@@ -109,7 +109,7 @@
                    console.log(err.message);
                });
             
-            pause(1000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
+            pause(2000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
         }
  
 		function addCart() {
