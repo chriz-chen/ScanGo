@@ -47,7 +47,9 @@
 			</div>
 			<!-- modal-body -->
 			<div class="modal-body">
-				<div id="reader" class="width: mx-auto"></div>
+				<StrictMode>
+					<div id="reader" class="width: mx-auto"></div>
+				</StrictMode>
 				<div>
 				    <input type="hidden" id="productId" name="productId" value="">
 					1.productName:<span  id="productName"></span><br>
@@ -72,7 +74,6 @@
 		var html5QrCode = new Html5Qrcode("reader");
 
 		function openScan() {
-			closeScan();
             html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
@@ -129,6 +130,4 @@
                 }
             });
 		}
-		
-		closeScan();
 </script>
