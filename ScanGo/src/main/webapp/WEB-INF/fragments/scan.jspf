@@ -70,11 +70,6 @@
 
 <!-- scan modal end-->
 <script>
-
-		$(document).ready(function() {
-			var html5QrCode = new Html5Qrcode("reader");
-		});
-
 		function openScan() {
             html5QrCode.start(
                 { facingMode: "environment" },
@@ -98,10 +93,13 @@
                 .stop()
                 .then((res) => {
                     html5QrCode.clear();
+                    html5QrCode = new Html5Qrcode("reader");
                 })
                 .catch((err) => {
                     console.log(err.message);
                 });
+            
+           
         }
  
 		function addCart() {
@@ -132,4 +130,6 @@
                 }
             });
 		}
+		
+		var html5QrCode = new Html5Qrcode("reader");
 </script>
