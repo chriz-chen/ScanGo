@@ -34,25 +34,23 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close" onclick="handleStop()"></button>
 			</div>
-			<form class="product-form"
-					action="${pageContext.request.contextPath}/mvc/addCartByPost"
-					method="post">
-			<div class="modal-body">
-				<div id="reader" class="width: mx-auto"></div>
-				<div id="productInfo">
-					1.productId:<span class="productId" id="productId" name="productId"></span><br> 
-					2.productName:<span class="productName"></span><br> 
-					3.productPrice:<span class="productPrice"></span><br> 
-					4.productQty:
-					<input class="text-center productQuantity" type="number" id="productQuantity" name="productQuantity" value="1" /><br>
+			<form class="product-form" action="${pageContext.request.contextPath}/mvc/addCartByPost" method="post">
+				<div class="modal-body">
+					<div id="reader" class="width: mx-auto"></div>
+					<div id="productInfo">
+						1.productId:<span class="productId" id="productId" name="productId"></span><br> 
+						2.productName:<span class="productName"></span><br> 
+						3.productPrice:<span class="productPrice"></span><br> 
+						4.productQty:
+						<input class="text-center productQuantity" type="number" id="productQuantity" name="productQuantity" value="1" /><br>
+					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<input type="hidden" name="productId" id="form_productIdInput" value="">
-				<div class="d-flex justify-content-end">
-					<button type="submit" class="btn btn-primary">加入購物車</button>
+				<div class="modal-footer">
+					<input type="hidden" name="productId" id="form_productIdInput" value="">
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn btn-primary">加入購物車</button>
+					</div>
 				</div>
-			</div>
 			</form>
 		</div>
 	</div>
@@ -63,13 +61,7 @@
 
 <script>
 
-
         var cart = [];
-
-        // 儲存，此時呼叫 Web API，進行購物車存取動作
-        function save() {
-            console.log(cart);
-        }
 
         function handleStop() {
             html5QrCode
@@ -84,6 +76,7 @@
 
         function handleClickAdvanced() {
         	
+        	/*
         	$.ajax({
 		        url: 'http://localhost:8080/ScanGo/mvc/product/3',                // 要載入的資料格式檔案
 		        dataType: 'json',                // 資料格式檔案的類型
@@ -97,8 +90,8 @@
 		            $('#form_productIdInput').val(data['productId']);       		        
 		        }
 		    });
+        	*/
         	
-        	/*
 		 	html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
@@ -117,13 +110,12 @@
             		            $('#productInfo .productPrice').text(data['price']);
             		            
             		         	// 設置表單中的 productId	
-            		            $('#productIdInput').val(data['productId']);
-            		        	// 設置表單中的 productQuantity	
-            		            $('#quantityInput').val(productQuantity);            		        }
+            		            $('#form_productIdInput').val(data['productId']);  
+            		        }
             		    });
                     }
                 }
-            );*/
+            );
         }
 
         var html5QrCode = new Html5Qrcode("reader");
