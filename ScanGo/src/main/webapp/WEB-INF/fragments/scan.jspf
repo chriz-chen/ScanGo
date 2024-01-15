@@ -70,7 +70,7 @@
 <script>
 
 		var html5QrCode = new Html5Qrcode("reader");
-        
+
 		function openScan() {
             html5QrCode.start(
                 { facingMode: "environment" },
@@ -128,4 +128,6 @@
                 }
             });
 		}
+		
+		closeScan();
 </script>
