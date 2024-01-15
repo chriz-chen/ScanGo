@@ -120,7 +120,7 @@
                 (decodedText, decodedResult) => {
                     //console.log(decodedText, decodedResult);
                     // 確定有掃描到QRCode會去做的事情
-                    if (confirm(decodedText, decodedResult)) {
+                    //if (confirm(decodedText, decodedResult)) {
                         cart.push(decodedText);
                         $.ajax({
             		        url: decodedText,                // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
@@ -135,7 +135,7 @@
             		            $('#productId').val(data['productId']); 
             		        }
             		    });
-                    }
+                    //}
                 }
             );
         	
