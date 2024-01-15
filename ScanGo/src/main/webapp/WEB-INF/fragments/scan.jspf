@@ -70,6 +70,10 @@
 
 <!-- scan modal end-->
 <script>
+		function pause(milliseconds) {
+			var dt = new Date();
+			while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+		}
 		function openScan() {
 			
 			if(html5QrCode == null) {
@@ -99,10 +103,13 @@
                .then((res) => {
                    html5QrCode.clear();
                    html5QrCode = null;
+                   
                })
                .catch((err) => {
                    console.log(err.message);
                });
+            
+            pause(5000);
         }
  
 		function addCart() {
