@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dao.CartDAO;
 import com.example.entity.Cart;
@@ -58,6 +59,7 @@ public class CartController {
 	}
 	
 	@PostMapping("/addCartByPost")
+	@ResponseBody
 	public String addToCart(@RequestParam("productId") Integer productId,
 							@RequestParam("productQuantity") Integer productQuantity,
 							HttpSession session, Model model,
@@ -74,8 +76,8 @@ public class CartController {
 		// 新增購物車項目
 		cartDao.addCart(cart);
 		
-		String referer = request.getHeader("Referer");
-		return "redirect:" + referer;
+		//String referer = request.getHeader("Referer");
+		return "OK";
 	}
 	
 	
