@@ -46,7 +46,11 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
 			</div>
 			<!-- modal-body -->
+			
 			<div class="modal-body">
+				<div id="loading" class="spinner-border text-primary" role="status" style="display:none">
+				     <span class="visually-hidden">Loading...</span>
+				</div>
 				<StrictMode>
 					<div id="reader" class="width: mx-auto"></div>
 				</StrictMode>
@@ -67,13 +71,13 @@
 		</div>
 	</div>
 </div>
-
 <!-- scan modal end-->
 <script>
 		function pause(milliseconds) {
 			var dt = new Date();
-			while ((new Date()) - dt <= milliseconds) { /* Do nothing */ }
+			while ((new Date()) - dt <= milliseconds) { }
 		}
+		
 		function openScan() {
 			
 			if(html5QrCode == null) {
@@ -98,18 +102,18 @@
         }
         
         function closeScan() {
+        	$("#loading").show();
+        	pause(2000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
             html5QrCode
                .stop()
                .then((res) => {
                    html5QrCode.clear();
                    html5QrCode = null;
-                   
+                   $("#loading").hide();
                })
                .catch((err) => {
                    console.log(err.message);
                });
-            
-            pause(2000); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
         }
  
 		function addCart() {
