@@ -79,9 +79,15 @@ footer {
 		});
 		
 		// figcaption 區塊消失：商品地圖點選時、空白區域點選時
-		$('img[usemap],.blank').on('click',function() {
-			$('figcaption').css('transform', 'translate(0, 200px)');
+		$(document).ready(function() {  // 確保DOM已經完全載入後執行程式碼
+		    // 綁定點擊事件到滿足選擇器條件的元素
+		    $('img[usemap], .blank').click(function() {
+		        // 將所有符合選擇器的 <figcaption> 元素的 CSS transform 屬性設置為 'translate(0, 200px)'
+		        $('figcaption').css('transform', 'translate(0, 200px)');
+		    });
 		});
+
+
 	});
 </script>
 <body>
