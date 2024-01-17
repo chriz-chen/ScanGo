@@ -43,10 +43,10 @@ public class LoginFilter extends HttpFilter {
 		// 從session中取得使用者資訊
 		User user = session.getAttribute("user") == null ? null : (User) session.getAttribute("user");
 		// 如果使用者未登入，導向登入頁面
-//		if (user == null) {
-//			response.sendRedirect(request.getContextPath() + "/mvc/login");
-//			return;
-//		}
+		if (user == null) {
+			response.sendRedirect(request.getContextPath() + "/mvc/login");
+			return;
+		}
 		
 		// 若符合條件，則繼續執行過濾器鏈
 		chain.doFilter(request, response);

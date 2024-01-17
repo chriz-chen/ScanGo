@@ -14,7 +14,23 @@
 
 .login-form{
 	background-color: #DCDCDC;
+	border-radius: 10px;
 }
+
+.title{
+	font-size: 18px;
+	margin-left: 5px;
+	letter-spacing: 4px;
+}
+
+#account, #password, 
+#passwordCheck
+#email, #phone{
+	font-size: 16px; 
+	padding: 8px; 
+	letter-spacing: 4px;
+}
+
 
 </style>
 
@@ -34,57 +50,59 @@
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<h4 class="label d-inline">帳號</h4>
+								<h4 class="title d-inline">帳號</h4>
 								<sp:errors path="username"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" path="username" />
+							<sp:input type="text" id="account" path="username" />
 						</fieldset>
 					</div>
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<h4 class="label d-inline">密碼</h4>
+								<h4 class="title d-inline">密碼</h4>
 								<sp:errors path="password"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="password" path="password" />
+							<sp:input type="password" id="password" path="password" />
 						</fieldset>
 					</div>
 					<div class="col-12">
 						<fieldset>
 						    <div class="d-flex justify-content-between">
-						        <h4 class="label confirmPassword">密碼再次確認</h4>
+						        <h4 class="title confirmPassword">密碼再次確認</h4>
 						        <sp:errors path="confirmPassword"
 									cssClass="text-danger text-nowrap text-end" />
 						    </div>
-						    <sp:input type="password" path="confirmPassword" />
+						    <sp:input type="password" id="passwordCheck" path="confirmPassword" 
+						    style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
 					    </fieldset>
 					</div>   
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<h4 class="label">信箱</h4>
+								<h4 class="title">信箱</h4>
 								<sp:errors path="email"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="email" path="email" />
+							<sp:input type="email" id="email" path="email" 
+							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"/>
 						</fieldset>
 					</div>
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<h4 class="label">手機</h4>
+								<h4 class="title">手機</h4>
 								<sp:errors path="phone"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" path="phone" />
+							<sp:input type="text" id="phone" path="phone" />
 						</fieldset>
 					</div>
 					<div class="col-12">
 						<fieldset>
 							<div class="d-flex justify-content-between">
-								<h4 class="label d-inline">生日</h4>
+								<h4 class="title d-inline">生日</h4>
 								<sp:errors path="birthday"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>

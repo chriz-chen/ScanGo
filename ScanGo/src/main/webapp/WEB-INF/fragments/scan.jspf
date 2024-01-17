@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<head>
 <style>
 .scan-icon {
 	position: fixed;
@@ -15,6 +16,15 @@
 	height: auto;
 }
 </style>
+
+
+<!-- 其他標籤和樣式 -->
+<audio id="scanSuccessSound" src="assets/sound/scan.mp3" 
+preload="auto"></audio>
+
+</head>
+
+
 
 <!-- scan icon -->
 <div class="scan-icon">
@@ -83,6 +93,7 @@
 			}
 			
 			// 測試用
+			/*
 			$.ajax({
   		        url: 'http://localhost:8080/ScanGo/mvc/product/3',
   		        dataType: 'json',
@@ -92,24 +103,27 @@
   		            $('#productPrice').text(data['price']);
   		        }
   		    });
+			*/
 			
-			/*
             html5QrCode.start(
                 { facingMode: "environment" }, // 後置鏡頭
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
                 (decodedText, decodedResult) => {
                       $.ajax({
-          		        url: 'http://localhost:8080/ScanGo/mvc/product/3',     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
+          		        url: decodedText,     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
           		        dataType: 'json',     // 資料格式檔案的類型
           		        success: function ( data ){
           		            $('#productId').val(data['productId']);
           		            $('#productName').text(data['productName']);
           		            $('#productPrice').text(data['price']);
+          		            
+          		       		// 在成功掃描後播放聲音
+                            playScanSuccessSound();
           		        }
           		    });
                 }
             );
-			*/
+			
         }
         
         function closeScan() {
@@ -138,7 +152,6 @@
                         window.location.href = '/ScanGo/mvc/login';
                         return;
                     }
-                    
                     // Toast
                     var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
                     toast.show();
@@ -155,4 +168,11 @@
 		}
 		
 		var html5QrCode = new Html5Qrcode("reader");
+		
+		function playScanSuccessSound() {
+		    var scanSuccessSound = document.getElementById("scanSuccessSound");
+		    if (scanSuccessSound) {
+		        scanSuccessSound.play();
+		    }
+		}
 </script>
