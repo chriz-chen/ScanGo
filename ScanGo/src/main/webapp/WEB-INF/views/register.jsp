@@ -5,8 +5,21 @@
 
 <%@ include file="/WEB-INF/header.jspf"%>
 
+<style>
+
+.register-area{
+	margin-top: 50px;
+	height: 110vh;
+}
+
+.login-form{
+	background-color: #DCDCDC;
+}
+
+</style>
+
 <main id="MainContent" class="content-for-layout">
-	<div class="login-page mt-80">
+	<div class="register-area mt-80">
 		<div class="container">
 			<sp:form modelAttribute="registerUser"
 				action="${pageContext.request.contextPath}/mvc/register"
