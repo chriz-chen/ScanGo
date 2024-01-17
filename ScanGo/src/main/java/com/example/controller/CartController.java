@@ -45,6 +45,22 @@ public class CartController {
 		return "cart";
 	}
 	
+	@GetMapping("/drawer_cart")
+	public String drawer_cartPage(HttpSession session, Model model) {
+		//  先找到 user 登入者
+		User user = (User)session.getAttribute("user");
+		
+		Integer totalPrice = 0;
+		List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
+		for(Cart cart : carts) {
+			cart.getProduct().setPrice((cart.getProduct().getPrice()) * (cart.getProductQuantity()));
+			totalPrice += ((cart.getProduct().getPrice()));
+		}
+		model.addAttribute("carts", carts);
+		model.addAttribute("totalPrice", totalPrice);
+		return "drawer_cart";
+	}
+	
 	@PostMapping("/updateCartByPost")
 	public String updateCart(@RequestParam("situation") String situation,
 							 @RequestParam("productId") Integer productId,

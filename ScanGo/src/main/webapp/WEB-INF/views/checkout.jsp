@@ -9,6 +9,17 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 <style>
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex-grow: 1;
+}
+
+
 /* 添加一個自定義的樣式，命名為custom-font-size */
 .custom-font-size {
 	font-size: 26px; /* 設置初始字體大小 */

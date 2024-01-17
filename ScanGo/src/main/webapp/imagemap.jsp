@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
@@ -39,6 +41,7 @@ footer {
 <script>
 
 	// 定義不同區域的 HTML 片段
+
 	var areaContent = {
 		Grocery : `
 			<ul>
@@ -63,6 +66,7 @@ footer {
 		`
 	};
 
+	
 	$(function() {
 		$('img[usemap]').mapster({
 			fillColor : '000000',

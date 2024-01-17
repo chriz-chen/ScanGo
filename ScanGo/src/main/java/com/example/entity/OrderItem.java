@@ -10,6 +10,8 @@ public class OrderItem {
 	
 	private Product product;
 	
+	private Orders orders;
+	
 	public OrderItem() {
 		
 	}
@@ -69,6 +71,14 @@ public class OrderItem {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
 	}
 
 }

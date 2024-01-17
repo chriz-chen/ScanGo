@@ -57,17 +57,16 @@ public class PaymentController {
 		User user = (User)session.getAttribute("user");
 		
 		Integer checkoutPrice = 0;
-		orderDao.addOrder(user.getUserId(), checkoutPrice);
+		Orders orders = orderDao.addOrder(user.getUserId(), checkoutPrice);
 
 		List<Cart> cart = cartDao.findCartsByUserId(user.getUserId());
 		for(Cart carts : cart) {
-			carts.getProduct().setPrice((carts.getProduct().getPrice()) * (carts.getProductQuantity()));
-			checkoutPrice += ((carts.getProduct().getPrice()));
+			checkoutPrice += (carts.getProduct().getPrice() * carts.getProductQuantity());
 			
-			Optional<Orders> orders = orderDao.findOrderByUserId(user.getUserId());
+			
 			
 			OrderItem orderItem = new OrderItem();
-			orderItem.setOrderId(orders.get().getOrderId());
+			orderItem.setOrderId(orders.getOrderId());
 			orderItem.setProductId(carts.getProductId());
 			orderItem.setProductPrice(carts.getProduct().getPrice());
 			orderItem.setItemQuantity(carts.getProductQuantity());
@@ -76,8 +75,8 @@ public class PaymentController {
 			orderDao.addOrderItem(orderItem);
 		}
 		
-		//orderDao.updateOrderTotalPrice(checkoutPrice, orders.get().getOrderId(), user.getUserId());
-		cartDao.removeCartByUserId(user.getUserId());
+		orderDao.updateOrderTotalPrice(orders.getOrderId(), checkoutPrice);
+		cartDao.cleanCartByUserId(user.getUserId());
 		return "redirect:/";
 	}
 
