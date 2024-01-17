@@ -39,7 +39,7 @@ preload="auto"></audio>
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<!-- 購物車Toast -->
-			<div id="toast" class="toast hide bg-warning"
+			<div id="toast" class="toast hide"
 				style="position: absolute !important; top: 0em !important; width: 100% !important; z-index: 99;"
 				data-bs-autohide="true">
 				<div class="toast-header">
@@ -47,7 +47,7 @@ preload="auto"></audio>
 					<!-- <button type="button" class="btn-close" data-bs-dismiss="toast"></button> -->
 				</div>
 				<div class="toast-body">
-					<p class="fs-5 fw-border">加入購物車成功</p>
+					<p class="fs-5 fw-border" id="toast_message"></p>
 				</div>
 			</div>
 			<!-- modal-header -->
@@ -81,6 +81,8 @@ preload="auto"></audio>
 </div>
 <!-- scan modal end-->
 <script>
+
+		var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
 
 		function pause(milliseconds) {
 			var dt = new Date();
@@ -122,8 +124,7 @@ preload="auto"></audio>
           		        }
           		    });
                 }
-            );
-			
+            );		
         }
         
         function closeScan() {
@@ -140,6 +141,15 @@ preload="auto"></audio>
         }
  
 		function addCart() {
+			
+			if($('#productId').val() == '') {
+            	$('#toast_message').text('請先掃描商品，再加入購物車');
+                $('#toast').addClass('bg-danger');
+                $('#toast').removeClass('bg-warning');
+                toast.show();
+                return;
+			}
+			
             $.ajax({
                 url: '${pageContext.request.contextPath}/mvc/addCartByPost',
                 type: 'post',
@@ -153,15 +163,21 @@ preload="auto"></audio>
                         return;
                     }
                     // Toast
-                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
+                    $('#toast_message').text('加入購物車成功');
+                    $('#toast').addClass('bg-warning');
+                    $('#toast').removeClass('bg-danger');
                     toast.show();
                     
                     // 清空欄位
-		            $('#productId').text('');
+		            $('#productId').val('');
 		            $('#productName').text('');
 		            $('#productPrice').text('');
                 },
                 error: function (xhr, textStatus, errorThrown) {
+                	$('#toast_message').text('系統出錯，請通知管理員');
+                    $('#toast').addClass('bg-danger');
+                    $('#toast').removeClass('bg-warning');
+                    toast.show();
                     console.log('Error:', errorThrown);
                 }
             });
