@@ -4,6 +4,8 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+
+
 figcaption {
 	background-color: rgba(0, 0, 0, 0.7);
 	height: 200px;

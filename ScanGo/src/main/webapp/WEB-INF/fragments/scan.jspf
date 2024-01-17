@@ -30,14 +30,14 @@
 		<div class="modal-content">
 			<!-- 購物車Toast -->
 			<div id="toast" class="toast hide bg-warning"
-				style="position: absolute !important; top: -5em !important; width: 100% !important;"
+				style="position: absolute !important; top: 0em !important; width: 100% !important; z-index: 99;"
 				data-bs-autohide="true">
 				<div class="toast-header">
-					<strong class="me-auto">購物車訊息</strong>
-					<button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+					<strong class="me-auto fs-5">購物車訊息</strong>
+					<!-- <button type="button" class="btn-close" data-bs-dismiss="toast"></button> -->
 				</div>
 				<div class="toast-body">
-					<p>加入成功</p>
+					<p class="fs-5 fw-border">加入購物車成功</p>
 				</div>
 			</div>
 			<!-- modal-header -->
@@ -52,8 +52,9 @@
 					<div id="reader" class="width: mx-auto"></div>
 				</StrictMode>
 				<div>
+					<!-- 接收 AJAX 的資料 -->
 				    <input type="hidden" id="productId" name="productId" value="">
-					1.productName:<span  id="productName"></span><br>
+					1.productName: <span id="productName"></span><br>
 					2.productPrice:<span id="productPrice"></span><br>
 					3.productQty: 
 					<input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/><br>
@@ -70,6 +71,7 @@
 </div>
 <!-- scan modal end-->
 <script>
+
 		function pause(milliseconds) {
 			var dt = new Date();
 			while ((new Date()) - dt <= milliseconds) {}
@@ -79,13 +81,26 @@
 			if(html5QrCode == null) {
                 html5QrCode = new Html5Qrcode("reader");
 			}
+			
+			// 測試用
+			$.ajax({
+  		        url: 'http://localhost:8080/ScanGo/mvc/product/3',
+  		        dataType: 'json',
+  		        success: function ( data ){
+  		            $('#productId').val(data['productId']);
+  		            $('#productName').text(data['productName']);
+  		            $('#productPrice').text(data['price']);
+  		        }
+  		    });
+			
+			/*
             html5QrCode.start(
-                { facingMode: "environment" },
+                { facingMode: "environment" }, // 後置鏡頭
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
                 (decodedText, decodedResult) => {
                       $.ajax({
-          		        url: decodedText,                // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
-          		        dataType: 'json',                // 資料格式檔案的類型
+          		        url: 'http://localhost:8080/ScanGo/mvc/product/3',     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
+          		        dataType: 'json',     // 資料格式檔案的類型
           		        success: function ( data ){
           		            $('#productId').val(data['productId']);
           		            $('#productName').text(data['productName']);
@@ -94,6 +109,7 @@
           		    });
                 }
             );
+			*/
         }
         
         function closeScan() {
@@ -123,14 +139,14 @@
                         return;
                     }
                     
-                    // toast
-                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2000 });
+                    // Toast
+                    var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
                     toast.show();
                     
                     // 清空欄位
-                    $('#productInfo .productId').text('');
-		            $('#productInfo .productName').text('');
-		            $('#productInfo .productPrice').text(0);
+		            $('#productId').text('');
+		            $('#productName').text('');
+		            $('#productPrice').text('');
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     console.log('Error:', errorThrown);
