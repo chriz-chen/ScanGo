@@ -81,13 +81,7 @@
 </div>
 <!-- drawer cart end -->
 
-
 <script>
-    var carts = <c:out value='${carts}'/>;
-    var totalPrice = <c:out value='${totalPrice}'/>;
-    console.log(carts);
-    console.log(totalPrice);
-
     var carts = ${carts};
     var totalPrice = ${totalPrice};
 
@@ -104,10 +98,4 @@
 
     // 例：將 totalPrice 的信息顯示在頁面上
     console.log("Total Price: " + totalPrice);
-
-    
-    var carts = ${carts};
-    var totalPrice = ${totalPrice};
-    console.log(carts);
-    console.log(totalPrice);
 </script>
