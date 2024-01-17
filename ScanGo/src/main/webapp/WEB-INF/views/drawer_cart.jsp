@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
 .cart-drawer-heading {
@@ -76,19 +77,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="cart-empty-area text-center py-5 d-none">
-			<div class="cart-empty-icon pb-4">
-				<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-					viewBox="0 0 24 24" fill="none" stroke="currentColor"
-					stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
-                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                </svg>
-			</div>
-			<p class="cart-empty">You have no items in your cart</p>
-		</div>
 	</div>
 </div>
 <!-- drawer cart end -->
@@ -99,10 +87,7 @@
     var totalPrice = <c:out value='${totalPrice}'/>;
     console.log(carts);
     console.log(totalPrice);
-</script>
 
-
-<script>
     var carts = ${carts};
     var totalPrice = ${totalPrice};
 
@@ -119,4 +104,10 @@
 
     // 例：將 totalPrice 的信息顯示在頁面上
     console.log("Total Price: " + totalPrice);
+
+    
+    var carts = ${carts};
+    var totalPrice = ${totalPrice};
+    console.log(carts);
+    console.log(totalPrice);
 </script>
