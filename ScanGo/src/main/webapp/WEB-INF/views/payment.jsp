@@ -1,28 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/fragments/html_head.jspf" %>
+<%@ include file="/WEB-INF/fragments/html_head.jspf"%>
 
 <style>
-    /* 添加一個自定義的樣式，命名為custom-font-size */
-    .custom-font-size {
-      font-size: 26px; /* 設置初始字體大小 */
-    }
+/* 添加一個自定義的樣式，命名為custom-font-size */
+.custom-font-size {
+	font-size: 26px;
+}
 
-    main {
-       margin-top: 90px; /* 假設 header 的高度為 60px，請根據實際情況調整這個值 */
-    }
-    
-    .back-button {
-      font-size: 18px; /* 調整返回按鈕的字體大小 */
-    }
-    
-  </style>
+.payment-icon {
+    width: 70px;
+    height: 50px;*/
+    margin-right: 10px;
+}
+
+main {
+	margin-top: 90px;
+}
+
+.back-button {
+	font-size: 18px;
+}
+
+.modal-footer button[type="submit"] {
+    background-color: #00234D; 
+    color: #fff;
+    border-radius: 10px; 
+    padding: 8px 15px;
+    font-size: 16px;
+}
+
+</style>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light"
-		style="position: fixed; top: 0; left: 0; width: 100%;
-		height: 65px; z-index: 1000; 
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+	style="position: fixed; top: 0; left: 0; width: 100%; height: 65px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 	<div class="container-fluid">
 		<button class="back-button" onclick="history.back()">
 			<!-- 使用 "<" 符號 -->
@@ -60,7 +72,8 @@
 											name="paymentMethod" id="creditCard" value="creditCard"
 											checked> <label class="form-check-label"
 											for="creditCard"> <img
-											src="path/to/credit_card_icon.png"> 信用卡支付
+											src="/ScanGo/image/payment/creditcard.png"
+											class="payment-icon" alt="Credit Card"> 信用卡支付
 										</label>
 									</div>
 								</div>
@@ -68,9 +81,10 @@
 								<div class="form-check">
 									<div class="payment-option">
 										<input class="form-check-input" type="radio"
-											name="paymentMethod" id="paypal" value="paypal"> <label
-											class="form-check-label" for="paypal"> <img
-											src="path/to/paypal_icon.png"> PayPal
+											name="paymentMethod" id="paypal" value="paypal">
+											<label class="form-check-label" for="paypal"> <img
+											src="/ScanGo/image/payment/paypal.png"
+											class="payment-icon" alt="Paypal"> PayPal
 										</label>
 									</div>
 								</div>
@@ -80,7 +94,8 @@
 										<input class="form-check-input" type="radio"
 											name="paymentMethod" id="linePay" value="linePay"> <label
 											class="form-check-label" for="linePay"> <img
-											src="path/to/paypal_icon.png"> Line Pay
+											src="/ScanGo/image/payment/linepay.png"
+											class="payment-icon" alt="Line Pay"> Line Pay
 										</label>
 									</div>
 								</div>
@@ -95,16 +110,16 @@
 					<div class="cart-total-area">
 						<h3 class="cart-total-title d-none d-lg-block mb-0">
 							Cart Totals
-							</h4>
+							</h3>
 							<div class="cart-total-box mt-4">
 								<div class="subtotal-item subtotal-box">
 									<h4 class="subtotal-title">金額</h4>
-									<p class="subtotal-value">$1900.00</p>
+									<p class="subtotal-value">$${checkoutPrice}</p>
 									<div class="d-flex justify-content-center mt-4">
-										<button type="button" class="position-relative btn-primary text-uppercase"
-												data-bs-toggle="modal" data-bs-target="#paymentModal">
-                       							 確認付款
-                     					</button>
+										<button type="button"
+											class="position-relative btn-primary text-uppercase"
+											data-bs-toggle="modal" data-bs-target="#paymentModal">
+											確認付款</button>
 									</div>
 								</div>
 							</div>
@@ -116,25 +131,31 @@
 </main>
 
 <!-- Modal -->
-<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="paymentModalLabel">確認付款</h5>
-      </div>
-      <div class="modal-body">
-        送出後將從您的帳戶進行扣款
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <a href="index.jsp" class="btn btn-primary">確認</a>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id="paymentModal" tabindex="-1"
+	aria-labelledby="paymentModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="paymentModalLabel">確認付款</h5>
+			</div>
+			<div class="modal-body">送出後將從您的帳戶進行扣款</div>
+			<div class="modal-footer">
+				<button type="button" class="btn"
+					data-bs-dismiss="modal">取消</button>
+				<form class="payment-form"
+					  action="${pageContext.request.contextPath}/mvc/addToOrder"
+					  method="post">
+				<button type="submit">確認</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>

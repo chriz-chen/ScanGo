@@ -18,14 +18,18 @@ main {
 	margin-top: 100px; /* 假設 header 的高度為 60px，請根據實際情況調整這個值 */
 }
 
-.product-remove a {
-	color: red; /* 設定刪除按鈕文字為紅色 */
-}
-
 .cart-item-details {
 	-ms-grid-column: auto;
 	-ms-grid-column-span: auto;
 	grid-column: auto; /* 或者您可以尝试设置其他的具体值 */
+}
+
+.product-remove {
+	margin-top: -10px;
+	background-color: white;
+    color: red;
+	font-size: 15px;
+	float: right;
 }
 
 .product-info {
@@ -50,7 +54,7 @@ main {
 </header>
 
 <main id="MainContent" class="content-for-layout">
-	<div class="cart-page vh-100">
+	<div class="cart-page mt-100">
 		<div class="container">
 			<div class="cart-page-wrapper">
 				<div class="row">
@@ -61,19 +65,17 @@ main {
 									<th class="cart-caption heading_18">商品</th>
 									<th class="cart-caption heading_18"></th>
 									<th
-										class="cart-caption text-center heading_18 d-none d-md-table-cell">
-										數量</th>
+										class="cart-caption text-center heading_18 d-none d-md-table-cell">數量</th>
 									<th class="cart-caption text-end heading_18">金額</th>
 								</tr>
 							</thead>
-
 							<tbody>
 								<fn:forEach var="cartItem" items="${carts}">
 									<tr class="cart-item">
 										<td class="cart-item-media">
 											<div class="mini-img-wrapper">
-												<img class="mini-img" src="/ScanGo/image/product/snack/soda/coke.png"
-													alt="img">
+												<img class="mini-img"
+													src="/ScanGo/image/product/snack/soda/coke.png" alt="img">
 											</div>
 										</td>
 										<td class="cart-item-details">
@@ -81,47 +83,93 @@ main {
 												<a href="#"><fn:out
 														value='${cartItem.product.productName}' /></a>
 											</h2>
-											<div class="product-info">
-												<div class="product-price">
-													<fn:out value='${cartItem.product.price}' />
-												</div>
-												<div
-													class="quantity d-flex align-items-center justify-content-between">
-													<span>数量: ${cartItem.productQuantity}</span>
-												</div>
-											</div>
-											<div class="product-remove ml-auto mt-auto">
-												<a href="#">刪除</a>
-											</div>
 										</td>
-										<!-- 
 										<td class="cart-item-quantity">
-											<div
-												class="quantity d-flex align-items-center justify-content-between">
-												<span>数量: ${cartItem.productQuantity}</span>
+											<div class="quantity d-flex align-items-center justify-content-between">
+												
+												<form class="cart-form"
+													action="${pageContext.request.contextPath}/mvc/updateCartByPost"
+													method="post">
+														<input type="hidden" name="situation"
+														value="-">
+														<input type="hidden" name="productId"
+														value="${cartItem.product.productId}">
+														<input type="hidden" name="productQuantity"
+														id="quantityInput" value=${cartItem.productQuantity}>
+													<button type="submit" class="qty-btn dec-qty">-</button>
+												</form>
+												
+												
+												<input class="qty-input" type="number" disabled="disabled" 
+													name="productQuantity" value="${cartItem.productQuantity}"
+													min="0">
+													
+												<form class="cart-form"
+													action="${pageContext.request.contextPath}/mvc/updateCartByPost"
+													method="post">
+														<input type="hidden" name="situation"
+														value="+">
+														<input type="hidden" name="productId"
+														value="${cartItem.product.productId}">
+														<input type="hidden" name="productQuantity"
+														id="quantityInput" value=${cartItem.productQuantity}>
+													<button type="submit" class="qty-btn dec-qty">+</button>
+												</form>
 											</div>
 										</td>
-										<td class="cart-item-price text-end ">
+										
+										
+										<td class="cart-item-price text-end"
+											data-total="${cartItem.product.price}">
 											<div class="product-price">
-												<fn:out value='${cartItem.product.price}' />
-											</div>
-											<div class="product-remove ml-auto">
-												<a href="#">刪除</a>
+											$${cartItem.product.price}
 											</div>
 										</td>
-										 -->
+										<td>
+										<form class="cart-form"
+											  action="${pageContext.request.contextPath}/mvc/removeFromCart"
+											  method="post">
+											<input type="hidden" name="productId"
+												   value="${cartItem.product.productId}">
+											<button type="submit" class="product-remove">刪除</button>
+										</form>
+										</td>
 									</tr>
-								</fn:forEach>
+									</fn:forEach>
 							</tbody>
 						</table>
 					</div>
 					<div class="col-lg-5 col-md-12 col-12">
-						<!-- 这里放置购物车总计等相关内容 -->
+						<div class="cart-total-area">
+							<h3 class="cart-total-title d-none d-lg-block mb-0">Cart
+								Totals</h3>
+							<div class="cart-total-box mt-4 mb-4">
+								<div class="subtotal-item subtotal-box">
+									<h4 class="subtotal-title">小計</h4>
+									<p id="subtotal-value" class="subtotal-value">$${totalPrice}</p>
+								</div>
+								<div class="subtotal-item discount-box">
+									<h4 class="subtotal-title">折扣</h4>
+									<p class="subtotal-value"></p>
+								</div>
+								<hr />
+								<div class="subtotal-item discount-box">
+									<h4 class="subtotal-title">總計</h4>
+									<p class="subtotal-value"></p>
+								</div>
+								<div class="d-flex justify-content-center mt-4">
+									<a href="checkout.jsp"
+										class="position-relative btn-primary text-uppercase"> 我要結帳
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
+
 
 <%@ include file="/WEB-INF/footer.jspf"%>

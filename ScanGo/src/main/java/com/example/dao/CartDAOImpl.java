@@ -1,17 +1,14 @@
 package com.example.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.example.entity.Cart;
-import com.example.entity.Product;
-import com.example.entity.Category;
 
 
 @Component("cartDaoImpl")
@@ -19,6 +16,10 @@ public class CartDAOImpl implements CartDAO {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	@Qualifier("productDaoImpl")
+	private ProductDAO productDao;
 
 	//根據使用者ID來查找其所有購物車資料(多筆)
 	@Override
@@ -26,7 +27,7 @@ public class CartDAOImpl implements CartDAO {
 		String sql = "select * from cart where userId = ?";
 		List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
 		carts.forEach(cartItem -> {
-			findProductById(cartItem.getProductId()).ifPresent(cartItem::setProduct);
+			productDao.findProductById(cartItem.getProductId()).ifPresent(cartItem::setProduct);
 		});
 		return carts;
 	}
@@ -38,32 +39,6 @@ public class CartDAOImpl implements CartDAO {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class));
 	}
 	
-	//查詢所有商品(多筆)
-	@Override
-	public List<Product> findAllProducts() {
-		String sql = "select * from product";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
-	}
-
-	//根據產品ID來查找商品(單筆)
-	@Override
-	public Optional<Product> findProductById(Integer productId) {
-		String sql = "select * from product where productId = ?";
-		try {
-			Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);
-			return Optional.ofNullable(product);
-		} catch (EmptyResultDataAccessException e) {
-			return Optional.empty();
-		}
-	}
-
-	//根據類別ID來查找商品(多筆)
-	@Override
-	public List<Product> findProductsByCategoryId(Integer categoryId) {
-		String sql = "select * from product where categoryId = ?";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), categoryId);
-	}
-
 	//新增購物車項目資料
 	@Override
 	public void addCart(Cart cart) {
@@ -77,5 +52,30 @@ public class CartDAOImpl implements CartDAO {
 			jdbcTemplate.update(sql3, cart.getProductQuantity(), cart.getUserId(), cart.getProductId());
 		}
 	}
+
+	//修改購物車商品數量
+	@Override
+	public Boolean updateCartItemQuantity(Integer userId, Integer productId, Integer productQuantity) {
+		String sql = "update cart set productQuantity = ? where userId = ? and productId = ?";
+		return jdbcTemplate.update(sql, productQuantity, userId, productId) == 1;
+	}
+
+	//根據使用者ID來刪除該使用者全部購物車(結帳用)
+	@Override
+	public Boolean cleanCartByUserId(Integer userId) {
+		String sql = "delete from cart where userId = ?";
+		return jdbcTemplate.update(sql, userId) == 1;
+	}
+
+	//根據使用者ID及商品ID來刪除購物車中的項目
+	@Override
+	public Boolean removeFromCart(Integer userId, Integer productId) {
+		String sql = "delete from cart where userId = ? && productId = ?";
+		return jdbcTemplate.update(sql, userId, productId) == 1;
+	}
+	
+	
+	
+	
 	
 }
