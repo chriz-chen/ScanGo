@@ -24,10 +24,13 @@
 	<div class="offcanvas-body p-0">
 		<div
 			class="cart-content-area d-flex justify-content-between flex-column">
-			<div class="minicart-loop custom-scrollbar">
-				<!-- minicart item -->
+			<div id="minicart-loop" class="minicart-loop custom-scrollbar">
+
+
+
 				<fn:forEach var="cartItem" items="${carts}">
-					<!-- 在這裡使用 cartItem 來訪問資料 -->
+				
+				
 					<div class="minicart-item d-flex">
 						<div class="mini-img-wrapper">
 							<img class="mini-img"
@@ -61,14 +64,18 @@
 							</div>
 						</div>
 					</div>
+					
+					
 				</fn:forEach>
+
+
+
 			</div>
 			<div class="minicart-footer">
 				<div class="minicart-calc-area">
-					<div
-						class="minicart-calc d-flex align-items-center justify-content-between">
-						<span class="cart-subtotal mb-0">總金額</span> <span
-							class="cart-subprice">$${totalPrice}</span>
+					<div id="minicart-calc" class="minicart-calc d-flex align-items-center justify-content-between">
+						<span class="cart-subtotal mb-0">總金額</span>
+						<span class="cart-subprice">$0</span>
 					</div>
 				</div>
 				<div
@@ -81,21 +88,83 @@
 </div>
 <!-- drawer cart end -->
 
+
+
+<!--
+            
+            const cartsHTML = data.carts.map(cart => `
+            <div class="minicart-item d-flex">
+                <div class="mini-img-wrapper">
+                    <img class="mini-img" src="${cart.product.image}" alt="img">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">
+                        <a href="#">${cart.product.productName}</a>
+                    </h2>
+                    <div class="misc d-flex align-items-end justify-content-between">
+                        <div class="quantity d-flex align-items-center justify-content-between">
+                            <button class="qty-btn dec-qty">
+                                <img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg" alt="minus">
+                            </button>
+                            <input class="qty-input" type="number" name="qty" value="${cart.quantity}" min="1">
+                            <button class="qty-btn inc-qty">
+                                <img src="${pageContext.request.contextPath}/assets/img/icon/plus.svg" alt="plus">
+                            </button>
+                        </div>
+                        <div class="product-remove-area d-flex flex-column align-items-end">
+                            <div class="product-price">$${cart.product.price}</div>
+                            <a href="#" class="product-remove">刪除</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        const totalPriceHTML = `<span class="cart-subprice">$${data.totalPrice}</span>`;
+        // 選擇購物車的目標元素，這裡使用 ID 為 "minicart-loop" 的元素作為例子
+        const minicartLoop = document.querySelector('.minicart-loop');
+
+        // 插入到特定位置（在現有內容的末尾）
+        minicartLoop.innerHTML = cartsHTML;
+        // 更新總金額
+        document.querySelector('#minicart-calc').innerHTML = totalPriceHTML;
+            
+            
+-->        
+            
+
+
 <script>
-    var carts = ${carts};
-    var totalPrice = ${totalPrice};
+function loadCartData() {
+    // 使用 fetch 發送 GET 請求
+    fetch('${pageContext.request.contextPath}/mvc/drawer_cart') 
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+/*
+            // 更新購物車內容
+            var cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ''; // 清空原有內容
 
-    console.log(carts);
-    console.log(totalPrice);
+            for (var i = 0; i < data.carts.length; i++) {
+                var cartItem = data.carts[i];
 
-    // 在這裡使用 carts 和 totalPrice 進行後續處理
+                // 創建購物車項目元素
+                var cartItemDiv = document.createElement('div');
+                cartItemDiv.className = 'cart-item';
+                cartItemDiv.innerHTML = '<p>' + cartItem.product.productName + ' - $' + cartItem.product.price + '</p>';
 
-    // 例：將 carts 的信息顯示在頁面上
-    for (var i = 0; i < carts.length; i++) {
-        console.log("Product Name: " + carts[i].product.productName);
-        console.log("Price: " + carts[i].product.price);
-    }
+                cartItemsDiv.appendChild(cartItemDiv);
+            }
+*/
+            const totalPriceHTML = `<span class="cart-subtotal mb-0">總金額</span>
+            						<span class="cart-subprice">$${totalPrice}</span>`;
+            document.querySelector('#minicart-calc').innerHTML = totalPriceHTML;
+        })
+        .catch(error => console.error('Fetch request failed:', error));
+}
 
-    // 例：將 totalPrice 的信息顯示在頁面上
-    console.log("Total Price: " + totalPrice);
+// 初次載入頁面時就執行一次
+window.onload = loadCartData;
+    
 </script>

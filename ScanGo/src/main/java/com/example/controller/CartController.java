@@ -52,7 +52,6 @@ public class CartController {
 	@ResponseBody
 	public String drawer_cartPage(HttpSession session, Model model) {
 	    Map<String, Object> response = new HashMap<>();
-
 	    // 先找到 user 登入者
 	    User user = (User) session.getAttribute("user");
 
@@ -82,7 +81,24 @@ public class CartController {
 	        e.printStackTrace();
 	        return "{\"error\": \"Error converting to JSON\"}";
 	    }
+	    
 	}
+	
+//	@GetMapping("/drawer_cart")
+//	public String drawer_cartPage(HttpSession session, Model model) {
+//		//  先找到 user 登入者
+//		User user = (User)session.getAttribute("user");
+//		
+//		Integer totalPrice = 0;
+//		List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
+//		for(Cart cart : carts) {
+//			cart.getProduct().setPrice((cart.getProduct().getPrice()) * (cart.getProductQuantity()));
+//			totalPrice += ((cart.getProduct().getPrice()));
+//		}
+//		session.setAttribute("carts", carts);
+//		session.setAttribute("totalPrice", totalPrice);
+//		return "drawer_cart";
+//	}
 	
 	@PostMapping("/updateCartByPost")
 	public String updateCart(@RequestParam("situation") String situation,
