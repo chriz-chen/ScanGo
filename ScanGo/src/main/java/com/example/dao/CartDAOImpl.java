@@ -60,8 +60,9 @@ public class CartDAOImpl implements CartDAO {
 		return jdbcTemplate.update(sql, productQuantity, userId, productId) == 1;
 	}
 
+	//根據使用者ID來刪除該使用者全部購物車(結帳用)
 	@Override
-	public Boolean removeCartByUserId(Integer userId) {
+	public Boolean cleanCartByUserId(Integer userId) {
 		String sql = "delete from cart where userId = ?";
 		return jdbcTemplate.update(sql, userId) == 1;
 	}

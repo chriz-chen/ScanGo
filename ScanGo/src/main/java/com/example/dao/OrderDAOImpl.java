@@ -1,11 +1,20 @@
 package com.example.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import com.example.entity.OrderItem;
@@ -17,37 +26,78 @@ public class OrderDAOImpl implements OrderDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@Autowired
+	@Qualifier("productDaoImpl")
+	private ProductDAO productDao;
+	
+	
 	@Override
-	public void addOrder(Integer userId, Integer orderTotalPrice) {
-		String sql1 = "insert into orders (userId, orderTotalPrice) values (?, ?)";
-		jdbcTemplate.update(sql1, userId, orderTotalPrice);
+	public Orders addOrder(Integer userId, Integer orderTotalPrice) {
+	    KeyHolder keyHolder = new GeneratedKeyHolder();
+
+	    jdbcTemplate.update(new PreparedStatementCreator() {
+	        @Override
+	        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+	            PreparedStatement ps = connection.prepareStatement("INSERT INTO orders (userId, orderTotalPrice) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+	            ps.setInt(1, userId);
+	            ps.setInt(2, orderTotalPrice);
+	            return ps;
+	        }
+	    }, keyHolder);
+
+	    // 獲取新插入行的主鍵值
+	    Number generatedKey = keyHolder.getKey();
+	    if (generatedKey == null) {
+	        throw new RuntimeException("Failed to retrieve generated key after insert");
+	    }
+
+	    // 將 Number 轉換為 Integer
+	    Integer generatedIntegerKey = generatedKey.intValue();
+
+	    // 創建並返回新的 Orders 實例
+	    Orders newOrder = new Orders();
+	    newOrder.setOrderId(generatedIntegerKey);
+	    newOrder.setUserId(userId);
+	    newOrder.setOrderTotalPrice(orderTotalPrice);
+
+	    return newOrder;
 	}
 	
 	@Override
-	public Boolean updateOrderTotalPrice(Integer orderId, Integer userId, Integer orderTotalPrice) {
-		String sql = "update orders set orderTotalPrice = ? where orederId = ? and userId = ?";
-		return jdbcTemplate.update(sql, orderTotalPrice, orderId, userId) == 1;
+	public Boolean updateOrderTotalPrice(Integer orderId, Integer orderTotalPrice) {
+		String sql = "update orders set orderTotalPrice = ? where orderId = ?";
+		return jdbcTemplate.update(sql, orderTotalPrice, orderId) == 1;
 	}
 
 	@Override
-	public Optional<Orders> findOrderByUserId(Integer userId) {
+	public List<Orders> findOrderByUserId(Integer userId) {
 		String sql = "select * from orders where userId = ?";
-		
-		try {
-		Orders orders = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Orders.class), userId);
-		return Optional.ofNullable(orders);
-		} catch (EmptyResultDataAccessException e) {
-			return Optional.empty();
-		}
-		
+		List<Orders> orders = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class), userId);
+		return orders;
 	}
 
+	@Override
+	public Orders findOrderByOrderId(Integer orderId) {
+		String sql = "select * from orders where orderId = ?";
+		Orders orders = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Orders.class), orderId);
+		return orders;
+	}
 
 	@Override
 	public void addOrderItem(OrderItem orderItem) {
 		String sql = "insert into orderItem (orderId, productId, productPrice, itemQuantity, itemPrice) values(?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, orderItem.getOrderId(), orderItem.getProductId(), orderItem.getProductPrice(),
 							orderItem.getItemQuantity(), orderItem.getItemPrice());
+	}
+
+	@Override
+	public List<OrderItem> findOrderItemByOrderId(Integer orderId) {
+		String sql = "select * from orderItem where orderId = ?";
+		List<OrderItem> orderItem = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(OrderItem.class), orderId);
+		orderItem.forEach(orderItems -> {
+			productDao.findProductById(orderItems.getProductId()).ifPresent(orderItems::setProduct);
+		});
+		return orderItem;
 	}
 
 	

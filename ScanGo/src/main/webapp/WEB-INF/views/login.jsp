@@ -24,7 +24,7 @@
 							<sp:errors path="username"
 								cssClass="text-danger text-nowrap text-end" />
 						</div>
-						<sp:input type="text" path="username" />
+						<sp:input type="text" path="username" value="test01" />
 					</fieldset>
 				</div>
 				<div class="col-12">
@@ -34,7 +34,7 @@
 							<sp:errors path="password"
 								cssClass="text-danger text-nowrap text-end" />
 						</div>
-						<sp:input type="password" path="password" />
+						<sp:input type="password" path="password" value="test01" />
 					</fieldset>
 				</div>
 				<div class="col-12">
