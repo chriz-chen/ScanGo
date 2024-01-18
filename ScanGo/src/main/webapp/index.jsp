@@ -26,7 +26,7 @@
             }'>
                 <div class="slide-item slide-item-bag position-relative">
                     <img class="slide-img d-none d-md-block" src="assets/img/slideshow/f1.jpg" alt="slide-1">
-                    <img class="slide-img d-md-none" src="assets/img/banner/banner-01.png" alt="slide-1">
+                    <img class="slide-img d-md-none" src="assets/img/banner/banner-01.png" alt="slide-1" style="width: 100%">
                     
                 </div>
                 <div class="slide-item slide-item-bag position-relative">

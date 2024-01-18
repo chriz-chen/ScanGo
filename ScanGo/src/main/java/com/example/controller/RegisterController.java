@@ -49,8 +49,10 @@ public class RegisterController {
 	}
 	
 	@PostMapping()
-	public String doRegister(@ModelAttribute @Valid RegisterUser registerUser, BindingResult result, Model model) throws IntrospectionException, IOException {
-		
+	public String doRegister(@ModelAttribute @Valid RegisterUser registerUser, 
+							 BindingResult result, 
+							 Model model) throws IntrospectionException, IOException {
+		// 檢查其他錯誤
 		if(result.hasErrors()) {
 			return "register";
 		}
@@ -58,10 +60,6 @@ public class RegisterController {
 		// 驗證密碼和再次確認密碼是否相同
 		if (!registerUser.getPassword().equals(registerUser.getConfirmPassword())) {
 	        result.rejectValue("confirmPassword", "error.confirmPassword", "兩次密碼不一致");
-	        return "register";
-	    }
-		// 檢查其他錯誤
-	    if (result.hasErrors()) {
 	        return "register";
 	    }
 		

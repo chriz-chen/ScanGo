@@ -1,0 +1,5 @@
+SELECT 
+userId, userName, password, email, phone, 
+DATE_FORMAT(birthday, '%Y-%m-%d') birthday, level, authType, 
+authId, createDate 
+FROM scango.user;

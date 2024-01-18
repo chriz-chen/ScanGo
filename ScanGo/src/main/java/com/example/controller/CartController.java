@@ -133,6 +133,7 @@ public class CartController {
 	}
 	
 	@PostMapping("/addCartByPost")
+	@ResponseBody
 	public String addToCart(@RequestParam("productId") Integer productId,
 							@RequestParam("productQuantity") Integer productQuantity,
 							HttpSession session, HttpServletRequest request) {
@@ -149,7 +150,7 @@ public class CartController {
 		cartDao.addCart(cart);
 		
 		String referer = request.getHeader("Referer");
-		return "redirect:" + referer;
+		return "ok";
 	}
 	
 	

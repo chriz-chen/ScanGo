@@ -3,4 +3,4 @@
 
 <%@ include file="/WEB-INF/fragments/header.jspf" %>
 
-<%@ include file="/WEB-INF/fragments/html_head.jspf" %>
+<%@ include file="/WEB-INF/fragments/html_head.jspf"%>
