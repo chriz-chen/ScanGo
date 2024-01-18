@@ -4,6 +4,10 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+.map {
+	height: 90vh;
+}
+
 figcaption {
 	background-color: rgba(0, 0, 0, 0.7);
 	height: 200px;
@@ -79,9 +83,15 @@ footer {
 		});
 		
 		// figcaption 區塊消失：商品地圖點選時、空白區域點選時
-		$('img[usemap],.blank').on('click',function() {
-			$('figcaption').css('transform', 'translate(0, 200px)');
+		$(document).ready(function() {  // 確保DOM已經完全載入後執行程式碼
+		    // 綁定點擊事件到滿足選擇器條件的元素
+		    $('img[usemap], .blank').click(function() {
+		        // 將所有符合選擇器的 <figcaption> 元素的 CSS transform 屬性設置為 'translate(0, 200px)'
+		        $('figcaption').css('transform', 'translate(0, 200px)');
+		    });
 		});
+
+
 	});
 </script>
 <body>
@@ -107,10 +117,10 @@ footer {
 	<!-- 平面圖 -->
 
 		<div class="map d-flex flex-column justify-content-start mt-4">
-			<div class="d-flex container-sm">
+			<div class="d-flex container-sm ">
 				<div class="flex-grow-1 blank"></div>
 				<div class="">
-					<h3>商店平面圖</h3>
+					<!-- <h3>商店平面圖</h3> -->
 					<img src="/ScanGo/assets/img/imagemap_new2.png" usemap="#image-map" id="imagemap">
 					<map name="image-map">
 					    <area target="" alt="Grocery" title="Grocery" href="" coords="168,370,159,373,152,377,148,383,146,390,145,398,145,854,147,860,149,865,153,870,158,874,165,877,176,878,437,878,446,875,453,871,458,865,462,858,463,848,463,834,463,394,460,383,455,377,449,371,438,370" shape="poly">

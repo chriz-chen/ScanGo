@@ -45,7 +45,7 @@ public class GenerateQRCode {
 	public static String readQRcode(String path, String charset) throws FileNotFoundException, IOException, NotFoundException  {  
 		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(ImageIO.read(new FileInputStream(path)))));  
 		Result rslt = new MultiFormatReader().decode(binaryBitmap);  
-		return rslt.getText();  
+		return rslt.getText();
 	}
 	
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {

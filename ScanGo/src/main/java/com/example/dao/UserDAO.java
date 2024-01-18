@@ -22,9 +22,6 @@ public interface UserDAO {
 	//5. 根據使用者Id查找使用者(單筆)
 	//Optional<User> findUserByUserId(Integer userId);
 		
-	//6. 根據使用者email查找使用者(單筆)
-	//Optional<User> findUserByEmail(String email);
-	
 }
 
 

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.entity.Cart;
 import com.example.entity.Product;
 
 @Repository
@@ -27,5 +28,17 @@ public class ProductDaoImpl implements ProductDao{
 		}
 	}
 
-	
+	//新增購物車項目資料
+		@Override
+		public void addCart(Cart cart) {
+			String sql1 = "select count(*) as count from cart where userId = ? and productId = ?";
+			int count = jdbcTemplate.queryForObject(sql1, Integer.class, cart.getUserId(), cart.getProductId());
+			if(count == 0) {
+				String sql2 = "insert into cart(userId, productId, productQuantity) values(?, ?, ?)";
+				jdbcTemplate.update(sql2, cart.getUserId(), cart.getProductId(), cart.getProductQuantity());
+			} else {
+				String sql3 = "update cart set productQuantity = productQuantity + ? where userId = ? and productId = ?";
+				jdbcTemplate.update(sql3, cart.getProductQuantity(), cart.getUserId(), cart.getProductId());
+			}
+		}
 }

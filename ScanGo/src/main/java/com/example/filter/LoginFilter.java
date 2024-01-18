@@ -28,8 +28,9 @@ public class LoginFilter extends HttpFilter {
 				|| urlString.endsWith("login") 
 				|| urlString.endsWith("register") 
 				|| urlString.endsWith("imagemap.jsp")
-				|| urlString.indexOf("/images") >= 0 
-				|| urlString.indexOf("/product") >= 0 
+				|| urlString.indexOf("/images") >= 0
+				|| urlString.indexOf("/product") >= 0
+				//|| urlString.indexOf("/addCartByPost") >= 0 
 				|| urlString.endsWith(".css") 
 				|| urlString.endsWith(".js")
 				|| urlString.endsWith("/getcode")) {

@@ -91,16 +91,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	
-	//6. 根據使用者email查找使用者(單筆)  ##要留?
-	@Override
-	public Optional<User> findUserByEmail(String email) {
-		String sql = "select userId, account, username, email, password, createDate FROM User where email = ?";
-		try {
-			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
-		} catch (Exception e) {
-			return Optional.empty();
-		}
-	}
 	
 */
 	

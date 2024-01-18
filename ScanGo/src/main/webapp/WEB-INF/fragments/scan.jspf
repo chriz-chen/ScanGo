@@ -1,25 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<head>
 <style>
-	.scan-icon {
-	    position: fixed;
-	    bottom: 45px;
-	    left: 50%;
-	    transform: translateX(-50%);
-	    z-index: 2;
-	}
-	
-	.scan-icon img {
-	    width: 75px; 
-	    height: auto; 
-	}
+.scan-icon {
+	position: fixed;
+	bottom: 45px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+}
+
+.scan-icon img {
+	width: 75px;
+	height: auto;
+}
 </style>
+
+
+<!-- 其他標籤和樣式 -->
+<audio id="scanSuccessSound" src="assets/sound/scan.mp3" 
+preload="auto"></audio>
+
+</head>
+
+
 
 <!-- scan icon -->
 <div class="scan-icon">
-	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal"
-		data-bs-target="#reader_modal" onclick="handleClickAdvanced()">
+	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal" data-bs-target="#reader_modal" onclick="openScan()">
 </div>
 
 <!-- scan icon end -->
@@ -29,74 +38,158 @@
 	aria-labelledby="reader_modal" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close" onclick="handleStop()"></button>
-			</div>
-			<div class="modal-body">
-				<div id="reader" class="width: mx-auto"></div>
-				<div id="productInfo">
-				  1.productId:<span class="productId"></span><br>
-				  2.productName:<span class="productName"></span><br>
-				  3.productPrice:<span class="productPrice"></span><br>
-				  4.productQty:<span class="productQty"></span><br>
+			<!-- 購物車Toast -->
+			<div id="toast" class="toast hide"
+				style="position: absolute !important; top: 0em !important; width: 100% !important; z-index: 99;"
+				data-bs-autohide="true">
+				<div class="toast-header">
+					<strong class="me-auto fs-5">購物車訊息</strong>
+					<!-- <button type="button" class="btn-close" data-bs-dismiss="toast"></button> -->
+				</div>
+				<div class="toast-body">
+					<p class="fs-5 fw-border" id="toast_message"></p>
 				</div>
 			</div>
+			<!-- modal-header -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
+			</div>
+			<!-- modal-body -->
+			
+			<div class="modal-body">
+				<StrictMode>
+					<div id="reader" class="width: mx-auto"></div>
+				</StrictMode>
+				<div>
+					<!-- 接收 AJAX 的資料 -->
+				    <input type="hidden" id="productId" name="productId" value="">
+					1.productName: <span id="productName"></span><br>
+					2.productPrice:<span id="productPrice"></span><br>
+					3.productQty:
+					<input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/><br>
+				</div>
+			</div>
+			<!-- modal-footer -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" onclick="save()">加入購物車</button>
+				<div class="d-flex justify-content-end">
+					<button type="button" class="btn btn-primary" onclick="addCart()">加入購物車</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <!-- scan modal end-->
-
-
 <script>
 
-        var cart = [];
+		var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
 
-        // 儲存，此時呼叫 Web API，進行購物車存取動作
-        function save() {
-            console.log(cart);
-        }
-
-        function handleStop() {
-            html5QrCode
-                .stop()
-                .then((res) => {
-                    html5QrCode.clear();
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        }
-
-        function handleClickAdvanced() {
-		 	html5QrCode.start(
-                { facingMode: "environment" },
+		function pause(milliseconds) {
+			var dt = new Date();
+			while ((new Date()) - dt <= milliseconds) {}
+		}
+		
+		function openScan() {
+			if(html5QrCode == null) {
+                html5QrCode = new Html5Qrcode("reader");
+			}
+			
+			// 測試用
+			/*
+			$.ajax({
+  		        url: 'http://localhost:8080/ScanGo/mvc/product/3',
+  		        dataType: 'json',
+  		        success: function ( data ){
+  		            $('#productId').val(data['productId']);
+  		            $('#productName').text(data['productName']);
+  		            $('#productPrice').text(data['price']);
+  		        }
+  		    });
+			*/
+			
+            html5QrCode.start(
+                { facingMode: "environment" }, // 後置鏡頭
                 { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
                 (decodedText, decodedResult) => {
-                    console.log(decodedText, decodedResult);
-                    // 確定有掃描到QRCode會去做的事情
-                    if (confirm(decodedText, decodedResult)) {
-                        cart.push(decodedText);
-                        $.ajax({
-            		        url: decodedText,                //要載入的資料格式檔案
-            		        dataType: 'json',                //資料格式檔案的類型
-            		        success: function ( data ){
-            		            //console.log(data);
-            		            $('#productInfo .productId').text(data['productId']);
-            		            $('#productInfo .productName').text(data['productName']);
-            		            $('#productInfo .productPrice').text(data['productPrice']);
-            		            $('#productInfo .productQty').text(data['productQty']);
-            		        }
-            		    });
-                    }
+                      $.ajax({
+          		        url: decodedText,     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
+          		        dataType: 'json',     // 資料格式檔案的類型
+          		        success: function ( data ){
+          		            $('#productId').val(data['productId']);
+          		            $('#productName').text(data['productName']);
+          		            $('#productPrice').text(data['price']);
+          		            
+          		       		// 在成功掃描後播放聲音
+                            //playScanSuccessSound();
+          		        }
+          		    });
                 }
-            );
+            );		
         }
-
-        var html5QrCode = new Html5Qrcode("reader");
+        
+        function closeScan() {
+        	html5QrCode
+	            .stop()
+	            .then((res) => {
+	                html5QrCode.clear();
+	                html5QrCode = null;
+	            })
+	            .catch((err) => {
+	                console.log(err.message);
+	            });
+        	pause(1500); // 因為關閉鏡頭需要時間，所以在前端做技術性延遲
+        }
+ 
+		function addCart() {
+			
+			
+			if($('#productId').val() == '') {
+            	$('#toast_message').text('請先掃描商品，再加入購物車');
+                $('#toast').addClass('bg-danger');
+                $('#toast').removeClass('bg-warning');
+                toast.show();
+                return;
+			}
+			
+            $.ajax({
+                url: '${pageContext.request.contextPath}/mvc/addCartByPost',
+                type: 'post',
+                data: { 
+                    productId: $('#productId').val(),
+                    productQuantity: $('#productQuantity').val(),
+                },
+                success: function (result) {
+                    if (result != 'ok') {
+                        window.location.href = '/ScanGo/mvc/login';
+                        return;
+                    }
+                    // Toast
+                    $('#toast_message').text('加入購物車成功');
+                    $('#toast').addClass('bg-warning');
+                    $('#toast').removeClass('bg-danger');
+                    toast.show();
+                    
+                    // 清空欄位
+		            $('#productId').val('');
+		            $('#productName').text('');
+		            $('#productPrice').text('');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                	$('#toast_message').text('系統出錯，請通知管理員');
+                    $('#toast').addClass('bg-danger');
+                    $('#toast').removeClass('bg-warning');
+                    toast.show();
+                    console.log('Error:', errorThrown);
+                }
+            });
+		}
+		
+		var html5QrCode = new Html5Qrcode("reader");
+		
+		function playScanSuccessSound() {
+		    var scanSuccessSound = document.getElementById("scanSuccessSound");
+		    if (scanSuccessSound) {
+		        scanSuccessSound.play();
+		    }
+		}
 </script>
