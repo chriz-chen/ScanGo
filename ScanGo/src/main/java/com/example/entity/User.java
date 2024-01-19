@@ -41,6 +41,6 @@ public class User {
 	//private String avator; // 使用者大頭照
 	
 	// 服務列表
-	private List<Service> services;
+	// private List<Service> services;
 }
 

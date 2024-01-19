@@ -37,7 +37,7 @@ public class SecureCallbackOauth2Controller {
 	}
 	
 	@RequestMapping("/callback/google")
-	@ResponseBody
+	//@ResponseBody
 	public String callbackGoogle(@RequestParam("code")String code, HttpSession session) {
 		try {
 			// 得到 idToken
@@ -66,22 +66,24 @@ public class SecureCallbackOauth2Controller {
 			GoogleUser googleUser = new GoogleUser(id, name, email);
 			
 			// 5. 檢查會員資料表中是否有此人，若無則將該會員新增到資料表
-//			Optional<User> userOpt = userDAO.findAllUsers()
-//						   .stream()
-//						   .filter(user -> user.getAuthType() != null &&
-//						   				   user.getAuthType().equalsIgnoreCase("google") && 
-//						    	   	       user.getAuthId().equalsIgnoreCase(googleUser.id))
-//						   .findFirst();
-//			
-//			User user = null;
-//			if (userOpt.isEmpty()) {
-//				user = new User(googleUser.name, "None", "None", googleUser.email, "None");
-//				userDAO.addUser(user);
-//			}
-//			user = userDAO.findUserByUsername(googleUser.name).get();
-//			// 6. 新增成功就自行自動登入 (例如：建立 user 物件並存放到 session 中)
-//			session.setAttribute("user", user);
-//			
+			Optional<User> userOpt = userDAO.findAllUsers()
+						   .stream()
+						   .filter(user -> user.getAuthType() != null &&
+						   				   user.getAuthType().equalsIgnoreCase("google") && 
+						    	   	       user.getAuthId().equals(googleUser.id))
+						   .findFirst();
+			
+			User user = null;
+			if (userOpt.isEmpty()) {
+				user = new User(0, googleUser.name, "None", googleUser.email, "None", null, 1, "Google", googleUser.id, null);
+				userDAO.addUser(user);
+				System.out.println("if " + user);
+			}
+			user = userDAO.findUserByUsername(googleUser.name).get();
+			System.out.println(user);
+			// 6. 新增成功就自行自動登入 (例如：建立 user 物件並存放到 session 中)
+			session.setAttribute("user", user);
+			
 			//return id;
 			return "redirect:/";
 			

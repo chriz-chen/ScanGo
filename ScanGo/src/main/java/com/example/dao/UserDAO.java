@@ -20,7 +20,11 @@ public interface UserDAO {
 	Optional<User> findUserByUsername(String username);
 
 	//5. 根據使用者Id查找使用者(單筆)
-	//Optional<User> findUserByUserId(Integer userId);
+	Optional<User> findUserByUserId(Integer userId);
+	
+	//6. 生成一次性密碼（TOTP）
+	String getTotp();
+	
 		
 }
 
