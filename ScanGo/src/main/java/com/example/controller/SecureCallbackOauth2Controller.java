@@ -23,13 +23,13 @@ import com.nimbusds.jwt.JWTClaimsSet;
 
 
 @Controller
-@RequestMapping("/secure/oauth2")
+@RequestMapping("/login/secure")
 public class SecureCallbackOauth2Controller {
 	
 	@Autowired
 	private UserDAO userDAO;
 	
-	@RequestMapping("/login/google")
+	@RequestMapping("/customlogin/google")
 	public String loginGoogle() {
 		String auth = OIDCUtil.getAuthorizationUrl("code", "email openid profile");
 		System.out.println(auth);
@@ -37,7 +37,7 @@ public class SecureCallbackOauth2Controller {
 	}
 	
 	@RequestMapping("/callback/google")
-//	@ResponseBody
+	//@ResponseBody
 	public String callbackGoogle(@RequestParam("code")String code, HttpSession session) {
 		try {
 			// 得到 idToken
@@ -48,16 +48,20 @@ public class SecureCallbackOauth2Controller {
 			System.out.println(claimsSet);
 			// 取得 email
 			String email = claimsSet.getStringClaim("email");
+			System.out.println(email);
 
 			// 確認 email 是否有效
 			Boolean emailVerified = claimsSet.getBooleanClaim("email_verified");
 			
 			// 取得 name
 			String name = claimsSet.getStringClaim("name");
-			
+			System.out.println(name);
+
 			
 			// 取得 sub (Subject Identifier 唯一識別符) 當作 id
 			String id = claimsSet.getStringClaim("sub");
+			System.out.println(id);
+
 			
 			GoogleUser googleUser = new GoogleUser(id, name, email);
 			
@@ -66,15 +70,17 @@ public class SecureCallbackOauth2Controller {
 						   .stream()
 						   .filter(user -> user.getAuthType() != null &&
 						   				   user.getAuthType().equalsIgnoreCase("google") && 
-						    	   	       user.getAuthId().equalsIgnoreCase(googleUser.id))
+						    	   	       user.getAuthId().equals(googleUser.id))
 						   .findFirst();
 			
 			User user = null;
 			if (userOpt.isEmpty()) {
-				user = new User(0, googleUser.name, "None", 1, "google", googleUser.id);
+				user = new User(0, googleUser.name, "None", googleUser.email, "None", null, 1, "Google", googleUser.id, null);
 				userDAO.addUser(user);
+				System.out.println("if " + user);
 			}
 			user = userDAO.findUserByUsername(googleUser.name).get();
+			System.out.println(user);
 			// 6. 新增成功就自行自動登入 (例如：建立 user 物件並存放到 session 中)
 			session.setAttribute("user", user);
 			
