@@ -20,9 +20,17 @@
 }
 </style>
 
+<script type="text/javascript">
+	function googleLoginBackend() {
+		var loginUser = document.getElementById('loginUser');
+		loginUser.action = 'login/secure/customlogin/google'; // Google 第三方登入路徑
+		loginUser.submit();
+	}
+</script>
+
 <main id="MainContent" class="content-for-layout">
 	<div class="container vh-100">
-		<sp:form modelAttribute="loginUser" method="post"
+		<sp:form modelAttribute="loginUser" method="post" id="loginUser"
 			action="${ pageContext.request.contextPath }/mvc/login"
 			class="login-form common-form mx-auto mt-5">
 			<p class="text-center text-danger fs-5">${ errorMessage }</p>
@@ -76,14 +84,10 @@
 				<h5 class="text-center">Or login with</h5>
 				<hr>
 				<div class="row">
+					<button type="button" class="pure-button pure-button-primary" onclick="googleLoginBackend()">😺google 登入</button>
 					<div class="col-sm-6">
 						<a class="btn btn-block btn-primary" href="/"><i
 							class="fa fa-facebook fa-2x"></i></a>
-					</div>
-					<div class="col-sm-6">
-						<button class="btn btn-block btn-info">
-							<i class="fa fa-twitter fa-2x"></i>
-						</button>
 					</div>
 				</div>
 			</div>
