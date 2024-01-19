@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 import com.example.entity.User;
 import com.example.util.KeyUtil;
 
+import aweit.mail.GMail;
+
 
 @Component("userDaoImpl")
 public class UserDAOImpl implements UserDAO {
