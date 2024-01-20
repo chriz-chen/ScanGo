@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.bean.ChangePassword;
+import com.example.bean.ResetPassword;
 import com.example.bean.LoginUser;
 import com.example.dao.UserDAO;
 import com.example.entity.User;
