@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
 	//	2. 新增使用者
 	@Override
 	public int addUser(User user) {
-		String sql = "insert into User(username, password, phone, email, birthday, authType, authId) VALUES (?,?,?,?,?,?,?)";
+		String sql = "insert into user(username, password, phone, email, birthday, authType, authId) VALUES (?,?,?,?,?,?,?)";
 		return jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getPhone(), user.getEmail(), user.getBirthday(), user.getAuthType(), user.getAuthId());
 	}
 
@@ -50,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
 	//	4. 根據使用者名稱查找使用者(登入用-單筆)
 	@Override
 	public Optional<User> findUserByUsername(String username) {
-		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM User where username = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM user where username = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username));
 		} catch (Exception e) {
@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	//5. 根據使用者信箱查找使用者(更改密碼用-單筆)
 	public Optional<User> getUserByEmail(String email){
-		String sql = "select * from User where email = ?";
+		String sql = "select * from user where email = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
 		} catch (Exception e) {
