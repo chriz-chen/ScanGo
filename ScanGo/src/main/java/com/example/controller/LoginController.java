@@ -36,7 +36,6 @@ import com.example.entity.User;
 public class LoginController {
 
 	@Autowired
-	@Qualifier("userDaoImpl")
 	private UserDAO userDAO;
 	
 	// 登入首頁

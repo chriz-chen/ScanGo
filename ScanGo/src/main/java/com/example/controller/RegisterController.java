@@ -40,7 +40,6 @@ public class RegisterController {
 //	}
 	
 	@Autowired
-	@Qualifier("userDaoImpl")
 	private UserDAO userDAO;
 
 	@GetMapping()

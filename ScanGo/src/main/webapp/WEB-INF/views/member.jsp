@@ -142,30 +142,24 @@
 								</div>
 								
 								<div class="modal-body">
-									<!-- 密碼變更的表單 -->
-									<form method="post"
-										action="${pageContext.request.contextPath}/mvc/member/change_password">
-									<p class="text-center text-danger fs-5">${ errorMessage }</p>
-										<div class="form-group">
-											<label for="oldPassword">舊密碼:</label> 
-											<sp:errors path="oldPassword" cssClass="text-danger text-nowrap text-end" />
-											<input type="password" path="oldPassword"
-												id="oldPassword" name="oldPassword" class="form-control" required>
-										</div>
-										<div class="form-group">
-											<label for="newPassword">新密碼:</label> 
-											<sp:errors path="newPassword" cssClass="text-danger text-nowrap text-end" />
-											<input type="password" path="newPassword"
-												id="newPassword" name="newPasswords" class="form-control" required>
-										</div>
-										<div class="form-group">
-											<label for="newPassword2">確認新密碼:</label> 
-											<sp:errors path="comfirmPassword" cssClass="text-danger text-nowrap text-end" />
-											<input type="password"  path="comfirmPassword" 
-												id="newPassword" name="newPasswords" class="form-control" required>
-										</div>
-										<button type="submit" id="comfirmButton"
-											class="btn btn-primary">確認變更</button>
+									<!-- 密碼變更的表單-->
+									<form id="changePasswordForm" class="form" method="post"
+									      action="${pageContext.request.contextPath}/mvc/member/change_password">
+									    <p class="text-center text-danger fs-5" id="errorMessage"></p>
+									    <p class="text-center text-success fs-5" id="successMessage"></p>
+									    <div class="form-group">
+									        <label for="oldPassword">舊密碼:</label>
+									        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
+									    </div>
+									    <div class="form-group">
+									        <label for="newPassword">新密碼:</label>
+											<input type="password" id="newPassword" name="newPasswords" class="form-control" required>
+									    </div>
+									    <div class="form-group">
+									        <label for="confirmPassword">確認新密碼:</label>
+									        <input type="password" id="confirmPassword" name="newPasswords" class="form-control" required>
+									    </div>
+									    <button type="button" id="confirmButton" class="btn btn-primary">確認變更</button>
 									</form>
 								</div>
 							</div>
@@ -185,13 +179,33 @@
 	<%@ include file="/WEB-INF/footer.jspf"%>
 </body>
 </html>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+
+/*
 var errormessage = '${ errorMessage }';
 var modal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {
 	keyboard: false
 });
 if(errormessage != '') {
 	modal.show();
-}
+}*/
+
+$(document).ready(function() {
+    $("#confirmButton").click(function() {
+        // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
+        $.ajax({
+            type: "POST",
+            url: $("#changePasswordForm").attr("action"),
+            data: $("#changePasswordForm").serialize(),
+            success: function(response) {
+            	$("#errorMessage").text(response.errorMessage);
+            	$("#successMessage").text(response.successMessage);
+            },
+            error: function(xhr, status, error) {
+                $("#errorMessage").text("錯誤：" + xhr.responseText);
+            }
+        });
+    });
+});
 </script>

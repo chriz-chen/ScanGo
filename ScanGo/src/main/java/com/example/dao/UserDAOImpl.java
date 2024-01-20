@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,7 @@ import com.example.util.KeyUtil;
 import aweit.mail.GMail;
 
 
-@Component("userDaoImpl")
+@Component
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
