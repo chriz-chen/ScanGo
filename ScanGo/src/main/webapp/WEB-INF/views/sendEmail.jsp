@@ -18,14 +18,13 @@
 <div class="container mt-5">
     <h1 class="mb-4">忘記密碼</h1>
 
-    <!-- 忘記密碼表單 -->
+    <!-- 忘記密碼輸入信箱表單 -->
     <form id="sendEmailForm" action="${pageContext.request.contextPath}/mvc/auth/sendEmail" method="post">
         <div class="mb-3">
             <label for="email" class="form-label">請輸入您的電子信箱：</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
-
-        <button type="submit" class="btn btn-primary">提交</button>
+        <button type="submit" class="btn btn-primary">送出</button>
     </form>
 
     <!-- Bootstrap 5 Modal -->

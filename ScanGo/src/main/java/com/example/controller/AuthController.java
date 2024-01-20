@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.bean.LoginUser;
 import com.example.bean.ResetPassword;
 import com.example.dao.UserDAO;
+import com.example.dao.UserDAOImpl;
 import com.example.entity.User;
 
 
@@ -30,8 +32,6 @@ public class AuthController {
 	
 	@Autowired
 	private UserDAO userDAO;
-	
-	
 	
 	// http://localhost:8080/ScanGo/mvc/auth/sendEmail
 	// 進入寄信頁面
@@ -65,30 +65,30 @@ public class AuthController {
 			session.setAttribute("email", email);
 			return "redirect:/mvc/auth/verifyAndReset";
 			//return "redirect:/mvc/auth/password/verifyAndReset?email=" + email;
-		}
+		} 
 		model.addAttribute("message", "查無此信箱");
 		model.addAttribute("togobtn", "返回登入");
 		model.addAttribute("togourl", "/auth/login" );
-		return "dialogFail";
+		return "sendEmail";
 	}
 	
 	
 
 	// http://localhost:8080/ScanGo/mvc/auth/verifyAndReset
 	
-	@GetMapping("/verifyAndReset")
+	@GetMapping("/resetPassword")
 	public String verifyAndResetPage(//@RequestParam("email") String email,
 									 HttpSession session) throws InvalidKeyException, NoSuchAlgorithmException {
 		String totp = (String) session.getAttribute("totp");
 		//session.setAttribute("email", email);
 		System.out.println("controller(Get/verifyAndReset) totp: " + totp);
-		return "/verifyAndReset";
+		return "resetPassword";
 	}
 	
 	
 	
 	
-	@PostMapping("/verifyAndReset")
+	@PostMapping("/resetPassword")
 	public String verifyAndReset(@RequestParam("totp")String totp,
 								 @RequestParam("password")String password,
 								 @RequestParam("confirmPassword")String confirmPassword,
@@ -101,17 +101,13 @@ public class AuthController {
 		// 比對 TOTP 驗證碼
         if (!totp.equals(sessionTotp)) {
         	model.addAttribute("message", "驗證碼錯誤");
-    		model.addAttribute("togobtn", "返回登入頁面");
-    		model.addAttribute("togourl", "/auth/login" );
-            return "dialogFail";
+            return "resetPassword";
         }
 		
 		// 比對兩次密碼是否相同
         if (!password.equals(confirmPassword)) {
         	model.addAttribute("message", "兩次新密碼不一致");
-    		model.addAttribute("togobtn", "返回登入頁面");
-    		model.addAttribute("togourl", "/auth/login" );
-            return "dialogFail";
+            return "/resetPassword";
         }
         
 		String email = (String) session.getAttribute("email");
@@ -125,8 +121,6 @@ public class AuthController {
         
         System.out.println("update User password sucess!");
 		model.addAttribute("message", "密碼修改成功");
-		model.addAttribute("togobtn", "請重新登入");
-		model.addAttribute("togourl", "/auth/login");
 		
 		//return "dialog";
 		return "redirect:/logout";

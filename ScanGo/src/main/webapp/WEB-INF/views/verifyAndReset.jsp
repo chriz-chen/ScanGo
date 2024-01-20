@@ -9,28 +9,7 @@
 		<!-- head -->
 <%@ include file="/WEB-INF/header.jspf"%>		
 
-		<style type="text/css">
-			.container {
-				width: 50%;
-				padding: 0;
-				margin: 0 auto;
-				border-radius: .5rem;
-				box-shadow: .3rem .3rem .7rem rgba(0, 0, 0, .2);
-			}
-			
-			img {
-				width: 60%;
-				object-fit: cover;
-			}
-			
-			#footer {
-			    position: fixed;
-			    right: 0;
-			    bottom: 0;
-			    left: 0;
-			    z-index: 1030;
-			}
-		</style>
+		
 	</head>
 	<body class="d-flex align-items-center justify-content-center">
 		<div class="container bg-white">
