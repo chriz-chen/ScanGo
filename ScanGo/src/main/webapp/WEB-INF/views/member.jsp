@@ -185,3 +185,13 @@
 	<%@ include file="/WEB-INF/footer.jspf"%>
 </body>
 </html>
+
+<script>
+var errormessage = '${ errorMessage }';
+var modal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {
+	keyboard: false
+});
+if(errormessage != '') {
+	modal.show();
+}
+</script>
