@@ -166,7 +166,7 @@
 						</div>
 						<sp:input type="password" path="password"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="12345" />
+							value="1234" />
 					</fieldset>
 				</div>
 				<div class="col-12">

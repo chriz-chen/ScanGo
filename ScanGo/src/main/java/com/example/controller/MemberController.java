@@ -7,18 +7,23 @@ import java.util.Optional;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.bean.ChangePassword;
+import com.example.bean.LoginUser;
 import com.example.dao.UserDAO;
 import com.example.entity.User;
 
@@ -26,20 +31,31 @@ import com.example.entity.User;
  * /ScanGo/mvc/member
  */
 @Controller
-@RequestMapping("/member")
+@RequestMapping
 public class MemberController {
 	
 	@Autowired
 	private UserDAO userDAO;
 
-	@GetMapping
+	@GetMapping("/member")
 	public String member() {
 		return "member";
 	}
+	
+	/**
+     * GET 請求，顯示重設密碼頁面。
+     * @return resetPassword 頁面
+     */
+	@GetMapping("/password")
+	public String resetPasswordPage() {
+		return "./resetPassword";
+	}
 
 	// 密碼變更
-	@PostMapping("/change_password")
-	public String changePassword(@RequestParam("oldPassword") String oldPassword,
+	@PostMapping("/member/change_password")
+	public String resetPassword(//@ModelAttribute @Valid ChangePassword changePassword,
+								 //BindingResult result,
+								 @RequestParam("oldPassword") String oldPassword,
 	                             @RequestParam("newPasswords") List<String> newPasswords,
 	                             HttpSession session,
 	                             Model model) {
@@ -69,7 +85,8 @@ public class MemberController {
 	    user.setPassword(encryptedNewPassword);
 	    userDAO.updateUserPassword(user.getUserId(), encryptedNewPassword);
 
-	    return "redirect:/mvc/logout";
+	    return "member";
+	    //return "redirect:/logout";
 	}
 
 
@@ -86,5 +103,7 @@ public class MemberController {
 		}
 		return names.toString();
 	}
+	
+	
 
 }

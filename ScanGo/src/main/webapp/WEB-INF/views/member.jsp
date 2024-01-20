@@ -119,12 +119,14 @@
 							</div>
 							<!-- 按鈕觸發 Modal -->
 							<div class="text-center mt-4">
+								<input type="button" onclick="ScanGo/mvc/member/change_password" value="變更密碼">
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
-								</button>
+								</button> 
 							</div>
 						</div>
 					</div>
+					
 					<!-- 密碼變更 Modal -->
 					<div class="modal fade " id="passwordChangeModal" tabindex="-1"
 						role="dialog" aria-labelledby="passwordChangeModalLabel"
@@ -138,24 +140,29 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
+								
 								<div class="modal-body">
 									<!-- 密碼變更的表單 -->
 									<form method="post"
 										action="${pageContext.request.contextPath}/mvc/member/change_password">
+									<p class="text-center text-danger fs-5">${ errorMessage }</p>
 										<div class="form-group">
-											<label for="oldPassword">舊密碼:</label> <input type="password"
-												id="oldPassword" name="oldPassword" class="form-control"
-												required>
+											<label for="oldPassword">舊密碼:</label> 
+											<sp:errors path="oldPassword" cssClass="text-danger text-nowrap text-end" />
+											<input type="password" path="oldPassword"
+												id="oldPassword" name="oldPassword" class="form-control" required>
 										</div>
 										<div class="form-group">
-											<label for="newPassword">新密碼:</label> <input type="password"
-												id="newPassword" name="newPasswords" class="form-control"
-												required>
+											<label for="newPassword">新密碼:</label> 
+											<sp:errors path="newPassword" cssClass="text-danger text-nowrap text-end" />
+											<input type="password" path="newPassword"
+												id="newPassword" name="newPasswords" class="form-control" required>
 										</div>
 										<div class="form-group">
-											<label for="newPassword2">確認新密碼:</label> <input
-												type="password" id="newPassword" name="newPasswords"
-												class="form-control" required>
+											<label for="newPassword2">確認新密碼:</label> 
+											<sp:errors path="comfirmPassword" cssClass="text-danger text-nowrap text-end" />
+											<input type="password"  path="comfirmPassword" 
+												id="newPassword" name="newPasswords" class="form-control" required>
 										</div>
 										<button type="submit" id="comfirmButton"
 											class="btn btn-primary">確認變更</button>

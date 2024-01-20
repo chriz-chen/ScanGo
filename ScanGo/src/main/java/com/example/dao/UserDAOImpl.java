@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -46,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
 		return rowcount > 0;
 	}
 	
-	//	4. 根據使用者名稱查找使用者(登入用-單筆)	
+	//	4. 根據使用者名稱查找使用者(登入用-單筆)
 	@Override
 	public Optional<User> findUserByUsername(String username) {
 		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM User where username = ?";
@@ -57,43 +58,53 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 	
-	//	4. 根據使用者名稱查找使用者(登入用-單筆)	
-	@Override
-	public Optional<User> findUserByUsername(String username) {
-		String sql = "select userId, username, password from user where username = ?";
+	//5. 根據使用者信箱查找使用者(更改密碼用-單筆)
+	public Optional<User> getUserByEmail(String email){
+		String sql = "select * from User where email = ?";
 		try {
-			User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username);
-			// 查找使用者可以使用的服務(授權)
-			String sql2 = "select s.serviceId, s.serviceLocation, s.serviceName, s.serviceUrl "
-						+ "from level_ref_service r "
-						+ "left join service s on s.serviceId = r.serviceId "
-						+ "where r.levelId = ? order by r.sort";
-			List<Service> services = jdbcTemplate.query(sql2, new BeanPropertyRowMapper<>(Service.class), user.getLevel());
-			user.setServices(services);
-			return Optional.ofNullable(user);
-		} catch (EmptyResultDataAccessException e) {
+			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
+		} catch (Exception e) {
 			return Optional.empty();
 		}
 	}
 	
+	//	4. 根據使用者名稱查找使用者(登入用-單筆)	
+//	@Override
+//	public Optional<User> findUserByUsername(String username) {
+//		String sql = "select userId, username, password from user where username = ?";
+//		try {
+//			User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username);
+//			// 查找使用者可以使用的服務(授權)
+//			String sql2 = "select s.serviceId, s.serviceLocation, s.serviceName, s.serviceUrl "
+//						+ "from level_ref_service r "
+//						+ "left join service s on s.serviceId = r.serviceId "
+//						+ "where r.levelId = ? order by r.sort";
+//			List<Service> services = jdbcTemplate.query(sql2, new BeanPropertyRowMapper<>(Service.class), user.getLevel());
+//			user.setServices(services);
+//			return Optional.ofNullable(user);
+//		} catch (EmptyResultDataAccessException e) {
+//			return Optional.empty();
+//		}
+//	}
+	
 	//	5. 根據使用者ID查找使用者(單筆)	
-	@Override
-	public Optional<User> findUserByUserId(Integer userId) {
-		String sql = "select userId, username, password from user where userId = ?";
-		try {
-			User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), userId);
-			// 查找使用者可以使用的服務(授權)
-			String sql2 = "select s.serviceId, s.serviceLocation, s.serviceName, s.serviceUrl "
-						+ "from level_ref_service r "
-						+ "left join service s on s.serviceId = r.serviceId "
-						+ "where r.levelId = ? order by r.sort";
-			List<Service> services = jdbcTemplate.query(sql2, new BeanPropertyRowMapper<>(Service.class), user.getLevel());
-			user.setServices(services);
-			return Optional.ofNullable(user);
-		} catch (EmptyResultDataAccessException e) {
-			return Optional.empty();
-		}
-	}
+//	@Override
+//	public Optional<User> findUserByUserId(Integer userId) {
+//		String sql = "select userId, username, password from user where userId = ?";
+//		try {
+//			User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), userId);
+//			// 查找使用者可以使用的服務(授權)
+//			String sql2 = "select s.serviceId, s.serviceLocation, s.serviceName, s.serviceUrl "
+//						+ "from level_ref_service r "
+//						+ "left join service s on s.serviceId = r.serviceId "
+//						+ "where r.levelId = ? order by r.sort";
+//			List<Service> services = jdbcTemplate.query(sql2, new BeanPropertyRowMapper<>(Service.class), user.getLevel());
+//			user.setServices(services);
+//			return Optional.ofNullable(user);
+//		} catch (EmptyResultDataAccessException e) {
+//			return Optional.empty();
+//		}
+//	}
 	
 	/**
      * 生成 10 分鐘內有效的一次性密碼（TOTP）。
@@ -114,9 +125,8 @@ public class UserDAOImpl implements UserDAO {
 		long timeInterval = System.currentTimeMillis() / 1000L / 60L / 10L; // 10分鐘
 		
 		// 得到 TOTP 密碼 (使用 HMACSHA256 作為加密算法)
-		String totp;
-			totp = KeyUtil.generateTOTP(secret, timeInterval, "HMACSHA256");
-			return totp;
+		String totp = KeyUtil.generateTOTP(secret, timeInterval, "HMACSHA256");
+		return totp;
 	}
 	
 	/**
@@ -126,16 +136,29 @@ public class UserDAOImpl implements UserDAO {
 	 */
 	@Override
 	public void sentEamil(String email, String totp) {
-		String sender = "plusroomsystem@gmail.com";
-		GMail mail = new GMail(sender, "jmds feuy owve iywz");
-
-		mail.from(sender).to(email).personal("+Room 琴房預約系統").subject("+Room 琴房預約系統 一次性驗證碼通知")
-				.context("Dear +Room 琴房預約系統的使用者:<br>"
+		GMail mail = new GMail("yfchen1217@gmail.com", "keih ksse exqn arfs");
+		mail.from("yfchen1217@gmail.com")
+			.to(email)
+			.personal("ScanGo 自助結帳系統").subject("ScanGo 自助結帳系統 一次性驗證碼通知")
+				.context("Hey ScanGo的使用者:<br>"
 						 + "您的驗證碼為： " + totp + "<br>"
 						 + "此驗證碼有效時間為10分鐘，請儘速回到頁面重設密碼，謝謝。")
 				.send();
 	}
 	
+	/**
+	 * 隨機生成字母。
+	 * 
+	 * @return 一個隨機字母
+	 */
+	public String generateLetter() {
+		Random random = new Random();
+		String captcha;
+		do {
+			captcha = String.format("%c", (char) (random.nextInt(26 * 2) + (random.nextBoolean() ? 'A' : 'a')));
+		} while (!Character.isLetter(captcha.charAt(0)));
+		return captcha;
+	}
 
 	
 }

@@ -33,6 +33,7 @@ public class RegisterUser {
 	private String password;
 	
     @NotEmpty(message = "請再次輸入密碼")
+	@Size(min = 6, max = 20)
     private String confirmPassword;
 	
 	@Email(message = "Email格式不符")
