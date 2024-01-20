@@ -136,7 +136,7 @@ public class UserDAOImpl implements UserDAO {
 	 */
 	@Override
 	public void sentEamil(String email, String totp) {
-		GMail mail = new GMail("yfchen1217@gmail.com", "keih ksse exqn arfs");
+		GMail mail = new GMail("yfchen1217@gmail.com", "hyhm yiwj czpv esbu");
 		mail.from("yfchen1217@gmail.com")
 			.to(email)
 			.personal("ScanGo 自助結帳系統").subject("ScanGo 自助結帳系統 一次性驗證碼通知")
