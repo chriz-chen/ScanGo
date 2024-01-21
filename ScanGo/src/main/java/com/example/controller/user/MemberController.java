@@ -106,14 +106,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/updateProfile")
-	public String updateProfile(@ModelAttribute("user") User user,
-//								@RequestParam("email") String email,
-//					            @RequestParam("phone") String phone,
-//					            @RequestParam("birthday") Date birthday,
+	public String updateProfile(@ModelAttribute("user") User user,HttpSession session,
                                 Model model) {
 
         // 創建 User 對象，用於更新
         User updatedUser = new User();
+        updatedUser.setUserId(user.getUserId());
         updatedUser.setEmail(user.getEmail());
         updatedUser.setPhone(user.getPhone());
         updatedUser.setBirthday(user.getBirthday());
@@ -122,9 +120,13 @@ public class MemberController {
         Boolean updateSuccess = userDAO.updateUserProfile(updatedUser);
 
         if (updateSuccess) {
+        	
+    		User sessionUser = (User)session.getAttribute("user");
+    		session.setAttribute("user", userDAO.findUserByUserId(sessionUser.getUserId()).get());
+        	
             // 更新成功，返回成功訊息
             model.addAttribute("message", "使用者資料更新成功");
-            return "redirect:/member"; // 導向成功頁面
+            return "redirect:/mvc/member"; // 導向成功頁面
         } else {
             // 更新失敗，返回失敗訊息
             model.addAttribute("error", "使用者資料更新失敗");

@@ -161,9 +161,19 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	public Boolean updateUserProfile(User user) {
-	    String sql = "UPDATE user SET phone = ?, email = ? birthday = ? WHERE userId = ?";
+	    String sql = "UPDATE user SET phone = ?, email = ?, birthday = ? WHERE userId = ?";
 	    int rowsAffected = jdbcTemplate.update(sql, user.getPhone(), user.getEmail(), user.getBirthday(), user.getUserId());
 	    return rowsAffected > 0;
+	}
+
+	@Override
+	public Optional<User> findUserByUserId(Integer userId) {
+		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM user where userId = ?";
+		try {
+			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), userId));
+		} catch (Exception e) {
+			return Optional.empty();
+		}
 	}
 
 	
