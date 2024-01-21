@@ -27,7 +27,7 @@ main {
 .product-remove {
 	margin-top: -10px;
 	background-color: white;
-    color: red;
+	color: red;
 	font-size: 15px;
 	float: right;
 }
@@ -71,7 +71,7 @@ main {
 							</thead>
 							<tbody>
 								<fn:forEach var="cartItem" items="${carts}">
-									<tr class="cart-item">
+									<tr id="cart-item-${cartItem.product.productId}" class="cart-item">
 										<td class="cart-item-media">
 											<div class="mini-img-wrapper">
 												<img class="mini-img"
@@ -86,56 +86,25 @@ main {
 										</td>
 										<td class="cart-item-quantity">
 											<div class="quantity d-flex align-items-center justify-content-between">
-												
-												<form class="cart-form"
-													action="${pageContext.request.contextPath}/mvc/updateCartByPost"
-													method="post">
-														<input type="hidden" name="situation"
-														value="-">
-														<input type="hidden" name="productId"
-														value="${cartItem.product.productId}">
-														<input type="hidden" name="productQuantity"
-														id="quantityInput" value=${cartItem.productQuantity}>
-													<button type="submit" class="qty-btn dec-qty">-</button>
-												</form>
-												
-												
-												<input class="qty-input" type="number" disabled="disabled" 
-													name="productQuantity" value="${cartItem.productQuantity}"
-													min="0">
-													
-												<form class="cart-form"
-													action="${pageContext.request.contextPath}/mvc/updateCartByPost"
-													method="post">
-														<input type="hidden" name="situation"
-														value="+">
-														<input type="hidden" name="productId"
-														value="${cartItem.product.productId}">
-														<input type="hidden" name="productQuantity"
-														id="quantityInput" value=${cartItem.productQuantity}>
-													<button type="submit" class="qty-btn dec-qty">+</button>
-												</form>
+												<button type="button" class="qty-btn dec-qty" onclick="updateByMinus(${cartItem.product.productId})">-</button>
+
+												<input id="qtyInput-${cartItem.product.productId}" class="qty-input" type="number" disabled="disabled"
+													name="productQuantity" value="${cartItem.productQuantity}">
+
+												<button type="button" class="qty-btn inc-qty" onclick="updateByPlus(${cartItem.product.productId},${cartItem.product.inventory})">+</button>
 											</div>
 										</td>
-										
-										
+
+
 										<td class="cart-item-price text-end"
 											data-total="${cartItem.product.price}">
-											<div class="product-price">
-											$${cartItem.product.price}
-											</div>
+											<div id="itemPrice-${cartItem.product.productId}"class="product-price">$${cartItem.product.price}</div>
 										</td>
 										<td>
-										<form class="cart-form"
-											  action="${pageContext.request.contextPath}/mvc/removeFromCart"
-											  method="post">
-											<input type="hidden" name="productId"
-												   value="${cartItem.product.productId}">
-											<button type="submit" class="product-remove">刪除</button>
-										</form>
+											<button type="button" class="product-remove" onclick="removeFromCart(${cartItem.product.productId})">刪除</button>
 										</td>
 									</tr>
-									</fn:forEach>
+								</fn:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -170,6 +139,172 @@ main {
 		</div>
 	</div>
 </main>
+
+<!--Remind  Modal -->
+<div class="modal fade" id="remindModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">庫存上限提示</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        已達庫存上限，無法再增加數量。
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">確認刪除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                確定要刪除此商品嗎？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button id="confirmDeleteButton" type="button" class="btn btn-primary">確定刪除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function updateByPlus(productId, inventory) {
+
+	var qtyInput = document.querySelector('#qtyInput-' + productId);
+	var newValue = parseInt(qtyInput.value) + 1;
+
+    if(newValue > inventory){
+        qtyInput.value = inventory - 1;
+    	$('#remindModal').modal('show');
+
+    }else{
+	
+		const data = {
+				"productId": productId
+			};
+		
+		const options = {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json', // 設置請求的內容類型為 JSON
+		        },
+		        body: JSON.stringify(data), // 將數據轉換為 JSON 字符串
+		    };
+		
+		fetch('${pageContext.request.contextPath}/mvc/cart/update_plus', options) 
+	    .then(response => response.json())
+	    .then(data => {
+	    	console.log(data);
+
+	    	
+	    	var itemPrice = document.getElementById("itemPrice-" + productId);
+	    	itemPrice.textContent = '$' + data.itemPrice;
+	    	
+	    	var totalPrice = document.getElementById("subtotal-value");
+	    	
+	    	const tempTotalPrice = totalPrice.textContent;
+	    	
+	    	totalPrice.textContent = '$' + ( parseInt(tempTotalPrice.substring(1)) + data.productBasePrice);
+	    })
+    }
+
+}
+
+function updateByMinus(productId) {
+	
+	var qtyInput = document.querySelector('#qtyInput-' + productId);
+	var newValue = parseInt(qtyInput.value) - 1;
+
+    if(newValue < 1 ){
+        qtyInput.value = newValue + 2;
+
+    }else{
+	
+		const data = {
+				"productId": productId
+			};
+		
+		const options = {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json', // 設置請求的內容類型為 JSON
+		        },
+		        body: JSON.stringify(data), // 將數據轉換為 JSON 字符串
+		    };
+		
+		fetch('${pageContext.request.contextPath}/mvc/cart/update_minus', options) 
+	    .then(response => response.json())
+	    .then(data => {
+	    	console.log(data);
+
+	    	
+	    	var itemPrice = document.getElementById("itemPrice-" + productId);
+	    	itemPrice.textContent = '$' + data.itemPrice;
+	    	
+	    	var totalPrice = document.getElementById("subtotal-value");
+	    	
+	    	const tempTotalPrice = totalPrice.textContent;
+	    	
+	    	totalPrice.textContent = '$' + ( parseInt(tempTotalPrice.substring(1)) - data.productBasePrice);
+	    })
+    }
+	
+	
+}
+
+function removeFromCart(productId) {
+	
+    var confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+
+    var confirmButton = document.getElementById('confirmDeleteButton');
+    confirmButton.onclick = function () {
+    	
+        var data = {
+            "productId": productId
+        };
+
+        var options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+
+        fetch('${pageContext.request.contextPath}/mvc/cart/removeFromCart', options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+                var cartItemRow = document.getElementById("cart-item-" + productId);
+
+                if (cartItemRow) {
+                    cartItemRow.remove();
+                }
+
+                var totalPrice = document.getElementById("subtotal-value");
+                totalPrice.textContent = '$' + data.totalPrice;
+
+                confirmModal.hide();
+            });
+    };
+
+    confirmModal.show();
+}
+
+</script>
 
 
 <%@ include file="/WEB-INF/footer.jspf"%>

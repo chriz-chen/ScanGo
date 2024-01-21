@@ -91,28 +91,28 @@ function loadCartData() {
                 </div>
 			`
 			
-                	// 使用 createElement 創建元素
-                    var cartItemDiv = document.createElement('div');
-                    cartItemDiv.innerHTML = cartsHTML;
-
-                    // 尋找元素，確保它存在再進行賦值
-                    var productTitle = cartItemDiv.querySelector("#productTitle");
-                    if (productTitle) {
-                        productTitle.textContent = cart.product.productName;
-                    }
-
-                    var qtyInput = cartItemDiv.querySelector("#qtyInput");
-                    if (qtyInput) {
-                        qtyInput.value = cart.productQuantity;
-                    }
-
-                    var productsPrice = cartItemDiv.querySelector("#productsPrice");
-                    if (productsPrice) {
-                        productsPrice.textContent = '$' + cart.product.price;
-                    }
-
-                    // 將創建的元素添加到 DOM 中
-                    cartItemsDiv.appendChild(cartItemDiv);
+			// 使用 createElement 創建元素
+			var cartItemDiv = document.createElement('div');
+			cartItemDiv.innerHTML = cartsHTML;
+			
+			// 尋找元素，確保它存在再進行賦值
+			var productTitle = cartItemDiv.querySelector("#productTitle");
+			if (productTitle) {
+				productTitle.textContent = cart.product.productName;
+			}
+			
+			var qtyInput = cartItemDiv.querySelector("#qtyInput");
+			if (qtyInput) {
+				qtyInput.value = cart.productQuantity;
+			}
+			
+			var productsPrice = cartItemDiv.querySelector("#productsPrice");
+			if (productsPrice) {
+				productsPrice.textContent = '$' + cart.product.price;
+			}
+			
+			// 將創建的元素添加到 DOM 中
+			cartItemsDiv.appendChild(cartItemDiv);
             }
             
             const totalPriceHTML = `<span class="cart-subtotal mb-0">總金額</span>
@@ -124,20 +124,34 @@ function loadCartData() {
 }
 
 $('#minicart-loop').on('click', '.dec-qty', function() {
-    // 獲取相應的數量 input
     var qtyInput = $(this).closest('.minicart-item').find('.qty-input');
-    // 減少數量
     var newValue = parseInt(qtyInput.val()) - 1;
-    // 更新數量 input 的值
     qtyInput.val(Math.max(newValue, 1)); // 最小值為 1
+    
+    const data = {
+			"productId": 1
+		};
+	
+	const options = {
+	        method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/json', // 設置請求的內容類型為 JSON
+	        },
+	        body: JSON.stringify(data), // 將數據轉換為 JSON 字符串
+	    };
+	
+	fetch('${pageContext.request.contextPath}/mvc/test', options) 
+    .then(response => response.json())
+    .then(data => {
+    	console.log(data);
+
+    })
+
 });
 
 $('#minicart-loop').on('click', '.inc-qty', function() {
-    // 獲取相應的數量 input
     var qtyInput = $(this).closest('.minicart-item').find('.qty-input');
-    // 增加數量
     var newValue = parseInt(qtyInput.val()) + 1;
-    // 更新數量 input 的值
     qtyInput.val(newValue);
 });
 
@@ -146,6 +160,25 @@ $('#minicart-loop').on('click', '.product-remove', function() {
     $(this).closest('.minicart-item').remove();
 });
 
+//當數量改變時觸發的事件處理函式
+function updateQuantityByDrawer(productId, newQuantity) {
+    // 使用 AJAX 發送 POST 請求到後端
+    $.ajax({
+        url: '${pageContext.request.contextPath}/mvc/update_quantity', // 替換為後端處理請求的端點
+        method: 'POST',
+        data: {
+            productId: productId,
+            newQuantity: newQuantity
+        },
+        success: function(response) {
+            console.log('數量更新成功');
+            // 在這裡可以更新其他頁面元素或執行其他操作
+        },
+        error: function(error) {
+            console.error('數量更新失敗', error);
+        }
+    });
+}
 
 // 初次載入頁面時就執行一次
 //window.onload = loadCartData;
