@@ -61,18 +61,19 @@ preload="auto"></audio>
 				<StrictMode>
 					<div id="reader" class="width: mx-auto"></div>
 				</StrictMode>
+				
+			</div>
+			<!-- modal-footer -->
+			<div class="modal-footer justify-content-between" style="display: flex; align-items: flex-end">
 				<div>
 					<!-- 接收 AJAX 的資料 -->
 				    <input type="hidden" id="productId" name="productId" value="">
-					1.productName: <span id="productName"></span><br>
-					2.productPrice:<span id="productPrice"></span><br>
-					3.productQty:
+					<h3 id="productName"></h3><br>
+					售價 : <span id="productPrice"></span><br>
+					數量 :
 					<input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/><br>
 				</div>
-			</div>
-			<!-- modal-footer -->
-			<div class="modal-footer">
-				<div class="d-flex justify-content-end">
+				<div class="">
 					<button type="button" class="btn btn-primary" onclick="addCart()">加入購物車</button>
 				</div>
 			</div>
@@ -109,7 +110,7 @@ preload="auto"></audio>
 			
             html5QrCode.start(
                 { facingMode: "environment" }, // 後置鏡頭
-                { fps: 10, qrbox: { width: 250, height: 250 } , aspectRatio: 3/4},
+                { fps: 10, qrbox: { width: 250, height: 250 } /* , aspectRatio: 3/4 */},
                 (decodedText, decodedResult) => {
                       $.ajax({
           		        url: decodedText,     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
