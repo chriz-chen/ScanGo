@@ -1,5 +1,6 @@
 package com.example.controller.user;
 
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +12,12 @@ import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,30 +98,37 @@ public class MemberController {
 	    return result;
 	}
 	
+	// http://localhost:8080/ScanGo/mvc/member/updateProfile
 	
-	@PostMapping("/updateProfile")
-    public String updateProfile(@RequestParam("userId") Integer userId,
-                                @RequestParam("phone") String phone,
-                                @RequestParam("email") String email,
+	@GetMapping("/member/updateProfile")
+	public String updateProfilePage() {
+		return "/updateProfile";
+	}
+	
+	@PostMapping("/member/updateProfile")
+	public String updateProfile(@ModelAttribute("user") User user,
+//								@RequestParam("email") String email,
+//					            @RequestParam("phone") String phone,
+//					            @RequestParam("birthday") Date birthday,
                                 Model model) {
 
         // 創建 User 對象，用於更新
         User updatedUser = new User();
-        updatedUser.setUserId(userId);
-        updatedUser.setPhone(phone);
-        updatedUser.setEmail(email);
+        updatedUser.setEmail(user.getEmail());
+        updatedUser.setPhone(user.getPhone());
+        updatedUser.setBirthday(user.getBirthday());
 
         // 調用 DAO 更新使用者資料
-        boolean updateSuccess = userDAO.updateUserProfile(updatedUser);
+        Boolean updateSuccess = userDAO.updateUserProfile(updatedUser);
 
         if (updateSuccess) {
             // 更新成功，返回成功訊息
             model.addAttribute("message", "使用者資料更新成功");
-            return "success"; // 導向成功頁面
+            return "redirect:/member"; // 導向成功頁面
         } else {
             // 更新失敗，返回失敗訊息
             model.addAttribute("error", "使用者資料更新失敗");
-            return "error"; // 導向錯誤頁面
+            return "/updateProfile"; // 導向錯誤頁面
         }
     }
 

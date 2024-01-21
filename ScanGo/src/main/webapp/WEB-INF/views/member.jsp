@@ -85,7 +85,7 @@
 								fill="#000" />
                         </g>
                     </svg></li>
-					<li>商店平面圖</li>
+					<li>會員資訊</li>
 				</ul>
 			</div>
 		</div>
@@ -95,7 +95,7 @@
 			<div class="container">
 				<div class="member-area-inner">
 					<div class="section-header member-area-header text-center mb-5">
-						<h2 class="section-heading">會員資訊</h2>
+						<h2 class="section-heading">會員資料</h2>
 					</div>
 					<div class="row">
 						<div class="col-md-6 offset-md-3">
@@ -122,6 +122,7 @@
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
 								</button> 
+								<a href="${pageContext.request.contextPath}/mvc/member/updateProfile" class="btn btn-primary confirmButton">修改會員資料</a>
 							</div>
 						</div>
 					</div>

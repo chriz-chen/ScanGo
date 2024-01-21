@@ -176,8 +176,7 @@
 							<sp:errors path="code"
 								cssClass="text-danger text-nowrap text-end" />
 						</div>
-						<sp:input type="text" path="code"
-							style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
+						<sp:input type="text" path="code" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
 					</fieldset>
 					<div class="d-flex align-items-center justify-content-between mt-2">
 				        <!-- 驗證碼圖片 -->

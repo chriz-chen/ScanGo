@@ -161,8 +161,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	public Boolean updateUserProfile(User user) {
-	    String sql = "UPDATE user SET phone = ?, email = ? WHERE userId = ?";
-	    int rowsAffected = jdbcTemplate.update(sql, user.getPhone(), user.getEmail(), user.getUserId());
+	    String sql = "UPDATE user SET phone = ?, email = ? birthday = ? WHERE userId = ?";
+	    int rowsAffected = jdbcTemplate.update(sql, user.getPhone(), user.getEmail(), user.getBirthday(), user.getUserId());
 	    return rowsAffected > 0;
 	}
 
