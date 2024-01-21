@@ -160,25 +160,25 @@ $('#minicart-loop').on('click', '.product-remove', function() {
     $(this).closest('.minicart-item').remove();
 });
 
-//當數量改變時觸發的事件處理函式
-function updateQuantityByDrawer(productId, newQuantity) {
-    // 使用 AJAX 發送 POST 請求到後端
-    $.ajax({
-        url: '${pageContext.request.contextPath}/mvc/update_quantity', // 替換為後端處理請求的端點
-        method: 'POST',
-        data: {
-            productId: productId,
-            newQuantity: newQuantity
-        },
-        success: function(response) {
-            console.log('數量更新成功');
-            // 在這裡可以更新其他頁面元素或執行其他操作
-        },
-        error: function(error) {
-            console.error('數量更新失敗', error);
-        }
-    });
-}
+// //當數量改變時觸發的事件處理函式
+// function updateQuantityByDrawer(productId, newQuantity) {
+//     // 使用 AJAX 發送 POST 請求到後端
+//     $.ajax({
+//         url: '${pageContext.request.contextPath}/mvc/update_quantity', // 替換為後端處理請求的端點
+//         method: 'POST',
+//         data: {
+//             productId: productId,
+//             newQuantity: newQuantity
+//         },
+//         success: function(response) {
+//             console.log('數量更新成功');
+//             // 在這裡可以更新其他頁面元素或執行其他操作
+//         },
+//         error: function(error) {
+//             console.error('數量更新失敗', error);
+//         }
+//     });
+// }
 
 // 初次載入頁面時就執行一次
 //window.onload = loadCartData;
