@@ -5,49 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>重設密碼</title>
-<!-- head -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sp"%>
-
 <%@ include file="/WEB-INF/header.jspf"%>
+
+<style type="text/css">
+#resetPasswordForm {
+	background-color: #DCDCDC;
+	border-radius: 10px;
+	width: 100%;
+	max-width: 450px;
+	height: 500px;
+	margin-top: 100px;
+}
+
+label {
+	font-size: 18px !important;
+	margin-left: 5px;
+	letter-spacing: 5px !important;
+}
+</style>
 
 </head>
 <body>
 
-	<div class="mx-md-5 mx-3">
-	<div class="row justify-content-center">
-		<div class="container-fluid p-md-4 p-2 text-center">
-
-				<!-- 重設密碼表單 -->
-				<form method="post"
-					action="${pageContext.request.contextPath}/mvc/auth/resetPassword"
-					class="container bg-white" id="passwordForm">
-					<div class="w-75 pt-5 pb-4 text-start mx-auto">
-						<h4 class="fw-bold mb-4">重設密碼</h4>
-						<p class="text-center text-danger">${ message }</p>
-
-						<div class="mb-3">
-							<label for="totp">驗證碼</label> <input type="text" name="totp" />
-						</div>
-
-						<div class="mb-3">
-							<label for="password">新密碼</label> <input type="password"
-								name="password" />
-						</div>
-
-						<div class="mb-3">
-							<label for="confirmPassword">再次輸入新密碼</label> <input
-								type="password" name="confirmPassword" />
-						</div>
-
-						<div class="w-100 d-flex justify-content-center">
-							<button type="submit">重設</button>
-						</div>
-
-					</div>
-				</form>
-			</div>
+	<div class="container mt-5 vh-100">
+		<div class="row justify-content-center">
+			<!-- 重設密碼輸入信箱表單 -->
+			<form id="resetPasswordForm" class="p-4" action="${pageContext.request.contextPath}/mvc/auth/resetPassword" method="post">
+			<p class="text-center text-danger fs-5">${ message }</p>
+				<div class="mb-3 text-center">
+					<h1 class="mb-4 mt-4">重設密碼</h1>
+				</div>
+				<div class="mb-3">
+					<label for="totp" class="form-label ">驗證碼</label> 
+					<input type="text" class="totp form-control" id="totp" name="totp" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" required>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label ">新密碼</label> 
+					<input type="password" class="password form-control" id="password" name="password" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" required>
+				</div>
+				<div class="mb-3">
+					<label for="confirmPassword" class="form-label ">再次輸入新密碼</label> 
+					<input type="password" class="confirmPassword form-control" id="confirmPassword" name="confirmPassword" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" required>
+				</div>
+				<button type="submit" class="btn btn-primary mt-3 float-end">送出</button>
+			</form>
 		</div>
 	</div>
 

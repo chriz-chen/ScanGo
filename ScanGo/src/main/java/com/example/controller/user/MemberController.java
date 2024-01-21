@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.user;
 
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -94,6 +94,33 @@ public class MemberController {
 	    result.put(SUCCESS_MESSAGE, "密碼修改成功");
 	    return result;
 	}
+	
+	
+	@PostMapping("/updateProfile")
+    public String updateProfile(@RequestParam("userId") Integer userId,
+                                @RequestParam("phone") String phone,
+                                @RequestParam("email") String email,
+                                Model model) {
+
+        // 創建 User 對象，用於更新
+        User updatedUser = new User();
+        updatedUser.setUserId(userId);
+        updatedUser.setPhone(phone);
+        updatedUser.setEmail(email);
+
+        // 調用 DAO 更新使用者資料
+        boolean updateSuccess = userDAO.updateUserProfile(updatedUser);
+
+        if (updateSuccess) {
+            // 更新成功，返回成功訊息
+            model.addAttribute("message", "使用者資料更新成功");
+            return "success"; // 導向成功頁面
+        } else {
+            // 更新失敗，返回失敗訊息
+            model.addAttribute("error", "使用者資料更新失敗");
+            return "error"; // 導向錯誤頁面
+        }
+    }
 
 
 	// 得到目前所有 session attribute names

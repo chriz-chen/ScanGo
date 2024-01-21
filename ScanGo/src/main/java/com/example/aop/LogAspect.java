@@ -35,7 +35,7 @@ public class LogAspect {
 		logger.info("exec: {}, {}, {}",session.getAttribute("user"), methodName, Arrays.toString(args));
 	}
 	
-	@AfterReturning(value = "p1()", returning = "result")
+	//@AfterReturning(value = "p1()", returning = "result")
 	public void logAfter(JoinPoint joinPoint, Object result) {
 		String methodName = joinPoint.getTarget().getClass().getName()+"."+joinPoint.getSignature().getName();
 		Object[] args = joinPoint.getArgs();

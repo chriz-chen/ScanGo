@@ -119,7 +119,6 @@
 							</div>
 							<!-- 按鈕觸發 Modal -->
 							<div class="text-center mt-4">
-								<input type="button" onclick="ScanGo/mvc/member/change_password" value="變更密碼">
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
 								</button> 

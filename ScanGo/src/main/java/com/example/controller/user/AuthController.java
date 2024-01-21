@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.user;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -37,7 +37,7 @@ public class AuthController {
 	// 進入寄信頁面
 	@GetMapping("/sendEmail")
 	public String SendEmailToResetPasswordPage(@ModelAttribute ResetPassword resetPassword) {
-		return "sendEmail";
+		return "/sendEmail";
 	}
 	
 	
@@ -63,13 +63,11 @@ public class AuthController {
 			userDAO.sentEamil(email, totp);
 			session.setAttribute("totp", totp);
 			session.setAttribute("email", email);
-			return "redirect:/mvc/auth/verifyAndReset";
+			return "redirect:/mvc/auth/resetPassword";
 			//return "redirect:/mvc/auth/password/verifyAndReset?email=" + email;
 		} 
 		model.addAttribute("message", "查無此信箱");
-		model.addAttribute("togobtn", "返回登入");
-		model.addAttribute("togourl", "/auth/login" );
-		return "sendEmail";
+		return "/sendEmail";
 	}
 	
 	
@@ -82,7 +80,7 @@ public class AuthController {
 		String totp = (String) session.getAttribute("totp");
 		//session.setAttribute("email", email);
 		System.out.println("controller(Get/verifyAndReset) totp: " + totp);
-		return "resetPassword";
+		return "/resetPassword";
 	}
 	
 	
@@ -101,7 +99,7 @@ public class AuthController {
 		// 比對 TOTP 驗證碼
         if (!totp.equals(sessionTotp)) {
         	model.addAttribute("message", "驗證碼錯誤");
-            return "resetPassword";
+            return "/resetPassword";
         }
 		
 		// 比對兩次密碼是否相同
@@ -123,7 +121,7 @@ public class AuthController {
 		model.addAttribute("message", "密碼修改成功");
 		
 		//return "dialog";
-		return "redirect:/logout";
+		return "redirect:/mvc/login";
 	}
 
 }

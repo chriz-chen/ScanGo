@@ -139,9 +139,10 @@ public class UserDAOImpl implements UserDAO {
 		mail.from("yfchen1217@gmail.com")
 			.to(email)
 			.personal("ScanGo 自助結帳系統").subject("ScanGo 自助結帳系統 一次性驗證碼通知")
-				.context("Hey ScanGo的使用者:<br>"
-						 + "您的驗證碼為： " + totp + "<br>"
-						 + "此驗證碼有效時間為10分鐘，請儘速回到頁面重設密碼，謝謝。")
+				.context("<h3> ScanGo 的顧客您好 : </h3><br>"
+						 + "您的驗證碼為 : " + "<br>" 
+						 + "<h1>" + totp + "</h1>" + "<br>"
+						 + "該驗證碼將在 10 分鐘後失效，請盡快回到頁面重設密碼。")
 				.send();
 	}
 	
@@ -157,6 +158,12 @@ public class UserDAOImpl implements UserDAO {
 			captcha = String.format("%c", (char) (random.nextInt(26 * 2) + (random.nextBoolean() ? 'A' : 'a')));
 		} while (!Character.isLetter(captcha.charAt(0)));
 		return captcha;
+	}
+	
+	public Boolean updateUserProfile(User user) {
+	    String sql = "UPDATE user SET phone = ?, email = ? WHERE userId = ?";
+	    int rowsAffected = jdbcTemplate.update(sql, user.getPhone(), user.getEmail(), user.getUserId());
+	    return rowsAffected > 0;
 	}
 
 	

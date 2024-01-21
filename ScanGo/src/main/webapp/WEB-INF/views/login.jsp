@@ -179,11 +179,16 @@
 						<sp:input type="text" path="code"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
 					</fieldset>
-					<img src="${ pageContext.request.contextPath }/mvc/login/getcode"
-						alt="驗證碼" class="mt-2" valign="middle">
+					<div class="d-flex align-items-center justify-content-between mt-2">
+				        <!-- 驗證碼圖片 -->
+				        <img src="${pageContext.request.contextPath}/mvc/login/getcode" alt="驗證碼" class="mr-2">
+				
+				        <!-- 忘記密碼的超連結 -->
+				        <a href="${pageContext.request.contextPath}/mvc/auth/sendEmail" class="">忘記密碼？</a>
+				    </div>
 				</div>
+				
 				<div class="col-12 mt-3 mb-5">
-
 					<button type="submit" class="btn-primary d-block mt-4 btn-signin">登入</button>
 					<a href="${ pageContext.request.contextPath }/mvc/register"
 						class="btn-secondary mt-2 btn-signin">註冊帳號</a>
