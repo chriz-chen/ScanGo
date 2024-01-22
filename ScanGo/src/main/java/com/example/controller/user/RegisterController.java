@@ -24,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.bean.RegisterUser;
 import com.example.dao.UserDAO;
 import com.example.entity.User;
+import com.example.service.RegisterServiceImpl;
+import com.example.service.RegisterStatus;
 
 @Controller
 @RequestMapping("/register")
@@ -41,6 +43,9 @@ public class RegisterController {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private RegisterServiceImpl registerServiceImpl;
 
 	@GetMapping()
 	public String registerPage(@ModelAttribute RegisterUser registerUser, Model model) {
@@ -48,42 +53,20 @@ public class RegisterController {
 	}
 	
 	@PostMapping()
-	public String doRegister(@ModelAttribute @Valid RegisterUser registerUser, 
-							 BindingResult result, 
-							 Model model) throws IntrospectionException, IOException {
-		// 檢查其他錯誤
+	public String doRegister(@ModelAttribute @Valid RegisterUser registerUser, BindingResult result, Model model) throws IntrospectionException, IOException {
 		if(result.hasErrors()) {
 			return "register";
 		}
-		
-		// 驗證密碼和再次確認密碼是否相同
-		if (!registerUser.getPassword().equals(registerUser.getConfirmPassword())) {
-	        result.rejectValue("confirmPassword", "error.confirmPassword", "兩次密碼不一致");
-	        return "register";
-	    }
-		
-// 		處理大頭照
-//		MultipartFile multipartFile = registerUser.getAvator();
-//		String avator = registerUser.getEmail()+"-"+multipartFile.getOriginalFilename();
-//		Path picPath = upPath.resolve(avator);
-//		Files.copy(multipartFile.getInputStream(), picPath, StandardCopyOption.REPLACE_EXISTING);
-		
-		// 新增用戶資訊至資料庫
-		User user = new User();
-		user.setUsername(registerUser.getUsername());
-		user.setPassword(BCrypt.hashpw(registerUser.getPassword(), BCrypt.gensalt()));
-		user.setEmail(registerUser.getEmail());
-		user.setPhone(registerUser.getPhone());
-		user.setBirthday(registerUser.getBirthday());
-		//user.setAvator(avator);
 
-		int rowCount = userDAO.addUser(user);
+		RegisterStatus registerStatus = registerServiceImpl.register(registerUser);
 		
-		if(rowCount == 0) {
+		if(registerStatus == RegisterStatus.TWO_PASSWORD_ERROR) {
+			result.rejectValue("confirmPassword", "error.confirmPassword", "兩次密碼不一致");
+	        return "register";
+		} else if(registerStatus == RegisterStatus.USER_ADD_FAILURE) {
 			model.addAttribute("error","新增失敗，請通知管理員");
 			return "register";
 		}
-		
 		return "redirect:/";
 	}
 }
