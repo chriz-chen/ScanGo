@@ -8,6 +8,7 @@ public class Order {
 	private Integer userId;
 	private Integer orderTotalPrice;
 	private Timestamp createTime;
+	private Integer rating;
 	
 	public Order() {
 		
@@ -50,6 +51,14 @@ public class Order {
 
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	
 	

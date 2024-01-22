@@ -26,4 +26,10 @@ public interface OrderDAO {
 	//根據訂單ID來查找訂單細項(多筆)
 	List<OrderItem> findOrderItemByOrderId(Integer orderId);
 	
+	//根據訂單ID及評分來更新訂單評分
+	void setOrderRating(Integer orderId, Integer rating);
+	
+	//根據訂單ID來確認是否已經評分
+	Boolean hasOrderBeenRated(Integer orderId);
+	
 }

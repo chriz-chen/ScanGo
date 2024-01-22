@@ -100,6 +100,28 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderItem;
 	}
 
+	@Override
+	public void setOrderRating(Integer orderId, Integer rating) {
+		String sql = "update orders set rating = ? where orderId = ?";
+		jdbcTemplate.update(sql, rating, orderId);
+	}
+
+	@Override
+	public Boolean hasOrderBeenRated(Integer orderId) {
+		String sql = "select rating from orders where orderId = ?";
+		
+		try {
+			Integer rating = jdbcTemplate.queryForObject(sql, new Object[]{orderId}, Integer.class);
+		
+			return rating != null;
+			
+		} catch (EmptyResultDataAccessException e) {
+			
+			return false;
+		}
+
+	}
+
 	
 
 }
