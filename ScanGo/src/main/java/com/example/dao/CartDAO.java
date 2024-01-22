@@ -19,6 +19,9 @@ public interface CartDAO {
 	//新增購物車項目資料
 	void addCart(Cart cart);
 	
+	//利用使用者ID及商品ID查找購物車資料
+	Cart findCartItem(Integer userId, Integer productId);
+	
 	//修改購物車商品數量
 	Boolean updateCartItemQuantity(Integer userId, Integer productId, Integer productQuantity);
 	

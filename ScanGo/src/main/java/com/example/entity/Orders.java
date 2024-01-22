@@ -10,6 +10,7 @@ public class Orders {
 	private Timestamp createTime;
 	private Integer orderTotalPrice;
 	private Integer discountTotalPrice;
+	private Integer rating;
 	
 	public Orders() {
 		
@@ -83,6 +84,14 @@ public class Orders {
 
 	public void setDiscountTotalPrice(Integer discountTotalPrice) {
 		this.discountTotalPrice = discountTotalPrice;
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 	
 	

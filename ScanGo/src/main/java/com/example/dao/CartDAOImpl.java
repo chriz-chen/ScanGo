@@ -1,14 +1,17 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.example.entity.Cart;
+import com.example.entity.Product;
 
 
 @Component("cartDaoImpl")
@@ -52,6 +55,15 @@ public class CartDAOImpl implements CartDAO {
 			jdbcTemplate.update(sql3, cart.getProductQuantity(), cart.getUserId(), cart.getProductId());
 		}
 	}
+	
+	//利用使用者ID及商品ID查找購物車資料
+	@Override
+	public Cart findCartItem(Integer userId, Integer productId) {
+		String sql = "select * from cart where userId = ? and productId = ?";
+		
+		Cart cart = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Cart.class), userId, productId);
+		return cart;
+	}
 
 	//修改購物車商品數量
 	@Override
@@ -73,9 +85,6 @@ public class CartDAOImpl implements CartDAO {
 		String sql = "delete from cart where userId = ? && productId = ?";
 		return jdbcTemplate.update(sql, userId, productId) == 1;
 	}
-	
-	
-	
 	
 	
 }

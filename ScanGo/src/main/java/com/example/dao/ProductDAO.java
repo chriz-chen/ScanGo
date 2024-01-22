@@ -8,11 +8,12 @@ import com.example.entity.Product;
 public interface ProductDAO {
 
 	//查詢所有商品(多筆)
-		List<Product> findAllProducts();
+	List<Product> findAllProducts();
 			
 	//根據產品ID來查找商品(單筆)
-		Optional<Product> findProductById(Integer productId);
-		
+	Optional<Product> findProductById(Integer productId);
+	
 	//根據類別ID來查找商品(多筆)
-		List<Product> findProductsByCategoryId(Integer categoryId);
+	List<Product> findProductsByCategoryId(Integer categoryId);
+		
 }
