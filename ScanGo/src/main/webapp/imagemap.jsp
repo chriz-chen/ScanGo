@@ -44,25 +44,25 @@ footer {
 
 	// 定義不同區域的 HTML 片段
 	var areaContent = {
-		Grocery : `
+		五金雜貨區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/product">Product 1</a></li>
-				<li><a href="/ScanGo/index.jsp">Product 2</a></li>
-				<li><a href="/ScanGo/index.jsp">Product 3</a></li>
+				<li><a href="/ScanGo/mvc/product">清潔用品</a></li>
+				<li><a href="/ScanGo/index.jsp">廚房用品</a></li>
+				<li><a href="/ScanGo/index.jsp">衛生紙</a></li>
 			</ul>
 		`,
-		Snack : `
+		零食飲料區 : `
 			<ul>
-				<li>Snack 1</li>
-				<li>Snack 2</li>
-				<li><a href="/ScanGo/mvc/searchProduct/6">Snack 3</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/6">汽水</a></li>
+				<li>餅乾</li>
+				<li>茶</li>
 			</ul>
 		`,
-		Appliance : `
+		家電用品區 : `
 			<ul>
-				<li>Appliance 1</li>
-				<li>Appliance 2</li>
-				<li>Appliance 3</li>
+				<li>季節家電</li>
+				<li>美體家電</li>
+				<li>廚房家電</li>
 			</ul>
 		`
 	};
@@ -123,9 +123,9 @@ footer {
 					<!-- <h3>商店平面圖</h3> -->
 					<img src="/ScanGo/assets/img/imagemap_new2.png" usemap="#image-map" id="imagemap">
 					<map name="image-map">
-					    <area target="" alt="Grocery" title="Grocery" href="" coords="168,370,159,373,152,377,148,383,146,390,145,398,145,854,147,860,149,865,153,870,158,874,165,877,176,878,437,878,446,875,453,871,458,865,462,858,463,848,463,834,463,394,460,383,455,377,449,371,438,370" shape="poly">
-					    <area target="" alt="Snack" title="Snack" href="" coords="605,473,595,477,589,483,584,491,584,502,584,961,586,968,588,973,594,978,603,982,612,983,911,983,919,981,925,976,930,970,933,965,934,947,933,494,930,485,925,478,920,474,909,473" shape="poly">
-					    <area target="" alt="Appliance" title="Appliance" href="" coords="167,1068,158,1071,153,1075,148,1082,145,1089,145,1100,145,1321,146,1328,149,1334,153,1339,158,1343,164,1346,176,1347,826,1347,835,1345,841,1340,847,1334,850,1326,850,1309,851,1090,847,1083,842,1075,836,1070,829,1068" shape="poly">
+					    <area target="" alt="五金雜貨區" title="Grocery" href="" coords="168,370,159,373,152,377,148,383,146,390,145,398,145,854,147,860,149,865,153,870,158,874,165,877,176,878,437,878,446,875,453,871,458,865,462,858,463,848,463,834,463,394,460,383,455,377,449,371,438,370" shape="poly">
+					    <area target="" alt="零食飲料區" title="Snack" href="" coords="605,473,595,477,589,483,584,491,584,502,584,961,586,968,588,973,594,978,603,982,612,983,911,983,919,981,925,976,930,970,933,965,934,947,933,494,930,485,925,478,920,474,909,473" shape="poly">
+					    <area target="" alt="家電用品區" title="Appliance" href="" coords="167,1068,158,1071,153,1075,148,1082,145,1089,145,1100,145,1321,146,1328,149,1334,153,1339,158,1343,164,1346,176,1347,826,1347,835,1345,841,1340,847,1334,850,1326,850,1309,851,1090,847,1083,842,1075,836,1070,829,1068" shape="poly">
 						<!-- 加這一行，解決手機點選，會自動顯示 area 最後一個區塊的怪問題 -->
 						<area target="" alt="Other" title="" href="" coords="0,0,0,0" shape="rect">
 					</map>
