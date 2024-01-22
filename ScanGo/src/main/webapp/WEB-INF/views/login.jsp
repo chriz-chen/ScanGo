@@ -8,6 +8,10 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+.btn-primary:hover {
+    background-color: #313d44;
+    color: #fff;
+}
 
 
 .login-form {

@@ -19,12 +19,15 @@ public interface CartDAO {
 	//新增購物車項目資料
 	void addCart(Cart cart);
 	
-	//查詢所有商品(多筆)
-	List<Product> findAllProducts();
-		
-	//根據產品ID來查找商品(單筆)
-	Optional<Product> findProductById(Integer productId);
+	//利用使用者ID及商品ID查找購物車資料
+	Cart findCartItem(Integer userId, Integer productId);
 	
-	//根據類別ID來查找商品(多筆)
-	List<Product> findProductsByCategoryId(Integer categoryId);
+	//修改購物車商品數量
+	Boolean updateCartItemQuantity(Integer userId, Integer productId, Integer productQuantity);
+	
+	//根據使用者ID來刪除該使用者全部購物車(結帳用)
+	Boolean cleanCartByUserId(Integer userId);
+	
+	//根據使用者ID及商品ID來刪除購物車中的項目
+	Boolean removeFromCart(Integer userId, Integer productId);
 }

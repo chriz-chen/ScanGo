@@ -146,5 +146,3 @@ footer {
 </body>
 
 <%@ include file="/WEB-INF/footer.jspf"%>
-
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
