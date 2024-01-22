@@ -45,7 +45,7 @@ label {
 				<div class="mb-3 justify-content-center align-items-center text-center">
 					<h1 class="mb-4 mt-4">忘記密碼</h1>
 				</div>
-				<label for="email" class="form-label mt-5">請輸入您的電子信箱：</label> <input
+				<label for="email" class="form-label mt-5">請輸入電子信箱：</label> <input
 					type="email" class="form-control" id="email" name="email"
 					style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
 					required>
@@ -88,7 +88,7 @@ label {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 	<!-- JavaScript 代碼 -->
-	<script>
+	<!-- <script>
 		$(document).ready(
 		function() {
 		// 提交表單後顯示模態框
@@ -108,7 +108,7 @@ label {
 	        // 這裡觸發原本表單的提交
 	        $("#sendEmailForm").off("submit").submit();
 	    });
-	</script>
+	</script> -->
 
 	<%@ include file="/WEB-INF/footer.jspf"%>
 </body>

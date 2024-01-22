@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	//5. 根據使用者信箱查找使用者(更改密碼用-單筆)
 	public Optional<User> getUserByEmail(String email){
-		String sql = "select * from user where email = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate from user where email = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
 		} catch (Exception e) {
@@ -166,6 +166,8 @@ public class UserDAOImpl implements UserDAO {
 	    return rowsAffected > 0;
 	}
 
+	
+    //9. 根據使用者Id查找使用者(單筆)
 	@Override
 	public Optional<User> findUserByUserId(Integer userId) {
 		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM user where userId = ?";

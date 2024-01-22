@@ -50,7 +50,7 @@ public class MemberController {
      */
 	@GetMapping("/password")
 	public String resetPasswordPage() {
-		return "./resetPassword";
+		return "resetPassword";
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class MemberController {
 	
 	@GetMapping("/member/updateProfile")
 	public String updateProfilePage() {
-		return "/updateProfile";
+		return "updateProfile";
 	}
 	
 	@PostMapping("/member/updateProfile")
@@ -130,7 +130,7 @@ public class MemberController {
         } else {
             // 更新失敗，返回失敗訊息
             model.addAttribute("error", "使用者資料更新失敗");
-            return "/updateProfile"; // 導向錯誤頁面
+            return "updateProfile"; // 導向錯誤頁面
         }
     }
 

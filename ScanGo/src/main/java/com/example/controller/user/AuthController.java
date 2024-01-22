@@ -37,7 +37,7 @@ public class AuthController {
 	// 進入寄信頁面
 	@GetMapping("/sendEmail")
 	public String SendEmailToResetPasswordPage(@ModelAttribute ResetPassword resetPassword) {
-		return "/sendEmail";
+		return "sendEmail";
 	}
 	
 	
@@ -65,13 +65,13 @@ public class AuthController {
 			session.setAttribute("email", email);
 			return "redirect:/mvc/auth/resetPassword";
 			//return "redirect:/mvc/auth/password/verifyAndReset?email=" + email;
-		} 
+		}
 		model.addAttribute("message", "查無此信箱");
-		return "/sendEmail";
+		return "sendEmail";
 	}
 	
 	
-
+	
 	// http://localhost:8080/ScanGo/mvc/auth/verifyAndReset
 	
 	@GetMapping("/resetPassword")
@@ -80,7 +80,7 @@ public class AuthController {
 		String totp = (String) session.getAttribute("totp");
 		//session.setAttribute("email", email);
 		System.out.println("controller(Get/verifyAndReset) totp: " + totp);
-		return "/resetPassword";
+		return "resetPassword";
 	}
 	
 	
@@ -99,13 +99,13 @@ public class AuthController {
 		// 比對 TOTP 驗證碼
         if (!totp.equals(sessionTotp)) {
         	model.addAttribute("message", "驗證碼錯誤");
-            return "/resetPassword";
+            return "resetPassword";
         }
 		
 		// 比對兩次密碼是否相同
         if (!password.equals(confirmPassword)) {
         	model.addAttribute("message", "兩次新密碼不一致");
-            return "/resetPassword";
+            return "resetPassword";
         }
         
 		String email = (String) session.getAttribute("email");

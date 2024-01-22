@@ -93,7 +93,7 @@
 		<!-- slideshow end -->
 
 		<!-- collection start -->
-		<div class="featured-collection mt-100 overflow-hidden">
+		<div class="featured-collection mt-100 overflow-hidden mt-5">
 			<div class="collection-tab-inner">
 				<div class="container">
 					<div class="section-header text-center">

@@ -51,6 +51,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/GMail-01.jar" sourcepath="src/main/webapp/WEB-INF/lib/GMail-01-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

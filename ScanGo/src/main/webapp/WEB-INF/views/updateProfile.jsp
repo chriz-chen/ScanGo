@@ -67,6 +67,18 @@
 .error-message {
 	color: red;
 }
+
+label {
+	font-size: 18px !important;
+	margin-left: 5px;
+	letter-spacing: 5px !important;
+}
+
+.form-control{
+	font-size: 16px; 
+	padding: 8px; 
+	letter-spacing: 4px;
+}
 </style>
 </head>
 <body>
@@ -127,7 +139,8 @@
 										required>
 								</div>
 
-								<button type="submit" class="btn-primary d-block">確認修改</button>
+								<button type="submit" class="btn-primary d-block ms-auto"
+								style="background-color: #00234D; color: #fff; font-size: 16px ">確認修改</button>
 
 							</div>
 						</div>

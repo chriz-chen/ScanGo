@@ -36,6 +36,7 @@ public interface UserDAO {
 	//8. 修改使用者資料
     Boolean updateUserProfile(User user);
 
+    //9. 根據使用者Id查找使用者(單筆)
     Optional<User> findUserByUserId(Integer userId);
 	
 		

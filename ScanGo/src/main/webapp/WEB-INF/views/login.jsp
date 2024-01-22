@@ -193,8 +193,8 @@
 						class="btn-secondary mt-2 btn-signin">註冊帳號</a>
 				</div>
 				<div class="row justify-content-center">
-					<h5 class="text-center">Or login with</h5>
-					<hr>
+					<!-- <h5 class="text-center">Or login with</h5> -->
+					<hr class="justify-content-center">
 					<button class="gsi-material-button" onclick="googleLoginBackend()">
 					  <div class="gsi-material-button-state"></div>
 					  <div class="gsi-material-button-content-wrapper">

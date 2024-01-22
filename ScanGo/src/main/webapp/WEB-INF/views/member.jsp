@@ -28,6 +28,16 @@
 	color: #0056b3; /* 鼠標懸停時的文字顏色 */
 }
 
+.btn {
+    background-color: #00234D;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* 添加過渡效果 */
+}
+
+.btn:hover {
+    background-color: red; /* 滑鼠懸停時的背景色 */
+}
 
 .member-area {
 	padding: 50px 0;
@@ -58,10 +68,6 @@
 	margin: 0 auto; /* 水平居中 */
 }
 
-.comfirmButton {
-	background-color: #007bff; /* 使用 Bootstrap 的原生顏色 */
-	color: #fff; /* 文字顏色 */
-}
 
 .error-message {
 	color: red;
@@ -119,10 +125,15 @@
 							</div>
 							<!-- 按鈕觸發 Modal -->
 							<div class="text-center mt-4">
-								<button type="button" class="btn btn-primary"
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px"
 									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
 								</button> 
-								<a href="${pageContext.request.contextPath}/mvc/member/updateProfile" class="btn btn-primary confirmButton">修改會員資料</a>
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
+								onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
+								</button>
+
+								<%-- <a href="${pageContext.request.contextPath}/mvc/member/updateProfile" 
+								class="btn confirmButton" style="background-color: #00234D; color: #fff; font-size: 16px">修改會員資料</a> --%>
 							</div>
 						</div>
 					</div>
@@ -159,7 +170,7 @@
 									        <label for="confirmPassword">確認新密碼:</label>
 									        <input type="password" id="confirmPassword" name="newPasswords" class="form-control" required>
 									    </div>
-									    <button type="button" id="confirmButton" class="btn btn-primary">確認變更</button>
+									    <button type="button" id="confirmButton" class="btn ms-auto" style="background-color: #00234D; color: #fff;">確認變更</button>
 									</form>
 								</div>
 							</div>
