@@ -10,6 +10,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
 <style>
 .puchase-time {
@@ -89,6 +90,19 @@ input[type="radio"]:checked ~ label:before {
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+.stars-container {
+    display: flex;
+    justify-content: center;
+  }
+
+.filled-star {
+	color: #fdd835; /* 指定星星颜色，可以根据需要修改 */
+}
+
+.empty-star {
+	color: #ddd; /* 未选中的星星颜色，可以根据需要修改 */
+}
  
 </style>
 
@@ -151,7 +165,7 @@ input[type="radio"]:checked ~ label:before {
 
 							<div class=" text-center">
 								<button class="showRating" data-bs-toggle="modal" data-bs-target="#ratingModal" th:class="${hasRated ? 'd-none' : ''}">為您的訂單評分</button>
-								<button class="showRatingFinished" th:class="${hasRated ? '' : 'd-none'}">已完成評分</button>
+								<button class="showRatingFinished" onclick="displayRatingResult()" th:class="${hasRated ? '' : 'd-none'}">已完成評分</button>
 							</div>
 						</div>
 					</div>
@@ -188,7 +202,7 @@ input[type="radio"]:checked ~ label:before {
                     <!-- 提交按鈕 -->
                     <div class="modal-footer">
 					    <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-					    <button type="button" class="btn btn-submit" id="submitBtn" onclick="submitRating()" disabled>送出</button>
+					    <button type="button" class="btn btn-submit" id="submitBtn" onclick="submitRating(${orders.orderId})" disabled>送出</button>
 					</div>
                 </form>
             </div>
@@ -196,7 +210,20 @@ input[type="radio"]:checked ~ label:before {
     </div>
 </div>
 
-
+<!-- 评分结果 Modal -->
+<div class="modal fade" id="ratingResultModal" tabindex="-1" aria-labelledby="ratingResultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ratingResultModalLabel">感謝您的評分!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="stars-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -249,7 +276,42 @@ input[type="radio"]:checked ~ label:before {
 	    var selectedRating = document.querySelector('input[name="star"]:checked');
 	    submitBtn.disabled = !selectedRating;
 	});
-    
+	
+	function displayRatingResult() {
+	    fetch('${pageContext.request.contextPath}/mvc/displayRatingResult/${orders.orderId}')
+	        .then(response => response.json())
+	        .then(data => {
+	            console.log(data);
+	            console.log('Rating:', data.rating)
+
+	            // 获取模态框和星星容器
+	            var ratingResultModal = document.getElementById('ratingResultModal');
+	            var starsContainer = ratingResultModal.querySelector('.stars-container');
+
+	            // 清空之前的内容
+	            starsContainer.innerHTML = '';
+
+	        	// 根据评分结果显示星星
+	            for (var i = 1; i <= data.rating; i++) {
+			    	var starIcon = document.createElement('span');
+				    starIcon.classList.add('fa', 'fa-star', 'filled-star');
+				    starsContainer.appendChild(starIcon);
+			    }
+			
+			    // 如果需要显示未选择的星星，可以添加以下代码：
+			    for (var i = data.rating + 1; i <= 5; i++) {
+			    	var emptyStarIcon = document.createElement('span');
+			    	emptyStarIcon.classList.add('fa', 'fa-star-o', 'empty-star'); // 使用未填充的星星图标
+			    	starsContainer.appendChild(emptyStarIcon);
+			    }
+
+	            // 显示模态框
+	            var modal = new bootstrap.Modal(ratingResultModal);
+	            modal.show();
+	        })
+	        .catch(error => console.error('Error getting rating result:', error));
+	}
+	
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
