@@ -11,5 +11,4 @@ public interface ProductDao {
 	
 	//新增購物車項目資料
 	void addCart(Cart cart);
-	
 }
