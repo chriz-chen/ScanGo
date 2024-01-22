@@ -28,6 +28,16 @@
 	color: #0056b3; /* 鼠標懸停時的文字顏色 */
 }
 
+.btn {
+    background-color: #00234D;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* 添加過渡效果 */
+}
+
+.btn:hover {
+    background-color: red; /* 滑鼠懸停時的背景色 */
+}
 
 .member-area {
 	padding: 50px 0;
@@ -58,10 +68,6 @@
 	margin: 0 auto; /* 水平居中 */
 }
 
-.comfirmButton {
-	background-color: #007bff; /* 使用 Bootstrap 的原生顏色 */
-	color: #fff; /* 文字顏色 */
-}
 
 .error-message {
 	color: red;
@@ -85,7 +91,7 @@
 								fill="#000" />
                         </g>
                     </svg></li>
-					<li>商店平面圖</li>
+					<li>會員資訊</li>
 				</ul>
 			</div>
 		</div>
@@ -95,7 +101,7 @@
 			<div class="container">
 				<div class="member-area-inner">
 					<div class="section-header member-area-header text-center mb-5">
-						<h2 class="section-heading">會員資訊</h2>
+						<h2 class="section-heading">會員資料</h2>
 					</div>
 					<div class="row">
 						<div class="col-md-6 offset-md-3">
@@ -119,12 +125,19 @@
 							</div>
 							<!-- 按鈕觸發 Modal -->
 							<div class="text-center mt-4">
-								<button type="button" class="btn btn-primary"
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px"
 									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
+								</button> 
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
+								onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
 								</button>
+
+								<%-- <a href="${pageContext.request.contextPath}/mvc/member/updateProfile" 
+								class="btn confirmButton" style="background-color: #00234D; color: #fff; font-size: 16px">修改會員資料</a> --%>
 							</div>
 						</div>
 					</div>
+					
 					<!-- 密碼變更 Modal -->
 					<div class="modal fade " id="passwordChangeModal" tabindex="-1"
 						role="dialog" aria-labelledby="passwordChangeModalLabel"
@@ -138,27 +151,26 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
+								
 								<div class="modal-body">
-									<!-- 密碼變更的表單 -->
-									<form method="post"
-										action="${pageContext.request.contextPath}/mvc/member/change_password">
-										<div class="form-group">
-											<label for="oldPassword">舊密碼:</label> <input type="password"
-												id="oldPassword" name="oldPassword" class="form-control"
-												required>
-										</div>
-										<div class="form-group">
-											<label for="newPassword">新密碼:</label> <input type="password"
-												id="newPassword" name="newPasswords" class="form-control"
-												required>
-										</div>
-										<div class="form-group">
-											<label for="newPassword2">確認新密碼:</label> <input
-												type="password" id="newPassword" name="newPasswords"
-												class="form-control" required>
-										</div>
-										<button type="submit" id="comfirmButton"
-											class="btn btn-primary">確認變更</button>
+									<!-- 密碼變更的表單-->
+									<form id="changePasswordForm" class="form" method="post"
+									      action="${pageContext.request.contextPath}/mvc/member/change_password">
+									    <p class="text-center text-danger fs-5" id="errorMessage"></p>
+									    <p class="text-center text-success fs-5" id="successMessage"></p>
+									    <div class="form-group">
+									        <label for="oldPassword">舊密碼:</label>
+									        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
+									    </div>
+									    <div class="form-group">
+									        <label for="newPassword">新密碼:</label>
+											<input type="password" id="newPassword" name="newPasswords" class="form-control" required>
+									    </div>
+									    <div class="form-group">
+									        <label for="confirmPassword">確認新密碼:</label>
+									        <input type="password" id="confirmPassword" name="newPasswords" class="form-control" required>
+									    </div>
+									    <button type="button" id="confirmButton" class="btn ms-auto" style="background-color: #00234D; color: #fff;">確認變更</button>
 									</form>
 								</div>
 							</div>
@@ -178,3 +190,33 @@
 	<%@ include file="/WEB-INF/footer.jspf"%>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+/*
+var errormessage = '${ errorMessage }';
+var modal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {
+	keyboard: false
+});
+if(errormessage != '') {
+	modal.show();
+}*/
+
+$(document).ready(function() {
+    $("#confirmButton").click(function() {
+        // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
+        $.ajax({
+            type: "POST",
+            url: $("#changePasswordForm").attr("action"),
+            data: $("#changePasswordForm").serialize(),
+            success: function(response) {
+            	$("#errorMessage").text(response.errorMessage);
+            	$("#successMessage").text(response.successMessage);
+            },
+            error: function(xhr, status, error) {
+                $("#errorMessage").text("錯誤：" + xhr.responseText);
+            }
+        });
+    });
+});
+</script>

@@ -1,5 +1,7 @@
 package com.example.dao;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +20,24 @@ public interface UserDAO {
 
 	//4. 根據使用者名稱查找使用者(登入用-單筆)
 	Optional<User> findUserByUsername(String username);
+	
+	//5. 根據使用者信箱查找使用者(更改密碼用-單筆)
+	Optional<User> getUserByEmail(String email);
 
 	//5. 根據使用者Id查找使用者(單筆)
-	Optional<User> findUserByUserId(Integer userId);
+//	Optional<User> findUserByUserId(Integer userId);
 	
 	//6. 生成一次性密碼（TOTP）
-	String getTotp();
+	String getTotp() throws InvalidKeyException, NoSuchAlgorithmException;
+
+	//7. 發送有 TOPT 驗證碼的重設密碼信件
+	void sentEamil(String email, String totp);
+	
+	//8. 修改使用者資料
+    Boolean updateUserProfile(User user);
+
+    //9. 根據使用者Id查找使用者(單筆)
+    Optional<User> findUserByUserId(Integer userId);
 	
 		
 }

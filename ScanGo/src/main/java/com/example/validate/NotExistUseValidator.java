@@ -13,7 +13,6 @@ import com.example.dao.UserDAO;
 public class NotExistUseValidator implements ConstraintValidator<NotExistUser, String>{
 
 	@Autowired
-	@Qualifier("userDaoImpl")
 	private UserDAO userDAO;
 	
 	@Override

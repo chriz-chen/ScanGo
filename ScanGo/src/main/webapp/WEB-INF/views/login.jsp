@@ -166,7 +166,7 @@
 						</div>
 						<sp:input type="password" path="password"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="12345" />
+							value="1234" />
 					</fieldset>
 				</div>
 				<div class="col-12">
@@ -176,21 +176,25 @@
 							<sp:errors path="code"
 								cssClass="text-danger text-nowrap text-end" />
 						</div>
-						<sp:input type="text" path="code"
-							style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
+						<sp:input type="text" path="code" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
 					</fieldset>
-					<img src="${ pageContext.request.contextPath }/mvc/login/getcode"
-						alt="驗證碼" class="mt-2" valign="middle">
+					<div class="d-flex align-items-center justify-content-between mt-2">
+				        <!-- 驗證碼圖片 -->
+				        <img src="${pageContext.request.contextPath}/mvc/login/getcode" alt="驗證碼" class="mr-2">
+				
+				        <!-- 忘記密碼的超連結 -->
+				        <a href="${pageContext.request.contextPath}/mvc/auth/sendEmail" class="">忘記密碼？</a>
+				    </div>
 				</div>
+				
 				<div class="col-12 mt-3 mb-5">
-
 					<button type="submit" class="btn-primary d-block mt-4 btn-signin">登入</button>
 					<a href="${ pageContext.request.contextPath }/mvc/register"
 						class="btn-secondary mt-2 btn-signin">註冊帳號</a>
 				</div>
 				<div class="row justify-content-center">
-					<h5 class="text-center">Or login with</h5>
-					<hr>
+					<!-- <h5 class="text-center">Or login with</h5> -->
+					<hr class="justify-content-center">
 					<button class="gsi-material-button" onclick="googleLoginBackend()">
 					  <div class="gsi-material-button-state"></div>
 					  <div class="gsi-material-button-content-wrapper">

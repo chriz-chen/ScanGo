@@ -19,7 +19,7 @@
 
 .title{
 	font-size: 18px;
-	margin-left: 5px;
+	margin-left: 8px;
 	letter-spacing: 4px;
 }
 
@@ -54,7 +54,7 @@
 								<sp:errors path="username"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" id="account" path="username" />
+							<sp:input type="text" id="account" path="username"  placeholder="請輸入帳號"/>
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -64,7 +64,7 @@
 								<sp:errors path="password"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="password" id="password" path="password" />
+							<sp:input type="password" id="password" path="password"  placeholder="密碼(請使用6位數以上)" />
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -74,8 +74,8 @@
 						        <sp:errors path="confirmPassword"
 									cssClass="text-danger text-nowrap text-end" />
 						    </div>
-						    <sp:input type="password" id="passwordCheck" path="confirmPassword" 
-						    style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
+						    <sp:input type="password" id="passwordCheck" path="confirmPassword"  
+						     placeholder="請再次輸入密碼" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
 					    </fieldset>
 					</div>   
 					<div class="col-12">
@@ -85,7 +85,7 @@
 								<sp:errors path="email"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="email" id="email" path="email" 
+							<sp:input type="email" id="email" path="email" placeholder="請輸入信箱"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"/>
 						</fieldset>
 					</div>
@@ -96,7 +96,7 @@
 								<sp:errors path="phone"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" id="phone" path="phone" />
+							<sp:input type="text" id="phone" path="phone" placeholder="請輸入手機號碼"/>
 						</fieldset>
 					</div>
 					<div class="col-12">

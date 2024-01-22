@@ -1,7 +1,13 @@
 package com.example.entity;
 
 import java.util.Date;
-import java.util.List;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +36,10 @@ public class User {
 	private String password;
 	private String email;
 	private String phone;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")     // 將Java對象轉換為JSON字符串時，日期屬性的格式
+	@DateTimeFormat(pattern = "yyyy-MM-dd") // 將字符串轉換為Java日期對象時的格式
+	@Temporal(TemporalType.DATE)            // 指定實體屬性與資料庫中的日期類型對應(不包括時間部分)
 	private Date birthday;
 	
 	private Integer level; // 使用者權限

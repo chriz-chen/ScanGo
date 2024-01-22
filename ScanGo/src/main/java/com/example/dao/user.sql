@@ -15,3 +15,6 @@ create table if not exists User (
 set @@global.time_zone = '+8:00';
 
 SELECT @@global.time_zone;
+
+
+ALTER TABLE `scango`.`user` CHANGE COLUMN `birthday` `birthday` DATE NULL DEFAULT NULL ;
