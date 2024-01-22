@@ -104,24 +104,24 @@
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="secondary-img"
-										src="assets/img/products/furniture/9.jpg" alt="product-img">
 										<img class="primary-img"
-										src="assets/img/products/furniture/1.jpg" alt="product-img">
+									     src="image/product/grocery/tissue/2.jpeg" alt="product-img"
+									     style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
+
 									</a>
 
 									<div class="product-badge">
-										<span class="badge-label badge-percentage rounded">-44%</span>
+										<span class="badge-label badge-percentage rounded">-20%</span>
 									</div>
 
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html">best wood furniture</a>
+										<a href="collection-left-sidebar.html" style="font-size: 20px">好韌真衛生紙 100抽6包</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular">$1529</span> <span
-											class="card-price-compare text-decoration-line-through">$1759</span>
+										<span class="card-price-regular" style="font-size: 20px">$120</span> 
+										<span class="card-price-compare text-decoration-line-through" style="font-size: 18px">$150</span>
 									</div>
 								</div>
 							</div>
@@ -130,24 +130,23 @@
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="secondary-img"
-										src="assets/img/products/furniture/10.jpg" alt="product-img">
 										<img class="primary-img"
-										src="assets/img/products/furniture/2.jpg" alt="product-img">
+										src="image/product/snack/cookies/3.jpeg" alt="product-img"
+										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
-										<span class="badge-label badge-percentage rounded">-44%</span>
+										<span class="badge-label badge-percentage rounded">-15%</span>
 									</div>
 
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html">Vita Lounge Chair</a>
+										<a href="collection-left-sidebar.html" style="font-size: 20px">樂事美國經典原味</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular">$1529</span> <span
-											class="card-price-compare text-decoration-line-through">$1759</span>
+										<span class="card-price-regular" style="font-size: 20px">$38</span> 
+										<span class="card-price-compare text-decoration-line-through" style="font-size: 18px">$45</span>
 									</div>
 								</div>
 							</div>
@@ -156,24 +155,23 @@
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="secondary-img"
-										src="assets/img/products/furniture/9.jpg" alt="product-img">
 										<img class="primary-img"
-										src="assets/img/products/furniture/1.jpg" alt="product-img">
+										src="image/product/snack/soda/5.jpeg" alt="product-img"
+										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
-										<span class="badge-label badge-percentage rounded">-44%</span>
+										<span class="badge-label badge-percentage rounded">-15%</span>
 									</div>
 
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html">best wood furniture</a>
+										<a href="collection-left-sidebar.html" style="font-size: 20px">可口可樂 600ml</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular">$1529</span> <span
-											class="card-price-compare text-decoration-line-through">$1759</span>
+										<span class="card-price-regular" style="font-size: 20px">$25</span> <span
+											class="card-price-compare text-decoration-line-through" style="font-size: 18px">$30</span>
 									</div>
 								</div>
 							</div>
@@ -182,24 +180,23 @@
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="secondary-img"
-										src="assets/img/products/furniture/10.jpg" alt="product-img">
 										<img class="primary-img"
-										src="assets/img/products/furniture/2.jpg" alt="product-img">
+										src="image/product/appliance/season/5.jpeg" alt="product-img"
+										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
-										<span class="badge-label badge-percentage rounded">-44%</span>
+										<span class="badge-label badge-percentage rounded">-10%</span>
 									</div>
 
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html">Vita Lounge Chair</a>
+										<a href="collection-left-sidebar.html" style="font-size: 20px">SHARP夏普 42吋電視</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular">$1529</span> <span
-											class="card-price-compare text-decoration-line-through">$1759</span>
+										<span class="card-price-regular" style="font-size: 20px">$9000</span> <span
+											class="card-price-compare text-decoration-line-through" style="font-size: 18px">$10000</span>
 									</div>
 								</div>
 							</div>
