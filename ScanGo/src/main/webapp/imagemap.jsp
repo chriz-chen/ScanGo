@@ -5,7 +5,7 @@
 
 <style>
 .map {
-	height: 90vh;
+	height: 90vh; 
 }
 
 figcaption {
