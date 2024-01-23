@@ -46,7 +46,8 @@ import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 public class OIDCUtil {
 	private static final String CLIENT_ID = "916664793871-6gd40l17lgajm2pr69cetau24r5pscr9.apps.googleusercontent.com"; // 用戶端編號
 	private static final String CLIENT_SECRET = "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"; // 用戶端密鑰
-	private static final String REDIRECT_URI = "http://localhost:8080/ScanGo/mvc/login/secure/callback/google"; // 回調的 URI
+	private static final String REDIRECT_URI = "https://localhost:8443/ScanGo/mvc/login/secure/callback/google"; // 回調的 URI
+	//private static final String REDIRECT_URI = "http://localhost:8080/ScanGo/mvc/login/secure/callback/google"; // 回調的 URI
 	
 	/**
      * 從HttpServletRequest中提取ID Token。

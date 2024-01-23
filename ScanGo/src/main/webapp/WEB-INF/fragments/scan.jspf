@@ -15,6 +15,8 @@
 	width: 75px;
 	height: auto;
 }
+
+
 </style>
 
 
@@ -67,11 +69,19 @@ preload="auto"></audio>
 			<div class="modal-footer justify-content-between" style="display: flex; align-items: flex-end">
 				<div>
 					<!-- 接收 AJAX 的資料 -->
-				    <input type="hidden" id="productId" name="productId" value="">
-					<h3 id="productName"></h3><br>
-					售價 : <span id="productPrice"></span><br>
-					數量 :
-					<input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/><br>
+					<input type="hidden" id="productId" name="productId" value="">
+					<h3 id="productName" style="font-size: 1.5em;"></h3>
+					<p style="font-size: 1.2em;">售價：<span id="productPrice"></span></p>
+					<p style="font-size: 1.2em; " class="d-inline">數量：
+					    <div class="quantity d-flex align-items-center">
+					        <button class="qty-btn dec-qty"><img src="assets/img/icon/minus.svg" alt="minus"></button>
+					        <input class="qty-input" type="number" name="qty" value="1" min="0" id="productQuantity" name="productQuantity" style="font-size: 1em;">
+					        <button class="qty-btn inc-qty"><img src="assets/img/icon/plus.svg" alt="plus"></button>
+					    </div>
+					</p>
+
+
+					<!-- <input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/> -->
 				</div>
 				<div class="">
 					<button type="button" class="btn btn-primary" onclick="addCart()">加入購物車</button>
@@ -109,8 +119,8 @@ preload="auto"></audio>
 			*/
 			
             html5QrCode.start(
-                { facingMode: "environment" }, // 後置鏡頭
-                { fps: 10, qrbox: { width: 250, height: 250 } /* , aspectRatio: 3/4 */},
+            /*     { facingMode: "environment" }, // 後置鏡頭
+                { fps: 10, qrbox: { width: 250, height: 250 } /* , aspectRatio: 3/4 */}, 
                 (decodedText, decodedResult) => {
                       $.ajax({
           		        url: decodedText,     // 要載入的資料格式檔案 'http://localhost:8080/ScanGo/mvc/product/3'
@@ -125,7 +135,7 @@ preload="auto"></audio>
           		        }
           		    });
                 }
-            );		
+            );	
         }
         
         function closeScan() {

@@ -6,6 +6,13 @@
 
 <%@ include file="/WEB-INF/header.jspf"%>
 
+<style>
+body {
+	background-color: #fffefb;
+}
+
+</style>
+
 <body>
 	<main id="MainContent" class="content-for-layout">
 		<!-- slideshow start -->
@@ -99,11 +106,11 @@
 					<div class="section-header text-center">
 						<h2 class="section-heading primary-color">本月優惠商品</h2>
 					</div>
-					<div class="row mb-5">
+					<div class="row mb-5 justify-content-center">
 						<div class="col-6">
 							<div class="product-card">
 								<div class="product-card-img">
-									<a class="hover-switch" href="collection-left-sidebar.html">
+									<a class="hover-switch" href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
 									     src="image/product/grocery/tissue/2.jpeg" alt="product-img"
 									     style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
@@ -207,7 +214,7 @@
 			<!-- collection end -->
 			
 			<!-- about service start -->
-                <div class="about-service pt-100 pb-100">
+                <!-- <div class="about-service pt-100 pb-100">
                     <div class="container">
                         <div class="section-header about-service-header text-center" data-aos="fade-up" data-aos-duration="700">
                             <h2 class="section-heading">一掃即得，無憂購物新體驗！</h2>
@@ -257,17 +264,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- about service end -->
+                about service end
                 
                 <main id="MainContent" class="content-for-layout">
             <div class="about-page">
-                <!-- about hero start -->
+                about hero start
                 <div class="about-hero mt-5 mb-5">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-12 col-12 ">
                                 <div class="about-hero-img mb-5 mx-auto text-center">
-								    <img src="image/reason.png" alt="img" style="max-width: 100%">
+								    <img src="image/reason.png" alt="img" style="max-width: 100%; border-radius: 20px;">
 								</div>
 
                                 <div class="about-hero-content">
@@ -301,7 +308,7 @@
                             
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- about hero end -->
 			
 			
