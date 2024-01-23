@@ -1,15 +1,18 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import com.example.entity.Category;
-import com.example.entity.Orders;
 import com.example.entity.Product;
 
+@Component("categoryDaoImpl")
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
@@ -17,10 +20,16 @@ public class CategoryDAOImpl implements CategoryDAO {
 	
 	
 	@Override
-	public Category findCategoryById(Integer categoryId) {
+	public Optional<Category> findCategoryById(Integer categoryId) {
 		String sql = "select categoryId, categoryPart, categoryName from category where categoryId = ?";
-		Category category = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Category.class), categoryId);
-		return category;
+		
+		try {
+			Category category = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Category.class), categoryId);
+			return Optional.ofNullable(category);
+		} catch (EmptyResultDataAccessException e) {
+			return Optional.empty();
+		}
+
 	}
 	
 	@Override

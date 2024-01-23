@@ -9,6 +9,8 @@ public class Product {
 	private Integer categoryId;
 	private Integer inventory;
 	
+	private Category category;
+	
 	public Product() {
 		
 	}
@@ -69,6 +71,14 @@ public class Product {
 
 	public void setInventory(Integer inventory) {
 		this.inventory = inventory;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	
