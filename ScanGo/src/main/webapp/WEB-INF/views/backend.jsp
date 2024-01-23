@@ -52,6 +52,24 @@ th {
 	background-color: #f2f2f2;
 }
 
+td:nth-child(2) {
+    min-width: 120px;
+}
+
+td:nth-child(4) {
+	min-width: 60px;
+	text-align: center;
+}
+
+td:nth-child(5), td:nth-child(6) {
+	min-width: 100px;
+	text-align: center;
+}
+
+td:nth-child(3), td:nth-child(7) {
+    text-align: right;
+}
+
 form {
 	margin-top: 20px;
 }
@@ -75,6 +93,7 @@ input {
 						<th>商品名稱</th>
 						<th>價格</th>
 						<th>單位</th>
+						<th>分區</th>
 						<th>類別</th>
 						<th>庫存</th>
 					</tr>
@@ -86,7 +105,8 @@ input {
 							<td>${product.productName}</td>
 							<td>${product.price}</td>
 							<td>${product.unit}</td>
-							<td>${product.categoryId}</td>
+							<td>${product.category.categoryPart}</td>
+							<td>${product.category.categoryName}</td>
 							<td>${product.inventory}</td>
 						</tr>
 					</c:forEach>
