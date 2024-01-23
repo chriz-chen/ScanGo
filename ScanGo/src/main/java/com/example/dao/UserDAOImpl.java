@@ -23,12 +23,19 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private LevelDAO levelDAO;
 
 	//	1. 查詢所有使用者(多筆)
 	@Override
 	public List<User> findAllUsers() {
-		String sql = "select userId, username, password, phone, email, birthday, authType, authId from user";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+		String sql = "select userId, username, password, phone, email, birthday, authType, authId, createDate ,levelId from user";
+		List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+		users.forEach(userInfo -> {
+			levelDAO.findLevelNameById(userInfo.getLevelId()).ifPresent(userInfo::setLevel);
+		});
+		return users;
 	}
 	
 	//	2. 新增使用者
@@ -49,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 	//	4. 根據使用者名稱查找使用者(登入用-單筆)
 	@Override
 	public Optional<User> findUserByUsername(String username) {
-		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM user where username = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, levelId, authType, authId, createDate FROM user where username = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username));
 		} catch (Exception e) {
@@ -59,7 +66,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	//5. 根據使用者信箱查找使用者(更改密碼用-單筆)
 	public Optional<User> getUserByEmail(String email){
-		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate from user where email = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, levelId, authType, authId, createDate from user where email = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), email));
 		} catch (Exception e) {
@@ -170,7 +177,7 @@ public class UserDAOImpl implements UserDAO {
     //9. 根據使用者Id查找使用者(單筆)
 	@Override
 	public Optional<User> findUserByUserId(Integer userId) {
-		String sql = "select userId, userName, password, email, phone, birthday, level, authType, authId, createDate FROM user where userId = ?";
+		String sql = "select userId, userName, password, email, phone, birthday, levelId, authType, authId, createDate FROM user where userId = ?";
 		try {
 			return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), userId));
 		} catch (Exception e) {

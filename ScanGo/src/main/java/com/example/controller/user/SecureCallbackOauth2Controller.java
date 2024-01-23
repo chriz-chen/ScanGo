@@ -75,7 +75,7 @@ public class SecureCallbackOauth2Controller {
 			
 			User user = null;
 			if (userOpt.isEmpty()) {
-				user = new User(0, googleUser.name, "None", googleUser.email, "None", null, 1, "Google", googleUser.id, null);
+				user = new User(0, googleUser.name, "None", googleUser.email, "None", null, 1, "Google", googleUser.id, null, null);
 				userDAO.addUser(user);
 				System.out.println("if " + user);
 			}

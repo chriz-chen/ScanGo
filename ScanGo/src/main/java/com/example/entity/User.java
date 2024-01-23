@@ -42,15 +42,21 @@ public class User {
 	@Temporal(TemporalType.DATE)            // 指定實體屬性與資料庫中的日期類型對應(不包括時間部分)
 	private Date birthday;
 	
-	private Integer level; // 使用者權限
+	private Integer levelId; // 使用者權限
 	
 	private String authType; // 授權來源
 	private String authId; // 授權Id
 	
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")     
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	@Temporal(TemporalType.DATE)
 	private Date createDate;
 	//private String avator; // 使用者大頭照
 	
 	// 服務列表
 	// private List<Service> services;
+	
+	private Level level;
 }
 

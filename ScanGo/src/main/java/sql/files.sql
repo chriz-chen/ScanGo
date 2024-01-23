@@ -48,3 +48,9 @@ insert into product(productName, price, unit, categoryId, inventory) values('【
 insert into product(productName, price, unit, categoryId, inventory) values('【TIGER 虎牌】日本製 微電腦電熱水瓶3L(PDR-S30R)', 2790, '個', 9, 10);
 insert into product(productName, price, unit, categoryId, inventory) values('大同電鍋TAC-10L-DCU10人份', 2688, '個', 9, 2);
 
+
+
+----------------------USER------------------------
+Insert into level(levelId, levelName) values(1,'顧客');
+Insert into level(levelId, levelName) values(2,'管理員');
+
