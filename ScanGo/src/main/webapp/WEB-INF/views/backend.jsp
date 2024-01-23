@@ -121,14 +121,14 @@ input {
 
 		<div class="add-product-form">
 			<h2>新增商品</h2>
-			<form action="${pageContext.request.contextPath}/mvc/add-product"
-				method="post">
+			<form action="${pageContext.request.contextPath}/mvc/add-product" method="post">
 				商品名稱：<input type="text" name="productName" required><br>
-				價格：<input type="number" name="price" required><br> 單位：<input
-					type="text" name="unit" required><br> 類別：<input
-					type="number" name="categoryId" required><br> 庫存：<input
-					type="number" name="inventory" required><br> <input
-					type="submit" value="新增商品">
+				價格：<input type="number" name="price" required><br>
+				單位：<input type="text" name="unit" required><br>
+				類別：<input type="number" name="categoryId" required><br>
+				庫存：<input type="number" name="inventory" required><br>
+				圖片：<input type="text" name="picture" required><br>
+				<input type="submit" value="新增商品">
 			</form>
 		</div>
 	</div>

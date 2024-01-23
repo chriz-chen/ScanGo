@@ -10,13 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
 import com.example.entity.Product;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -26,6 +26,10 @@ public class ProductController {
 	@Autowired
 	@Qualifier("productDaoImpl")
 	private ProductDAO productDao;
+	
+	@Autowired
+	@Qualifier("categoryDaoImpl")
+	private CategoryDAO categoryDao;
 	
 	@GetMapping(value = "/product/{productId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
@@ -38,6 +42,11 @@ public class ProductController {
 	public String showProduct(@PathVariable("categoryId") Integer categoryId,
 							  Model model) {
 		List<Product> products = productDao.findProductsByCategoryId(categoryId);
+		
+		products.forEach(productItem -> {
+			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
+		});
+		
 		model.addAttribute("products", products);
 		return "product";
 	}

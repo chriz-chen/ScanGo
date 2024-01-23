@@ -64,7 +64,7 @@
 						<div class="product-card">
 							<div class="product-card-img">
 								<a class="hover-switch"> <img class="primary-img"
-									src="/ScanGo/image/product/snack/soda/coke.png"
+									src="/ScanGo/image/product/${product.category.categoryPart}/${product.category.categoryName}/${product.productName}.png"
 									alt="product-img">
 								</a>
 

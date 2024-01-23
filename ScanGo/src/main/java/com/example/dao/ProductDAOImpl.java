@@ -57,8 +57,8 @@ public class ProductDAOImpl implements ProductDAO {
 	//新增商品
 	@Override
 	public void addProduct(Product product) {
-		String sql = "insert into product (productName, price, unit, categoryId, inventory) values (?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(), product.getCategoryId(), product.getInventory());
+		String sql = "insert into product (productName, price, unit, categoryId, inventory, picture) values (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(), product.getCategoryId(), product.getInventory(), product.getPicture());
 	}
 
 	//修改商品資料

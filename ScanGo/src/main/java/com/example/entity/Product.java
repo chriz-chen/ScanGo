@@ -8,6 +8,7 @@ public class Product {
 	private String unit;
 	private Integer categoryId;
 	private Integer inventory;
+	private Integer picture;
 	
 	private Category category;
 	
@@ -71,6 +72,14 @@ public class Product {
 
 	public void setInventory(Integer inventory) {
 		this.inventory = inventory;
+	}
+
+	public Integer getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Integer picture) {
+		this.picture = picture;
 	}
 
 	public Category getCategory() {
