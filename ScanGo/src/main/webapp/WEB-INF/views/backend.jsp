@@ -127,7 +127,6 @@ input {
 				單位：<input type="text" name="unit" required><br>
 				類別：<input type="number" name="categoryId" required><br>
 				庫存：<input type="number" name="inventory" required><br>
-				圖片：<input type="text" name="picture" required><br>
 				<input type="submit" value="新增商品">
 			</form>
 		</div>
