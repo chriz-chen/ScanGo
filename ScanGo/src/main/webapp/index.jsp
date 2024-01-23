@@ -6,6 +6,13 @@
 
 <%@ include file="/WEB-INF/header.jspf"%>
 
+<style>
+body {
+	background-color: #fffefb;
+}
+
+</style>
+
 <body>
 	<main id="MainContent" class="content-for-layout">
 		<!-- slideshow start -->
@@ -99,11 +106,11 @@
 					<div class="section-header text-center">
 						<h2 class="section-heading primary-color">本月優惠商品</h2>
 					</div>
-					<div class="row mb-5">
+					<div class="row mb-5 justify-content-center">
 						<div class="col-6">
 							<div class="product-card">
 								<div class="product-card-img">
-									<a class="hover-switch" href="collection-left-sidebar.html">
+									<a class="hover-switch" href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
 									     src="image/product/grocery/tissue/2.jpeg" alt="product-img"
 									     style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
@@ -207,10 +214,10 @@
 			<!-- collection end -->
 			
 			<!-- about service start -->
-                <div class="about-service pt-100 pb-100">
+                <!-- <div class="about-service pt-100 pb-100">
                     <div class="container">
                         <div class="section-header about-service-header text-center" data-aos="fade-up" data-aos-duration="700">
-                            <h2 class="section-heading">Services we provide to our valued customers</h2>
+                            <h2 class="section-heading">一掃即得，無憂購物新體驗！</h2>
                         </div>
                         <div class="about-service-wrapper">
                             <div class="row justify-content-center">
@@ -257,51 +264,51 @@
                         </div>
                     </div>
                 </div>
-                <!-- about service end -->
+                about service end
                 
                 <main id="MainContent" class="content-for-layout">
             <div class="about-page">
-                <!-- about hero start -->
-                <div class="about-hero mt-100">
+                about hero start
+                <div class="about-hero mt-5 mb-5">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-6 col-md-12 col-12">
+                            <div class="col-lg-6 col-md-12 col-12 ">
+                                <div class="about-hero-img mb-5 mx-auto text-center">
+								    <img src="image/reason.png" alt="img" style="max-width: 100%; border-radius: 20px;">
+								</div>
+
                                 <div class="about-hero-content">
-                                    <h2 class="about-hero-title">We Provide Expert Service and aim to have a long term with you</h2>
-                                    <p class="about-hero-subtitle">We provide a full range of front end mechanical repairs for all makes and models of cars, no matter</p>
+                                    <h2 class="about-hero-title">探索無人商店新境界，輕鬆購物，三步驟引領新體驗！</h2>
+                                    <p class="about-hero-subtitle fs-5">探索新型態購物：使用方式簡易，購物快感一掃而得</p>
                                     <ul class="about-hero-action p-0">
                                         <li class="action-item d-flex">
                                             <div class="action-count">01</div>
                                             <div class="action-content">
-                                                <h4 class="action-title"><a href="#">Get A Quote</a></h4>
-                                                <p class="action-subtitle">Through True Rich Attended does no end it his mother since real had half every.</p>
+                                                <h4 class="action-title"><a href="#">註冊會員，購物從容輕鬆啟程</a></h4>
+                                                <p class="action-subtitle">註冊會員，體驗購物的從容樂趣，立即感受前所未有的方便與輕鬆。</p>
                                             </div>
                                         </li>
                                         <li class="action-item d-flex">
                                             <div class="action-count">02</div>
                                             <div class="action-content">
-                                                <h4 class="action-title"><a href="#">Book An Appointment</a></h4>
-                                                <p class="action-subtitle">Through True Rich Attended does no end it his mother since real.</p>
+                                                <h4 class="action-title"><a href="#">輕鬆掃描，加入購物車</a></h4>
+                                                <p class="action-subtitle">利用內建 QR Code 掃描器，輕鬆掃描商品上的 QR Code，瞬間將心儀商品加入購物車。</p>
                                             </div>
                                         </li>
                                         <li class="action-item d-flex">
                                             <div class="action-count">03</div>
                                             <div class="action-content">
-                                                <h4 class="action-title"><a href="#">Get Your Service Done</a></h4>
-                                                <p class="action-subtitle">Ecstatic unsatiable saw his giving Remain expense you position concluded.</p>
+                                                <h4 class="action-title"><a href="#">簡易結帳，商品輕鬆帶回家</a></h4>
+                                                <p class="action-subtitle">完成結帳後，輕鬆帶出所選商品，體驗無人商店便利快捷的購物樂趣。</p>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-12">
-                                <div class="about-hero-img">
-                                    <img src="assets/img/about/about-hero.jpg" alt="img">
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- about hero end -->
 			
 			

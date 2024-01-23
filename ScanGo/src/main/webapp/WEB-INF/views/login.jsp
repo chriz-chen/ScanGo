@@ -8,6 +8,10 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+.btn-primary:hover {
+    background-color: #313d44;
+    color: #fff;
+}
 
 
 .login-form {
@@ -154,7 +158,7 @@
 						</div>
 						<sp:input type="text" path="username"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="test01" />
+							value="user123" />
 					</fieldset>
 				</div>
 				<div class="col-12">
@@ -166,7 +170,7 @@
 						</div>
 						<sp:input type="password" path="password"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="test01" />
+							value="1234" />
 					</fieldset>
 				</div>
 				<div class="col-12">
