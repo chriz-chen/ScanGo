@@ -56,6 +56,10 @@ td:nth-child(2) {
     min-width: 120px;
 }
 
+td:nth-child(3) {
+    text-align: right;
+}
+
 td:nth-child(4) {
 	min-width: 60px;
 	text-align: center;
@@ -66,8 +70,9 @@ td:nth-child(5), td:nth-child(6) {
 	text-align: center;
 }
 
-td:nth-child(3), td:nth-child(7) {
-    text-align: right;
+td:nth-child(7) {
+	min-width: 50px;
+	text-align: right;
 }
 
 form {
