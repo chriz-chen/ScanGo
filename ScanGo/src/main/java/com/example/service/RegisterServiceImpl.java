@@ -34,7 +34,9 @@ public class RegisterServiceImpl implements RegisterService {
 		user.setEmail(registerUser.getEmail());
 		user.setPhone(registerUser.getPhone());
 		user.setBirthday(registerUser.getBirthday());
-		//user.setAvator(avator);
+		user.setAuthType("ScanGo");
+		user.setLevel(1);
+		
 
 		int rowCount = userDAO.addUser(user);
 		

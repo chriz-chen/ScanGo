@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS `scango`.`USER` (
   `password` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NULL,
   `phone` VARCHAR(50) NULL,
-  `birthday` TIMESTAMP NULL,
+  `birthday` DATE NULL,
   `level` INT NULL,
-  `authType` ENUM('local', 'github', 'google') NULL DEFAULT 'local',
+  `authType` ENUM('local', 'google') NULL DEFAULT 'local',
   `authId` VARCHAR(100) NULL,
   `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`userId`),
@@ -56,6 +56,10 @@ CREATE TABLE IF NOT EXISTS `scango`.`USER` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+set @@global.time_zone = '+8:00';
+
+SELECT @@global.time_zone;
 
 
 -- -----------------------------------------------------

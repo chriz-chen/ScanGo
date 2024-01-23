@@ -118,8 +118,10 @@ preload="auto"></audio>
   		    });
 			*/
 			
+			
+
             html5QrCode.start(
-            /*     { facingMode: "environment" }, // 後置鏡頭
+                 { facingMode: "environment" }, // 後置鏡頭
                 { fps: 10, qrbox: { width: 250, height: 250 } /* , aspectRatio: 3/4 */}, 
                 (decodedText, decodedResult) => {
                       $.ajax({
@@ -135,7 +137,7 @@ preload="auto"></audio>
           		        }
           		    });
                 }
-            );	
+            );
         }
         
         function closeScan() {

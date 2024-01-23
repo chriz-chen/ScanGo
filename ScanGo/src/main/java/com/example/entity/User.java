@@ -47,6 +47,10 @@ public class User {
 	private String authType; // 授權來源
 	private String authId; // 授權Id
 	
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")     
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	@Temporal(TemporalType.DATE)
 	private Date createDate;
 	//private String avator; // 使用者大頭照
 	

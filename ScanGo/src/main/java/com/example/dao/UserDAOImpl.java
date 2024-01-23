@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	//	1. 查詢所有使用者(多筆)
 	@Override
 	public List<User> findAllUsers() {
-		String sql = "select userId, username, password, phone, email, birthday, authType, authId from user";
+		String sql = "select userId, username, password, phone, email, birthday, authType, authId, createDate ,level from user";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 	}
 	
