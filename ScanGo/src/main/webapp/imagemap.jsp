@@ -46,23 +46,23 @@ footer {
 	var areaContent = {
 		五金雜貨區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/product">清潔用品</a></li>
-				<li><a href="/ScanGo/index.jsp">廚房用品</a></li>
-				<li><a href="/ScanGo/index.jsp">衛生紙</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/1">清潔用品</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/2">廚房用品</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/3">衛生紙</a></li>
 			</ul>
 		`,
 		零食飲料區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/searchProduct/6">汽水</a></li>
-				<li>餅乾</li>
-				<li>茶</li>
+				<li><a href="/ScanGo/mvc/searchProduct/4">汽水</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/5">餅乾</li>
+				<li><a href="/ScanGo/mvc/searchProduct/6">茶</li>
 			</ul>
 		`,
 		家電用品區 : `
 			<ul>
-				<li>季節家電</li>
-				<li>美體家電</li>
-				<li>廚房家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/7">季節家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/8">美體家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/9">廚房家電</li>
 			</ul>
 		`
 	};

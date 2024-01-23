@@ -85,10 +85,19 @@ ${userList}
                         <td>${user.username}</td>
                         <td>${user.email}</td>
                         <td>${user.phone}</td>
-                        <td><fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd" /></td>
+						<td>
+						    <c:choose>
+						        <c:when test="${empty user.birthday}">
+						            None
+						        </c:when>
+						        <c:otherwise>
+						            <fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd" />
+						        </c:otherwise>
+						    </c:choose>
+						</td>
                         <td>${user.authType}</td>
                         <td><fmt:formatDate value="${user.createDate}" pattern="yyyy-MM-dd" /></td>
-                        <td>${user.level}</td>
+                        <td>${user.level.levelName}</td>
                     </tr>
                 </c:forEach>
             </tbody>

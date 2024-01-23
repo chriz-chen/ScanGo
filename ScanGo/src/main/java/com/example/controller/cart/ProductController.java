@@ -45,6 +45,8 @@ public class ProductController {
 	@GetMapping("/backend")
 	public String showProductBackend(Model model) {
 		List<Product> productList = productDao.findAllProducts();
+
+		
 		model.addAttribute("productList", productList);
 		
 		return "backend";

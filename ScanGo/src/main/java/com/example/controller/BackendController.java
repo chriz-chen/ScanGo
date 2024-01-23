@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.dao.LevelDAO;
 import com.example.dao.UserDAO;
 import com.example.entity.Product;
 import com.example.entity.User;
@@ -19,6 +20,9 @@ public class BackendController {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private LevelDAO levelDAO;
 	
 	
 	

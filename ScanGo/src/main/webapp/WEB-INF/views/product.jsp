@@ -103,7 +103,7 @@
 											</div>
 											<div class="modal-body">
 												<!-- 这里添加模态框的内容 -->
-												灰常好喝!
+												
 											</div>
 										</div>
 									</div>
