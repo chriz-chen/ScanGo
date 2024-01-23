@@ -35,7 +35,8 @@ public class LoginFilter extends HttpFilter {
 				|| urlString.endsWith(".css") 
 				|| urlString.endsWith(".js")
 				|| urlString.endsWith("/getcode")
-				|| urlString.endsWith("/google")) {
+				|| urlString.endsWith("/google")
+				|| urlString.endsWith("/product-info")) {
 			chain.doFilter(request, response);
 			return;
 		}
