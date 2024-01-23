@@ -15,5 +15,11 @@ public interface ProductDAO {
 	
 	//根據類別ID來查找商品(多筆)
 	List<Product> findProductsByCategoryId(Integer categoryId);
-		
+	
+	//新增商品
+	void addProduct(Product product);
+	
+	//修改商品庫存
+	Boolean updateInventory(Integer productId, Integer inventory);
+	
 }

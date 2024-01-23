@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <style>
 .cart-drawer-heading {
