@@ -43,6 +43,20 @@ public class ProductDAOImpl implements ProductDAO {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), categoryId);
 	}
 
+	//新增商品
+	@Override
+	public void addProduct(Product product) {
+		String sql = "insert into product (productName, price, unit, categoryId, inventory) values (?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(), product.getCategoryId(), product.getInventory());
+	}
 
+	//修改商品資料
+	@Override
+	public Boolean updateInventory(Integer productId, Integer inventory) {
+		
+		return null;
+	}
+
+	
 
 }
