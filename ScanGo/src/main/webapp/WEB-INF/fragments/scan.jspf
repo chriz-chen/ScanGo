@@ -17,6 +17,7 @@
 }
 
 
+
 </style>
 
 
@@ -54,7 +55,7 @@ preload="auto"></audio>
 			</div>
 			<!-- modal-header -->
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">掃描商品 QR Code</h5>
+				<h5 class="modal-title" id="exampleModalLabel">請掃描商品上 QR Code </h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeScan()"></button>
 			</div>
 			<!-- modal-body -->
@@ -67,18 +68,25 @@ preload="auto"></audio>
 			</div>
 			<!-- modal-footer -->
 			<div class="modal-footer justify-content-between" style="display: flex; align-items: flex-end">
-				<div>
+				<div style="font-size: 1.2em; margin-right: 10px;">
 					<!-- 接收 AJAX 的資料 -->
 					<input type="hidden" id="productId" name="productId" value="">
-					<h3 id="productName" style="font-size: 1.5em;"></h3>
-					<p style="font-size: 1.2em;">售價：<span id="productPrice"></span></p>
-					<p style="font-size: 1.2em; " class="d-inline">數量：
+					<h3 id="productName" style="font-size: 1.5em; margin-left: 5px;"></h3>
+					<p style="font-size: 1.2em; margin-right: 20px; margin-left: 5px;">售價：<span id="productPrice" style="margin-left: 58px"></span> &nbsp;元</p>
+					<div class="d-flex align-items-baseline text-center mt-2">
+					    <p style="font-size: 1.2em; margin-right: 20px; margin-left: 5px;" class="d-inline">數量：</p>
 					    <div class="quantity d-flex align-items-center">
-					        <button class="qty-btn dec-qty"><img src="assets/img/icon/minus.svg" alt="minus"></button>
-					        <input class="qty-input" type="number" name="qty" value="1" min="0" id="productQuantity" name="productQuantity" style="font-size: 1em;">
-					        <button class="qty-btn inc-qty"><img src="assets/img/icon/plus.svg" alt="plus"></button>
-					    </div>
-					</p>
+						    <button class="qty-btn dec-qty">
+						        <img src="assets/img/icon/minus.svg" alt="minus">
+						    </button>
+						    <input class="qty-input" type="number" name="qty" value="1" min="0" style="font-size: 1.2em;" id="productQuantity" name="productQuantity">
+						    <button class="qty-btn inc-qty">
+						        <img src="assets/img/icon/plus.svg" alt="plus">
+						    </button>
+						</div>
+
+					</div>
+
 
 
 					<!-- <input type="number" id="productQuantity" name="productQuantity" value="1" class="text-center productQuantity"/> -->
@@ -106,9 +114,9 @@ preload="auto"></audio>
 			}
 			
 			// 測試用
-			/*
+			
 			$.ajax({
-  		        url: 'http://localhost:8080/ScanGo/mvc/product/3',
+  		        url: 'http://localhost:8080/ScanGo/mvc/product/13',
   		        dataType: 'json',
   		        success: function ( data ){
   		            $('#productId').val(data['productId']);
@@ -116,12 +124,12 @@ preload="auto"></audio>
   		            $('#productPrice').text(data['price']);
   		        }
   		    });
-			*/
+			
 			
 			
 
             html5QrCode.start(
-                 { facingMode: "environment" }, // 後置鏡頭
+                { facingMode: "environment" }, // 後置鏡頭
                 { fps: 10, qrbox: { width: 250, height: 250 } /* , aspectRatio: 3/4 */}, 
                 (decodedText, decodedResult) => {
                       $.ajax({
@@ -138,6 +146,7 @@ preload="auto"></audio>
           		    });
                 }
             );
+            
         }
         
         function closeScan() {

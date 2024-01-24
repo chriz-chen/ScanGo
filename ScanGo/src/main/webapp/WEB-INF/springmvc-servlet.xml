@@ -89,5 +89,22 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="#{1024 * 1024 * 50}"></property>
     </bean>
+    
+    
+    <!-- 定義攔截器 Bean -->
+    <bean class="com.example.interceptor.LoginInterceptor"/>
+    
+	<!--配置攔截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/login/getcode"/>
+            <mvc:exclude-mapping path="/login/**"/>
+            <mvc:exclude-mapping path="/register"/>
+            <mvc:exclude-mapping path="/index.jsp"/>
+            <bean class="com.example.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+     
 
 </beans>		

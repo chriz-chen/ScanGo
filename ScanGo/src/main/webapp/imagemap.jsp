@@ -4,24 +4,30 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+body {
+	background-color: #fffefb;
+}
+
 .map {
-	height: 90vh; 
+	height: 90vh;
 }
 
 figcaption {
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.6);
 	height: 200px;
 	transform: translate(0, 200px);
 	transition: transform 0.5s, opacity 0.5s;
-	color: #fff;
+	color: #f5f4f1;
 }
 
 figcaption h4 {
 	color: #fff;
+	letter-spacing: 5px;
+	font-size: 28px;
 }
 
 figcaption p {
-	font-size: 20px;
+	font-size: 22px;
 }
 
 img[usemap] {
@@ -46,23 +52,23 @@ footer {
 	var areaContent = {
 		五金雜貨區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/searchProduct/1">清潔用品</a></li>
-				<li><a href="/ScanGo/mvc/searchProduct/2">廚房用品</a></li>
-				<li><a href="/ScanGo/mvc/searchProduct/3">衛生紙</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/1" class="link-light">清潔用品</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/2" class="link-light">廚房用品</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/3" class="link-light">衛生紙</a></li>
 			</ul>
 		`,
 		零食飲料區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/searchProduct/4">汽水</a></li>
-				<li><a href="/ScanGo/mvc/searchProduct/5">餅乾</li>
-				<li><a href="/ScanGo/mvc/searchProduct/6">茶</li>
+				<li><a href="/ScanGo/mvc/searchProduct/4" class="link-light">汽水</a></li>
+				<li><a href="/ScanGo/mvc/searchProduct/5" class="link-light">餅乾</li>
+				<li><a href="/ScanGo/mvc/searchProduct/6" class="link-light">茶</li>
 			</ul>
 		`,
 		家電用品區 : `
 			<ul>
-				<li><a href="/ScanGo/mvc/searchProduct/7">季節家電</li>
-				<li><a href="/ScanGo/mvc/searchProduct/8">美體家電</li>
-				<li><a href="/ScanGo/mvc/searchProduct/9">廚房家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/7" class="link-light">季節家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/8" class="link-light">美體家電</li>
+				<li><a href="/ScanGo/mvc/searchProduct/9" class="link-light">廚房家電</li>
 			</ul>
 		`
 	};
