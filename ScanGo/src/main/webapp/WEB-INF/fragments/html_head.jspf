@@ -65,6 +65,29 @@
             --section-subheading-font-size: 16px;
             --section-subheading-font-weight: 400;
         }
+        
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Righteous&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,800&display=swap');
+        /* 
+        font-family: 'Noto Sans TC', sans-serif 中文 ;
+        font-family: 'Righteous', cursive;  英文
+        font-family: 'Righteous','Noto Sans TC',sans-serif;
+        */
+
+        /* 設定變數，可以讓以下共用 */
+
+        :root {
+            --f-family-1: 'Open Sans', 'Noto Sans TC', sans-serif;
+
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                "Liberation Sans", sans-serif,
+                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        }
     </style>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/vendor.css">

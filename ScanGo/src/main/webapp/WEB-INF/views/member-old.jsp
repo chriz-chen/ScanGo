@@ -14,8 +14,6 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <title>會員資訊</title>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
 .breadcrumb {
 	background-color: white; /* 使用整體背景色 */
@@ -28,6 +26,17 @@
 
 .breadcrumb a:hover {
 	color: #0056b3; /* 鼠標懸停時的文字顏色 */
+}
+
+.btn {
+    background-color: #00234D;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* 添加過渡效果 */
+}
+
+.btn:hover {
+    background-color: red; /* 滑鼠懸停時的背景色 */
 }
 
 .member-area {
@@ -59,29 +68,14 @@
 	margin: 0 auto; /* 水平居中 */
 }
 
-.comfirmButton {
-	background-color: #007bff; /* 使用 Bootstrap 的原生顏色 */
-	color: #fff; /* 文字顏色 */
-}
 
 .error-message {
 	color: red;
 }
-
-label {
-	font-size: 18px !important;
-	margin-left: 5px;
-	letter-spacing: 5px !important;
-}
-
-.form-control{
-	font-size: 16px; 
-	padding: 8px; 
-	letter-spacing: 4px;
-}
 </style>
 </head>
 <body>
+
 	<main id="MainContent" class="content-for-layout vh-100">
 		<!-- breadcrumb start -->
 		<div class="breadcrumb">
@@ -103,53 +97,43 @@ label {
 		</div>
 		<!-- breadcrumb end -->
 
-		<form
-			action="${pageContext.request.contextPath}/mvc/member/updateProfile"
-			method="post">
-			<div class="member-area pt-5 pb-5">
-				<div class="container">
-					<div class="member-area-inner">
-						<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
-						<p class="text-center text-success fs-5" id="successMessage">${message}</p>
-						<div class="section-header member-area-header text-center mb-5">
-							<h2 class="section-heading">會員資料</h2>
-						</div>
-						<div class="row">
-							<div class="col-md-6 offset-md-3">
-								<input type="hidden" name="userId" value="${user.userId}">
-								<div class="form-group">
-									<label for="username">帳號:</label> <input type="text"
-										id="username" name="username" class="form-control"
-										value="${user.username}" disabled>
-								</div>
-								<div class="form-group">
-									<label for="email">信箱:</label> <input type="email" id="email"
-										name="email" class="form-control" value="${user.email}" disabled>
-								</div>
+		<div class="member-area pt-5 pb-5">
+			<div class="container">
+				<div class="member-area-inner">
+					<div class="section-header member-area-header text-center mb-5">
+						<h2 class="section-heading">會員資料</h2>
+					</div>
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							<div class="member-content text-center">
+								<h4 class="title">帳號</h4>
+								<p class="information">${ user.username }</p>
+							</div>
+							<div class="member-content text-center">
+								<h4 class="title">信箱</h4>
+								<p class="information">${ user.email }</p>
+							</div>
+							<div class="member-content text-center">
+								<h4 class="title">手機</h4>
+								<p class="information">${ user.phone }</p>
+							</div>
+							<div class="member-content text-center">
+								<h4 class="title">生日</h4>
+								<p class="information">
+									<fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd" />
+								</p>
+							</div>
+							<!-- 按鈕觸發 Modal -->
+							<div class="text-center mt-4">
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px"
+									data-toggle="modal" data-target="#passwordChangeModal">密碼變更
+								</button> 
+								<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
+								onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
+								</button>
 
-								<div class="form-group">
-									<label for="phone">手機:</label> <input type="text" id="phone"
-										name="phone" class="form-control" value="${user.phone}"
-										disabled>
-								</div>
-								<div class="form-group">
-									<label for="birthday">生日:</label> <input type="date"
-										id="birthday" name="birthday" class="form-control"
-										value="<fmt:formatDate value='${user.birthday}' pattern='yyyy-MM-dd' />"
-										disabled>
-								</div>
-								
-								<div class="text-center mt-4">
-									<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px"
-										data-toggle="modal" data-target="#passwordChangeModal">密碼變更
-									</button> 
-									<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
-									onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
-									</button>
-	
-								</div>
-
-
+								<%-- <a href="${pageContext.request.contextPath}/mvc/member/updateProfile" 
+								class="btn confirmButton" style="background-color: #00234D; color: #fff; font-size: 16px">修改會員資料</a> --%>
 							</div>
 						</div>
 					</div>
@@ -194,16 +178,21 @@ label {
 					</div>
 				</div>
 			</div>
-		</form>
+		</div>
 	</main>
 
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-	<script>
+	<%@ include file="/WEB-INF/footer.jspf"%>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
 /*
 var errormessage = '${ errorMessage }';
 var modal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {
@@ -231,13 +220,3 @@ $(document).ready(function() {
     });
 });
 </script>
-	
-	
-
-	<%@ include file="/WEB-INF/footer.jspf"%>
-</body>
-</html>
-
-
-
-

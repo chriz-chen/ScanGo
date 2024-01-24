@@ -104,7 +104,7 @@ body {
 			<div class="collection-tab-inner">
 				<div class="container">
 					<div class="section-header text-center">
-						<h2 class="section-heading primary-color">本月優惠商品</h2>
+						<h2 class="section-heading primary-color" style="line-height: 2;">本月優惠商品</h2>
 					</div>
 					<div class="row mb-5 justify-content-center">
 						<div class="col-6">

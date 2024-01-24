@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dao.LevelDAO;
+import com.example.dao.OrderDAO;
 import com.example.dao.UserDAO;
+import com.example.entity.Orders;
 import com.example.entity.Product;
 import com.example.entity.User;
 
@@ -24,6 +27,9 @@ public class BackendController {
 	@Autowired
 	private LevelDAO levelDAO;
 	
+	@Autowired
+	private OrderDAO orderDao;
+	
 	
 	
 	// 顯示 UserBackend 頁面
@@ -35,7 +41,14 @@ public class BackendController {
 		return "backend-user";
 	}
 	
-	
+	@GetMapping("/historyorderByManager/{userId}")
+	 public String historyorderBackendPage(@PathVariable("userId") Integer userId, Model model) {
+	  
+	  List<Orders> orders = orderDao.findOrderByUserId(userId);
+	  model.addAttribute("orders", orders);
+	  
+	  return "historyorder";
+	 }
 	
 	
 }

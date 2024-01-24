@@ -9,7 +9,7 @@
 
 <%@ include file="/WEB-INF/header.jspf"%>
 <!DOCTYPE html>
-
+ 
 
 <%
 	// 使用 Java 代碼獲取列表大小
@@ -42,7 +42,27 @@
             $('.pure-table').DataTable({
                 // Set language to Traditional Chinese
                 "language": {
-                    "url": "/js/datatables_zh_tw.json"
+                	"sProcessing":   "處理中...",
+                	"sLengthMenu":   "顯示 _MENU_ 項結果",
+                	"sZeroRecords":  "沒有匹配結果",
+                	"sInfo":         "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                	"sInfoEmpty":    "顯示第 0 至 0 項結果，共 0 項",
+                	"sInfoFiltered": "(由 _MAX_ 項結果過濾)",
+                	"sInfoPostFix":  "",
+                	"sSearch":       "搜索:",
+                	"sEmptyTable":     "表中數據為空",
+                	"sLoadingRecords": "載入中...",
+                	"sInfoThousands":  ",",
+                	"oPaginate": {
+                		"sFirst":    "首頁",
+                		"sPrevious": "上頁",
+                		"sNext":     "下頁",
+                		"sLast":     "末頁"
+                	},
+                	"oAria": {
+                		"sSortAscending":  ": 以升序排列此列",
+                		"sSortDescending": ": 以降序排列此列"
+                	}
                 },
                 // Set export functionality
                 dom: 'lBfrtip',
@@ -62,9 +82,8 @@
     </style>
 </head>
 <body>
-${userList}
-	<div class="container-lg vh-100">
-    <h2>會員管理後台</h2>
+	<div class="container-lg vh-100 mt-5">
+    <h2 class="text-center">會員管理後台</h2>
         <table class="pure-table pure-table-bordered">
             <thead>
                 <tr>
@@ -76,6 +95,8 @@ ${userList}
                     <th>來源</th>
                     <th>創建日期</th>
                     <th>權限</th>
+                    <th>訂單</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -98,6 +119,10 @@ ${userList}
                         <td>${user.authType}</td>
                         <td><fmt:formatDate value="${user.createDate}" pattern="yyyy-MM-dd" /></td>
                         <td>${user.level.levelName}</td>
+                        <td><button class="show-userId-orderitem"
+					       data-href="/ScanGo/mvc/backend/historyorderByManager/${user.userId}">
+					       查看</button>
+					      </td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -106,6 +131,20 @@ ${userList}
 			</tfoot>
         </table>
         </div>
+        
+        
+<script>
+// 使用 JavaScript 為每個按鈕添加點擊事件處理程序
+document.querySelectorAll('.show-userId-orderitem').forEach(button => {
+    button.addEventListener('click', function () {
+        // 使用 const 或 let 代替 var
+        const url = this.getAttribute('data-href');
+        
+        // 使用 const 或 let 代替 var
+        window.location.href = url;
+    });
+});
+</script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>
 </body>
