@@ -95,6 +95,8 @@
                     <th>來源</th>
                     <th>創建日期</th>
                     <th>權限</th>
+                    <th>訂單</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -117,6 +119,10 @@
                         <td>${user.authType}</td>
                         <td><fmt:formatDate value="${user.createDate}" pattern="yyyy-MM-dd" /></td>
                         <td>${user.level.levelName}</td>
+                        <td><button class="show-userId-orderitem"
+					       data-href="/ScanGo/mvc/backend/historyorderByManager/${user.userId}">
+					       查看</button>
+					      </td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -125,6 +131,20 @@
 			</tfoot>
         </table>
         </div>
+        
+        
+<script>
+// 使用 JavaScript 為每個按鈕添加點擊事件處理程序
+document.querySelectorAll('.show-userId-orderitem').forEach(button => {
+    button.addEventListener('click', function () {
+        // 使用 const 或 let 代替 var
+        const url = this.getAttribute('data-href');
+        
+        // 使用 const 或 let 代替 var
+        window.location.href = url;
+    });
+});
+</script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>
 </body>
