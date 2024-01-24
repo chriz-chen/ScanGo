@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,13 @@ public class ProductDAOImpl implements ProductDAO {
 		String sql = "select * from product";
 		List<Product> products = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
 		products.forEach(productItem -> {
+			byte[] picture = productItem.getPicture();
+	        if (picture != null) {
+	            // 將 BLOB 資料轉換為 base64 字串
+	            String base64Image = Base64.getEncoder().encodeToString(picture);
+	            productItem.setBase64Image(base64Image);
+	        }
+			
 			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
 		});
 		

@@ -159,7 +159,7 @@ input[type="radio"]:checked ~ label:before {
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p class="subtotal-value">$${orders.discountTotalPrice}</p>
+									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
 								</div>
 							</div>
 

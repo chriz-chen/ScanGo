@@ -103,7 +103,8 @@
 											</div>
 											<div class="modal-body">
 												<!-- 这里添加模态框的内容 -->
-												
+												<span style="font-size: 22px;">目前庫存: 20 瓶</span><br>
+                								<span style="font-size: 22px;">商品位置: 零食飲料區 汽水類 D-2</span>
 											</div>
 										</div>
 									</div>

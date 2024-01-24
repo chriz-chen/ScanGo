@@ -6,6 +6,10 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+body {
+    overflow: auto;
+}
+
 .page-container {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
@@ -82,6 +86,15 @@ form {
 input {
 	margin-bottom: 10px;
 }
+
+body.modal-open {
+    overflow: hidden;
+}
+
+body.modal-open {
+    overflow: auto;
+}
+
 </style>
 
 <div class="page-container">
@@ -115,7 +128,12 @@ input {
 							<td>${product.category.categoryPart}</td>
 							<td>${product.category.categoryName}</td>
 							<td>${product.inventory}</td>
-							<td>${product.picture}</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+										data-bs-target="#imageModal" data-image="data:image/jpeg;base64,${product.base64Image}">
+									顯示
+                        		</button>
+							</td>
 							<td>${product.isLaunch}</td>
 						</tr>
 					</c:forEach>
@@ -137,6 +155,36 @@ input {
 		</div>
 	</div>
 
+
+
+
+<!-- Modal -->
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">商品圖片</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="img-fluid" alt="Product Image">
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+</div>
+
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+    $('#imageModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var imageURL = button.data('image');
+        var modal = $(this);
+        modal.find('#modalImage').attr('src', imageURL);
+    });
+</script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>
