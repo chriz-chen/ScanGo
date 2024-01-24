@@ -56,7 +56,7 @@
 	<div class="collection-tab-inner">
 		<div class="container">
 			<div class="section-header text-center">
-				<h2 class="section-heading primary-color">Snack</h2>
+				<h2 class="section-heading primary-color">${category}</h2>
 			</div>
 			<div class="row mb-5">
 				<c:forEach var="product" items="${products}">
@@ -64,7 +64,7 @@
 						<div class="product-card">
 							<div class="product-card-img">
 								<a class="hover-switch"> <img class="primary-img"
-									src="/ScanGo/image/product/snack/soda/coke.png"
+									src="data:image/jpeg;base64,${product.base64Image}"
 									alt="product-img">
 								</a>
 
@@ -103,7 +103,8 @@
 											</div>
 											<div class="modal-body">
 												<!-- 这里添加模态框的内容 -->
-												
+												<span style="font-size: 22px;">目前庫存: 20 瓶</span><br>
+                								<span style="font-size: 22px;">商品位置: 零食飲料區 汽水類 D-2</span>
 											</div>
 										</div>
 									</div>

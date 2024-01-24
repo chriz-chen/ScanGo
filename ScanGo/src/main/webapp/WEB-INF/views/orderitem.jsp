@@ -134,7 +134,7 @@ input[type="radio"]:checked ~ label:before {
 								<div class="minicart-item d-flex">
 									<div class="mini-img-wrapper">
 										<img class="mini-img"
-											src="/ScanGo/image/product/snack/soda/coke.png" alt="img">
+											src="data:image/jpeg;base64,${orderItem.product.base64Image}" alt="img">
 									</div>
 									<div class="product-info">
 										<h2 class="product-title">
@@ -159,7 +159,7 @@ input[type="radio"]:checked ~ label:before {
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p class="subtotal-value">$${orders.discountTotalPrice}</p>
+									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
 								</div>
 							</div>
 
