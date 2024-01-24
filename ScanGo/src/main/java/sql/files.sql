@@ -76,3 +76,4 @@ insert into user(userName, password, email, phone, birthday, levelId, authType, 
 insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('ssss23', 'wqewqeffewfewfeeg71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'usewqwq3@gmail.com', '0977722213', '1992-12-23', 1, 'ScanGo','2024-12-30');
 insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sdsad123', 'wqewedsdqdeqfeecx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user12@gmail.com', '0945772213', '1979-12-26', 1, 'ScanGo','2024-12-30');
 
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('admin', '$2a$10$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'admin@gmail.com', '0945772213', '1979-12-26', 2, 'ScanGo','2024-12-30');
