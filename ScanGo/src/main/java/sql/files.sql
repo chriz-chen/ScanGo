@@ -50,7 +50,29 @@ insert into product(productName, price, unit, categoryId, inventory) values('大
 
 
 
-----------------------USER------------------------
-Insert into level(levelId, levelName) values(1,'顧客');
-Insert into level(levelId, levelName) values(2,'管理員');
+-- --------------------------------------------USER-------------------------------------------------------------------------
+insert into level(levelId, levelName) values(1,'顧客');
+insert into level(levelId, levelName) values(2,'管理員');
+
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('user123', '$2a$10$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user123@gmail.com', '0922777213', '1978-10-28', 1, 'ScanGo', '2024-12-25');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('user456', 'qwewa$10$JSfM9nCScx71EfKdsadsadsadsadsadsdqwewqeQkGN5hyxv5zi', 'user456@gmail.com', '0960455213', '1990-11-12', 1, 'Google', '2024-12-25');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('uservfdv789', 'wqewqeqweqefsadasdasdKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user789@gmail.com', '0912137213', '1998-01-02', 1, 'ScanGo', '2024-12-26');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('user111', '21312wqeqwesafewfewtewt23r32fffNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'zxc1@gmail.com', '0960222213', '1999-05-11', 1, 'Google', '2024-12-26');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('uservv222', 'wqeqwewqewqewqewqfeq;wq923213wqe12341Z3bI9g33FtUQkGN5hyxv5zi', 'weqwuu@gmail.com', '0960727213', '1980-05-07', 1, 'Google', '2024-12-26');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('user333', 'wqewqedf123214sadsdsdsadqwlk3iuro3rkjk3bI9g33FtUQkGN5hyxv5zi', 'usuuus@gmail.com', '0960111213', '1988-06-22', 1, 'ScanGo', '2024-12-26');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('quwuqeq', '123213saSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQewrewrewrew', 'user091@gmail.com', '0919277213', '2000-11-22', 1, 'ScanGo', '2024-12-26');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('uasdasd', '213efewfM9nCScx71EfKemrdsKepMNffffeewZ3bI9g33ewwerewrewrfdfw', 'user111@gmail.com', '0960723223', '1966-10-10', 1, 'ScanGo', '2024-12-27');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('usewzqwe', '$2a$10$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'userdqsa@gmail.com', '0960222213', '1963-01-25', 1, 'ScanGo', '2024-12-27');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('qazcccc', '$2a$10$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'uuopqqg@mail.com', '0961234513', '1993-02-09', 1, 'Google', '2024-12-27');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('uwqeweqwe', 'rdsKepMNfff9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'wqoie1@gmail.com', '0960777213', '1992-10-14', 1, 'ScanGo', '2024-12-27');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('uvfvfdvf', 'wefewfwerdsKepMcx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'paosnd@gmail.com', '0960777213', '1972-03-20', 1, 'ScanGo', '2024-12-27');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('usadsad3', '$eqwes$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user21421@gmail.com', '0911777213', '1979-11-29', 1, 'Google', '2024-12-28');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('usdsa123', 'sdadwq$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', '000111@gmail.com', '09600996623', '1979-01-09', 1, 'Google','2024-12-29');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sadsadsaxz3', 'wwwqqewdddd9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'snacp@gmail.com', '0960777213', '1993-11-22', 1, 'ScanGo','2024-12-29');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sadsad23', 'rdsKepMNffffScx71EfKemrdsKepMNJXItZZ3bIwqewqdsadasdqwreqf5zi', '0011212@gmail.com', '0900777213', '2004-03-01', 1, 'Google','2024-12-29');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('cxcasc23', '$wqewqCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUwqewedsascasckji5zi', 'sddqwqwd@gmail.com', '09970777213', '2005-11-28', 1, 'Google','2024-12-30');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sadsad3', '$2a$10$JSfM9nCScx71EfKemrdsKepMefewfewfewfdsvvrgregreggreggr', 'qwert@gmail.com', '092034413', '1956-10-02', 1, 'ScanGo','2024-12-30');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('usaff123', 'rdsKepMNffffwwefewfEfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'qazxsw@gmail.com', '0919777213', '1977-09-22', 1, 'ScanGo','2024-12-30');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('ssss23', 'wqewqeffewfewfeeg71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'usewqwq3@gmail.com', '0977722213', '1992-12-23', 1, 'ScanGo','2024-12-30');
+insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sdsad123', 'wqewedsdqdeqfeecx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user12@gmail.com', '0945772213', '1979-12-26', 1, 'ScanGo','2024-12-30');
 

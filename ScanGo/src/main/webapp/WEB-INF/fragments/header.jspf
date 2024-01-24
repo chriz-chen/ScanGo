@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file="/WEB-INF/fragments/html_head.jspf"%>
+
  <!-- header start -->
  <header class="sticky-header border-btm-black header-1">
      <div class="header-bottom">
@@ -15,8 +17,8 @@
                  </div>
                  <div class="col-8">
                      <div class="header-action d-flex align-items-center justify-content-end">
-                     	 <a class="nav-link" href="${pageContext.request.contextPath}/mvc/backend">後台商品管理</a>
-                     	 <a class="nav-link" href="${pageContext.request.contextPath}/mvc/backend/user">後台會員管理</a>
+                     	 <a class="nav-link d-none d-lg-block" href="${pageContext.request.contextPath}/mvc/backend">後台商品管理</a>
+                     	 <a class="nav-link d-none d-lg-block" href="${pageContext.request.contextPath}/mvc/backend/user">後台會員管理</a>
                      	 
                          <a class="header-action-item header-cart" href="#drawer-cart" data-bs-toggle="offcanvas" onclick="loadCartData()">
                              <svg class="icon icon-cart" width="24" height="26" viewBox="0 0 24 26" fill="none"

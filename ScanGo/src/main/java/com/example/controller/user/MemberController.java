@@ -98,6 +98,9 @@ public class MemberController {
 	    return result;
 	}
 	
+	
+	
+	// 修改會員資料
 	// http://localhost:8080/ScanGo/mvc/member/updateProfile
 	
 	@GetMapping("/member/updateProfile")

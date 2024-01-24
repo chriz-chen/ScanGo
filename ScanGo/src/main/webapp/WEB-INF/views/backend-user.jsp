@@ -42,7 +42,27 @@
             $('.pure-table').DataTable({
                 // Set language to Traditional Chinese
                 "language": {
-                    "url": "/js/datatables_zh_tw.json"
+                	"sProcessing":   "處理中...",
+                	"sLengthMenu":   "顯示 _MENU_ 項結果",
+                	"sZeroRecords":  "沒有匹配結果",
+                	"sInfo":         "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                	"sInfoEmpty":    "顯示第 0 至 0 項結果，共 0 項",
+                	"sInfoFiltered": "(由 _MAX_ 項結果過濾)",
+                	"sInfoPostFix":  "",
+                	"sSearch":       "搜索:",
+                	"sEmptyTable":     "表中數據為空",
+                	"sLoadingRecords": "載入中...",
+                	"sInfoThousands":  ",",
+                	"oPaginate": {
+                		"sFirst":    "首頁",
+                		"sPrevious": "上頁",
+                		"sNext":     "下頁",
+                		"sLast":     "末頁"
+                	},
+                	"oAria": {
+                		"sSortAscending":  ": 以升序排列此列",
+                		"sSortDescending": ": 以降序排列此列"
+                	}
                 },
                 // Set export functionality
                 dom: 'lBfrtip',
@@ -62,7 +82,6 @@
     </style>
 </head>
 <body>
-${userList}
 	<div class="container-lg vh-100">
     <h2>會員管理後台</h2>
         <table class="pure-table pure-table-bordered">

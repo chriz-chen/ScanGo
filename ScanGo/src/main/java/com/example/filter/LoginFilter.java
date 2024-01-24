@@ -50,10 +50,13 @@ public class LoginFilter extends HttpFilter {
 			response.sendRedirect(request.getContextPath() + "/mvc/login");
 			return;
 		}
-		
 		// 若符合條件，則繼續執行過濾器鏈
 		chain.doFilter(request, response);
+		
+		
 
 	}
+	
+	
 
 }

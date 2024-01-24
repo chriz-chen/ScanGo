@@ -4,6 +4,10 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+body {
+	background-color: #fffefb;
+}
+
 .map {
 	height: 90vh;
 }
