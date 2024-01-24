@@ -101,6 +101,8 @@ input {
 						<th>分區</th>
 						<th>類別</th>
 						<th>庫存</th>
+						<th>圖片</th>
+						<th>上架</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -113,6 +115,8 @@ input {
 							<td>${product.category.categoryPart}</td>
 							<td>${product.category.categoryName}</td>
 							<td>${product.inventory}</td>
+							<td>${product.picture}</td>
+							<td>${product.isLaunch}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -121,12 +125,13 @@ input {
 
 		<div class="add-product-form">
 			<h2>新增商品</h2>
-			<form action="${pageContext.request.contextPath}/mvc/add-product" method="post">
+			<form action="${pageContext.request.contextPath}/mvc/add-product" method="post" enctype="multipart/form-data">
 				商品名稱：<input type="text" name="productName" required><br>
-				價格：<input type="number" name="price" required><br>
+				價格：<input type="number" name="price" required min="0"><br>
 				單位：<input type="text" name="unit" required><br>
 				類別：<input type="number" name="categoryId" required><br>
-				庫存：<input type="number" name="inventory" required><br>
+				庫存：<input type="number" name="inventory" required min="0" step="1"><br>
+				選擇圖片：<input type="file" name="productImg"><br>
 				<input type="submit" value="新增商品">
 			</form>
 		</div>

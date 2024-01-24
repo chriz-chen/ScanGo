@@ -133,6 +133,11 @@ function loadCartData() {
 			}
 			
 			// 尋找元素，確保它存在再進行賦值
+			var productImg = cartItemDiv.querySelector(".mini-img");
+			if (productImg) {
+				productImg.src = "data:image/jpeg;base64," + cart.product.base64Image;
+			}
+			
 			var productTitle = cartItemDiv.querySelector("#productTitle");
 			if (productTitle) {
 				productTitle.textContent = cart.product.productName;

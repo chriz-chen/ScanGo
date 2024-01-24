@@ -57,8 +57,15 @@ public class ProductDAOImpl implements ProductDAO {
 	//新增商品
 	@Override
 	public void addProduct(Product product) {
-		String sql = "insert into product (productName, price, unit, categoryId, inventory) values (?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(), product.getCategoryId(), product.getInventory());
+		String sql = "INSERT INTO product (productName, price, unit, categoryId, inventory, picture) VALUES (?, ?, ?, ?, ?, ?)";
+
+	    try {
+	    	// Assuming product.getPicture() returns byte[] data of the image
+	    	jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(),
+	    			product.getCategoryId(), product.getInventory(), product.getPicture());
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	//修改商品資料
@@ -68,4 +75,11 @@ public class ProductDAOImpl implements ProductDAO {
 		return null;
 	}
 
+	//變更商品上架狀態
+	@Override
+	public Boolean updateProductLaunch(Integer productId, Boolean isLaunch) {
+		String sql = "update product set isLaunch = ? where productId = ?";
+
+		return jdbcTemplate.update(sql, isLaunch, productId) > 0;
+	}
 }

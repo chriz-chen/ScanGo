@@ -64,7 +64,7 @@
 						<div class="product-card">
 							<div class="product-card-img">
 								<a class="hover-switch"> <img class="primary-img"
-									src="/ScanGo/image/product/${product.category.categoryPart}/${product.category.categoryName}/${product.productName}.png"
+									src="data:image/jpeg;base64,${product.base64Image}"
 									alt="product-img">
 								</a>
 
@@ -86,7 +86,7 @@
 								<div class="d-flex justify-content-between">
 									<button type="button" class="btn btn-primary btn-lg"
 										onclick="openModal('productDetailsModal_${product.productId}')">商品資訊</button>
-									<button type="button" class="btn btn-success btn-sm d-none"
+									<button type="button" class="btn btn-success btn-sm"
 										onclick="openModal('addToCartModal_${product.productId}')">加入購物車</button>
 								</div>
 
