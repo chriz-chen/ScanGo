@@ -1,6 +1,7 @@
 package com.example.controller.cart;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,9 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
+import com.example.entity.Category;
 import com.example.entity.Product;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -50,7 +50,10 @@ public class ProductController {
 			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
 		});
 		
+		String category = categoryDao.findCategoryById(categoryId).get().getCategoryName();
+		
 		model.addAttribute("products", products);
+		model.addAttribute("category", category);
 		return "product";
 	}
 	

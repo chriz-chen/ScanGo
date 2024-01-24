@@ -56,7 +56,7 @@
 	<div class="collection-tab-inner">
 		<div class="container">
 			<div class="section-header text-center">
-				<h2 class="section-heading primary-color">Snack</h2>
+				<h2 class="section-heading primary-color">${category}</h2>
 			</div>
 			<div class="row mb-5">
 				<c:forEach var="product" items="${products}">
@@ -86,7 +86,7 @@
 								<div class="d-flex justify-content-between">
 									<button type="button" class="btn btn-primary btn-lg"
 										onclick="openModal('productDetailsModal_${product.productId}')">商品資訊</button>
-									<button type="button" class="btn btn-success btn-sm"
+									<button type="button" class="btn btn-success btn-sm d-none"
 										onclick="openModal('addToCartModal_${product.productId}')">加入購物車</button>
 								</div>
 
