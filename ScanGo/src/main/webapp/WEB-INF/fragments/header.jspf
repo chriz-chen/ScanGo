@@ -10,7 +10,7 @@
              <div class="row align-items-center ">
                  <div class="col-4">
                      <div class="header-logo">
-                         <a href="${pageContext.request.contextPath}/index.jsp" class="logo-main">
+                         <a href="${pageContext.request.contextPath}/" class="logo-main">
                              <img src="/ScanGo/assets/img/logo.png" loading="lazy" alt="scango">
                          </a>
                      </div>

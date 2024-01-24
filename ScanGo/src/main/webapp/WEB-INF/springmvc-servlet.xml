@@ -101,6 +101,7 @@
             <mvc:exclude-mapping path="/login/getcode"/>
             <mvc:exclude-mapping path="/login/**"/>
             <mvc:exclude-mapping path="/register"/>
+            <mvc:exclude-mapping path="/index.jsp"/>
             <bean class="com.example.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

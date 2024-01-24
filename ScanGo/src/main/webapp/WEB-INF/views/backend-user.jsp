@@ -82,8 +82,8 @@
     </style>
 </head>
 <body>
-	<div class="container-lg vh-100">
-    <h2>會員管理後台</h2>
+	<div class="container-lg vh-100 mt-5">
+    <h2 class="text-center">會員管理後台</h2>
         <table class="pure-table pure-table-bordered">
             <thead>
                 <tr>
