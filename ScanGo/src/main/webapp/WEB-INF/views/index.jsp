@@ -33,15 +33,15 @@ body {
             }'>
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
-						src="assets/img/slideshow/f1.jpg" alt="slide-1"> <img
-						class="slide-img d-md-none" src="assets/img/banner/banner-01.png"
+						src="/ScanGo/assets/img/slideshow/f1.jpg" alt="slide-1"> <img
+						class="slide-img d-md-none" src="/ScanGo/assets/img/banner/banner-01.png"
 						alt="slide-1" style="width: 100%">
 
 				</div>
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
-						src="assets/img/slideshow/f2.jpg" alt="slide-2"> <img
-						class="slide-img d-md-none" src="assets/img/slideshow/f2-m.jpg"
+						src="/ScanGo/assets/img/slideshow/f2.jpg" alt="slide-2"> <img
+						class="slide-img d-md-none" src="/ScanGo/assets/img/slideshow/f2-m.jpg"
 						alt="slide-2">
 					<div class="content-absolute content-slide">
 						<div
@@ -112,7 +112,7 @@ body {
 									<a class="hover-switch"
 										href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
-										src="image/product/grocery/tissue/2.jpeg" alt="product-img"
+										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 
 									</a>
@@ -140,7 +140,7 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="image/product/snack/cookies/3.jpeg" alt="product-img"
+										src="/ScanGo/image/product/snack/cookies/3.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -193,7 +193,7 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="image/product/appliance/season/5.jpeg" alt="product-img"
+										src="/ScanGo/image/product/appliance/season/5.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -303,7 +303,7 @@ body {
 								<div class="col-lg-6 col-md-12 col-12 ">
 									<div class="about-hero-img mb-5 mx-auto text-center"
 										data-aos="fade-up" data-aos-duration="700">
-										<img src="image/reason.png" alt="img"
+										<img src="/ScanGo/image/reason.png" alt="img"
 											style="max-width: 100%; border-radius: 20px;">
 									</div>
 								</div>
