@@ -10,6 +10,8 @@ public class Coupon {
 	private String code;
 	private String type;
 	private BigDecimal value;
+	private Integer minPurchaseAmount;
+	private String description;
 	private Date startDate;
 	private Date endDate;
 	private Boolean isActive;
@@ -68,6 +70,22 @@ public class Coupon {
 
 	public void setValue(BigDecimal value) {
 		this.value = value;
+	}
+
+	public Integer getMinPurchaseAmount() {
+		return minPurchaseAmount;
+	}
+
+	public void setMinPurchaseAmount(Integer minPurchaseAmount) {
+		this.minPurchaseAmount = minPurchaseAmount;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getStartDate() {

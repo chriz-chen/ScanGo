@@ -4,6 +4,8 @@
 <!doctype html>
 <html class="no-js">
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
@@ -112,7 +114,8 @@ body {
 									<a class="hover-switch"
 										href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
-										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
+										src="/ScanGo/image/product/grocery/tissue/2.jpeg"
+										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 
 									</a>
@@ -140,7 +143,8 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="/ScanGo/image/product/snack/cookies/3.jpeg" alt="product-img"
+										src="/ScanGo/image/product/snack/cookies/3.jpeg"
+										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -165,7 +169,8 @@ body {
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="primary-img" src="image/product/snack/soda/5.jpeg"
+										<img class="primary-img"
+										src="/ScanGo/image/product/snack/soda/5.jpeg"
 										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
@@ -193,7 +198,8 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="/ScanGo/image/product/appliance/season/5.jpeg" alt="product-img"
+										src="/ScanGo/image/product/appliance/season/5.jpeg"
+										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -222,7 +228,31 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- collection end -->
+		</div>
+		<!-- collection end -->
+
+		<!-- coupon start -->
+			<div class="coupon-area container mt-4 vh-100">
+			<h2 class="section-heading primary-color" style="line-height: 2; text-align: center;">優惠券專區</h2>
+				<div class="row justify-content-center">
+				<c:forEach var="coupon" items="${coupon}">
+					<div class="col-12">
+						<div class="coupon-item">
+							<div class="coupon-icon">
+								<img alt="coupon" src="/ScanGo/assets/img/coupon/coupon.png"
+									width="50" height="50">
+							</div>
+							<div class="coupon-details">
+								<h2 class="coupon-title">${coupon.couponName}</h2>
+								<h5 class="coupon-info mb-3">結帳金額滿$${coupon.minPurchaseAmount}，${coupon.description}(全館商品適用)</h5>
+								<span class="coupon-time">使用期限: ${coupon.endDate}</span>
+							</div>
+						</div>
+					</div>
+					</c:forEach>
+				</div>
+			</div>
+			<!-- coupon end -->
 
 			<!-- about service start -->
 			<div class="about-service pt-100 pb-100">

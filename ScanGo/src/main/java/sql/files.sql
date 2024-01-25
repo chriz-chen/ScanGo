@@ -1,3 +1,4 @@
+-- -------------------------------------------CATEGORY---------------------------------------------------------------
 insert into category (categoryPart, categoryName) values ('五金雜貨區', '清潔用品');
 insert into category (categoryPart, categoryName) values ('五金雜貨區', '廚房用品');
 insert into category (categoryPart, categoryName) values ('五金雜貨區', '衛生紙');
@@ -9,8 +10,8 @@ insert into category (categoryPart, categoryName) values ('家電用品區', '�
 insert into category (categoryPart, categoryName) values ('家電用品區', '廚房家電');
 
 
-
-
+/*
+-- --------------------------------------------PRODUCT-------------------------------------------------------------------
 insert into product(productName, price, unit, categoryId, inventory) values('一匙靈制菌超濃縮洗衣精補充包1.9Kg', 86, '包', 1, 50);
 insert into product(productName, price, unit, categoryId, inventory) values('妙管家馬桶芳香清潔劑-香水百合750g', 57, '瓶', 1, 30);
 insert into product(productName, price, unit, categoryId, inventory) values('泡舒洗潔精-檸檬1000g', 89, '瓶', 1, 25);
@@ -47,7 +48,7 @@ insert into product(productName, price, unit, categoryId, inventory) values('【
 insert into product(productName, price, unit, categoryId, inventory) values('【TATUNG大同】1.8公升不鏽鋼電茶壺(TEK-1815S)', 888, '個', 9, 3);
 insert into product(productName, price, unit, categoryId, inventory) values('【TIGER 虎牌】日本製 微電腦電熱水瓶3L(PDR-S30R)', 2790, '個', 9, 10);
 insert into product(productName, price, unit, categoryId, inventory) values('大同電鍋TAC-10L-DCU10人份', 2688, '個', 9, 2);
-
+*/
 
 
 -- --------------------------------------------USER-------------------------------------------------------------------------
@@ -76,3 +77,8 @@ insert into user(userName, password, email, phone, birthday, levelId, authType, 
 insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('ssss23', 'wqewqeffewfewfeeg71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'usewqwq3@gmail.com', '0977722213', '1992-12-23', 1, 'ScanGo','2024-12-30');
 insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('sdsad123', 'wqewedsdqdeqfeecx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'user12@gmail.com', '0945772213', '1979-12-26', 1, 'ScanGo','2024-12-30');
 insert into user(userName, password, email, phone, birthday, levelId, authType, createDate) values('admin', '$2a$10$JSfM9nCScx71EfKemrdsKepMNJXItZZ3bI9g33FtUQkGN5hyxv5zi', 'admin@gmail.com', '0945772213', '1979-12-26', 2, 'ScanGo','2024-12-30');
+
+
+-- --------------------------------------------COUPON------------------------------------------------------------------------------------------------
+insert into coupon(couponName, code, type, value, minPurchaseAmount, description, startDate, endDate, isActive) values('$100折抵金', 'IWANTDISCOUNT100', 'FIXED', 100.00, 300, '即可使用', CURRENT_DATE, '2024-02-25', 1);
+insert into coupon(couponName, code, type, value, minPurchaseAmount, description, startDate, endDate, isActive) values('10%折扣優惠', 'IWANT10%OFF', 'PERCENT', 10, 300, '現抵9折', CURRENT_DATE, '2024-02-25', 1);
