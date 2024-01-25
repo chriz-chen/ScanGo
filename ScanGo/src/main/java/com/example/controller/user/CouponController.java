@@ -15,26 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * /ScanGo/mvc/coupon
  */
 @Controller
-@RequestMapping("/coupon")
+@RequestMapping
 public class CouponController {
 
-	@GetMapping
+	@GetMapping("/coupon")
 	public String coupon() {
+		
+		
+		
 		return "coupon";
 	}
-	
-	// 得到目前所有 session attribute names
-	@GetMapping("/findAllSessionNames")
-	@ResponseBody
-	public String findAllSessionNames(HttpSession session) {
-		StringBuilder names = new StringBuilder();
-		// 目前系統中在使用的
-		Enumeration<String> sessionAttrNames = session.getAttributeNames();
-		while (sessionAttrNames.hasMoreElements()) {
-			String name = (String) sessionAttrNames.nextElement();
-			names.append(name + "\n");
-		}
-		return names.toString();
-	}
-
 }
