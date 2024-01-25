@@ -14,7 +14,7 @@ import com.example.entity.User;
 
 
 // 設定該過濾器對應的URL模式
-@WebFilter(value = { "/mvc/*" })
+//@WebFilter(value = { "/mvc/*" })
 public class LoginFilter extends HttpFilter {
 
 	@Override

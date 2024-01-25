@@ -22,7 +22,7 @@
 
 
 <!-- 其他標籤和樣式 -->
-<audio id="scanSuccessSound" src="assets/sound/scan.mp3" 
+<audio id="scanSuccessSound" src="/ScanGo/assets/sound/scan.mp3" 
 preload="auto"></audio>
 
 </head>
@@ -31,7 +31,7 @@ preload="auto"></audio>
 
 <!-- scan icon -->
 <div class="scan-icon">
-	<img src="assets/img/scan.png" role="button" data-bs-toggle="modal" data-bs-target="#reader_modal" onclick="openScan()">
+	<img src="/ScanGo/assets/img/scan.png" role="button" data-bs-toggle="modal" data-bs-target="#reader_modal" onclick="openScan()">
 </div>
 
 <!-- scan icon end -->
@@ -77,11 +77,11 @@ preload="auto"></audio>
 					    <p style="font-size: 1.2em; margin-right: 20px; margin-left: 5px;" class="d-inline">數量：</p>
 					    <div class="quantity d-flex align-items-center">
 						    <button class="qty-btn dec-qty">
-						        <img src="assets/img/icon/minus.svg" alt="minus">
+						        <img src="/ScanGo/assets/img/icon/minus.svg" alt="minus">
 						    </button>
 						    <input class="qty-input" type="number" name="qty" value="1" min="0" style="font-size: 1.2em;" id="productQuantity" name="productQuantity">
 						    <button class="qty-btn inc-qty">
-						        <img src="assets/img/icon/plus.svg" alt="plus">
+						        <img src="/ScanGo/assets/img/icon/plus.svg" alt="plus">
 						    </button>
 						</div>
 

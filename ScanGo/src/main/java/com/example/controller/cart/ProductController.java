@@ -3,7 +3,6 @@ package com.example.controller.cart;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -20,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
+import com.example.entity.Category;
 import com.example.entity.Product;
 
 

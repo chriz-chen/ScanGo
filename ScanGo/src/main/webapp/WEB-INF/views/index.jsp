@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!doctype html>
+<html class="no-js">
 
 <%@ include file="/WEB-INF/header.jspf"%>
 
@@ -32,15 +33,15 @@ body {
             }'>
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
-						src="assets/img/slideshow/f1.jpg" alt="slide-1"> <img
-						class="slide-img d-md-none" src="assets/img/banner/banner-01.png"
+						src="/ScanGo/assets/img/slideshow/f1.jpg" alt="slide-1"> <img
+						class="slide-img d-md-none" src="/ScanGo/assets/img/banner/banner-01.png"
 						alt="slide-1" style="width: 100%">
 
 				</div>
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
-						src="assets/img/slideshow/f2.jpg" alt="slide-2"> <img
-						class="slide-img d-md-none" src="assets/img/slideshow/f2-m.jpg"
+						src="/ScanGo/assets/img/slideshow/f2.jpg" alt="slide-2"> <img
+						class="slide-img d-md-none" src="/ScanGo/assets/img/slideshow/f2-m.jpg"
 						alt="slide-2">
 					<div class="content-absolute content-slide">
 						<div
@@ -111,7 +112,7 @@ body {
 									<a class="hover-switch"
 										href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
-										src="image/product/grocery/tissue/2.jpeg" alt="product-img"
+										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 
 									</a>
@@ -139,7 +140,7 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="image/product/snack/cookies/3.jpeg" alt="product-img"
+										src="/ScanGo/image/product/snack/cookies/3.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -192,7 +193,7 @@ body {
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
-										src="image/product/appliance/season/5.jpeg" alt="product-img"
+										src="/ScanGo/image/product/appliance/season/5.jpeg" alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
 
@@ -221,34 +222,9 @@ body {
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- collection end -->
+			<!-- collection end -->
 
-		<!-- coupon start -->
-		<div class="coupon-area container mt-4 vh-100">
-			<h2 class="section-heading primary-color"
-				style="line-height: 2; text-align: center;">優惠券專區</h2>
-			<div class="row justify-content-center">
-				<c:forEach var="coupons" items="${coupons}">
-					<div class="col-12">
-						<div class="coupon-item">
-							<div class="coupon-icon">
-								<img alt="coupon" src="/ScanGo/assets/img/coupon/coupon.png"
-									width="50" height="50">
-							</div>
-							<div class="coupon-details">
-								<h2 class="coupon-title">${coupons.couponName}</h2>
-								<h5 class="coupon-info mb-3">結帳金額滿${coupons.minPurchaseAmount}，現抵9折(全館商品適用)</h5>
-								<span class="coupon-time">有效期限: ${coupons.endDate}</span>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-		<!-- coupon end -->
-
-		<!-- about service start -->
+			<!-- about service start -->
 			<div class="about-service pt-100 pb-100">
 				<div class="container">
 					<div class="section-header about-service-header text-center"
@@ -327,7 +303,7 @@ body {
 								<div class="col-lg-6 col-md-12 col-12 ">
 									<div class="about-hero-img mb-5 mx-auto text-center"
 										data-aos="fade-up" data-aos-duration="700">
-										<img src="image/reason.png" alt="img"
+										<img src="/ScanGo/image/reason.png" alt="img"
 											style="max-width: 100%; border-radius: 20px;">
 									</div>
 								</div>
