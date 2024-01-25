@@ -80,5 +80,5 @@ insert into user(userName, password, email, phone, birthday, levelId, authType, 
 
 
 -- --------------------------------------------COUPON------------------------------------------------------------------------------------------------
-insert into coupon(couponName, code, type, value, minPurchaseAmount, startDate, endDate, isActive) values('$100折抵金', 'IWANTDISCOUNT100', 'FIXED', 100.00, 300, CURRENT_DATE, '2024-02-25', 1);
-insert into coupon(couponName, code, type, value, minPurchaseAmount, startDate, endDate, isActive) values('10%折扣優惠', 'IWANT10%OFF', 'PERCENT', 10, 300, CURRENT_DATE, '2024-02-25', 1);
+insert into coupon(couponName, code, type, value, minPurchaseAmount, description, startDate, endDate, isActive) values('$100折抵金', 'IWANTDISCOUNT100', 'FIXED', 100.00, 300, '即可使用', CURRENT_DATE, '2024-02-25', 1);
+insert into coupon(couponName, code, type, value, minPurchaseAmount, description, startDate, endDate, isActive) values('10%折扣優惠', 'IWANT10%OFF', 'PERCENT', 10, 300, '現抵9折', CURRENT_DATE, '2024-02-25', 1);
