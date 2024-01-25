@@ -35,10 +35,21 @@ public class CouponDAOImpl implements CouponDAO {
 			return Optional.empty();
 		}
 	}
+	
+	@Override
+	public Optional<Coupon> findCouponByCode(String code) {
+		String sql = "select * from coupon where code = ?";
+		try {
+			Coupon coupon = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Coupon.class), code);
+			return Optional.ofNullable(coupon);
+		} catch (EmptyResultDataAccessException e) {
+			return Optional.empty();
+		}
+	}
 
 	@Override
-	public void getCouponByCode(Integer userId, Integer couponId) {
-		String sql = "insert into couponUser(userId, couponId) values(?, ?)";
+	public void addCouponUser(Integer userId, Integer couponId) {
+		String sql = "insert into couponuser(userId, couponId) values(?, ?)";
 		
 		try {
 	    	jdbcTemplate.update(sql, userId, couponId);
@@ -49,7 +60,7 @@ public class CouponDAOImpl implements CouponDAO {
 
 	@Override
 	public List<CouponUser> findCouponsByUserId(Integer userId) {
-		String sql = "select * from couponUser where userId = ?";
+		String sql = "select * from couponuser where userId = ?";
 		List<CouponUser> couponUser = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CouponUser.class), userId);
 		
 		return couponUser;

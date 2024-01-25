@@ -14,8 +14,11 @@ public interface CouponDAO {
 	//根據優惠券ID來查找優惠券(單筆)
 	Optional<Coupon> findCouponById(Integer couponId);
 	
-	//根據優惠券代碼來取得優惠券
-	void getCouponByCode(Integer userId, Integer couponId);
+	//根據優惠券代碼來查找優惠券
+	Optional<Coupon> findCouponByCode(String code);
+	
+	//新增優惠券給使用者
+	void addCouponUser(Integer userId, Integer couponId);
 	
 	//根據使用者ID來查找其所擁有的優惠券
 	List<CouponUser> findCouponsByUserId(Integer userId);
