@@ -109,8 +109,6 @@ label {
 			<div class="member-area pt-5 pb-5">
 				<div class="container">
 					<div class="member-area-inner">
-						<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
-						<p class="text-center text-success fs-5" id="successMessage">${message}</p>
 						<div class="section-header member-area-header text-center mb-5">
 							<h2 class="section-heading">會員資料</h2>
 						</div>
@@ -146,48 +144,6 @@ label {
 									<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
 									onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
 									</button>
-	
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-					
-					<!-- 密碼變更 Modal -->
-					<div class="modal fade " id="passwordChangeModal" tabindex="-1"
-						role="dialog" aria-labelledby="passwordChangeModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header ">
-									<h5 class="modal-title " id="passwordChangeModalLabel">密碼變更</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								
-								<div class="modal-body">
-									<!-- 密碼變更的表單-->
-									<form id="changePasswordForm" class="form" method="post"
-									      action="${pageContext.request.contextPath}/mvc/member/change_password">
-									    <p class="text-center text-danger fs-5" id="errorMessage"></p>
-									    <p class="text-center text-success fs-5" id="successMessage"></p>
-									    <div class="form-group">
-									        <label for="oldPassword">舊密碼:</label>
-									        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
-									    </div>
-									    <div class="form-group">
-									        <label for="newPassword">新密碼:</label>
-											<input type="password" id="newPassword" name="newPasswords" class="form-control" required>
-									    </div>
-									    <div class="form-group">
-									        <label for="confirmPassword">確認新密碼:</label>
-									        <input type="password" id="confirmPassword" name="newPasswords" class="form-control" required>
-									    </div>
-									    <button type="button" id="confirmButton" class="btn ms-auto" style="background-color: #00234D; color: #fff;">確認變更</button>
-									</form>
 								</div>
 							</div>
 						</div>
@@ -195,6 +151,46 @@ label {
 				</div>
 			</div>
 		</form>
+		
+		<!-- 密碼變更 Modal -->
+		<div class="modal fade " id="passwordChangeModal" tabindex="-1"
+			role="dialog" aria-labelledby="passwordChangeModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				    <p class="text-center text-danger fs-5 mt-2" id="message">${error}</p>
+					<div class="modal-header ">
+						<h5 class="modal-title " id="passwordChangeModalLabel">密碼變更</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+					<div class="modal-body">
+						<!-- 密碼變更的表單-->
+						<form id="changePasswordForm" class="form" method="post"
+						      action="${pageContext.request.contextPath}/mvc/member/change_password">
+						    <p class="text-center text-danger fs-5" id="errorMessage"></p>
+						    <p class="text-center text-success fs-5" id="successMessage"></p>
+						    <div class="form-group">
+						        <label for="oldPassword">舊密碼:</label>
+						        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
+						    </div>
+						    <div class="form-group">
+						        <label for="newPassword">新密碼:</label>
+								<input type="password" id="newPassword" name="newPasswords" class="form-control" required>
+						    </div>
+						    <div class="form-group">
+						        <label for="confirmPassword">確認新密碼:</label>
+						        <input type="password" id="confirmPassword" name="newPasswords" class="form-control" required>
+						    </div>
+						    <button type="button" id="confirmButton" class="btn ms-auto" style="background-color: #00234D; color: #fff;">確認變更</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
 	<script
@@ -204,36 +200,38 @@ label {
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 	<script>
-/*
-var errormessage = '${ errorMessage }';
-var modal = new bootstrap.Modal(document.getElementById('passwordChangeModal'), {
-	keyboard: false
-});
-if(errormessage != '') {
-	modal.show();
-}*/
 
-$(document).ready(function() {
-    $("#confirmButton").click(function() {
-        // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
-        $.ajax({
-            type: "POST",
-            url: $("#changePasswordForm").attr("action"),
-            data: $("#changePasswordForm").serialize(),
-            success: function(response) {
-            	$("#errorMessage").text(response.errorMessage);
-            	$("#successMessage").text(response.successMessage);
-            },
-            error: function(xhr, status, error) {
-                $("#errorMessage").text("錯誤：" + xhr.responseText);
-            }
-        });
-    });
-});
-</script>
+	$(document).ready(function() {
+	    $("#confirmButton").click(function() {
+	    	
+	    	console.log($("#changePasswordForm").attr("action"));
+	    	
+	        // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
+	        $.ajax({
+	            type: "POST",
+	            url: $("#changePasswordForm").attr("action"),
+	            data: $("#changePasswordForm").serialize(),
+	            success: function(response) {
+	            	if(response.errorMessage != '') {
+	            		$("#message").text(response.errorMessage);
+	            		$("#message").addClass('text-danger');
+	            		$("#message").removeClass('text-success');
+	            	} else {
+	            		$("#message").text(response.successMessage);
+	            		$("#message").addClass('text-success');
+	            		$("#message").removeClass('text-danger');
+	            	}
+	            },
+	            error: function(xhr, status, error) {
+	                $("#message").text("錯誤：" + xhr.responseText);
+	                $("#message").addClass('text-danger');
+	        		$("#message").removeClass('text-success');
+	            }
+	        });
+	    });
+	});
+	</script>
 	
-	
-
 	<%@ include file="/WEB-INF/footer.jspf"%>
 </body>
 </html>

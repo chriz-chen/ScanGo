@@ -158,7 +158,7 @@
 						</div>
 						<sp:input type="text" path="username"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="admin" />
+							value="user" />
 					</fieldset>
 				</div>
 				<div class="col-12">
