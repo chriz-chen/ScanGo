@@ -158,7 +158,9 @@ label {
 			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
+				
 				    <p class="text-center text-danger fs-5 mt-2" id="message">${error}</p>
+				    
 					<div class="modal-header ">
 						<h5 class="modal-title " id="passwordChangeModalLabel">密碼變更</h5>
 						<button type="button" class="close" data-dismiss="modal"
@@ -171,8 +173,7 @@ label {
 						<!-- 密碼變更的表單-->
 						<form id="changePasswordForm" class="form" method="post"
 						      action="${pageContext.request.contextPath}/mvc/member/change_password">
-						    <p class="text-center text-danger fs-5" id="errorMessage"></p>
-						    <p class="text-center text-success fs-5" id="successMessage"></p>
+						    
 						    <div class="form-group">
 						        <label for="oldPassword">舊密碼:</label>
 						        <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
@@ -199,8 +200,9 @@ label {
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-	<script>
 
+
+	<script>
 	$(document).ready(function() {
 	    $("#confirmButton").click(function() {
 	    	

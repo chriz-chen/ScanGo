@@ -104,15 +104,18 @@ label {
 		<!-- breadcrumb end -->
 
 		<form
+			id="updateProfileForm"
 			action="${pageContext.request.contextPath}/mvc/member/updateProfile"
 			method="post">
 			<div class="member-area pt-5 pb-5">
 				<div class="container">
 					<div class="member-area-inner">
-						<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
-						<p class="text-center text-success fs-5" id="successMessage">${message}</p>
+						
+						<%-- <p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
+						<p class="text-center text-success fs-5" id="successMessage">${message}</p> --%>
 						<div class="section-header member-area-header text-center mb-5">
 							<h2 class="section-heading">修改會員資料</h2>
+							
 						</div>
 						<div class="row">
 							<div class="col-md-6 offset-md-3">
@@ -139,7 +142,7 @@ label {
 										required>
 								</div>
 
-								<button type="submit" class="btn-primary d-block ms-auto"
+								<button type="submit" class="btn-primary d-block ms-auto" id="confirmButton"
 								style="background-color: #00234D; color: #fff; font-size: 16px ">確認修改</button>
 
 							</div>
@@ -150,6 +153,41 @@ label {
 			</div>
 		</form>
 	</main>
+	
+	
+	<script>
+	$(document).ready(function() {
+	    $("#confirmButton").click(function() {
+	    	
+	    	console.log($("#changePasswordForm").attr("action"));
+	    	
+	        // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
+	        $.ajax({
+	            type: "POST",
+	            url: $("#updateProfileForm").attr("action"),
+	            data: $("#updateProfileForm").serialize(),
+	            success: function(response) {
+	            	if(response.errorMessage != '') {
+	            		$("#message").text(response.errorMessage);
+	            		$("#message").addClass('text-danger');
+	            		$("#message").removeClass('text-success');
+	            	} else {
+	            		$("#message").text(response.successMessage);
+	            		$("#message").addClass('text-success');
+	            		$("#message").removeClass('text-danger');
+	            	}
+	            },
+	            error: function(xhr, status, error) {
+	                $("#message").text("錯誤：" + xhr.responseText);
+	                $("#message").addClass('text-danger');
+	        		$("#message").removeClass('text-success');
+	            }
+	        });
+	    });
+	});
+	</script>
+	
+	
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script

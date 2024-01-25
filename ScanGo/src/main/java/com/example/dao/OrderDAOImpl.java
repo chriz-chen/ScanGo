@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,6 +98,16 @@ public class OrderDAOImpl implements OrderDAO {
 		orderItem.forEach(orderItems -> {
 			productDao.findProductById(orderItems.getProductId()).ifPresent(orderItems::setProduct);
 		});
+		
+		orderItem.forEach(orderItems -> {
+			byte[] picture = orderItems.getProduct().getPicture();
+	        if (picture != null) {
+	            // 將 BLOB 資料轉換為 base64 字串
+	            String base64Image = Base64.getEncoder().encodeToString(picture);
+	            orderItems.getProduct().setBase64Image(base64Image);
+	        }
+		});
+		
 		return orderItem;
 	}
 
