@@ -8,6 +8,10 @@ body {
 	background-color: #fffefb;
 }
 
+.link-light:hover {
+    color: #71c4ef;
+  }
+
 .map {
 	height: 90vh;
 }
