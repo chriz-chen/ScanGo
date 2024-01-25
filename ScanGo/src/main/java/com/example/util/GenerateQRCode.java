@@ -52,7 +52,7 @@ public class GenerateQRCode {
 		
 		// 製作 QR Code
 		for (int i=1; i<=20; i++) {
-			String str = "http://localhost:8080/ScanGo/mvc/product/"+i;
+			String str = "/ScanGo/mvc/product/"+i;
 			String path = "src/main/webapp/QRCode/product"+i+".png";
 			String charset = "UTF-8";
 			Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();

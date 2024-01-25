@@ -8,7 +8,8 @@
 	    font-size: 1.2em;
 	  }
 </style>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 
 
  <!-- header start -->
@@ -19,7 +20,7 @@
                  <div class="col-4">
                      <div class="header-logo">
                          <a href="${pageContext.request.contextPath}/" class="logo-main">
-                             <img src="/ScanGo/assets/img/logo.png" loading="lazy" alt="scango">
+                             <img src="/ScanGo/assets/img/logo.png" alt="scango" style="width: 150px; height: 40px;">
                          </a>
                      </div>
                  </div>
@@ -27,7 +28,7 @@
                      <div class="header-action d-flex align-items-center justify-content-end">
                      
                      <c:if test="${user.levelId == 2}">
-					  <div class="dropdown me-5 mt-1">
+					  <div class="dropdown me-5 mt-1 d-none d-lg-block">
 					    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					      後台管理
 					    </button>
