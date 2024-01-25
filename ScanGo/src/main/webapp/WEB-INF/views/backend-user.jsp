@@ -119,7 +119,7 @@
                         <td>${user.authType}</td>
                         <td><fmt:formatDate value="${user.createDate}" pattern="yyyy-MM-dd" /></td>
                         <td>${user.level.levelName}</td>
-                        <td><button class="show-userId-orderitem"
+                        <td><button class="show-userId-orderitem btn btn-warning"
 					       data-href="/ScanGo/mvc/backend/historyorderByManager/${user.userId}">
 					       查看</button>
 					      </td>
@@ -127,7 +127,7 @@
                 </c:forEach>
             </tbody>
             <tfoot>
-				<td colspan="8" align="right">會員總人數 : <%= totalMembers %> 人</td>
+				<td colspan="9" align="right" class="me-3">會員總人數 : <%= totalMembers %> 人</td>
 			</tfoot>
         </table>
         </div>
