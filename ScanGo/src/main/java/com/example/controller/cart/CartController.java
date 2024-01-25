@@ -1,17 +1,14 @@
 package com.example.controller.cart;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,16 +46,6 @@ public class CartController {
 		
 		Integer totalPrice = 0;
 		List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
-		
-		carts.forEach(cartItem -> {
-			byte[] picture = cartItem.getProduct().getPicture();
-	        if (picture != null) {
-	            // 將 BLOB 資料轉換為 base64 字串
-	            String base64Image = Base64.getEncoder().encodeToString(picture);
-	            cartItem.getProduct().setBase64Image(base64Image);
-	        }
-		});
-		
 		
 		for(Cart cart : carts) {
 			cart.getProduct().setPrice((cart.getProduct().getPrice()) * (cart.getProductQuantity()));
@@ -192,15 +179,6 @@ public class CartController {
 
 	    if (user != null) {
 	        List<Cart> carts = cartDao.findCartsByUserId(user.getUserId());
-	        
-	        carts.forEach(cartItem -> {
-				byte[] picture = cartItem.getProduct().getPicture();
-		        if (picture != null) {
-		            // 將 BLOB 資料轉換為 base64 字串
-		            String base64Image = Base64.getEncoder().encodeToString(picture);
-		            cartItem.getProduct().setBase64Image(base64Image);
-		        }
-			});
 
 	        Integer totalPrice = 0;
 	        for (Cart cart : carts) {
