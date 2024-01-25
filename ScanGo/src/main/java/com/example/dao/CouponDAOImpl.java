@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.example.entity.Coupon;
+import com.example.entity.CouponUser;
 
 @Component("couponDaoImpl")
 public class CouponDAOImpl implements CouponDAO {
@@ -33,6 +34,25 @@ public class CouponDAOImpl implements CouponDAO {
 		} catch (EmptyResultDataAccessException e) {
 			return Optional.empty();
 		}
+	}
+
+	@Override
+	public void getCouponByCode(Integer userId, Integer couponId) {
+		String sql = "insert into couponUser(userId, couponId) values(?, ?)";
+		
+		try {
+	    	jdbcTemplate.update(sql, userId, couponId);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	@Override
+	public List<CouponUser> findCouponsByUserId(Integer userId) {
+		String sql = "select * from couponUser where userId = ?";
+		List<CouponUser> couponUser = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CouponUser.class), userId);
+		
+		return couponUser;
 	}
 
 	

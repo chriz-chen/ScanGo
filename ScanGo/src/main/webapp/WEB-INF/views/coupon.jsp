@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
@@ -38,53 +40,25 @@ footer {
 		</div>
 	</div>
 	<!-- breadcrumb end -->
-	
+
 	<!-- coupon start -->
 	<div class="coupon-area container mt-4 vh-100">
 		<div class="row justify-content-center">
-		
-		
-			<div class="col-12">
-				<div class="coupon-item">
-					<div class="coupon-icon">
-						<img alt="coupon" src="/ScanGo/assets/img/coupon/coupon.png"
-							width="50" height="50">
-					</div>
-					<div class="coupon-details">
-						<h2 class="coupon-title">10% 折扣優惠</h2>
-						<h5 class="coupon-info mb-3">結帳金額滿$300，現抵9折(全館商品適用)</h5>
-						<span class="coupon-time">使用期限: 2024/02/05 23:59:59 前</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12">
-				<div class="coupon-item">
-					<div class="coupon-icon">
-						<img alt="" src="/ScanGo/assets/img/coupon/coupon.png" width="50"
-							height="50">
-					</div>
-					<div class="coupon-details">
-						<h2 class="coupon-title">5% 折扣優惠</h2>
-						<h5 class="coupon-info mb-3">結帳金額滿 $100 即可使用(全館商品適用)</h5>
-						<span class="coupon-time">使用期限: 2024/02/03 23:59:59 前</span>
+			<c:forEach var="couponUser" items="${couponUser}">
+				<div class="col-12">
+					<div class="coupon-item">
+						<div class="coupon-icon">
+							<img alt="coupon" src="/ScanGo/assets/img/coupon/coupon.png"
+								width="50" height="50">
+						</div>
+						<div class="coupon-details">
+							<h2 class="coupon-title">${couponUser.coupon.couponName}</h2>
+							<h5 class="coupon-info mb-3">結帳金額滿$${couponUser.coupon.minPurchaseAmount}，${couponUser.coupon.description}(全館商品適用)</h5>
+							<span class="coupon-time">使用期限: ${couponUser.coupon.endDate}</span>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="col-12">
-				<div class="coupon-item">
-					<div class="coupon-icon">
-						<img alt="" src="/ScanGo/assets/img/coupon/coupon.png" width="50"
-							height="50">
-					</div>
-					<div class="coupon-details">
-						<h2 class="coupon-title">$50 折抵金</h2>
-						<h5 class="coupon-info mb-3">結帳金額滿 $300 即可使用(全館商品適用)</h5>
-						<span class="coupon-time">使用期限: 2024/01/31 23:59:59 前</span>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 	<!-- coupon end -->

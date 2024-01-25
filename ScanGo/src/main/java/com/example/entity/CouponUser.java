@@ -11,6 +11,8 @@ public class CouponUser {
 	private Timestamp usedDate;
 	private Boolean isUsed;
 	
+	private Coupon coupon; 
+	
 	public CouponUser() {
 		
 	}
@@ -71,6 +73,14 @@ public class CouponUser {
 
 	public void setIsUsed(Boolean isUsed) {
 		this.isUsed = isUsed;
+	}
+
+	public Coupon getCoupon() {
+		return coupon;
+	}
+
+	public void setCoupon(Coupon coupon) {
+		this.coupon = coupon;
 	}
 	
 	
