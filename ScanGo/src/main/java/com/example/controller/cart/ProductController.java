@@ -26,6 +26,11 @@ public class ProductController {
 	@Qualifier("productDaoImpl")
 	private ProductDAO productDao;
 	
+	/**
+	 * http://localhost:8080/ScanGo/mvc/product/1
+	 * @param productId
+	 * @return
+	 */
 	@GetMapping(value = "/product/{productId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public Product getProductInfo(@PathVariable("productId") Integer productId) {
