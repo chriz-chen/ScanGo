@@ -114,7 +114,7 @@ preload="auto"></audio>
 			}
 			
 			// 測試用
-			
+/*
 			$.ajax({
   		        url: 'http://localhost:8080/ScanGo/mvc/product/13',
   		        dataType: 'json',
@@ -124,8 +124,7 @@ preload="auto"></audio>
   		            $('#productPrice').text(data['price']);
   		        }
   		    });
-			
-			
+*/			
 			
 
             html5QrCode.start(
