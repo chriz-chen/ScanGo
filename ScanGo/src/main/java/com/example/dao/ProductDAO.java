@@ -23,4 +23,7 @@ public interface ProductDAO {
 	//修改商品庫存
 	Boolean updateInventory(Integer productId, Integer inventory);
 	
+	//變更商品上架狀態
+	Boolean updateProductLaunch(Integer productId, Boolean isLaunch);
+	
 }
