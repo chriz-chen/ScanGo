@@ -218,6 +218,7 @@ $(document).ready(function() {
         // 使用 AJAX 發送表單數據，可以局部更新HTML元素的內容
         $.ajax({
             type: "POST",
+            contentType: "application/json",
             url: $("#changePasswordForm").attr("action"),
             data: $("#changePasswordForm").serialize(),
             success: function(response) {
