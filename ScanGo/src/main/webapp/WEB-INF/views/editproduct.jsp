@@ -103,28 +103,14 @@ footer {
                 <br>
 
                 <!-- 圖片編輯框 -->
-                <label for="productImage">修改圖片:</label>
-                <div class="input-group">
-                    <input type="file" id="productImage" name="productImage">
-                    <button type="button" class="btn btn-secondary" onclick="resetImage()">選擇其他圖片</button>
-                </div>
+                <label for="picture">圖片:</label>
+                <input type="text" id="picture" name="picture" value="${product.picture}" required>
                 <br>
-
+                
                 <!-- Position編輯框 -->
                 <label for="position">修改 Position:</label>
                 <input type="text" id="position" name="position" value="${product.position}" required>
                 <br>
-
-                <!-- 上架狀況編輯框 -->
-                <label for="isLaunch">上架狀況:</label>
-                <select id="isLaunch" name="isLaunch" required>
-                    <option value="1" ${product.isLaunch == 1 ? 'selected' : ''}>上架</option>
-                    <option value="0" ${product.isLaunch == 0 ? 'selected' : ''}>下架</option>
-                </select>
-                <br>
-
-                <!-- 添加其他商品屬性的編輯框，根據實際情況添加 -->
-
                 <!-- 提交按鈕 -->
                 <button type="submit">修改</button>
             </fieldset>
@@ -134,12 +120,5 @@ footer {
     <a class="return-management" href="${pageContext.request.contextPath}/mvc/backend">回到商品管理</a>
 
 </div>
-
-<script>
-    function resetImage() {
-        // 將圖片輸入欄的值重置為空
-        document.getElementById('productImage').value = '';
-    }
-</script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>
