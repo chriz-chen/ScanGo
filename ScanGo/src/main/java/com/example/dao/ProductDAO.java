@@ -28,5 +28,4 @@ public interface ProductDAO {
 	
 	//刪除商品
 	void deleteProduct(Integer productId);
-	
 }

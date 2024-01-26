@@ -88,4 +88,5 @@ public class ProductDAOImpl implements ProductDAO {
 	    String sql = "DELETE FROM product WHERE productId = ?";
 	    jdbcTemplate.update(sql, productId);
 	}
+	
 }

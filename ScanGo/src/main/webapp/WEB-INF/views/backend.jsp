@@ -176,6 +176,7 @@ input {
 				<input type="submit" value="新增商品">
 			</form>
 		</div>
+		
 	</div>
 </div>
 
