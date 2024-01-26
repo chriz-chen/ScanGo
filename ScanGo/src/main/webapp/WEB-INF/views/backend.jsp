@@ -126,6 +126,8 @@ input {
 						<th>庫存</th>
 						<th>位置</th>
 						<th>上架</th>
+						<th>編輯</th>
+						<th>刪除</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -141,6 +143,20 @@ input {
 							<td>${product.inventory}</td>
 							<td>${product.position}</td>
 							<td>${product.isLaunch}</td>
+							<td>
+			                    <div class="d-flex flex-column align-items-center justify-content-between">
+			                        <a href="${ pageContext.request.contextPath }/mvc/editProduct/${product.productId}"
+			                            class="btn btn-primary">修改</a>
+			                    </div>
+			                </td>
+							<td>
+								<form action="${pageContext.request.contextPath}/mvc/deleteProduct/${product.productId}"
+									method="post" class="d-flex flex-column align-items-center justify-content-between"
+									onsubmit="return confirm('是否確認要刪除？');" style="margin: 10px 0;">
+									<input type="hidden" name="_method" value="delete">
+							        <button type="submit" class="btn btn-primary">刪除</button>
+							    </form>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -64,19 +64,28 @@ public class ProductDAOImpl implements ProductDAO {
 	    						product.getInventory(), picture, product.getPosition());
 	    
 	}
-
+	
 	//修改商品資料
-	@Override
-	public Boolean updateInventory(Integer productId, Integer inventory) {
-		
-		return null;
-	}
+	public void updateProduct(Product product) {
+	    String sql = "UPDATE product SET productName = ?, price = ?, unit = ?, categoryId = ?, inventory = ?, picture = ?, position = ? WHERE productId = ?";
 
+	    jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(),
+	            product.getCategoryId(), product.getInventory(), product.getPicture(), product.getPosition(),
+	            product.getProductId());
+	}
+	
 	//變更商品上架狀態
 	@Override
 	public Boolean updateProductLaunch(Integer productId, Boolean isLaunch) {
 		String sql = "update product set isLaunch = ? where productId = ?";
 
 		return jdbcTemplate.update(sql, isLaunch, productId) > 0;
+	}
+
+	// 刪除商品
+	@Override
+	public void deleteProduct(Integer productId) {
+	    String sql = "DELETE FROM product WHERE productId = ?";
+	    jdbcTemplate.update(sql, productId);
 	}
 }
