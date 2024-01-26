@@ -21,7 +21,6 @@ import com.example.dao.ProductDAO;
 import com.example.entity.Product;
 
 
-
 @Controller
 @RequestMapping
 public class ProductController {
@@ -45,7 +44,6 @@ public class ProductController {
 	public Product getProductInfo(@PathVariable("productId") Integer productId) {
 		return productDao.findProductById(productId).get();
 	 }
-	
 	
 	@GetMapping("/searchProduct/{categoryId}")
 	public String showProduct(@PathVariable("categoryId") Integer categoryId,
@@ -90,8 +88,6 @@ public class ProductController {
 
         return "editProduct";
     }
-
-    
 
     @PostMapping("/updateProduct")
     public String updateProduct(@ModelAttribute Product updatedProduct, Model model) {
