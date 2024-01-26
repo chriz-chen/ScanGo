@@ -99,21 +99,21 @@ body {
 		<!-- slideshow end -->
 
 		<!-- collection start -->
-		<div class="featured-collection mt-100 overflow-hidden mt-5">
+		<div class="featured-collection mt-100 overflow-hidden mt-5 ">
 			<div class="collection-tab-inner">
-				<div class="container">
+				<div class="container d-lg-none">
 					<div class="section-header text-center">
 						<h2 class="section-heading primary-color" style="line-height: 2;">本月優惠商品</h2>
 					</div>
 					<div class="row mb-5 justify-content-center">
-						<div class="col-6 mx-3" data-aos="fade-up" data-aos-duration="700" style="width: 15rem;">
-							<div class="product-card" style="width: 18rem;">
-								<div class="product-card-img justify-content-center" style="width: 15rem;">
-									<a class="hover-switch" 
+						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
+							<div class="product-card">
+								<div class="product-card-img justify-content-center">
+									<a class="hover-switch"
 										href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
 										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
-										style="max-width: 226px; height: 250px; border: 1.5px solid #00234D;">
+										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 
 									</a>
 
@@ -135,10 +135,7 @@ body {
 								</div>
 							</div>
 						</div>
-						
-						
-						
-						<div class="col-6 mx-3" data-aos="fade-up" data-aos-duration="700"  style="width: 15rem;">
+						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
@@ -164,7 +161,7 @@ body {
 								</div>
 							</div>
 						</div>
-						<div class="col-6 mx-3" data-aos="fade-up" data-aos-duration="700"  style="width: 15rem;">
+						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
@@ -191,7 +188,7 @@ body {
 								</div>
 							</div>
 						</div>
-						<div class="col-6 mx-3" data-aos="fade-up" data-aos-duration="700" style="width: 15rem;">
+						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
@@ -228,9 +225,9 @@ body {
 			<!-- collection end -->
 
 			<!-- about service start -->
-			<div class="about-service pt-100 pb-100 mb-5">
+			<div class="about-service pt-100 pb-100">
 				<div class="container">
-					<div class="section-header about-service-header text-center mb-5"
+					<div class="section-header about-service-header text-center"
 						data-aos="fade-up" data-aos-duration="700">
 						<h2 class="section-heading mb-5">一掃即得，無憂購物新體驗！</h2>
 					</div>
