@@ -108,7 +108,7 @@ main {
 								<div class="minicart-item d-flex">
 									<div class="mini-img-wrapper">
 										<img class="mini-img"
-											src="data:image/jpeg;base64,${cartItem.product.base64Image}" alt="img">
+											src="${cartItem.product.picture}" alt="img">
 									</div>
 									<div class="product-info">
 										<h2 class="product-title">

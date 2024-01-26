@@ -135,7 +135,7 @@ function loadCartData() {
 			// 尋找元素，確保它存在再進行賦值
 			var productImg = cartItemDiv.querySelector(".mini-img");
 			if (productImg) {
-				productImg.src = "data:image/jpeg;base64," + cart.product.base64Image;
+				productImg.src = cart.product.picture;
 			}
 			
 			var productTitle = cartItemDiv.querySelector("#productTitle");

@@ -23,4 +23,7 @@ public interface CouponDAO {
 	//根據使用者ID來查找其所擁有的優惠券
 	List<CouponUser> findCouponsByUserId(Integer userId);
 	
+	//利用isActive狀態來查找優惠券
+	
+	
 }

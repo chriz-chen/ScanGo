@@ -27,11 +27,12 @@ public class QRCodeController {
 	@ResponseBody
 	public String generate(@RequestParam("productId") Integer productId) throws WriterException, IOException {
 		String str = "/ScanGo/mvc/product/"+productId;
-		String path = "src/main/webapp/QRCode/product"+productId+".png";
+		String path = "Users/chris/Desktop/product"+productId+".png";
 		String charset = "UTF-8";
 		Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
 		hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 		qrCode.generateQRcode(str, path, charset, hashMap, 200, 200);
+		System.out.println("QR Code created successfully.");
 		return "";
 	}
 	
