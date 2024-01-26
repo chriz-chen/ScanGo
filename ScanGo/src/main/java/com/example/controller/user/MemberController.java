@@ -40,7 +40,8 @@ public class MemberController {
 	private UserDAO userDAO;
 
 	@GetMapping("/member")
-	public String member() {
+	public String member(HttpSession session, @ModelAttribute("updateUser")User updateUser) {
+		User user = (User) session.getAttribute("user");
 		return "member";
 	}
 	
@@ -114,6 +115,7 @@ public class MemberController {
 
         // 創建 User 對象，用於更新
         User updatedUser = new User();
+        updatedUser.setUsername(user.getUsername());
         updatedUser.setUserId(user.getUserId());
         updatedUser.setEmail(user.getEmail());
         updatedUser.setPhone(user.getPhone());
@@ -124,12 +126,15 @@ public class MemberController {
 
         if (updateSuccess) {
         	
-    		User sessionUser = (User)session.getAttribute("user");
-    		session.setAttribute("user", userDAO.findUserByUserId(sessionUser.getUserId()).get());
+        	User sessionUser = (User)session.getAttribute("user");
+        	User newUser = userDAO.findUserByUserId(sessionUser.getUserId()).get();
+    		session.setAttribute("user", newUser);
+    		
         	
             // 更新成功，返回成功訊息
+    		model.addAttribute("user", newUser); 
             model.addAttribute("message", "使用者資料更新成功");
-            return "redirect:/mvc/member"; // 導向成功頁面
+            return "member"; // 導向成功頁面
         } else {
             // 更新失敗，返回失敗訊息
             model.addAttribute("error", "使用者資料更新失敗");

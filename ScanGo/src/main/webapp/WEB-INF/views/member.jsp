@@ -103,7 +103,7 @@ label {
 		</div>
 		<!-- breadcrumb end -->
 
-		<form
+		<form modelAttribute="updateUser"
 			action="${pageContext.request.contextPath}/mvc/member/updateProfile"
 			method="post">
 			<div class="member-area pt-5 pb-5">
