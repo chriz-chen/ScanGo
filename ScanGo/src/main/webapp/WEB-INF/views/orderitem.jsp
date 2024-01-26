@@ -134,7 +134,7 @@ input[type="radio"]:checked ~ label:before {
 								<div class="minicart-item d-flex">
 									<div class="mini-img-wrapper">
 										<img class="mini-img"
-											src="data:image/jpeg;base64,${orderItem.product.base64Image}" alt="img">
+											src="${orderItem.product.picture}" alt="img">
 									</div>
 									<div class="product-info">
 										<h2 class="product-title">

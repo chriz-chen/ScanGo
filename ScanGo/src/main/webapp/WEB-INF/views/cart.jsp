@@ -75,7 +75,7 @@ main {
 										<td class="cart-item-media">
 											<div class="mini-img-wrapper">
 												<img class="mini-img"
-													src="data:image/jpeg;base64,${cartItem.product.base64Image}" alt="img">
+													src="${cartItem.product.picture}" alt="img">
 											</div>
 										</td>
 										<td class="cart-item-details">

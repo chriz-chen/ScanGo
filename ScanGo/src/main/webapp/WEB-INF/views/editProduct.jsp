@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/header.jspf"%>
 
 <style>
+
 .page-container {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -24,9 +25,22 @@ h1 {
     padding: 15px;
     background-color: #fff;
     border-radius: 10px;
-    display: block;
-    margin: 20px auto;
-    text-align: left;
+    display: flex;
+    flex-wrap: wrap; /* 允許彈性項目在需要時換行 */
+    justify-content: space-between; /* 元素之間均勻分布 */
+    margin: 20px 50px; /* 調整左右邊界距離 */
+}
+
+.result-container label,
+.result-container input,
+.result-container button {
+    margin: 10px; /* 調整元素間距 */
+}
+
+/* 調整商品名稱和圖片路徑欄位 */
+.result-container label[for="productName"],
+.result-container label[for="picture"] {
+    word-wrap: break-word;
 }
 
 .rerturn-management {
@@ -36,7 +50,7 @@ h1 {
     background-color: blue;
     border-radius: 10px;
     display: block;
-    margin: 20px auto;
+    margin: 20px 50px; /* 調整左右邊界距離 */
     text-align: center;
     text-decoration: none;
 }
@@ -53,18 +67,6 @@ footer {
     width: 100%;
 }
 
-.result-container label {
-        display: block;
-        margin-bottom: 10px; /* 調整這個值以控制垂直空白的大小 */
-}
-
-.result-container input {
-        margin-bottom: 10px; /* 調整這個值以控制垂直空白的大小 */
-}
-
-.result-container button {
-        margin-top: 10px; /* 調整這個值以控制垂直空白的大小 */
-}
 </style>
 
 <div class="page-container">
