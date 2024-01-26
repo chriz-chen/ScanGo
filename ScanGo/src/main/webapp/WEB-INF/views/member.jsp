@@ -112,6 +112,8 @@ label {
 						<div class="section-header member-area-header text-center mb-5">
 							<h2 class="section-heading">會員資料</h2>
 						</div>
+						<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
+						<p class="text-center text-success fs-5" id="successMessage">${message}</p>
 						<div class="row">
 							<div class="col-md-6 offset-md-3">
 								<input type="hidden" name="userId" value="${user.userId}">

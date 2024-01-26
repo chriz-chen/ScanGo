@@ -128,11 +128,11 @@ public class MemberController {
     		session.setAttribute("user", userDAO.findUserByUserId(sessionUser.getUserId()).get());
         	
             // 更新成功，返回成功訊息
-            model.addAttribute(SUCCESS_MESSAGE, "使用者資料更新成功");
+            model.addAttribute("message", "使用者資料更新成功");
             return "redirect:/mvc/member"; // 導向成功頁面
         } else {
             // 更新失敗，返回失敗訊息
-            model.addAttribute(ERROR_MESSAGE, "使用者資料更新失敗");
+            model.addAttribute("error", "使用者資料更新失敗");
             return "updateProfile"; // 導向錯誤頁面
         }
     }

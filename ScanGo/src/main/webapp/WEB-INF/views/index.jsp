@@ -165,7 +165,7 @@ body {
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="primary-img" src="image/product/snack/soda/5.jpeg"
+										<img class="primary-img" src="/ScanGo/image/product/snack/soda/5.jpeg"
 										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>
