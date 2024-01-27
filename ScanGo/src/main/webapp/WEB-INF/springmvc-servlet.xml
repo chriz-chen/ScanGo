@@ -110,6 +110,7 @@
     </mvc:interceptors>
      
     <!-- 靜態資源映射 -->
-    <!-- http://localhost:8080/ScanGo/mvc/product/image/1.png  -->
+    <!-- http://localhost:8080/ScanGo/mvc/product/image/1.png
     <mvc:resources mapping="/product/image/**" location="file:/uploads/qrcodes/"/>
+      -->
 </beans>		

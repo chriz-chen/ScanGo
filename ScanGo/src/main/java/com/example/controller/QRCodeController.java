@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,7 +30,7 @@ import com.google.zxing.WriterException;
 @RequestMapping("/qrcode/generate")
 public class QRCodeController {
 
-	private static final Path UPLOAD = Paths.get("/uploads/qrcodes");
+	private static final Path UPLOAD = Paths.get(System.getProperty("user.home")+"/uploads/qrcodes");
 	
 	static {
 		try {
