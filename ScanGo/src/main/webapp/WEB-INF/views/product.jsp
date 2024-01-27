@@ -7,6 +7,10 @@
 
 
 <style>
+body{
+	background-color: #fffefb;
+}
+
 .featured-collection {
 	margin-top: 40px;
 }
@@ -32,6 +36,7 @@
 
 </style>
 
+<body>
 <!-- breadcrumb start -->
 <div class="breadcrumb">
 	<div class="container">
@@ -51,6 +56,7 @@
 </div>
 <!-- breadcrumb end -->
 
+<!--   http://localhost:8080/ScanGo/mvc/searchProduct/4    -->
 <!-- collection start -->
 <div class="featured-collection mt-100 overflow-hidden">
 	<div class="collection-tab-inner">
@@ -58,13 +64,13 @@
 			<div class="section-header text-center">
 				<h2 class="section-heading primary-color">${category}</h2>
 			</div>
-			<div class="row mb-5">
+			<div class="row mb-5">  
 				<c:forEach var="product" items="${products}">
 					<div class="col-6">
 						<div class="product-card">
 							<div class="product-card-img">
 								<a class="hover-switch"> <img class="primary-img"
-									src="${product.picture}"
+									src="${product.picture}" style=" border: 1.5px solid #00234D;"
 									alt="product-img">
 								</a>
 
@@ -74,21 +80,23 @@
 							</div>
 							<div class="product-card-details">
 								<h3 class="product-card-title">
-									<a><c:out value="${product.productName}" /></a>
+									<a style="font-size: 20px;"><c:out value="${product.productName}"/></a>
 								</h3>
-								<div class="product-card-price">
-									<span class="card-price-regular">
-									<c:out value="${product.price}元 /${product.unit}" />
+								<div class="product-card-price d-flex justify-content-between align-items-center">
+									<span class="card-price-regular " style="font-size: 20px;">
+										<c:out value="${product.price}元 /${product.unit}"/>
 									</span>
+									<button type="button" class="btn btn-primary btn-lg"
+										onclick="openModal('productDetailsModal_${product.productId}')">商品資訊</button>
 								</div>
 
 								<!-- 添加“商品详细信息”和“加入购物车”按钮 -->
-								<div class="d-flex justify-content-between">
+								<%-- <div class="d-flex justify-content-end mt-2">
 									<button type="button" class="btn btn-primary btn-lg"
 										onclick="openModal('productDetailsModal_${product.productId}')">商品資訊</button>
 									<button type="button" class="btn btn-success btn-sm"
 										onclick="openModal('addToCartModal_${product.productId}')">加入購物車</button>
-								</div>
+								</div> --%>
 
 								<!-- 商品详细信息的模态框 -->
 								<div class="modal fade"
@@ -97,21 +105,21 @@
 									<div class="modal-dialog modal-dialog-centered modal-lg">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="productDetailsModalLabel">商品資訊</h5>
+												<h5 class="modal-title fs-4" id="productDetailsModalLabel" style="letter-spacing: 3px">商品資訊</h5>
 												<button type="button" class="btn-close"
 													data-bs-dismiss="modal" aria-label="Close"></button>
 											</div>
 											<div class="modal-body">
 												<!-- 这里添加模态框的内容 -->
-												<span style="font-size: 22px;">目前庫存: 20 瓶</span><br>
-                								<span style="font-size: 22px;">商品位置: 零食飲料區 汽水類 D-2</span>
+												<span style="font-size: 22px; letter-spacing: 2px">目前庫存: 20 瓶</span><br>
+                								<span style="font-size: 22px; letter-spacing: 2px">商品位置: 零食飲料區 汽水類 D-2</span>
 											</div>
 										</div>
 									</div>
 								</div>
 
 								<!-- 加入购物车的模态框 -->
-								<div class="modal fade" id="addToCartModal_${product.productId}"
+								<%-- <div class="modal fade" id="addToCartModal_${product.productId}"
 									tabindex="-1" aria-labelledby="addToCartModalLabel"
 									aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered modal-lg">
@@ -152,7 +160,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 
 								<script>
 									function decreaseQuantity() {
@@ -208,5 +216,7 @@
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	
+</body>
 
 <%@ include file="/WEB-INF/footer.jspf"%>

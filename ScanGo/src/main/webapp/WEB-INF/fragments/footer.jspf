@@ -1,13 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<style>
+
+	.footer-bottom{
+		background-color: #313d44;
+	}
+	.footer-info{
+		color: #f5f4f1;
+		font-size: 20px;
+	}
+
+</style>
+
 <!-- footer -->
 <footer class="mt-auto overflow-hidden footer-style-2 ">
 	<div class="footer-bottom bg-5">
 		<div class="container">
 			<div class="footer-bottom-inner d-flex flex-wrap  justify-content-center align-items-center">
 				<ul class="footer-bottom-menu list-unstyled d-flex flex-wrap  mb-0">
-					<li class="footer-menu-item"><a href="/ScanGo">ScanGo©2023</a></li>
+					<li class="footer-info pt-2">ScanGo©2024</li>
 				</ul>
 			</div>
 		</div>

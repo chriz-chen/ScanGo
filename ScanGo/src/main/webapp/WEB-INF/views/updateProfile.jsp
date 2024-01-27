@@ -35,11 +35,12 @@
 }
 
 .member-area-inner {
-	border: 1px solid #ddd; /* 邊框效果 */
-	border-radius: 8px; /* 圓角 */
+	border-radius: 20px; /* 圓角 */
 	padding: 20px; /* 內邊距 */
 	margin-bottom: 20px;
-	background-color: #DCDCDC;
+	background-color: #f5f4f1;
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 1px solid #555; /* 更明显的边框 */
 }
 
 .member-content {

@@ -13,6 +13,37 @@
 
 <style>
 
+body{
+	background-color: #fffefb;
+}
+
+.pure-button {
+    margin-left: 5px;
+}
+
+
+.dataTables_length{
+	font-size: 15px;
+	margin-right: 20px
+	
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+    width: 200px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 4px;
+    background-color: #b6ccd8;
+    color: #fff;
+}
+
 th {
     white-space: nowrap;
 }
@@ -88,10 +119,8 @@ th {
                 // Set export functionality
                 dom: 'lBfrtip',
                 buttons: [
-                    {extend: 'copy', text: '複製', className:'pure-button pure-button-primary'}, 
-                    {extend: 'csv', text: 'CSV', className:'pure-button'}, 
-                    {extend: 'excel', text: 'EXCEL', className:'pure-button'}, 
-                    {extend: 'print', text: 'PDF/列印', className:'pure-button pure-button-primary'}
+                    {extend: 'excel', text: 'EXCEL下載', className:'pure-button'}, 
+                    {extend: 'print', text: 'PDF/列印', className:'pure-button'}
                 ],
                 
                 "columnDefs":[

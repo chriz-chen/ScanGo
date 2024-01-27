@@ -17,7 +17,7 @@ body {
 }
 
 figcaption {
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(90, 90, 90, 0.9);
 	height: 200px;
 	transform: translate(0, 200px);
 	transition: transform 0.5s, opacity 0.5s;
@@ -25,19 +25,19 @@ figcaption {
 }
 
 figcaption h4 {
-	color: #fff;
+	color: #f5f4f1;
 	letter-spacing: 5px;
 	font-size: 28px;
 }
 
 figcaption p {
+	color: #f5f4f1;
 	font-size: 22px;
 }
 
 img[usemap] {
-	width: 400px;
+	width: 500px;
 	height: auto;
-	z-index: 100;
 }
 
 body {
