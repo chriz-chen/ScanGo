@@ -34,7 +34,7 @@
 					    </button>
 					    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					      <li><a class="dropdown-item mt-2 mb-2" href="${pageContext.request.contextPath}/mvc/backend/user">會員管理</a></li>
-					      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mvc/backend">商品管理</a></li>
+					      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/mvc/backend/product">商品管理</a></li>
 					    </ul>
 					  </div>
 					</c:if>

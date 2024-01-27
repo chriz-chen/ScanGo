@@ -33,7 +33,7 @@ body {
             }'>
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
-						src="/ScanGo/assets/img/banner/banner-02.png" alt="slide-1"> 
+						src="/ScanGo/assets/img/banner/banner-03.png" alt="slide-1"> 
 					<img class="slide-img d-md-none" src="/ScanGo/assets/img/banner/banner-01.png"
 						alt="slide-1" style="width: 100%">
 					

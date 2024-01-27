@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,12 +25,15 @@ import com.google.zxing.WriterException;
  * 2. 從網頁中顯示圖片：http://localhost:8080/ScanGo/mvc/product/image/1.png 
  *    (原理：在 springmvc-servlet.xml 新增這個設定
  *    <mvc:resources mapping="/product/image/**" location="file:/uploads/qrcodes/"/>)
+ *    
+ *    // Windows路徑： Absolute Path on  Max/Window: C:/Users/user/uploads/qrcodes
+ *    // Mac 路徑： Absolute Path on  Max/Window: /Users/chris/uploads/qrcodes
  */
 @Controller
 @RequestMapping("/qrcode/generate")
 public class QRCodeController {
 
-	private static final Path UPLOAD = Paths.get("uploads/qrcodes");
+	private static final Path UPLOAD = Paths.get(System.getProperty("user.home")+"/uploads/qrcodes");
 	
 	static {
 		try {
