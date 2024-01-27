@@ -176,7 +176,7 @@
 			class="login-form common-form mx-auto mt-5">
 			<p class="text-center text-danger fs-5">${ errorMessage }</p>
 			<div class="section-header mb-3">
-				<h2 class="section-heading text-center">登入</h2>
+				<h1 class="text-center" style="font-size: 40px; letter-spacing: 10px">登入</h1>
 			</div>
 			<div class="row">
 				<div class="col-12">
