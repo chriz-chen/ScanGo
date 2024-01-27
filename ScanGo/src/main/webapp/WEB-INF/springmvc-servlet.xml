@@ -103,9 +103,14 @@
             <mvc:exclude-mapping path="/register"/>
             <mvc:exclude-mapping path="/product/*"/>
             <mvc:exclude-mapping path="/index"/>
+            <mvc:exclude-mapping path="/qrcode/**"/>
+            <mvc:exclude-mapping path="/product/image/**"/>
             <bean class="com.example.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
      
-
+    <!-- 靜態資源映射 -->
+    <!-- http://localhost:8080/ScanGo/mvc/product/image/1.png-->
+    <mvc:resources mapping="/product/image/**" location="file:${user.home}/uploads/qrcodes/"/>
+    
 </beans>		

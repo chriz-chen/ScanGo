@@ -38,7 +38,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 @Component
 public class GenerateQRCode {
 
-	public static void generateQRcode(String data, String path, String charset, Map map, int h, int w) throws WriterException, IOException {
+	public static void generateQRcode(String data, String path, String charset, int h, int w) throws WriterException, IOException {
 		BitMatrix matrix = new MultiFormatWriter()
 				.encode(new String(data.getBytes(charset), charset),BarcodeFormat.QR_CODE, w, h);
 		MatrixToImageWriter.writeToPath(matrix, path.substring(path.lastIndexOf('.') + 1), Paths.get(path));
@@ -54,13 +54,11 @@ public class GenerateQRCode {
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {
 		
 		// 製作 QR Code
-		for (int i=1; i<=20; i++) {
+		for (int i=1; i<=15; i++) {
 			String str = "/ScanGo/mvc/product/"+i;
 			String path = "src/main/webapp/QRCode/product"+i+".png";
 			String charset = "UTF-8";
-			Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
-			hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-			generateQRcode(str, path, charset, hashMap, 200, 200);
+			generateQRcode(str, path, charset, 200, 200);
 			System.out.println("QR Code created successfully.");
 		}
 		
