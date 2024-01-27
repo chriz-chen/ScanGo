@@ -35,9 +35,8 @@ figcaption p {
 }
 
 img[usemap] {
-	width: 400px;
+	width: 500px;
 	height: auto;
-	z-index: 100;
 }
 
 body {

@@ -606,10 +606,6 @@ button,
 .header-top {
   padding: 20px 0; }
 
-.border-btm-black {
-  -ms-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 .icon-user {
   width: 12px;
@@ -779,17 +775,16 @@ button,
   padding: 0; }
   
 .offcanvas-header {
-  background-color: rgb(31, 65, 144);
+  background-color: #cccbc8;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-bottom: 10px;
 }
 
 .drawer-heading {
   margin-bottom: 0;
   font-weight: 600;
   font-size: 24px;
-  color: rgb(245, 248, 251); 
+  color: #313d44; 
   }
 
 .cart-content-area {
@@ -1288,7 +1283,7 @@ button,
   padding: 4px 12px;
   letter-spacing: 0.03em;
   color: #FEFEFE;
-  background-color: var(--primary-color);
+  background-color: #00668c;
   display: block;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
@@ -2699,7 +2694,7 @@ blockquote {
 .about-service-icon {
   width: 80px;
   height: 80px;
-  background-color: #FFAE00;
+  background-color: #d4eaf7;
   border-radius: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2719,15 +2714,12 @@ blockquote {
   max-width: 752px;
   margin-top: -15px; }
 
-.about-service {
-  background-color: #F8F8F8; }
 
 .promotional-item img {
   width: 100%; }
 
 .about-service-wrapper {
   margin-top: 28px;
-  background: #fff;
   padding: 40px 70px; }
 
 .member-name {

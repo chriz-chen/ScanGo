@@ -4,9 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 
+
+
 .login-button:hover{
-	color: #F76B6A;
+	color: #F76B6A;	
 }
+.offcanvas-body{
+	background-color: #f5f4f1;
+}
+
 </style>
 <!-- drawer menu start -->
 <div class="offcanvas offcanvas-start d-flex" tabindex="-1" id="drawer-menu">

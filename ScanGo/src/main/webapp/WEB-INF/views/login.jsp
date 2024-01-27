@@ -13,17 +13,47 @@
     color: #fff;
 }
 
+.MainContent{
+	background-color: #fffefb;
+}
 
 .login-form {
-	background-color: #DCDCDC;
-	border-radius: 10px;
+	background-color: #b6ccd8;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 2px solid #555; /* 更明显的边框 */
 }
 
 .title {
 	font-size: 18px !important;
 	margin-left: 5px;
 	letter-spacing: 5px !important;
+	font-weight: 500 !important;
 }
+
+
+/* 斜線樣式 */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #000; /* 設定橫線樣式 */
+}
+
+.separator::before {
+    margin-right: 0.5em; /* 設定橫線右邊的間距 */
+}
+
+.separator::after {
+    margin-left: 0.5em; /* 設定橫線左邊的間距 */
+}
+
 
 /* google login*/
 .gsi-material-button {
@@ -187,18 +217,18 @@
 				        <img src="${pageContext.request.contextPath}/mvc/login/getcode" alt="驗證碼" class="mr-2">
 				
 				        <!-- 忘記密碼的超連結 -->
-				        <a href="${pageContext.request.contextPath}/mvc/auth/sendEmail" class="">忘記密碼？</a>
+				        <a href="${pageContext.request.contextPath}/mvc/auth/sendEmail" class="" style="font-size: 17px">忘記密碼？</a>
 				    </div>
 				</div>
 				
-				<div class="col-12 mt-3 mb-5">
+				<div class="col-12 mt-3 mb-3">
 					<button type="submit" class="btn-primary d-block mt-4 btn-signin">登入</button>
 					<a href="${ pageContext.request.contextPath }/mvc/register"
 						class="btn-secondary mt-2 btn-signin">註冊帳號</a>
 				</div>
 				<div class="justify-content-center text-center">
 					<!-- <h5 class="text-center">Or login with</h5> -->
-					<hr>
+					<div class="separator fs-5 mb-3">或</div>
 					<button class="gsi-material-button" onclick="googleLoginBackend()">
 					  <div class="gsi-material-button-state"></div>
 					  <div class="gsi-material-button-content-wrapper">

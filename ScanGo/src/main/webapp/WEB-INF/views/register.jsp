@@ -12,15 +12,23 @@
 	height: 110vh;
 }
 
-.login-form{
-	background-color: #DCDCDC;
-	border-radius: 10px;
+.MainContent{
+	background-color: #fffefb;
 }
+
+.login-form {
+    background-color: #b6ccd8;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 2px solid #555; /* 更明显的边框 */
+}
+
 
 .title{
 	font-size: 18px;
 	margin-left: 8px;
 	letter-spacing: 4px;
+	font-weight: 500;
 }
 
 #account, #password, 

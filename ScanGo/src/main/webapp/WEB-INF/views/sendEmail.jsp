@@ -18,12 +18,14 @@
 
 <style type="text/css">
 #sendEmailForm {
-	background-color: #DCDCDC;
-	border-radius: 10px;
 	width: 100%;
 	max-width: 450px;
 	height: 400px;
-	margin-top: 100px 
+	margin-top: 100px;
+	background-color: #b6ccd8;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #555; 
 }
 
 label {
@@ -43,12 +45,12 @@ label {
 				method="post">
 			<p class="text-center text-danger fs-5">${ message }</p>
 				<div class="mb-3 justify-content-center align-items-center text-center">
-					<h1 class="mb-4 mt-4">忘記密碼</h1>
+					<h1 class="mb-4 mt-4">重設密碼申請</h1>
 				</div>
-				<label for="email" class="form-label mt-5">請輸入電子信箱：</label> <input
-					type="email" class="form-control" id="email" name="email"
+				<label for="email" class="form-label mt-5">請輸入電子信箱：</label> 
+				<input type="email" class="form-control" id="email" name="email"
 					style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-					required>
+					placeholder="輸入註冊時的信箱" required>
 				<button type="submit" class="btn btn-primary mt-3  float-end">送出</button>
 			</form>
 

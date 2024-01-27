@@ -10,6 +10,11 @@
 body {
 	background-color: #fffefb;
 }
+
+.about-service-wrapper{
+	background-color: #f5f4f1;
+	border-radius: 30px;
+}
 </style>
 
 <body>
@@ -112,7 +117,7 @@ body {
 										href="${pageContext.request.contextPath}/product-info.jsp">
 										<img class="primary-img"
 										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
-										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
+										style=" border: 1.5px solid #00234D;">
 
 									</a>
 
@@ -140,7 +145,7 @@ body {
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
 										src="/ScanGo/image/product/snack/cookies/3.jpeg" alt="product-img"
-										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
+										style=" border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
@@ -166,7 +171,7 @@ body {
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img" src="/ScanGo/image/product/snack/soda/5.jpeg"
 										alt="product-img"
-										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
+										style=" border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
@@ -193,7 +198,7 @@ body {
 									<a class="hover-switch" href="collection-left-sidebar.html">
 										<img class="primary-img"
 										src="/ScanGo/image/product/appliance/season/5.jpeg" alt="product-img"
-										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
+										style=" border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
@@ -222,7 +227,7 @@ body {
 				</div>
 			</div>
 			<!-- collection end -->
-
+			
 			<!-- about service start -->
 			<div class="about-service pt-100 pb-100">
 				<div class="container">
@@ -290,7 +295,7 @@ body {
 					<div class="about-hero mt-5 mb-5">
 						<div class="container">
 							<div class="row">
-								<div class="col-lg-6 col-md-12 col-12 ">
+								<div class="col-lg-6 col-md-12 col-12 mb-3">
 									<div class="about-hero-img mb-5 mx-auto text-center"
 										data-aos="fade-up" data-aos-duration="700">
 										<img src="/ScanGo/image/reason.png" alt="img"
