@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.springframework.stereotype.Component;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.EncodeHintType;
@@ -33,6 +35,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * @throws IOException
  * @throws NotFoundException
  */
+@Component
 public class GenerateQRCode {
 
 	public static void generateQRcode(String data, String path, String charset, Map map, int h, int w) throws WriterException, IOException {

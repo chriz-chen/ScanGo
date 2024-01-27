@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.example.entity.Category;
 import com.example.entity.Product;
 
 @Component("productDaoImpl")
@@ -29,15 +27,8 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> findAllProducts() {
 		String sql = "select * from product";
 		List<Product> products = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
-		products.forEach(productItem -> {
-			byte[] picture = productItem.getPicture();
-	        if (picture != null) {
-	            // 將 BLOB 資料轉換為 base64 字串
-	            String base64Image = Base64.getEncoder().encodeToString(picture);
-	            productItem.setBase64Image(base64Image);
-	        }
-			
-			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
+		products.forEach(productList -> {
+			categoryDao.findCategoryById(productList.getCategoryId()).ifPresent(productList::setCategory);
 		});
 		
 		return products;
@@ -65,29 +56,36 @@ public class ProductDAOImpl implements ProductDAO {
 	//新增商品
 	@Override
 	public void addProduct(Product product) {
-		String sql = "INSERT INTO product (productName, price, unit, categoryId, inventory, picture) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO product (productName, price, unit, categoryId, inventory, picture, position) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-	    try {
-	    	// Assuming product.getPicture() returns byte[] data of the image
-	    	jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(),
-	    			product.getCategoryId(), product.getInventory(), product.getPicture());
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	}
-
-	//修改商品資料
-	@Override
-	public Boolean updateInventory(Integer productId, Integer inventory) {
+		String picture = "/ScanGo/image/product/" + product.getPicture();
 		
-		return null;
+	    jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(), product.getCategoryId(),
+	    						product.getInventory(), picture, product.getPosition());
+	    
 	}
+	
+	//修改商品資料
+	public void updateProduct(Product product) {
+	    String sql = "UPDATE product SET productName = ?, price = ?, unit = ?, categoryId = ?, inventory = ?, picture = ?, position = ? WHERE productId = ?";
 
+	    jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(),
+	            product.getCategoryId(), product.getInventory(), product.getPicture(), product.getPosition(),
+	            product.getProductId());
+	}
+	
 	//變更商品上架狀態
 	@Override
 	public Boolean updateProductLaunch(Integer productId, Boolean isLaunch) {
 		String sql = "update product set isLaunch = ? where productId = ?";
 
 		return jdbcTemplate.update(sql, isLaunch, productId) > 0;
+	}
+
+	// 刪除商品
+	@Override
+	public void deleteProduct(Integer productId) {
+	    String sql = "DELETE FROM product WHERE productId = ?";
+	    jdbcTemplate.update(sql, productId);
 	}
 }

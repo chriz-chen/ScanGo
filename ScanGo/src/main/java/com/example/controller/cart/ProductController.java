@@ -1,33 +1,29 @@
 package com.example.controller.cart;
 
-import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
-import com.example.entity.Category;
 import com.example.entity.Product;
 
 
 
 @Controller
 @RequestMapping
-@CrossOrigin("*")
 public class ProductController {
 
 	@Autowired
@@ -57,13 +53,6 @@ public class ProductController {
 		List<Product> products = productDao.findProductsByCategoryId(categoryId);
 		
 		products.forEach(productItem -> {
-			byte[] picture = productItem.getPicture();
-	        if (picture != null) {
-	            // 將 BLOB 資料轉換為 base64 字串
-	            String base64Image = Base64.getEncoder().encodeToString(picture);
-	            productItem.setBase64Image(base64Image);
-	        }
-			
 			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
 		});
 		
@@ -85,23 +74,37 @@ public class ProductController {
 	}
 	
 	@PostMapping("/add-product")
-    public String addProduct(@ModelAttribute Product product,
-    						 @RequestPart("productImg") MultipartFile picture, Model model) {
-        try {
-            byte[] imageBytes = picture.getBytes();
-
-            product.setPicture(imageBytes);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            model.addAttribute("錯誤", "Failed to read image file.");
-
-            return "errorPage";
-        }
+    public String addProduct(@ModelAttribute Product product, Model model) {
+        
         productDao.addProduct(product);
 
         return "result";
     }
 	
+	@GetMapping("/editProduct/{productId}")
+    public String editProduct(@PathVariable("productId") Integer productId, Model model) {
+        Optional<Product> productOptional = productDao.findProductById(productId);
+        Product product = productOptional.orElse(null);
+
+        model.addAttribute("product", product);
+
+        return "editProduct";
+    }
+
+    
+
+    @PostMapping("/updateProduct")
+    public String updateProduct(@ModelAttribute Product updatedProduct, Model model) {
+        productDao.updateProduct(updatedProduct);
+
+        return "redirect:/mvc/backend";
+    }
+
+    @DeleteMapping("/deleteProduct/{productId}")
+    public String deleteProduct(@PathVariable("productId") Integer productId) {
+        productDao.deleteProduct(productId);
+
+        return "redirect:/mvc/backend";
+    }
 	
 }

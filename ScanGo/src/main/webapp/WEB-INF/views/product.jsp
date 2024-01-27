@@ -64,7 +64,7 @@
 						<div class="product-card">
 							<div class="product-card-img">
 								<a class="hover-switch"> <img class="primary-img"
-									src="data:image/jpeg;base64,${product.base64Image}"
+									src="${product.picture}"
 									alt="product-img">
 								</a>
 

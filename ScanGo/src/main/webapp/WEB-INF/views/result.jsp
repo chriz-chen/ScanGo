@@ -52,6 +52,13 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
+.productsImage {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+}
 </style>
 
 <div class="page-container">
@@ -61,17 +68,13 @@ footer {
 	<div class="result-container">
 		<form class="pure-form">
 			<fieldset>
-				商品名稱: ${product.productName}
-				<p />
-				價格: ${product.price}
-				<p />
-				單位: ${product.unit}
-				<p />
-				類別: ${product.categoryId}
-				<p />
-				庫存: ${product.inventory}
-				<p />
-				<p />
+				<div><img class="productsImage" src="/ScanGo/image/product/${product.picture}" alt="product-img"></div><p />
+				商品名稱: ${product.productName}<p />
+				價格: ${product.price}<p />
+				單位: ${product.unit}<p />
+				類別: ${product.categoryId}<p />
+				庫存: ${product.inventory}<p />
+				位置: ${product.position}<p />
 			</fieldset>
 		</form>
 	</div>

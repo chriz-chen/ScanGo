@@ -20,10 +20,13 @@ public interface ProductDAO {
 	//新增商品
 	void addProduct(Product product);
 	
-	//修改商品庫存
-	Boolean updateInventory(Integer productId, Integer inventory);
+	//修改商品資料
+	void updateProduct(Product product);
 	
 	//變更商品上架狀態
 	Boolean updateProductLaunch(Integer productId, Boolean isLaunch);
+	
+	//刪除商品
+	void deleteProduct(Integer productId);
 	
 }

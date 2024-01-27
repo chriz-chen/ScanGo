@@ -32,7 +32,7 @@ import com.example.service.RegisterStatus;
 public class RegisterController {
 
 //  處理使用者大頭照
-//	private static final Path upPath = Paths.get("C:\\uploads\\avator");
+//	private static final Path upPath = Paths.get("Cltt");
 //	static {
 //		try {
 //			Files.createDirectories(upPath);

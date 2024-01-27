@@ -99,9 +99,9 @@ body {
 		<!-- slideshow end -->
 
 		<!-- collection start -->
-		<div class="featured-collection mt-100 overflow-hidden mt-5">
+		<div class="featured-collection mt-100 overflow-hidden mt-5 ">
 			<div class="collection-tab-inner">
-				<div class="container">
+				<div class="container d-lg-none">
 					<div class="section-header text-center">
 						<h2 class="section-heading primary-color" style="line-height: 2;">本月優惠商品</h2>
 					</div>
@@ -165,7 +165,7 @@ body {
 							<div class="product-card">
 								<div class="product-card-img">
 									<a class="hover-switch" href="collection-left-sidebar.html">
-										<img class="primary-img" src="image/product/snack/soda/5.jpeg"
+										<img class="primary-img" src="/ScanGo/image/product/snack/soda/5.jpeg"
 										alt="product-img"
 										style="width: 226px; height: 250px; border: 1.5px solid #00234D;">
 									</a>

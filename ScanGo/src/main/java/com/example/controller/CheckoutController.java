@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,15 +30,6 @@ public class CheckoutController {
 		
 		Integer checkoutPrice = 0;
 		List<Cart> checkouts = cartDao.findCartsByUserId(user.getUserId());
-		
-		checkouts.forEach(cartItem -> {
-			byte[] picture = cartItem.getProduct().getPicture();
-	        if (picture != null) {
-	            // 將 BLOB 資料轉換為 base64 字串
-	            String base64Image = Base64.getEncoder().encodeToString(picture);
-	            cartItem.getProduct().setBase64Image(base64Image);
-	        }
-		});
 		
 		for(Cart checkout : checkouts) {
 			checkout.getProduct().setPrice((checkout.getProduct().getPrice()) * (checkout.getProductQuantity()));

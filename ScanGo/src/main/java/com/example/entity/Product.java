@@ -8,13 +8,10 @@ public class Product {
 	private String unit;
 	private Integer categoryId;
 	private Integer inventory;
-	private byte[] picture;
+	private String picture;
+	private String position;
 	private Boolean isLaunch;
-	
-	 private String base64Image;
-	
-	
-	
+
 	private Category category;
 	
 	public Product() {
@@ -79,12 +76,20 @@ public class Product {
 		this.inventory = inventory;
 	}
 
-	public byte[] getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 
-	public void setPicture(byte[] picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 	public Boolean getIsLaunch() {
@@ -93,15 +98,6 @@ public class Product {
 
 	public void setIsLaunch(Boolean isLaunch) {
 		this.isLaunch = isLaunch;
-	}
-
-	
-	public String getBase64Image() {
-		return base64Image;
-	}
-
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
 	}
 
 	public Category getCategory() {
