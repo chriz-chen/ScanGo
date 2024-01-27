@@ -180,7 +180,7 @@ input {
 		<h1>Generate QR Code</h1>
 
 	    
-	    <form action="${pageContext.request.contextPath}/mvc/qrcode/generateQRCode" method="get">
+	    <form action="${pageContext.request.contextPath}/mvc/qrcode/generate" method="get">
 		    <label for="productId">Enter Product ID:</label>
 		    <input type="text" id="productId" name="productId" required>
 		    <button type="submit">Generate QR Code</button>
