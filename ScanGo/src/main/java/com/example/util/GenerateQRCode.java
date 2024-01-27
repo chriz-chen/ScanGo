@@ -54,7 +54,7 @@ public class GenerateQRCode {
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {
 		
 		// 製作 QR Code
-		for (int i=1; i<=20; i++) {
+		for (int i=1; i<=15; i++) {
 			String str = "/ScanGo/mvc/product/"+i;
 			String path = "src/main/webapp/QRCode/product"+i+".png";
 			String charset = "UTF-8";

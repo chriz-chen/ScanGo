@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,23 +18,30 @@ import com.google.zxing.WriterException;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 @Controller
-@RequestMapping("/qrcode/generate")
+@RequestMapping("qrcode")
 public class QRCodeController {
 
 	@Autowired
 	GenerateQRCode qrCode;
 	
-	@GetMapping
-	@ResponseBody
-	public String generate(@RequestParam("productId") Integer productId) throws WriterException, IOException {
-		String str = "/ScanGo/mvc/product/"+productId;
-		String path = "Users/chris/Desktop/product"+productId+".png";
-		String charset = "UTF-8";
-		Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
-		hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-		qrCode.generateQRcode(str, path, charset, hashMap, 200, 200);
-		System.out.println("QR Code created successfully.");
-		return "";
+	@GetMapping("/generateQRcode")
+	public String generate(@RequestParam("productId") Integer productId, Model model) throws WriterException, IOException {
+		try {
+            String productUrl = "/ScanGo/mvc/product/" + productId;
+            String qrCodePath = "src/main/webapp/QRCode/product" + productId + ".png";
+            String charset = "UTF-8";
+            Map<EncodeHintType, ErrorCorrectionLevel> hints = new HashMap<>();
+            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            
+            GenerateQRCode.generateQRcode(productUrl, qrCodePath, charset, hints, 200, 200);
+            
+            model.addAttribute("qrCodePath", qrCodePath);
+            return "backend"; // Return the JSP page name
+        } catch (WriterException | IOException e) {
+            e.printStackTrace();
+            // Handle the exception, maybe redirect to an error page
+            return "errorPage";
+        }
 	}
 	
 }
