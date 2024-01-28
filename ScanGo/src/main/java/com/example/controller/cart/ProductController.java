@@ -152,7 +152,7 @@ public class ProductController {
 		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
 		try (OutputStream output = resp.getOutputStream()){
 			Files.copy(sorucrePath, output);
-			return "redirect:/mvc/backend";
+			return "redirect:/mvc/backend/product";
 		}
 		
 		
@@ -181,7 +181,7 @@ public class ProductController {
     public String updateProduct(@ModelAttribute Product updatedProduct, Model model) {
         productDao.updateProduct(updatedProduct);
 
-        return "redirect:/mvc/backend";
+        return "redirect:/mvc/backend/product";
     }
     
     @GetMapping("/update_product_launch")
