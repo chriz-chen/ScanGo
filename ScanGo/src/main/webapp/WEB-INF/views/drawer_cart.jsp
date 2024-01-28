@@ -36,7 +36,14 @@
 }
 
 
-
+#nullCart{
+	font-size: 24px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	margin-left: 20px;
+	margin-top: 250px;
+	
+}
 
 </style>
 
@@ -120,7 +127,7 @@ function loadCartData() {
 
             if (data.carts.length === 0) {
                 // 購物車中沒有商品，顯示相應提醒
-                const emptyCartHTML = '<p>您的購物車是空的喔!</p>';
+                const emptyCartHTML = '<p id="nullCart">您的購物車是空的喔!</p>';
                 cartItemsDiv.innerHTML = emptyCartHTML;
             } else{
             	
