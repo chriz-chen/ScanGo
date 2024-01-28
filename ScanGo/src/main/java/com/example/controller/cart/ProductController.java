@@ -114,7 +114,7 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@PostMapping("/addProduct")
-    public String addProduct(@ModelAttribute Product product, Model model) throws WriterException, IOException {
+    public String addProduct(@ModelAttribute Product product, Model model, HttpServletResponse resp) throws WriterException, IOException {
         
         productDao.addProduct(product);
         
@@ -128,6 +128,14 @@ public class ProductController {
 		String str = "/ScanGo/mvc/product/"+productId;
 		qrCode.generateQRcode(str, sorucrePath.toAbsolutePath().toString(), "UTF-8", 200, 200);
 		model.addAttribute("product", product);
+		
+		// QRCode圖片下載
+		resp.setContentType("APPLICATION/OCTET-STREAM");
+		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
+		try (OutputStream output = resp.getOutputStream()){
+			Files.copy(sorucrePath, output);
+		}
+		
         return "add_product_result";
     }
 	
@@ -152,7 +160,7 @@ public class ProductController {
 		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
 		try (OutputStream output = resp.getOutputStream()){
 			Files.copy(sorucrePath, output);
-			return "redirect:/mvc/backend";
+			return "redirect:/mvc/backend/product";
 		}
 		
 		
@@ -181,7 +189,7 @@ public class ProductController {
     public String updateProduct(@ModelAttribute Product updatedProduct, Model model) {
         productDao.updateProduct(updatedProduct);
 
-        return "redirect:/mvc/backend";
+        return "redirect:/mvc/backend/product";
     }
     
     @GetMapping("/update_product_launch")

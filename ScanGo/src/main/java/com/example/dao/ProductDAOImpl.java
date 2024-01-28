@@ -121,11 +121,10 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	//修改商品資料
 	public void updateProduct(Product product) {
-	    String sql = "UPDATE product SET productName = ?, price = ?, unit = ?, categoryId = ?, inventory = ?, picture = ?, position = ? WHERE productId = ?";
+	    String sql = "UPDATE product SET productName = ?, price = ?, unit = ?, categoryId = ?, inventory = ?, position = ? WHERE productId = ?";
 
 	    jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getUnit(),
-	            product.getCategoryId(), product.getInventory(), product.getPicture(), product.getPosition(),
-	            product.getProductId());
+	            product.getCategoryId(), product.getInventory(), product.getPosition(), product.getProductId());
 	}
 	
 	//變更商品上架狀態

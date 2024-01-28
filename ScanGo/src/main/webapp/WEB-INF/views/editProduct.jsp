@@ -44,10 +44,10 @@
     }
 
     .return-management {
-        border: 3px solid #000;
+    	font-size: 16px;
         padding: 8px 15px;
         color: white;
-        background-color: blue;
+        background-color: #00668c;
         border-radius: 10px;
         display: inline-block;
         margin: 20px 50px; /* 調整左右邊界距離 */
@@ -57,7 +57,7 @@
     }
 
     .return-management:hover {
-        background-color: darkblue;
+        background-color: #71c4ef;
     }
 </style>
 
