@@ -106,10 +106,10 @@ footer {
 </script>
 <body>
 	<!-- breadcrumb start -->
-	<div class="breadcrumb">
-		<div class="container">
-			<ul class="list-unstyled d-flex align-items-center m-0">
-				<li><a href="/ScanGo/index.jsp">首頁</a></li>
+	<div class="breadcrumb ">
+		<div class="container ms-3	">
+			<ul class="list-unstyled d-flex align-items-center m-0 fs-5">
+				<li><a href="/ScanGo/mvc/index">首頁</a></li>
 				<li><svg class="icon icon-breadcrumb" width="64" height="64"
 						viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.4">

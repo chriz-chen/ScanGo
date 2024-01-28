@@ -910,7 +910,7 @@ button,
 .breadcrumb li,
 .breadcrumb li a {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 21px;
   letter-spacing: 0.5px;
   color: #000000; }
 
@@ -2599,7 +2599,7 @@ blockquote {
   font-size: 34px;
   line-height: 1.09;
   letter-spacing: 0.25px;
-  color: #000000; }
+  color: #313d44; }
 
 .action-subtitle {
   font-weight: 400;
