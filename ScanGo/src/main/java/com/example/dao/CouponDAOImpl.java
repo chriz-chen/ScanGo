@@ -92,5 +92,12 @@ public class CouponDAOImpl implements CouponDAO {
 		}
 	}
 
-	
+	@Override
+	public Boolean checkIfUserHasCoupon(Integer userId, Integer couponId) {
+		String sql = "select count(*) from couponUser where userId = ? and couponId = ?";
+		Integer count = jdbcTemplate.queryForObject(sql, Integer.class, userId, couponId);
+		
+		return count != null && count > 0;
+	}
+
 }

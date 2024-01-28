@@ -32,4 +32,7 @@ public interface CouponDAO {
 	//根據user_coupon_id來查找使用者的優惠券
 	Optional<CouponUser> findCouponUserById(Integer user_coupon_id);
 	
+	//根據使用者ID查找該使用者是否已經擁有該張優惠券
+	Boolean checkIfUserHasCoupon(Integer userId, Integer couponId);
+	
 }
