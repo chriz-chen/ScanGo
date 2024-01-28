@@ -2833,7 +2833,7 @@ blockquote {
   margin-right: 20px; }
 
 .coupon-item {
-  border: 1px solid #00234D;
+  border: 2.5px solid #00234D;
   border-radius: 4px;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -2842,11 +2842,11 @@ blockquote {
   padding: 16px; }
 
 .coupon-item:hover {
-  background-color: var(--primary-color); }
+  background-color: #b6ccd8}
 
 .coupon-item:hover .coupon-title,
 .coupon-item:hover .coupon-info {
-  color: #fff; }
+  color: black;}}
 
 .coupon-item:hover .coupon-icon svg path {
   fill: #fff; }
@@ -3717,7 +3717,7 @@ blockquote {
   .blog-sidebar {
     margin-top: 100px; }
   .checkout-summary-area {
-    padding: 40px 16px;
+    padding: 40px 30px;
     margin-top: 48px; } }
 
 @media (max-width: 767px) {

@@ -40,7 +40,7 @@
 	margin-bottom: 20px;
 	background-color: #f5f4f1;
 	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
-    border: 1px solid #555; /* 更明显的边框 */
+    border: 2px solid #555; /* 更明显的边框 */
 }
 
 .member-content {
