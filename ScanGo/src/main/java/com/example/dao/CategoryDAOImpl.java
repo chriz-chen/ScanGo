@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.example.entity.Category;
+import com.example.entity.Coupon;
 import com.example.entity.Product;
 
 @Component("categoryDaoImpl")
@@ -18,7 +19,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	
+	@Override
+	public List<Category> findAllCateories() {
+		String sql = "select * from category";
+		List<Category> category = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Category.class));
+		return category;
+	}
+
 	@Override
 	public Optional<Category> findCategoryById(Integer categoryId) {
 		String sql = "select categoryId, categoryPart, categoryName from category where categoryId = ?";
