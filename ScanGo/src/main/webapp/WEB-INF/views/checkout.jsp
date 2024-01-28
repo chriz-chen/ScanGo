@@ -14,6 +14,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	background-color: #fffefb;
 }
 
 main {
@@ -26,7 +27,7 @@ main {
 
 .product-price {
 	float: right;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .product-vendor {
@@ -62,15 +63,17 @@ main {
 	width: 100%;
 	max-width: 600px;
 	margin-top: 0;
+	max-width: 90%;
+    padding: 20px;
 }
 
 /* 模態框頭部，固定在模態框的頂部 */
 .modal-header {
-	position: sticky;
-	top: 0;
-	background-color: white;
+	background-color: #f5f4f1;
 	z-index: 1;
 	width: 100%;
+	font-size: 20px;
+	font-weight: 500;
 }
 
 /* 關閉按鈕樣式 */
@@ -80,6 +83,46 @@ main {
 	right: 10px;
 	cursor: pointer;
 }
+
+/* 確認清單 */
+.checkout-summary-area {
+    background: #f5f4f1;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 1px solid #555; /* 更明显的边框 */
+    border-radius: 20px; /* 圓角 */
+    margin-bottom: 50px;
+}	
+
+.checkout-bar li a {
+    font-size: 20px;
+}
+
+.product-title a {
+    font-size: 18px;
+}
+
+.quantity input, .product-price {
+    font-size: 18px;
+    color: #00668c;
+}
+
+.product-vendor {
+    font-size: 18px;
+}
+
+.subtotal-title {
+    font-size: 19px;
+}
+
+.subtotal-value{
+	color: #00668c;
+	font-size: 19px;
+}
+
+.coupon-item{
+	border-radius: 10px;
+}
+
 </style>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light"
@@ -93,25 +136,27 @@ main {
 	</div>
 </header>
 
+<body>
+
 <main id="MainContent" class="content-for-layout">
 	<div class="checkout-page">
 		<div class="container">
 			<div class="checkout-page-wrapper">
 				<div class="row">
-					<div class="col-xl-9 col-lg-8 col-md-12 col-12">
-						<div class="checkout-progress overflow-hidden">
+					<div class="col-12">
+						<div class="checkout-progress overflow-hidden ms-3">
 							<ol class="checkout-bar px-0">
 								<li class="progress-step step-done"><a href="cart.html">購物車</a></li>
 								<li class="progress-step step-active"><a
 									href="checkout.html">確認清單</a></li>
 								<li class="progress-step step-todo"><a href="checkout.html">支付方式</a></li>
-								<li class="progress-step step-todo"><a href="checkout.html">Review</a></li>
+								<li class="progress-step step-todo"><a href="checkout.html">結帳完成</a></li>
 							</ol>
 						</div>
 
 
 					</div>
-					<div class="col-xl-3 col-lg-4 col-md-12 col-12">
+					<div class="col-12">
 						<div class="cart-total-area checkout-summary-area">
 							<h3 class="d-none d-lg-block mb-0 text-center heading_24 mb-4">
 								商品總覽</h3>
@@ -147,9 +192,9 @@ main {
 								</div>
 
 
-								<div class="mt-4 checkout-promo-code">
+								<div class="mt-4 checkout-promo-code ">
 									<a href="#" id="openModalBtn"
-										class="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
+										class="btn-apply-code position-relative btn-secondary text-uppercase mt-3 fs-5">
 										使用優惠券 </a>
 								</div>
 
@@ -158,7 +203,7 @@ main {
 									<div class="modal-content">
 										<div class="modal-header">
 											<span class="close" onclick="closeModal()">&times;</span>
-											<p>您可用的優惠</p>
+											<p class="fs-3">您可用的優惠</p>
 										</div>
 										<!-- 優惠券的內容部分 -->
 										<c:forEach var="eligibleCoupons" items="${eligibleCoupons}">
@@ -180,7 +225,8 @@ main {
 												</div>
 											</div>
 										</c:forEach>
-										<button type="button" class="select-coupon"
+										<button type="button" class="select-coupon btn btn-primary mt-5"
+											style="background-color: #00234D"
 											onclick="confirmCouponSelection()">確認</button>
 									</div>
 								</div>
@@ -191,9 +237,9 @@ main {
 								<div
 									class="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
 									<a href="/ScanGo/mvc/cart"
-										class="checkout-page-btn minicart-btn btn-secondary">回到購物車</a>
+										class="checkout-page-btn minicart-btn btn-secondary fs-5">回到購物車</a>
 									<a href="/ScanGo/mvc/payment"
-										class="checkout-page-btn minicart-btn btn-primary">確認並結帳</a>
+										class="checkout-page-btn minicart-btn btn-primary fs-5">確認並結帳</a>
 								</div>
 							</div>
 						</div>
@@ -298,3 +344,6 @@ main {
 
 	
 </script> 
+
+
+</body>
