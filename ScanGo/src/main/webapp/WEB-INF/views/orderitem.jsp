@@ -196,8 +196,8 @@ input[type="radio"]:checked ~ label:before {
 	<div class="checkout-page vh-100">
 		<div class="container">
 			<div class="checkout-page-wrapper">
-				<div class="row">
-					<div class="puchase-time">
+				<div class="row d-flex justify-content-center">
+					<div class="puchase-time d-flex justify-content-center">
 						購買時間: &nbsp;&nbsp;
 						<fmt:formatDate value="${orders.createTime}"
 							pattern="yyyy年MM月dd日 a hh:mm " />
