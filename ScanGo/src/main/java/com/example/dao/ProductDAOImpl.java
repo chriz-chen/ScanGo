@@ -45,8 +45,14 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> findAllLaunchProducts() {
 		String sql = "select * from product where isLaunch = true";
 		List<Product> products = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
+		products.forEach(productList -> {
+			categoryDao.findCategoryById(productList.getCategoryId()).ifPresent(productList::setCategory);
+		});
+		
 		return products;
 	}
+
+
 
 	//根據產品ID來查找商品(單筆)
 	@Override

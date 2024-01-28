@@ -5,6 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
+
 <%@ include file="/WEB-INF/header.jspf"%>
 <!DOCTYPE html>
 
@@ -272,7 +274,7 @@ th {
 						</td>
 						<td><input onClick="changeLaunch(${ product.productId }, this.checked)"
 									type="checkbox" ${ (product.isLaunch) ? 'checked' : '' } 
-									value="true"> 上架
+									> 上架
 						</td>
 						<td>
 		                    <div class="">
@@ -312,56 +314,6 @@ document.querySelectorAll('.show-userId-orderitem').forEach(button => {
         // 使用 const 或 let 代替 var
         window.location.href = url;
     });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // 使用 JavaScript 為每個按鈕添加點擊事件處理程序
-    document.querySelectorAll('.launch-button').forEach(button => {
-        button.addEventListener('click', function () {
-            const productId = this.getAttribute('data-product-id');
-            const currentLaunchStatus = this.getAttribute('data-launch-status');
-
-            // 禁用按鈕，避免重複點擊
-            button.disabled = true;
-
-            updateLaunchStatus(productId, currentLaunchStatus, button);
-        });
-    });
-
-    function updateLaunchStatus(productId, currentStatus, button) {
-        const newStatus = currentStatus === 'true' ? 'false' : 'true';
-
-        // 使用實際的後端端點
-        const updateUrl = `${pageContext.request.contextPath}/mvc/updateLaunchStatus?productId=${productId}&newStatus=${newStatus}`;
-
-        // 使用 fetch 或其他 AJAX 方法向後端發送請求
-        fetch(updateUrl, {
-		    method: 'POST',
-		    headers: {
-		        'Content-Type': 'application/x-www-form-urlencoded',  // 修改這裡
-		    },
-		    body: `productId=${productId}&newStatus=${newStatus}`,  // 新增這行
-		})
-        .then(response => response.json())
-        .then(data => {
-        	console.log('Data from server:', data);
-
-            // 在這裡處理成功更新的情況
-            console.log(data);
-
-            // 可以在成功後更新按鈕狀態，例如修改按鈕的樣式或文本
-            // 這裡是一個示例，你需要根據後端的回應進行修改
-            button.innerText = newStatus === 'true' ? '下架' : '上架';
-        })
-        .catch(error => {
-            // 在這裡處理錯誤情況
-            console.error('Error updating launch status:', error);
-        })
-        .finally(() => {
-            // 啟用按鈕，允許下一次點擊
-            button.disabled = false;
-        });
-    }
 });
 </script>
 

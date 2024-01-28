@@ -187,11 +187,10 @@ public class ProductController {
 									  HttpServletRequest request) {
 		
 		productDao.updateProductLaunch(productId, isLaunch);
-		
 		String referer = request.getHeader("Referer");
 		return "redirect:" + (referer != null ? referer : "/");
 	}
-    
+
     @DeleteMapping("/deleteProduct/{productId}")
     public String deleteProduct(@PathVariable("productId") Integer productId) {
         productDao.deleteProduct(productId);
