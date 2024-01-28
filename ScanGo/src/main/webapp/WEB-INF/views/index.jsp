@@ -16,6 +16,11 @@ body {
 	border-radius: 30px;
 }
 
+/* 商品資訊 */
+.product-card-details{
+	font-weight: 400;
+}
+
 </style>
 
 <body>
@@ -48,51 +53,23 @@ body {
 				<div class="slide-item slide-item-bag position-relative">
 					<img class="slide-img d-none d-md-block"
 						src="/ScanGo/assets/img/slideshow/f2.jpg" alt="slide-2"> <img
-						class="slide-img d-md-none" src="/ScanGo/assets/img/slideshow/f2-m.jpg"
+						class="slide-img d-md-none" src="/ScanGo/assets/img/banner/banner-coupon.png"
 						alt="slide-2">
 					<div class="content-absolute content-slide">
 						<div
 							class="container height-inherit d-flex align-items-center justify-content-center">
 							<div
 								class="content-box slide-content slide-content-1 py-4 text-center">
-								<h2
+								<h
 									class="slide-heading heading_72 animate__animated animate__fadeInUp"
 									data-animation="animate__animated animate__fadeInUp">
-									限時領取優惠券</h2>
+									限時領取優惠券</h1>
 								<p class="slide-subheading heading_24 animate__animated animate__fadeInUp mt-3"
 									data-animation="animate__animated animate__fadeInUp">優惠券代碼: IWANTCOUPON100</p>
 								<a
-									class="btn-primary slide-btn animate__animated animate__fadeInUp"
+									class="btn-primary slide-btn animate__animated animate__fadeInUp btn-lg"
 									href="${pageContext.request.contextPath}/mvc/coupon.jsp"
-									data-animation="animate__animated animate__fadeInUp">GET
-									NOW</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="slide-item slide-item-bag position-relative">
-					<img class="slide-img d-none d-md-block"
-						src="assets/img/slideshow/f3.jpg" alt="slide-3"> <img
-						class="slide-img d-md-none" src="assets/img/slideshow/f3-m.jpg"
-						alt="slide-3">
-					<div class="content-absolute content-slide">
-						<div
-							class="container height-inherit d-flex align-items-center justify-content-center">
-							<div
-								class="content-box slide-content slide-content-1 py-4 text-center">
-								<h2
-									class="slide-heading heading_72 animate__animated animate__fadeInUp"
-									data-animation="animate__animated animate__fadeInUp">
-									Discover The Best Product</h2>
-								<p
-									class="slide-subheading heading_24 animate__animated animate__fadeInUp"
-									data-animation="animate__animated animate__fadeInUp">Look
-									for your inspiration here</p>
-								<a
-									class="btn-primary slide-btn animate__animated animate__fadeInUp"
-									href="collection-left-sidebar.html"
-									data-animation="animate__animated animate__fadeInUp">SHOP
-									NOW</a>
+									data-animation="animate__animated animate__fadeInUp">輸入代碼領取</a>
 							</div>
 						</div>
 					</div>
@@ -234,7 +211,7 @@ body {
 				<div class="container">
 					<div class="section-header about-service-header text-center"
 						data-aos="fade-up" data-aos-duration="700">
-						<h2 class="section-heading mb-5">一掃即得，無憂購物新體驗！</h2>
+						<h2 class="section-heading mb-5" style="color: #1d1c1c">一掃即得，無憂購物新體驗！</h2>
 					</div>
 					<div class="about-service-wrapper">
 						<div class="row justify-content-center">
@@ -250,8 +227,7 @@ body {
 									<div class="about-service-content">
 										<h3 class="mt-3">無需等待，節省時間</h3>
 										<p class="about-service-subtitle fs-5"> 
-										無人商店自助結帳系統，給您自由選擇商品、輕鬆結帳，無需再排隊等待。
-										您可以更快速地完成購物，節省寶貴的時間。</p>
+										透過自助結帳系統，無需再排隊結帳，節省您的寶貴時間。</p>
 									</div>
 								</div>
 							</div>
@@ -266,8 +242,7 @@ body {
 									<div class="about-service-content">
 										<h3 class="mt-3">24/7 營業</h3>
 										<p class="about-service-subtitle fs-5">
-										我們的無人商店允許您在您方便的時候購物，24小時全天候開放。
-										無需受制於商店營業時間，隨時隨地都能享受購物的樂趣。</p>
+										24小時全天候開放，無需受制於商店營業時間，隨時都能享受購物的樂趣。</p>
 									</div>
 								</div>
 							</div>
@@ -282,7 +257,7 @@ body {
 									<div class="about-service-content">
 										<h3 class="mt-3">隱私和安全保障</h3>
 										<p class="about-service-subtitle fs-5">
-										您的個人資訊和購物資料都將受到加密保護，確保您的隱私得到最大程度的保障。</p>
+										個人資訊和購物資料都將受到加密保護，確保您的隱私擁有最大程度的保障。</p>
 									</div>
 								</div>
 							</div>
@@ -306,7 +281,7 @@ body {
 								<div class="col-lg-6 col-md-12 col-12 ">
 									<div class="about-hero-content" data-aos="fade-up"
 										data-aos-duration="700">
-										<h2 class="about-hero-title">探索無人商店新境界，輕鬆購物，三步驟引領新體驗！</h2>
+										<h2 class="about-hero-title" style="color: #1d1c1c">探索無人商店新境界，輕鬆購物，三步驟引領新體驗！</h2>
 										<p class="about-hero-subtitle fs-5">探索新型態購物：使用方式簡易，購物快感一掃而得</p>
 										<ul class="about-hero-action p-0">
 											<li class="action-item d-flex">
