@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,17 +35,10 @@ public class PaymentController {
 	
 	@GetMapping("/payment")
 	public String showPayment(HttpSession session, Model model) {
-		//  先找到 user 登入者
-		User user = (User)session.getAttribute("user");
 		
-		Integer checkoutPrice = 0;
-		List<Cart> checkouts = cartDao.findCartsByUserId(user.getUserId());
-		for(Cart checkout : checkouts) {
-			checkout.getProduct().setPrice((checkout.getProduct().getPrice()) * (checkout.getProductQuantity()));
-			checkoutPrice += ((checkout.getProduct().getPrice()));
-		}
-		model.addAttribute("checkouts", checkouts);
-		model.addAttribute("checkoutPrice", checkoutPrice);
+		Integer discountTotalPrice = (Integer) session.getAttribute("discountTotalPrice");
+		
+		model.addAttribute("discountTotalPrice", discountTotalPrice);
 		
 		return "payment";
 	}
@@ -75,7 +67,7 @@ public class PaymentController {
 			orderDao.addOrderItem(orderItem);
 		}
 		
-		orderDao.updateOrderTotalPrice(orders.getOrderId(), checkoutPrice);
+		orderDao.updateOriginalTotalPrice(orders.getOrderId(), checkoutPrice);
 		cartDao.cleanCartByUserId(user.getUserId());
 		return "redirect:/";
 	}

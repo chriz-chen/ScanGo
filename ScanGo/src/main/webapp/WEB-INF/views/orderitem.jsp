@@ -150,7 +150,7 @@ input[type="radio"]:checked ~ label:before {
 							<div class="cart-total-box mt-4 bg-transparent p-0">
 								<div class="subtotal-item subtotal-box">
 									<h4 class="subtotal-title">小計</h4>
-									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
+									<p class="subtotal-value">$${orders.originalTotalPrice}</p>
 								</div>
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">折扣</h4>
@@ -159,7 +159,7 @@ input[type="radio"]:checked ~ label:before {
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
+									<p class="subtotal-value">$${orders.originalTotalPrice}</p>
 								</div>
 							</div>
 

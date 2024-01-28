@@ -15,6 +15,7 @@ public class Coupon {
 	private Date startDate;
 	private Date endDate;
 	private Boolean isActive;
+	private Boolean isDeleted;
 	
 	public Coupon() {
 		
@@ -110,6 +111,14 @@ public class Coupon {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	
 }

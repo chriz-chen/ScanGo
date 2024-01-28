@@ -8,7 +8,7 @@ public class Orders {
 	private Integer userId;
 	private Integer couponId;
 	private Timestamp createTime;
-	private Integer orderTotalPrice;
+	private Integer originalTotalPrice;
 	private Integer discountTotalPrice;
 	private Integer rating;
 	
@@ -17,13 +17,13 @@ public class Orders {
 	}
 	
 	
-	public Orders(Integer orderId, Integer userId, Integer couponId, Timestamp createTime, Integer orderTotalPrice,
+	public Orders(Integer orderId, Integer userId, Integer couponId, Timestamp createTime, Integer originalTotalPrice,
 			Integer discountTotalPrice) {
 		this.orderId = orderId;
 		this.userId = userId;
 		this.couponId = couponId;
 		this.createTime = createTime;
-		this.orderTotalPrice = orderTotalPrice;
+		this.originalTotalPrice = originalTotalPrice;
 		this.discountTotalPrice = discountTotalPrice;
 	}
 
@@ -67,13 +67,13 @@ public class Orders {
 	}
 
 
-	public Integer getOrderTotalPrice() {
-		return orderTotalPrice;
+	public Integer getOriginalTotalPrice() {
+		return originalTotalPrice;
 	}
 
 
-	public void setOrderTotalPrice(Integer orderTotalPrice) {
-		this.orderTotalPrice = orderTotalPrice;
+	public void setOriginalTotalPrice(Integer originalTotalPrice) {
+		this.originalTotalPrice = originalTotalPrice;
 	}
 
 

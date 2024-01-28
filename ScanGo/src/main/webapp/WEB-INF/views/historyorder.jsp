@@ -72,7 +72,7 @@ th {
 				<td><fmt:formatDate value="${order.createTime}"
 						pattern="yyyy年MM月dd日 a hh:mm " /></td>
 				<td class="show-totalprice"><c:out
-						value="$${order.orderTotalPrice}" /></td>
+						value="$${order.originalTotalPrice}" /></td>
 				<td>
 					<button class="show-orderitem"
 						data-href="/ScanGo/mvc/showOrderItem/${order.orderId}">
