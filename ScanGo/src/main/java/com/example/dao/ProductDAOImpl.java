@@ -39,6 +39,20 @@ public class ProductDAOImpl implements ProductDAO {
 		
 		return products;
 	}
+	
+	//查詢所有上架商品(多筆)
+	@Override
+	public List<Product> findAllLaunchProducts() {
+		String sql = "select * from product where isLaunch = true";
+		List<Product> products = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
+		products.forEach(productList -> {
+			categoryDao.findCategoryById(productList.getCategoryId()).ifPresent(productList::setCategory);
+		});
+		
+		return products;
+	}
+
+
 
 	//根據產品ID來查找商品(單筆)
 	@Override
@@ -54,8 +68,8 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	//根據類別ID來查找商品(多筆)
 	@Override
-	public List<Product> findProductsByCategoryId(Integer categoryId) {
-		String sql = "select * from product where categoryId = ?";
+	public List<Product> findLaunchProductsByCategoryId(Integer categoryId) {
+		String sql = "select * from product where categoryId = ? and isLaunch = true";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), categoryId);
 	}
 
