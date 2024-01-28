@@ -188,7 +188,7 @@ main {
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p id="discount-total-value" class="discount-total-value"></p>
+									<p id="discount-total-value" class="discount-total-value">$${checkoutPrice}</p>
 								</div>
 
 

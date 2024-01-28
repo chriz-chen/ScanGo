@@ -89,6 +89,12 @@ footer {
 				data-bs-target="#getCouponModal">獲取優惠券</button>
 		</div>
 	</div>
+	
+	<!-- 提示訊息區域 -->
+		<div id="alertMessage" class="alert alert-success mt-3" role="alert" style="display: none;">
+		    ${not empty message ? message : ''}
+		</div>
+	
 		<!-- coupon start -->
 		<div class="coupon-area vh-100">
 			<div class="row justify-content-center">
@@ -145,5 +151,15 @@ footer {
 
 	</div>
 </body>
+<script>
+
+$(document).ready(function() {
+    var message = '${not empty message ? message : ''}';
+    if (message) {
+        $('#alertMessage').show();
+    }
+});
+
+</script>
 
 <%@ include file="/WEB-INF/footer.jspf"%>

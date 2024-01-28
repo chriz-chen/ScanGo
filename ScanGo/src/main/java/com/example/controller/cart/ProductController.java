@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
+import com.example.entity.Category;
 import com.example.entity.Product;
 import com.example.util.GenerateQRCode;
 import com.google.zxing.WriterException;
@@ -94,9 +95,11 @@ public class ProductController {
 	@GetMapping("/backend/product")
 	public String showProductBackend(Model model) {
 		List<Product> productList = productDao.findAllProducts();
-
+		
+		List<Category> category = categoryDao.findAllCateories();
 		
 		model.addAttribute("productList", productList);
+		model.addAttribute("category", category);
 		
 		return "backend_product";
 	}
