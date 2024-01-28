@@ -11,6 +11,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	background-color: #fffefb;
 }
 
 main {
@@ -23,10 +24,6 @@ table {
 	margin: 20px;
 }
 
-h2 {
-	margin-top: 20px;
-	margin-left: 20px;
-}
 
 th, td {
 	border: 1px solid #dddddd;
@@ -35,7 +32,14 @@ th, td {
 }
 
 th {
+	font-size: 20px;
+	font-weight: 500;
 	background-color: #f2f2f2;
+}
+
+td{
+	font-size: 18px;
+	font-weight: 400;
 }
 
 .show-totalprice {
@@ -46,21 +50,26 @@ th {
 	border: 1px solid #000;
 	padding: 5px 10px;
 	color: white;
-	background-color: blue;
+	background-color: #00668c;
 	border-radius: 10px;
 	display: block;
 	margin: 0 auto;
 }
+
+
+
+
+
 </style>
 
 
-<h2>歷史訂單</h2>
+<h1 class="text-center mt-4">歷史訂單</h1>
 
 <table>
 	<thead>
 		<tr>
-			<th>時間</th>
-			<th>金額</th>
+			<th class="text-center">時間</th>
+			<th class="text-center">金額</th>
 			<th></th>
 			<!-- 其他欄位 -->
 		</tr>
@@ -68,13 +77,13 @@ th {
 	<tbody>
 		<!-- 迭代購物紀錄 -->
 		<c:forEach var="order" items="${orders}">
-			<tr>
-				<td><fmt:formatDate value="${order.createTime}"
+			<tr class="text-center">
+				<td class="text-center"><fmt:formatDate value="${order.createTime}"
 						pattern="yyyy年MM月dd日 a hh:mm " /></td>
-				<td class="show-totalprice"><c:out
+				<td class="show-totalprice text-center"><c:out
 						value="$${order.originalTotalPrice}" /></td>
-				<td>
-					<button class="show-orderitem"
+				<td class="text-center">
+					<button class="show-orderitem btn"
 						data-href="/ScanGo/mvc/showOrderItem/${order.orderId}">
 						查看</button>
 				</td>

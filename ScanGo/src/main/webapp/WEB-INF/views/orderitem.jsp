@@ -13,6 +13,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
 <style>
+.navbar{
+	background-color: #f5f4f1 !important;
+}
+
+body {
+	background-color: #fffefb;
+}
+
 .puchase-time {
 	margin-top: 120px;
 	font-size: 20px;
@@ -103,13 +111,79 @@ input[type="radio"]:checked ~ label:before {
 .empty-star {
 	color: #ddd; /* 未选中的星星颜色，可以根据需要修改 */
 }
+
+/* 卡片區 */
+
+.puchase-time {
+    margin-top: 120px;
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.cart-total-area {
+	background-color: #f5f4f1;
+	border-radius: 20px;
+	border: 1px solid #3b3c3d;
+	padding: 15px;
+}
+
+.product-title, .product-title a {
+    font-size: 18px;
+    
+}
+
+.product-price {
+    font-size: 20;
+}
+
+.product-vendor {
+    font-size: 18px;
+}
+ 
+.shipping_text, .subtotal-value, .subtotal-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.69;
+    letter-spacing: 0.5px;
+    color: #000000;
+    margin-bottom: 0;
+} 
+
+.showRating {
+    border: 3px solid #000;
+    padding: 8px 15px;
+    color: white;
+    background-color: #00668c;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+/* 評分彈出框 */
+.modal-content{
+	background-color: #f5f4f1;
+	border-radius: 20px;
+}
+
+#submitBtn{
+	background-color: #00234D;
+}
+
+#ratingResultModalLabel{
+	margin-left: 160px;
+}
  
 </style>
+
+
+<body>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light"
 	style="position: fixed; top: 0; left: 0; width: 100%; height: 65px; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 	<div class="container-fluid">
-		<button class="back-button" onclick="history.back()">
+		<button class="back-button" onclick="history.back()" style="background-color: #f5f4f1; font-size: 30px">
 			<!-- 使用 "<" 符號 -->
 			&lt;
 		</button>
@@ -119,7 +193,7 @@ input[type="radio"]:checked ~ label:before {
 
 
 <main id="MainContent" class="content-for-layout">
-	<div class="checkout-page">
+	<div class="checkout-page vh-100">
 		<div class="container">
 			<div class="checkout-page-wrapper">
 				<div class="row">
@@ -165,7 +239,8 @@ input[type="radio"]:checked ~ label:before {
 
 							<div class=" text-center">
 								<button class="showRating" data-bs-toggle="modal" data-bs-target="#ratingModal" th:class="${hasRated ? 'd-none' : ''}">為您的訂單評分</button>
-								<button class="showRatingFinished" onclick="displayRatingResult()" th:class="${hasRated ? '' : 'd-none'}">已完成評分</button>
+								<button class="showRatingFinished" onclick="displayRatingResult()" 
+								        style="background-color: #00234D;" th:class="${hasRated ? '' : 'd-none'}">已完成評分</button>
 							</div>
 						</div>
 					</div>
@@ -179,10 +254,10 @@ input[type="radio"]:checked ~ label:before {
 
 <!-- 評分 Modal -->
 <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog mt-5">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ratingModalLabel">請根據滿意度給予1~5顆星的評價</h5>
+                <h5 class="modal-title fs-4" id="ratingModalLabel">請根據滿意度給予1~5顆星的評價</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -202,7 +277,8 @@ input[type="radio"]:checked ~ label:before {
                     <!-- 提交按鈕 -->
                     <div class="modal-footer">
 					    <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-					    <button type="button" class="btn btn-submit" id="submitBtn" onclick="submitRating(${orders.orderId})" disabled>送出</button>
+					    <button type="button" class="btn btn-submit" id="submitBtn" 
+					            style="color: white;" onclick="submitRating(${orders.orderId})" disabled>送出</button>
 					</div>
                 </form>
             </div>
@@ -212,18 +288,19 @@ input[type="radio"]:checked ~ label:before {
 
 <!-- 评分结果 Modal -->
 <div class="modal fade" id="ratingResultModal" tabindex="-1" aria-labelledby="ratingResultModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog mt-5">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ratingResultModalLabel">感謝您的評分!</h5>
+            <div class="modal-header text-center d-flex justify-content-center align-items-center">
+                <h5 class="fs-4" id="ratingResultModalLabel">感謝您的評分!</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <div class="stars-container"></div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <script>
@@ -316,5 +393,6 @@ input[type="radio"]:checked ~ label:before {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 
 <%@ include file="/WEB-INF/footer.jspf"%>

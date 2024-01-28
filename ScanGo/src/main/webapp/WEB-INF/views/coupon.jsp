@@ -9,6 +9,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 <style>
+body {
+	background-color: #fffefb;
+}
+
 .coupon-time {
 	background-color: #f2f2f2;
 	padding: 5px;
@@ -16,13 +20,10 @@
 }
 
 .getCoupon {
-	border: 3px solid #000;
 	padding: 8px 15px;
-	color: white;
-	background-color: blue;
 	border-radius: 10px;
-	display: block;
 	margin: 20 auto;
+	border: 1px solid #555 !important;
 }
 
 footer {
@@ -32,6 +33,33 @@ footer {
 .coupon-area {
 	margin-bottom: 10px;
 }
+
+.coupon-item {
+	background-color: #f5f4f1;
+	border-radius: 17px;	
+}
+
+/* 領取彈出框 */
+#couponForm{
+	background-color: #f5f4f1;
+	border-radius: 20px;
+}
+.modal-title{
+	margin-left: 8px;
+	font-size: 24px;
+	letter-spacing: 1px;
+}
+
+.form-control{
+	font-size: 18px;
+	letter-spacing: 2px;
+}
+
+.submitbtn{
+	background-color: #00234D;
+}
+
+
 </style>
 
 <body>
@@ -55,6 +83,12 @@ footer {
 	<!-- breadcrumb end -->
 
 	<div class="container mt-4">
+	<div class="row mt-4">
+		<div class="col-12 d-flex justify-content-center">
+			<button type="button" class="getCoupon btn btn-warning btn-lg" data-bs-toggle="modal"
+				data-bs-target="#getCouponModal">獲取優惠券</button>
+		</div>
+	</div>
 		<!-- coupon start -->
 		<div class="coupon-area vh-100">
 			<div class="row justify-content-center">
@@ -78,35 +112,30 @@ footer {
 		</div>
 		<!-- coupon end -->
 
-		<div class="row justify-content-center mt-4">
-			<div class="col-12">
-				<button type="button" class="getCoupon" data-bs-toggle="modal"
-					data-bs-target="#getCouponModal">獲取優惠券</button>
-			</div>
-		</div>
+		
 
 
 		<!-- Modal -->
 		<div class="modal fade" id="getCouponModal" tabindex="-1"
 			role="dialog" aria-labelledby="couponModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog mt-5" role="document">
 				<div class="modal-content">
 					<form id="couponForm" action="${pageContext.request.contextPath}/mvc/getCoupon"
 						method="post">
 						<div class="modal-header">
-							<h5 class="modal-title" id="couponModalLabel">輸入優惠券代碼</h5>
+							<h5 class="modal-title" id="couponModalLabel">優惠券代碼</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<!-- 優惠券代碼輸入框 -->
-							<input type="text" class="form-control" id="couponCodeInput"
-								name="code" placeholder="輸入優惠券代碼">
+							<input type="text" class="form-control fs-5" id="couponCodeInput"
+								name="code" placeholder="請輸入優惠券代碼">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">關閉</button>
-							<button type="submit" class="btn btn-primary">送出</button>
+							<button type="submit" class="btn submitbtn" style="color: white;">送出</button>
 						</div>
 					</form>
 				</div>

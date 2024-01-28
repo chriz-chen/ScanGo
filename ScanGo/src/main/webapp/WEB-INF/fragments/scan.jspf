@@ -108,7 +108,7 @@ preload="auto"></audio>
 <!-- scan modal end-->
 <script>
 
-		var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 2500 });
+		var toast = new bootstrap.Toast($('#toast')[0], { autohide: true, delay: 1500 });
 
 		function pause(milliseconds) {
 			var dt = new Date();
