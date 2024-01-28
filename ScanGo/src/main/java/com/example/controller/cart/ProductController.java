@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +74,7 @@ public class ProductController {
 	@GetMapping("/searchProduct/{categoryId}")
 	public String showProduct(@PathVariable("categoryId") Integer categoryId,
 							  Model model) {
-		List<Product> products = productDao.findProductsByCategoryId(categoryId);
+		List<Product> products = productDao.findLaunchProductsByCategoryId(categoryId);
 		
 		products.forEach(productItem -> {
 			categoryDao.findCategoryById(productItem.getCategoryId()).ifPresent(productItem::setCategory);
@@ -179,7 +180,18 @@ public class ProductController {
 
         return "redirect:/mvc/backend";
     }
-
+    
+    @GetMapping("/update_product_launch")
+	public String updateProductLaunch(@RequestParam("productId") Integer productId, 
+									  @RequestParam("isLaunch") Boolean isLaunch,
+									  HttpServletRequest request) {
+		
+		productDao.updateProductLaunch(productId, isLaunch);
+		
+		String referer = request.getHeader("Referer");
+		return "redirect:" + (referer != null ? referer : "/");
+	}
+    
     @DeleteMapping("/deleteProduct/{productId}")
     public String deleteProduct(@PathVariable("productId") Integer productId) {
         productDao.deleteProduct(productId);
