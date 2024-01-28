@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -184,8 +185,17 @@ th {
                                 <input type="text" class="form-control" id="unit" name="unit" value="瓶" required>
                             </div>
                             <div class="mb-3">
-                                <label for="unit" class="form-label">類別</label>
+                                <label for="category" class="form-label">類別</label>
 								<input type="number" class="form-control" name="categoryId" value="1" required>
+							</div>
+
+							<div class="mb-3">
+							    <label for="category" class="form-label">類別</label>
+							    <select class="form-select" id="categorySelect" name="categoryId" required>
+							        <fn:forEach var="category" items="${category}">
+							            <option value="${category.categoryId}">${category.categoryPart}/${category.categoryName}</option>
+							        </fn:forEach>
+							    </select>
 							</div>
                             
                             <!-- 類別 

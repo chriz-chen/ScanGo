@@ -118,69 +118,77 @@ function loadCartData() {
             var cartItemsDiv = document.getElementById('minicart-loop');
             cartItemsDiv.innerHTML = ''; // 清空原有內容
 
-            for (var i = 0; i < data.carts.length; i++) {
-                var cart = data.carts[i];
-                
-                const cartsHTML = `
-                <div id="minicartItem" class="minicart-item d-flex">
-                    <div class="mini-img-wrapper">
-                        <img class="mini-img" src="/ScanGo/image/product/snack/soda/coke.png" alt="img">
-                    </div>
-                    <div class="product-info">
-                        <h2 id="productTitle" class="product-title">
-                            ${cart.product.productName}
-                        </h2>
-                        <div class="misc d-flex align-items-end justify-content-between">
-                            <div class="quantity d-flex align-items-center justify-content-between">
-                                <button class="qty-btn dec-qty">
-                                    <img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg" alt="minus">
-                                </button>
-                                <input id="qtyInput" class="qty-input" type="number" name="qty" min="1" disabled="disabled">
-                                <button class="qty-btn inc-qty">
-                                    <img src="${pageContext.request.contextPath}/assets/img/icon/plus.svg" alt="plus">
-                                </button>
-                            </div>
-                            <div class="product-remove-area d-flex flex-column align-items-end">
-                                <div id="productsPrice" class="product-price"></div>
-                                <a href="#" class="product-remove" style="font-size: 15px" >刪除</a>
+            if (data.carts.length === 0) {
+                // 購物車中沒有商品，顯示相應提醒
+                const emptyCartHTML = '<p>您的購物車是空的喔!</p>';
+                cartItemsDiv.innerHTML = emptyCartHTML;
+            } else{
+            	
+            	for (var i = 0; i < data.carts.length; i++) {
+                    var cart = data.carts[i];
+                    
+                    const cartsHTML = `
+                    <div id="minicartItem" class="minicart-item d-flex">
+                        <div class="mini-img-wrapper">
+                            <img class="mini-img" src="/ScanGo/image/product/snack/soda/coke.png" alt="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="productTitle" class="product-title">
+                                ${cart.product.productName}
+                            </h2>
+                            <div class="misc d-flex align-items-end justify-content-between">
+                                <div class="quantity d-flex align-items-center justify-content-between">
+                                    <button class="qty-btn dec-qty">
+                                        <img src="${pageContext.request.contextPath}/assets/img/icon/minus.svg" alt="minus">
+                                    </button>
+                                    <input id="qtyInput" class="qty-input" type="number" name="qty" min="1" disabled="disabled">
+                                    <button class="qty-btn inc-qty">
+                                        <img src="${pageContext.request.contextPath}/assets/img/icon/plus.svg" alt="plus">
+                                    </button>
+                                </div>
+                                <div class="product-remove-area d-flex flex-column align-items-end">
+                                    <div id="productsPrice" class="product-price"></div>
+                                    <a href="#" class="product-remove" style="font-size: 15px" >刪除</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-			`
-			
-			// 使用 createElement 創建元素
-			var cartItemDiv = document.createElement('div');
-			cartItemDiv.innerHTML = cartsHTML;
-			
-			var minicartItem = cartItemDiv.querySelector("#minicartItem");
-			if(minicartItem) {
-				minicartItem.id = "drawer_product" + cart.product.productId;
-			}
-			
-			// 尋找元素，確保它存在再進行賦值
-			var productImg = cartItemDiv.querySelector(".mini-img");
-			if (productImg) {
-				productImg.src = cart.product.picture;
-			}
-			
-			var productTitle = cartItemDiv.querySelector("#productTitle");
-			if (productTitle) {
-				productTitle.textContent = cart.product.productName;
-			}
-			
-			var qtyInput = cartItemDiv.querySelector("#qtyInput");
-			if (qtyInput) {
-				qtyInput.value = cart.productQuantity;
-			}
-			
-			var productsPrice = cartItemDiv.querySelector("#productsPrice");
-			if (productsPrice) {
-				productsPrice.textContent = '$' + cart.product.price;
-			}
-			
-			// 將創建的元素添加到 DOM 中
-			cartItemsDiv.appendChild(cartItemDiv);
+    			`
+    			
+    			// 使用 createElement 創建元素
+    			var cartItemDiv = document.createElement('div');
+    			cartItemDiv.innerHTML = cartsHTML;
+    			
+    			var minicartItem = cartItemDiv.querySelector("#minicartItem");
+    			if(minicartItem) {
+    				minicartItem.id = "drawer_product" + cart.product.productId;
+    			}
+    			
+    			// 尋找元素，確保它存在再進行賦值
+    			var productImg = cartItemDiv.querySelector(".mini-img");
+    			if (productImg) {
+    				productImg.src = cart.product.picture;
+    			}
+    			
+    			var productTitle = cartItemDiv.querySelector("#productTitle");
+    			if (productTitle) {
+    				productTitle.textContent = cart.product.productName;
+    			}
+    			
+    			var qtyInput = cartItemDiv.querySelector("#qtyInput");
+    			if (qtyInput) {
+    				qtyInput.value = cart.productQuantity;
+    			}
+    			
+    			var productsPrice = cartItemDiv.querySelector("#productsPrice");
+    			if (productsPrice) {
+    				productsPrice.textContent = '$' + cart.product.price;
+    			}
+    			
+    			// 將創建的元素添加到 DOM 中
+    			cartItemsDiv.appendChild(cartItemDiv);
+                }
+            	
             }
             
             const totalPriceHTML = `<span class="cart-subtotal mb-0 fs-5">總金額</span>

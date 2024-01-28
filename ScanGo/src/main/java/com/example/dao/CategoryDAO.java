@@ -6,6 +6,9 @@ import java.util.Optional;
 import com.example.entity.Category;
 
 public interface CategoryDAO {
+	
+	//查找所有商品類別
+	List<Category> findAllCateories();
 
 	//根據類別ID找到商品類別
 	Optional<Category> findCategoryById(Integer categoryId);
