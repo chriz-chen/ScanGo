@@ -11,6 +11,9 @@ public interface CouponDAO {
 	//查詢所有優惠券(多筆)
 	List<Coupon> findAllCoupons();
 	
+	//利用isActive狀態來查找優惠券
+	List<Coupon> findAllActiveCoupons();
+	
 	//根據優惠券ID來查找優惠券(單筆)
 	Optional<Coupon> findCouponById(Integer couponId);
 	
@@ -23,7 +26,10 @@ public interface CouponDAO {
 	//根據使用者ID來查找其所擁有的優惠券
 	List<CouponUser> findCouponsByUserId(Integer userId);
 	
-	//利用isActive狀態來查找優惠券
+	//根據使用者ID來查找其所有可使用的優惠券
+	List<CouponUser> findAvailableCouponsByUserId(Integer userId);
 	
+	//根據user_coupon_id來查找使用者的優惠券
+	Optional<CouponUser> findCouponUserById(Integer user_coupon_id);
 	
 }

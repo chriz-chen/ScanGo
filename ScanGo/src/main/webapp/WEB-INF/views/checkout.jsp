@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/fragments/html_head.jspf"%>
 
@@ -19,15 +20,13 @@ main {
 	flex-grow: 1;
 }
 
-
-/* 添加一個自定義的樣式，命名為custom-font-size */
 .custom-font-size {
-	font-size: 26px; /* 設置初始字體大小 */
+	font-size: 26px;
 }
 
 .product-price {
-    float: right;
-    font-size: 16px;
+	float: right;
+	font-size: 16px;
 }
 
 .product-vendor {
@@ -35,7 +34,7 @@ main {
 }
 
 main {
-	margin-top: 100px; /* 假設 header 的高度為 60px，請根據實際情況調整這個值 */
+	margin-top: 100px;
 }
 
 /* 隱藏模態框 */
@@ -47,7 +46,6 @@ main {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
-	/* 背景半透明黑色 */
 }
 
 /* 模態框內容 */
@@ -56,9 +54,23 @@ main {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #fff;
-	padding: 20px;
+	background-color: white;
+	padding: 0px 10px 10px 10px;
 	border-radius: 8px;
+	overflow-y: auto;
+	max-height: 60vh; /* 設置最大高度，以避免超出屏幕 */
+	width: 100%;
+	max-width: 600px;
+	margin-top: 0;
+}
+
+/* 模態框頭部，固定在模態框的頂部 */
+.modal-header {
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 1;
+	width: 100%;
 }
 
 /* 關閉按鈕樣式 */
@@ -102,65 +114,88 @@ main {
 					<div class="col-xl-3 col-lg-4 col-md-12 col-12">
 						<div class="cart-total-area checkout-summary-area">
 							<h3 class="d-none d-lg-block mb-0 text-center heading_24 mb-4">
-								商品總覽
-								</h3>
-								<fn:forEach var="cartItem" items="${checkouts}">
+								商品總覽</h3>
+							<fn:forEach var="cartItem" items="${checkouts}">
 								<div class="minicart-item d-flex">
 									<div class="mini-img-wrapper">
-										<img class="mini-img"
-											src="${cartItem.product.picture}" alt="img">
+										<img class="mini-img" src="${cartItem.product.picture}"
+											alt="img">
 									</div>
 									<div class="product-info">
 										<h2 class="product-title">
-											<a href="#">${cartItem.product.productName}</a>
-											<span class="product-price">$${cartItem.product.price}</span>
+											<a href="#">${cartItem.product.productName}</a> <span
+												class="product-price">$${cartItem.product.price}</span>
 										</h2>
 										<p class="product-vendor">x ${cartItem.productQuantity}</p>
 									</div>
 								</div>
-								</fn:forEach>
+							</fn:forEach>
 
-								<div class="cart-total-box mt-4 bg-transparent p-0">
-									<div class="subtotal-item subtotal-box">
-										<h4 class="subtotal-title">小計</h4>
-										<p class="subtotal-value">$${checkoutPrice}</p>
-									</div>
-									<div class="subtotal-item discount-box">
-										<h4 class="subtotal-title">折扣</h4>
-										<p class="subtotal-value"></p>
-									</div>
-									<hr />
-									<div class="subtotal-item discount-box">
-										<h4 class="subtotal-title">總計</h4>
-										<p class="subtotal-value">$${checkoutPrice}</p>
-									</div>
+							<div class="cart-total-box mt-4 bg-transparent p-0">
+								<div class="subtotal-item subtotal-box">
+									<h4 class="subtotal-title">小計</h4>
+									<p class="subtotal-value">$${checkoutPrice}</p>
+								</div>
+								<div class="subtotal-item discount-box">
+									<h4 class="subtotal-title">折扣</h4>
+									<p id="discount-value" class="discount-value"></p>
+								</div>
+								<hr />
+								<div class="subtotal-item discount-box">
+									<h4 class="subtotal-title">總計</h4>
+									<p id="discount-total-value" class="discount-total-value"></p>
+								</div>
 
 
-									<div class="mt-4 checkout-promo-code">
-										<a href="#" id="openModalBtn"
-											class="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
-											使用優惠券 </a>
-									</div>
+								<div class="mt-4 checkout-promo-code">
+									<a href="#" id="openModalBtn"
+										class="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
+										使用優惠券 </a>
+								</div>
 
-									<!-- 模態框 -->
-									<div id="myModal" class="modal">
-										<div class="modal-content">
+								<!-- 模態框 -->
+								<div id="myModal" class="modal">
+									<div class="modal-content">
+										<div class="modal-header">
 											<span class="close" onclick="closeModal()">&times;</span>
 											<p>您可用的優惠</p>
 										</div>
+										<!-- 優惠券的內容部分 -->
+										<c:forEach var="eligibleCoupons" items="${eligibleCoupons}">
+											<div class="col-12">
+												<div id="coupon-item-${eligibleCoupons.user_coupon_id}"
+													class="coupon-item"
+													data-user-coupon-id="${eligibleCoupons.user_coupon_id}"
+													onclick="markSelectedCoupon(this)">
+													<div class="coupon-icon">
+														<img alt="coupon"
+															src="/ScanGo/assets/img/coupon/coupon.png" width="50"
+															height="50">
+													</div>
+													<div class="coupon-details">
+														<h2 class="coupon-title">${eligibleCoupons.coupon.couponName}</h2>
+														<span class="coupon-time">使用期限:
+															${eligibleCoupons.coupon.endDate}</span>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+										<button type="button" class="select-coupon"
+											onclick="confirmCouponSelection()">確認</button>
 									</div>
-
 								</div>
 
-								<div class="shipping-address-area billing-area">
-									<div
-										class="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
-										<a href="/ScanGo/mvc/cart"
-											class="checkout-page-btn minicart-btn btn-secondary">回到購物車</a>
-										<a href="/ScanGo/mvc/payment"
-											class="checkout-page-btn minicart-btn btn-primary">確認並結帳</a>
-									</div>
+							</div>
+
+							<div class="shipping-address-area billing-area">
+								<div
+									class="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
+									<a href="/ScanGo/mvc/cart"
+										class="checkout-page-btn minicart-btn btn-secondary">回到購物車</a>
+									<a href="/ScanGo/mvc/payment"
+										class="checkout-page-btn minicart-btn btn-primary">確認並結帳</a>
 								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -172,6 +207,7 @@ main {
 <%@ include file="/WEB-INF/footer.jspf"%>
 
 <script>
+
 	// 顯示模態框
 	function openModal() {
 		document.getElementById("myModal").style.display = "block";
@@ -188,4 +224,77 @@ main {
 				event.preventDefault(); // 防止點擊按鈕時跳轉到 "#"
 				openModal();
 			});
-</script>
+	
+	// 存儲所選優惠券的 ID
+    var selectedCouponId = null;
+
+    // 標記所選優惠券
+    function markSelectedCoupon(element) {
+        // 移除之前所選標記
+        var previousSelected = document.querySelector('.coupon-item.selected');
+        if (previousSelected) {
+            previousSelected.classList.remove('selected');
+        }
+
+        // 標記新選擇的優惠券
+        element.classList.add('selected');
+
+        // 存儲所選優惠券的 ID
+        selectedCouponId = element.getAttribute('data-user-coupon-id');
+    }
+
+    // 確認按鈕被點擊時
+    function confirmCouponSelection() {
+        if (selectedCouponId) {
+        	 var subtotalValue = document.querySelector('.subtotal-value').textContent;
+        	 
+            sendCouponSelection(selectedCouponId, subtotalValue);
+        } else {
+            alert('請選擇優惠券');
+        }
+    }
+
+    // 發送優惠券選擇請求
+    function sendCouponSelection(user_coupon_id, subtotalValue) {
+    	
+    	subtotalValue = subtotalValue.substring(1);
+    	
+        const data = {
+            "user_coupon_id": user_coupon_id,
+            "subtotalValue": subtotalValue
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+
+        fetch('${pageContext.request.contextPath}/mvc/cart/couponSelection', options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+			console.log(data);
+            
+			var discountValue = document.getElementById("discount-value");
+			discountValue.textContent = '- $' + data.discountValue;
+	    	
+	    	var discountTotalPrice = document.getElementById("discount-total-value");
+	    	
+	    	discountTotalPrice.textContent = '$' + data.discountTotalPrice;
+           
+	    	closeModal();
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    }
+
+	
+</script> 

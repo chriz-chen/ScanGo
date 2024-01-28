@@ -114,7 +114,7 @@ main {
 							<div class="cart-total-box mt-4">
 								<div class="subtotal-item subtotal-box">
 									<h4 class="subtotal-title">金額</h4>
-									<p class="subtotal-value">$${checkoutPrice}</p>
+									<p class="subtotal-value">$${discountTotalPrice}</p>
 									<div class="d-flex justify-content-center mt-4">
 										<button type="button"
 											class="position-relative btn-primary text-uppercase"

@@ -31,15 +31,15 @@ public class OrderDAOImpl implements OrderDAO {
 	
 	
 	@Override
-	public Orders addOrder(Integer userId, Integer orderTotalPrice) {
+	public Orders addOrder(Integer userId, Integer originalTotalPrice) {
 	    KeyHolder keyHolder = new GeneratedKeyHolder();
 
 	    jdbcTemplate.update(new PreparedStatementCreator() {
 	        @Override
 	        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-	            PreparedStatement ps = connection.prepareStatement("INSERT INTO orders (userId, orderTotalPrice) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+	            PreparedStatement ps = connection.prepareStatement("INSERT INTO orders (userId, originalTotalPrice) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
 	            ps.setInt(1, userId);
-	            ps.setInt(2, orderTotalPrice);
+	            ps.setInt(2, originalTotalPrice);
 	            return ps;
 	        }
 	    }, keyHolder);
@@ -57,15 +57,15 @@ public class OrderDAOImpl implements OrderDAO {
 	    Orders newOrder = new Orders();
 	    newOrder.setOrderId(generatedIntegerKey);
 	    newOrder.setUserId(userId);
-	    newOrder.setOrderTotalPrice(orderTotalPrice);
+	    newOrder.setOriginalTotalPrice(originalTotalPrice);
 
 	    return newOrder;
 	}
 	
 	@Override
-	public Boolean updateOrderTotalPrice(Integer orderId, Integer orderTotalPrice) {
-		String sql = "update orders set orderTotalPrice = ? where orderId = ?";
-		return jdbcTemplate.update(sql, orderTotalPrice, orderId) == 1;
+	public Boolean updateOriginalTotalPrice(Integer orderId, Integer originalTotalPrice) {
+		String sql = "update orders set originalTotalPrice = ? where orderId = ?";
+		return jdbcTemplate.update(sql, originalTotalPrice, orderId) == 1;
 	}
 
 	@Override
