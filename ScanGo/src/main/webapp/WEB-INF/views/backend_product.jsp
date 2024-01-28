@@ -9,7 +9,12 @@
 
 <%@ include file="/WEB-INF/header.jspf"%>
 <!DOCTYPE html>
- 
+
+<script type="text/javascript">
+			function changeLaunch(productId, isLaunch) {
+				location.href = '${pageContext.request.contextPath}/mvc/update_product_launch?productId=' + productId + '&isLaunch=' + isLaunch;
+			}
+		</script>
 
 <style>
 
@@ -267,7 +272,10 @@ th {
 							<a href="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}"
 							   style="width: 90px; height: 90px">產生QRCode</a>
 						</td>
-						<td>${product.isLaunch}</td>
+						<td><input onClick="changeLaunch(${ product.productId }, this.checked)"
+									type="checkbox" ${ (product.isLaunch) ? 'checked' : '' } 
+									> 上架
+						</td>
 						<td>
 		                    <div class="">
 		                        <a href="${ pageContext.request.contextPath }/mvc/editProduct/${product.productId}"
