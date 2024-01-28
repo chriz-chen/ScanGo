@@ -241,8 +241,8 @@
 					        <path fill="none" d="M0 0h48v48H0z"></path>
 					      </svg>
 					    </div>
-					    <span class="gsi-material-button-contents">Sign in with Google</span>
-					    <span style="display: none;">Sign in with Google</span>
+					    <span class="gsi-material-button-contents">使用 Google 登入</span>
+					    <span style="display: none;">使用 Google 登入</span>
 					  </div>
 					</button>
 					<!-- <button type="button" class="pure-button pure-button-primary" onclick="googleLoginBackend()">😺google 登入</button> -->
