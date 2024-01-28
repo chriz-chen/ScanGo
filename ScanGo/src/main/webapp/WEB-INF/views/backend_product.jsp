@@ -184,11 +184,6 @@ th {
                                 <label for="unit" class="form-label">單位</label>
                                 <input type="text" class="form-control" id="unit" name="unit" value="瓶" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="category" class="form-label">類別</label>
-								<input type="number" class="form-control" name="categoryId" value="1" required>
-							</div>
-
 							<div class="mb-3">
 							    <label for="category" class="form-label">類別</label>
 							    <select class="form-select" id="categorySelect" name="categoryId" required>
@@ -223,11 +218,7 @@ th {
                                 <label for="position" class="form-label">位置</label>
                                 <input type="text" class="form-control" id="position" name="position" value="A-1" required>
                             </div>
-                            <!-- 上架 -->
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="isLaunch" name="isLaunch">
-                                <label class="form-check-label" for="isLaunch">上架</label>
-                            </div>
+                            
                             <button type="submit" class="btn btn-warning">提交</button>
                         </form>
                     </div>
@@ -250,7 +241,6 @@ th {
 					<th>類別</th>
 					<th>位置</th>
 					<th>QR Code</th>
-					<th>產生QRCode</th>
 					<th>上架</th>
 					<th>編輯</th>
 					<th>刪除</th>
@@ -275,16 +265,16 @@ th {
 						   		alt="product-Qrcode" style="width: 100px; height: 100px">
 						   </a>
 						</td>
-						<td>
-							<%-- <button type="button" onclick="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}">
+						<%-- <td>
+							<button type="button" onclick="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}">
 								產生QRCode
-							</button> --%>
+							</button>
 							<a href="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}"
 							   style="width: 90px; height: 90px">產生QRCode</a>
-						</td>
-						<td><input onClick="changeLaunch(${ product.productId }, this.checked)"
+						</td> --%>
+						<td style="white-space: nowrap;"><input onClick="changeLaunch(${ product.productId }, this.checked)"
 									type="checkbox" ${ (product.isLaunch) ? 'checked' : '' } 
-									> 上架
+								 > 上架
 						</td>
 						<td>
 		                    <div class="">
@@ -305,7 +295,7 @@ th {
                 </c:forEach>
             </tbody>
             <tfoot>
-				<td colspan="14" align="right" class="me-3">商品總數 : <%= totalProducts %> </td>
+				<td colspan="13" align="right" class="me-3">商品總數 : <%= totalProducts %> </td>
 			</tfoot>
         </table>
         
