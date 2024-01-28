@@ -38,7 +38,23 @@ public class PaymentController {
 		
 		Integer discountTotalPrice = (Integer) session.getAttribute("discountTotalPrice");
 		
-		model.addAttribute("discountTotalPrice", discountTotalPrice);
+		if (discountTotalPrice == null) {
+			User user = (User) session.getAttribute("user");
+
+		    Integer checkoutPrice = 0;
+		    List<Cart> checkouts = cartDao.findCartsByUserId(user.getUserId());
+
+		    for (Cart checkout : checkouts) {
+		        checkout.getProduct().setPrice((checkout.getProduct().getPrice()) * (checkout.getProductQuantity()));
+		        checkoutPrice += ((checkout.getProduct().getPrice()));
+		    }
+		    
+		    model.addAttribute("discountTotalPrice", checkoutPrice);
+			
+	    }else {
+	    	
+	    	model.addAttribute("discountTotalPrice", discountTotalPrice);
+	    }
 		
 		return "payment";
 	}

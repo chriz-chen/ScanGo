@@ -71,6 +71,8 @@ public class CheckoutController {
 	    model.addAttribute("checkouts", checkouts);
 	    model.addAttribute("checkoutPrice", checkoutPrice);
 	    model.addAttribute("eligibleCoupons", eligibleCoupons); // 將符合條件的優惠券添加到模型
+	    
+	    session.removeAttribute("discountTotalPrice");
 
 	    return "checkout";
 	}
