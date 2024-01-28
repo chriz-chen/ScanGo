@@ -125,9 +125,11 @@ input {
 						<th>類別</th>
 						<th>庫存</th>
 						<th>位置</th>
+						<th>qrcode</th>
 						<th>上架</th>
 						<th>編輯</th>
 						<th>刪除</th>
+						<th>qrcode產生</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -140,6 +142,11 @@ input {
 							<td>${product.unit}</td>
 							<td>${product.category.categoryPart}</td>
 							<td>${product.category.categoryName}</td>
+							<td>
+							   <a href="/ScanGo/mvc/QrcodeDownload?productId=${product.productId}">
+							   		<img class="productsImage" src="/ScanGo/mvc/product/image/${product.productId}.png" alt="product-img">
+							   </a>
+							</td>
 							<td>${product.inventory}</td>
 							<td>${product.position}</td>
 							<td>${product.isLaunch}</td>
@@ -157,6 +164,14 @@ input {
 							        <button type="submit" class="btn btn-primary">刪除</button>
 							    </form>
 							</td>
+							<td>
+								<%-- <button type="button" onclick="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}">
+									產生QRCode
+								</button> --%>
+								
+								<a href="${pageContext.request.contextPath}/mvc/qrcode/generate?productId=${product.productId}">
+								產生QRCode</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -166,7 +181,7 @@ input {
 		<div class="add-product-form">
 			<h2>新增商品</h2>
 			<form action="${pageContext.request.contextPath}/mvc/add-product" method="post" enctype="multipart/form-data">
-				商品名稱：<input type="text" name="productName" required><br>
+				商品：<input type="text" name="productName" required><br>
 				價格：<input type="number" name="price" required min="0"><br>
 				單位：<input type="text" name="unit" required><br>
 				類別：<input type="number" name="categoryId" required><br>
@@ -176,7 +191,6 @@ input {
 				<input type="submit" value="新增商品">
 			</form>
 		</div>
-		
 	</div>
 </div>
 

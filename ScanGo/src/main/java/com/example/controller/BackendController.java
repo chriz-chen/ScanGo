@@ -32,13 +32,13 @@ public class BackendController {
 	
 	
 	
-	// 顯示 UserBackend 頁面
+	// 顯示 Backend User頁面
 	@GetMapping("/user")
 	public String showUserBackend(Model model) {
 		List<User> userList = userDAO.findAllUsers();
 		model.addAttribute("userList", userList);
 		
-		return "backend-user";
+		return "backend_user";
 	}
 	
 	@GetMapping("/historyorderByManager/{userId}")

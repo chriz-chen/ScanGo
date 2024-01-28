@@ -16,7 +16,13 @@
 <title>會員資訊</title>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
 <style>
+body{
+	background-color: #fffefb;
+}
+
 .breadcrumb {
 	background-color: white; /* 使用整體背景色 */
 	padding: 10px; /* 調整內邊距 */
@@ -32,14 +38,15 @@
 
 .member-area {
 	padding: 50px 0;
-}
+	}
 
 .member-area-inner {
-	border: 1px solid #ddd; /* 邊框效果 */
-	border-radius: 8px; /* 圓角 */
+	border-radius: 20px; /* 圓角 */
 	padding: 20px; /* 內邊距 */
 	margin-bottom: 20px;
-	background-color: #DCDCDC;
+	background-color: #f5f4f1;
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 1px solid #555; /* 更明显的边框 */
 }
 
 .member-content {
@@ -79,6 +86,25 @@ label {
 	padding: 8px; 
 	letter-spacing: 4px;
 }
+
+.btn{
+	background-color: #00668c;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #fffefb;
+    opacity: 1;
+}
+
+/* 密碼model框 */
+.modal-content{
+	border-radius: 20px; /* 圓角 */
+	padding: 20px; /* 內邊距 */
+	margin-bottom: 20px;
+	background-color: #f5f4f1;
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
+    border: 1px solid #555; /* 更明显的边框 */
+}
+
 </style>
 </head>
 <body>
@@ -87,7 +113,7 @@ label {
 		<div class="breadcrumb">
 			<div class="container">
 				<ul class="list-unstyled d-flex align-items-center m-0">
-					<li><a href="/ScanGo/index.jsp">首頁</a></li>
+					<li><a href="/ScanGo/mvc/index">首頁</a></li>
 					<li><svg class="icon icon-breadcrumb" width="64" height="64"
 							viewBox="0 0 64 64" fill="none"
 							xmlns="http://www.w3.org/2000/svg">
@@ -109,11 +135,13 @@ label {
 			<div class="member-area pt-5 pb-5">
 				<div class="container">
 					<div class="member-area-inner">
-						<div class="section-header member-area-header text-center mb-5">
+						<div class="section-header member-area-header text-center mb-2">
 							<h2 class="section-heading">會員資料</h2>
 						</div>
-						<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
-						<p class="text-center text-success fs-5" id="successMessage">${message}</p>
+						<div>
+							<p class="text-center text-success fs-5" id="successMessage">${message}</p>
+							<p class="text-center text-danger fs-5" id="errorMessage">${error}</p>
+						</div>
 						<div class="row">
 							<div class="col-md-6 offset-md-3">
 								<input type="hidden" name="userId" value="${user.userId}">
@@ -140,10 +168,10 @@ label {
 								</div>
 								
 								<div class="text-center mt-4">
-									<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px"
+									<button type="button" class="btn btn-lg m-1" style="background-color: #00234D; color: #fff; font-size: 16px"
 										data-toggle="modal" data-target="#passwordChangeModal">密碼變更
 									</button> 
-									<button type="button" class="btn" style="background-color: #00234D; color: #fff; font-size: 16px" 
+									<button type="button" class="btn btn-lg m-1" style="background-color: #00234D; color: #fff; font-size: 16px" 
 									onclick="window.location.href='${pageContext.request.contextPath}/mvc/member/updateProfile'">修改會員資料
 									</button>
 								</div>
@@ -164,7 +192,7 @@ label {
 				    <p class="text-center text-danger fs-5 mt-2" id="message">${error}</p>
 				    
 					<div class="modal-header ">
-						<h5 class="modal-title " id="passwordChangeModalLabel">密碼變更</h5>
+						<h5 class="modal-title fs-2" id="passwordChangeModalLabel" style="letter-spacing: 1px">密碼變更</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>

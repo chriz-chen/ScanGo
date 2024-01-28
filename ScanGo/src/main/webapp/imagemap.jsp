@@ -17,7 +17,7 @@ body {
 }
 
 figcaption {
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(90, 90, 90, 0.9);
 	height: 200px;
 	transform: translate(0, 200px);
 	transition: transform 0.5s, opacity 0.5s;
@@ -25,19 +25,19 @@ figcaption {
 }
 
 figcaption h4 {
-	color: #fff;
+	color: #f5f4f1;
 	letter-spacing: 5px;
 	font-size: 28px;
 }
 
 figcaption p {
+	color: #f5f4f1;
 	font-size: 22px;
 }
 
 img[usemap] {
-	width: 400px;
+	width: 500px;
 	height: auto;
-	z-index: 100;
 }
 
 body {
@@ -106,10 +106,10 @@ footer {
 </script>
 <body>
 	<!-- breadcrumb start -->
-	<div class="breadcrumb">
-		<div class="container">
-			<ul class="list-unstyled d-flex align-items-center m-0">
-				<li><a href="/ScanGo/index.jsp">首頁</a></li>
+	<div class="breadcrumb ">
+		<div class="container ms-3	">
+			<ul class="list-unstyled d-flex align-items-center m-0 fs-5">
+				<li><a href="/ScanGo/mvc/index">首頁</a></li>
 				<li><svg class="icon icon-breadcrumb" width="64" height="64"
 						viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.4">

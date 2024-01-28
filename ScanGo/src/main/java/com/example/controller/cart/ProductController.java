@@ -1,7 +1,14 @@
 package com.example.controller.cart;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,16 +21,34 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dao.CategoryDAO;
 import com.example.dao.ProductDAO;
 import com.example.entity.Product;
+import com.example.util.GenerateQRCode;
+import com.google.zxing.WriterException;
 
 
 @Controller
 @RequestMapping
 public class ProductController {
+	
+	
+	private static final Path UPLOAD = Paths.get(System.getProperty("user.home")+"/uploads/qrcodes");
+	
+	static {
+		try {
+			Files.createDirectories(UPLOAD);
+			System.out.println("Absolute Path on  Max/Window: " + UPLOAD.toAbsolutePath().toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Autowired
+	GenerateQRCode qrCode;
 
 	@Autowired
 	@Qualifier("productDaoImpl")
@@ -61,23 +86,82 @@ public class ProductController {
 		return "product";
 	}
 	
-	@GetMapping("/backend")
+	
+//	------------------------------- backend ----------------------------------------- 
+	
+	
+	@GetMapping("/backend/product")
 	public String showProductBackend(Model model) {
 		List<Product> productList = productDao.findAllProducts();
 
 		
 		model.addAttribute("productList", productList);
 		
-		return "backend";
+		return "backend_product";
 	}
 	
-	@PostMapping("/add-product")
-    public String addProduct(@ModelAttribute Product product, Model model) {
+	
+	/**
+	 * 新增商品含 Qrcode
+	 * @param product
+	 * @param model
+	 * @return
+	 * @throws WriterException
+	 * @throws IOException
+	 */
+	@PostMapping("/addProduct")
+    public String addProduct(@ModelAttribute Product product, Model model) throws WriterException, IOException {
         
         productDao.addProduct(product);
-
-        return "result";
+        
+        Integer productId = product.getProductId();
+        
+	     // 定義QRCode檔案
+		String filename = productId+".png";
+		Path sorucrePath = UPLOAD.resolve(filename);
+		
+		// 產生QRCode
+		String str = "/ScanGo/mvc/product/"+productId;
+		qrCode.generateQRcode(str, sorucrePath.toAbsolutePath().toString(), "UTF-8", 200, 200);
+		model.addAttribute("product", product);
+        return "add_product_result";
     }
+	
+	/**
+	 * QR code download button
+	 * http://localhost:8080/ScanGo/mvc/QrcodeDownload?productId=1
+	 * @param productId
+	 * @param resp
+	 * @return 
+	 * @throws WriterException
+	 * @throws IOException
+	 */
+	@GetMapping("/QrcodeDownload")
+	public String QrcodeDownload(@RequestParam("productId") Integer productId,HttpServletResponse resp) throws WriterException, IOException {
+		
+		// 定義QRCode檔案
+		String filename = productId+".png";
+		Path sorucrePath = UPLOAD.resolve(filename);
+		
+		// QRCode圖片下載
+		resp.setContentType("APPLICATION/OCTET-STREAM");
+		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
+		try (OutputStream output = resp.getOutputStream()){
+			Files.copy(sorucrePath, output);
+			return "redirect:/mvc/backend";
+		}
+		
+		
+	}
+	
+	public static String filenameEncode(String name) {
+	    try {
+	        return java.net.URLEncoder.encode(name, "UTF-8").replace("+", "%20");
+	    } catch (java.io.UnsupportedEncodingException e) {
+	        e.printStackTrace();
+	        return name;
+	    }
+	}
 	
 	@GetMapping("/editProduct/{productId}")
     public String editProduct(@PathVariable("productId") Integer productId, Model model) {
