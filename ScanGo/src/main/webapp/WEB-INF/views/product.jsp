@@ -128,8 +128,8 @@ body{
 											</div>
 											<div class="modal-body">
 												<!-- 这里添加模态框的内容 -->
-												<span style="font-size: 22px; letter-spacing: 2px">目前庫存: 20 瓶</span><br>
-                								<span style="font-size: 22px; letter-spacing: 2px">商品位置: 零食飲料區 汽水類 D-2</span>
+												<span style="font-size: 22px; letter-spacing: 2px">目前庫存:&nbsp;&nbsp;${product.inventory}${product.unit}</span><br>
+                								<span style="font-size: 22px; letter-spacing: 2px">商品位置:&nbsp;&nbsp;${product.category.categoryPart}&nbsp;&nbsp;${product.category.categoryName}&nbsp;&nbsp;${product.position}</span>
 											</div>
 										</div>
 									</div>
