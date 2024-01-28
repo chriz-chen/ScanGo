@@ -9,10 +9,10 @@ import com.example.entity.Orders;
 public interface OrderDAO {
 
 	//建立訂單
-	Orders addOrder(Integer userId, Integer orderTotalPrice);
+	Orders addOrder(Integer userId, Integer originalTotalPrice);
 	
 	//修改訂單金額
-	Boolean updateOrderTotalPrice(Integer orderId, Integer orderTotalPrice);
+	Boolean updateOriginalTotalPrice(Integer orderId, Integer originalTotalPrice);
 	
 	//根據使用者ID來查找訂單(多筆)
 	List<Orders> findOrderByUserId(Integer userId);

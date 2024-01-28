@@ -26,6 +26,13 @@ public class CouponDAOImpl implements CouponDAO {
 	}
 
 	@Override
+	public List<Coupon> findAllActiveCoupons() {
+		String sql = "select * from coupon where isActive = true";
+		List<Coupon> coupons = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Coupon.class));
+		return coupons;
+	}
+	
+	@Override
 	public Optional<Coupon> findCouponById(Integer couponId) {
 		String sql = "select * from coupon where couponId = ?";
 		try {
@@ -64,6 +71,25 @@ public class CouponDAOImpl implements CouponDAO {
 		List<CouponUser> couponUser = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CouponUser.class), userId);
 		
 		return couponUser;
+	}
+
+	@Override
+	public List<CouponUser> findAvailableCouponsByUserId(Integer userId) {
+		String sql = "select * from couponuser where userId = ? and isUsed = false";
+		List<CouponUser> couponUser = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CouponUser.class), userId);
+		
+		return couponUser;
+	}
+
+	@Override
+	public Optional<CouponUser> findCouponUserById(Integer user_coupon_id) {
+		String sql = "select * from couponUser where user_coupon_id = ?";
+		try {
+			CouponUser couponUser = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(CouponUser.class), user_coupon_id);
+			return Optional.ofNullable(couponUser);
+		} catch (EmptyResultDataAccessException e) {
+			return Optional.empty();
+		}
 	}
 
 	

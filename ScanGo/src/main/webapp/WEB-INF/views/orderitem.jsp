@@ -196,8 +196,8 @@ input[type="radio"]:checked ~ label:before {
 	<div class="checkout-page vh-100">
 		<div class="container">
 			<div class="checkout-page-wrapper">
-				<div class="row d-flex justify-content-center">
-					<div class="puchase-time d-flex justify-content-center">
+				<div class="row">
+					<div class="puchase-time">
 						購買時間: &nbsp;&nbsp;
 						<fmt:formatDate value="${orders.createTime}"
 							pattern="yyyy年MM月dd日 a hh:mm " />
@@ -224,7 +224,7 @@ input[type="radio"]:checked ~ label:before {
 							<div class="cart-total-box mt-4 bg-transparent p-0">
 								<div class="subtotal-item subtotal-box">
 									<h4 class="subtotal-title">小計</h4>
-									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
+									<p class="subtotal-value">$${orders.originalTotalPrice}</p>
 								</div>
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">折扣</h4>
@@ -233,7 +233,7 @@ input[type="radio"]:checked ~ label:before {
 								<hr />
 								<div class="subtotal-item discount-box">
 									<h4 class="subtotal-title">總計</h4>
-									<p class="subtotal-value">$${orders.orderTotalPrice}</p>
+									<p class="subtotal-value">$${orders.originalTotalPrice}</p>
 								</div>
 							</div>
 

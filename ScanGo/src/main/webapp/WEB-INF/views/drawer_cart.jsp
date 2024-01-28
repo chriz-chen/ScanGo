@@ -14,12 +14,36 @@
 .product-remove-area .product-remove {
 	color: red;
 }
+
+.product-title, .product-title a {
+    font-size: 17px;
+}
+
+.quantity input, .product-price {
+    font-size: 15px;
+}
+
+
+/* 購物車商品 */
+.minicart-item{
+	border-bottom: 0.5px solid gray;
+	margin-bottom: 5px;
+}
+
+.modal-content{
+	background-color: #f5f4f1;
+	border-radius: 15px;
+}
+
+
+
+
 </style>
 
 <!-- drawer cart start -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="drawer-cart">
 	<div class="offcanvas-header border-btm-black">
-		<h5 class="cart-drawer-heading text_16">您的購物車</h5>
+		<h5 class="cart-drawer-heading text_16 ms-2" style="color: #3b3c3d; font-weight: 500; letter-spacing: 3px">您的購物車</h5>
 		<button type="button" class="btn-close text-reset"
 			data-bs-dismiss="offcanvas" aria-label="Close"></button>
 	</div>
@@ -35,7 +59,7 @@
 					</div>
 				</div>
 				<div
-					class="minicart-btn-area d-flex align-items-center justify-content-center">
+					class="minicart-btn-area d-flex align-items-center justify-content-end mt-2">
 					<a href="/ScanGo/mvc/checkout" class="minicart-btn btn-primary">我要結帳</a>
 				</div>
 			</div>
@@ -66,17 +90,19 @@
 <!-- Confirm Delete Modal -->
 <div class="modal fade" id="confirmDeleteModal_drawer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content mt-4">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">確認刪除</h5>
+                <h5 class="modal-title fs-3 ms-3" id="exampleModalLabel">確認刪除</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body fs-4 ms-3">
                 確定要刪除此商品嗎？
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                <button id="confirmDeleteButton" type="button" class="btn btn-primary">確定刪除</button>
+            <div class="modal-footer fs-4 ms-3">
+                <button type="button" class="btn btn-secondary" 
+                        style="font-size: 16px;" data-bs-dismiss="modal">取消</button>
+                <button id="confirmDeleteButton" type="button" 
+                        style="font-size: 16px;" class="btn btn-primary">確定刪除</button>
             </div>
         </div>
     </div>
@@ -116,7 +142,7 @@ function loadCartData() {
                             </div>
                             <div class="product-remove-area d-flex flex-column align-items-end">
                                 <div id="productsPrice" class="product-price"></div>
-                                <a href="#" class="product-remove">刪除</a>
+                                <a href="#" class="product-remove" style="font-size: 15px" >刪除</a>
                             </div>
                         </div>
                     </div>
@@ -157,8 +183,8 @@ function loadCartData() {
 			cartItemsDiv.appendChild(cartItemDiv);
             }
             
-            const totalPriceHTML = `<span class="cart-subtotal mb-0">總金額</span>
-            						<span id="totalprice" class="cart-subprice"></span>`;
+            const totalPriceHTML = `<span class="cart-subtotal mb-0 fs-5">總金額</span>
+            						<span id="totalprice" class="cart-subprice fs-5"></span>`;
             document.querySelector('#minicart-calc').innerHTML = totalPriceHTML;
             document.getElementById("totalprice").textContent = '$' + data.totalPrice;
         })

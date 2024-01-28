@@ -94,10 +94,10 @@
                     <input type="text" class="info" id="inventory" name="inventory" value="${product.inventory}" required>
                 </div>
                 <!-- 圖片編輯框 -->
-                <div class="mb-3">
-                    <label for="picture" class="form-label">圖片:</label>
-                    <input type="file" class="info" id="picture" name="picture" value="${product.picture}" required>
-                </div>
+<!--                 <div class="mb-3"> -->
+<!--                     <label for="picture" class="form-label">圖片:</label> -->
+<!--                     <input type="file" class="info" id="picture" name="picture" value="123123123" required> -->
+<!--                 </div> -->
                 <!-- Position編輯框 -->
                 <div class="mb-3">
                     <label for="position" class="form-label">位置:</label>
