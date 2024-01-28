@@ -64,7 +64,7 @@ public class CouponController {
 
 	        if (!alreadyReceived) {
 	            couponDao.addCouponUser(user.getUserId(), couponId);
-	            redirectAttributes.addFlashAttribute("message", "領取成功");
+	            redirectAttributes.addFlashAttribute("successMessage", "領取成功");
 	        } else {
 	        	redirectAttributes.addFlashAttribute("message", "已經領取過該優惠券");
 	        }
