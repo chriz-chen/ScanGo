@@ -57,11 +57,16 @@ main {
 }
 
 .cart-total-box {
-    background: #cccbc8;
+    background: #f5f4f1;
     border-radius: 20px;
     padding: 32px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* 更大的阴影效果 */
     border: 2px solid #555; /* 更明显的边框 */
+}
+
+.modal-content{
+	background-color: #f5f4f1;
+	
 }
 
 </style>
@@ -171,9 +176,9 @@ main {
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="paymentModalLabel">確認付款</h5>
+				<h4 class="modal-title ms-2" id="paymentModalLabel" style="letter-spacing: 1px">確認付款</h4>
 			</div>
-			<div class="modal-body">送出後將從您的帳戶進行扣款</div>
+			<div class="modal-body fs-4 ms-2" style="letter-spacing: 1px">送出後將從您的帳戶進行扣款</div>
 			<div class="modal-footer">
 				<button type="button" class="btn"
 					data-bs-dismiss="modal">取消</button>
