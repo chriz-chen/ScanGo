@@ -67,6 +67,6 @@ public class RegisterController {
 			model.addAttribute("error","新增失敗，請通知管理員");
 			return "register";
 		}
-		return "redirect:/";
+		return "redirect:/mvc/login";
 	}
 }
