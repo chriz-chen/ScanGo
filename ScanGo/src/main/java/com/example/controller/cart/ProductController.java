@@ -130,11 +130,11 @@ public class ProductController {
 		model.addAttribute("product", product);
 		
 		// QRCode圖片下載
-		resp.setContentType("APPLICATION/OCTET-STREAM");
-		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
-		try (OutputStream output = resp.getOutputStream()){
-			Files.copy(sorucrePath, output);
-		}
+//		resp.setContentType("APPLICATION/OCTET-STREAM");
+//		resp.setHeader("Content-Disposition", "attachment; filename=\"" + filenameEncode(filename) + "\"");
+//		try (OutputStream output = resp.getOutputStream()){
+//			Files.copy(sorucrePath, output);
+//		}
 		
         return "add_product_result";
     }

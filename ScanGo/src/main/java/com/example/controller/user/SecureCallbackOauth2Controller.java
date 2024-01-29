@@ -68,9 +68,9 @@ public class SecureCallbackOauth2Controller {
 			// 5. 檢查會員資料表中是否有此人，若無則將該會員新增到資料表
 			Optional<User> userOpt = userDAO.findAllUsers()
 						   .stream()
-						   .filter(user -> user.getAuthType() != null &&
-						   				   user.getAuthType().equalsIgnoreCase("google") && 
-						    	   	       user.getAuthId().equals(googleUser.id))
+						   .filter(user -> "google".equalsIgnoreCase(user.getAuthType()) && 
+						   				   googleUser.id.equals(user.getAuthId()))
+						   				   
 						   .findFirst();
 			
 			User user = null;
@@ -85,7 +85,7 @@ public class SecureCallbackOauth2Controller {
 			session.setAttribute("user", user);
 			
 			//return id;
-			return "redirect:/";
+			return "redirect:/mvc/index";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
