@@ -89,8 +89,10 @@ h1 {
 				             style="border: 1.5px solid #00234D;" alt="product-img">
 				    </div>
 				    <div class="col-md-6">
-				        <img class="productsImage" src="/ScanGo/mvc/product/image/${product.productId}.png" 
-				             style="border: 1.5px solid #00234D;" alt="product-img">
+					    <a href="/ScanGo/mvc/QrcodeDownload?productId=${product.productId}">
+					        <img class="productsImage" src="/ScanGo/mvc/product/image/${product.productId}.png" 
+					             style="border: 1.5px solid #00234D;" alt="product-img">
+					    </a>
 				    </div>
 				</div>
                 <div class="info mt-3">

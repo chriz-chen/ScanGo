@@ -102,6 +102,7 @@
             <mvc:exclude-mapping path="/login/**"/>
             <mvc:exclude-mapping path="/register"/>
             <mvc:exclude-mapping path="/auth/**"/>
+            <mvc:exclude-mapping path="/login/secure/callback/google"/>
             <mvc:exclude-mapping path="/product/*"/>
             <mvc:exclude-mapping path="/index"/>
             <mvc:exclude-mapping path="/qrcode/**"/>

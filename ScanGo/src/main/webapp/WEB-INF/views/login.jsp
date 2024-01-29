@@ -188,7 +188,7 @@
 						</div>
 						<sp:input type="text" path="username"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="admin" />
+							value="" />
 					</fieldset>
 				</div>
 				<div class="col-12">
@@ -200,7 +200,7 @@
 						</div>
 						<sp:input type="password" path="password"
 							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"
-							value="111111" />
+							value="" />
 					</fieldset>
 				</div>
 				<div class="col-12">
