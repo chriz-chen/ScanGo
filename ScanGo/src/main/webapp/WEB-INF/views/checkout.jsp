@@ -94,33 +94,38 @@ main {
 }	
 
 .checkout-bar li a {
-    font-size: 20px;
+    font-size: 20px !important;
 }
 
 .product-title a {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .quantity input, .product-price {
-    font-size: 18px;
-    color: #00668c;
+    font-size: 18px !important;
+    color: #00668c !important;
 }
 
 .product-vendor {
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .subtotal-title {
-    font-size: 19px;
+    font-size: 19px !important;
 }
 
 .subtotal-value{
-	color: #00668c;
-	font-size: 19px;
+	color: #00668c !important;
+	font-size: 19px !important;
 }
 
 .coupon-item{
-	border-radius: 10px;
+	border-radius: 10px !important;
+}
+
+.discount-total-value{
+	font-size: 25px !important;
+	color: #00668c !important;
 }
 
 </style>

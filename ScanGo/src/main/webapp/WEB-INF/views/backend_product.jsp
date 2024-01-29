@@ -172,7 +172,7 @@ th {
                             <!-- 商品名稱 -->
                             <div class="mb-3">
                                 <label for="productName" class="form-label">商品名稱</label>
-                                <input type="text" class="form-control" id="productName" name="productName" value="coke" required>
+                                <input type="text" class="form-control" id="productName" name="productName" value="可口可樂 (600ml)" required>
                             </div>
                             <!-- 價格 -->
                             <div class="mb-3">
@@ -216,10 +216,10 @@ th {
                             <!-- 位置 -->
                             <div class="mb-3">
                                 <label for="position" class="form-label">位置</label>
-                                <input type="text" class="form-control" id="position" name="position" value="A-1" required>
+                                <input type="text" class="form-control" id="position" name="position" value="D-1" required>
                             </div>
                             
-                            <button type="submit" class="btn btn-warning">提交</button>
+                            <button type="submit" class="ms-2 btn btn-warning">提交</button>
                         </form>
                     </div>
                 </div>

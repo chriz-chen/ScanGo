@@ -19,6 +19,7 @@
 
 body {
 	background-color: #fffefb;
+	margin-bottom: 100px;
 }
 
 .puchase-time {
@@ -174,6 +175,8 @@ input[type="radio"]:checked ~ label:before {
 #ratingResultModalLabel{
 	margin-left: 160px;
 }
+
+
  
 </style>
 

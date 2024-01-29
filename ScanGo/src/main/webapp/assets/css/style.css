@@ -945,7 +945,6 @@ button,
   margin-top: 24px; }
 
 .slide-img {
-  height: 600px;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
