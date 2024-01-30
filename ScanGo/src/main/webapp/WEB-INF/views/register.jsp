@@ -116,7 +116,7 @@
 								<sp:errors path="birthday"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="date" path="birthday" value="1997-12-12"/>
+							<sp:input type="date" path="birthday" value="1997-12-12" style="font-size: 17px; letter-spacing: 3px;"/>
 						</fieldset>
 					</div>
 					

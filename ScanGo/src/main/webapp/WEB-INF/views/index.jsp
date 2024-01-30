@@ -199,7 +199,7 @@ body {
 						</div>
 						<div class="view-all text-center" data-aos="fade-up"
 							data-aos-duration="700">
-							<a class="btn-primary" href="/ScanGo/imagemap.jsp">VIEW ALL</a>
+							<a class="btn-primary fs-5" href="/ScanGo/imagemap.jsp">查看全部</a>
 						</div>
 					</div>
 				</div>
@@ -308,6 +308,10 @@ body {
 											</li>
 										</ul>
 									</div>
+								</div>
+								<div class="view-all text-center" data-aos="fade-up"
+									data-aos-duration="700">
+									<a class="btn-primary fs-5" href="${ pageContext.request.contextPath }/mvc/register">立即註冊</a>
 								</div>
 							</div>
 						</div>
