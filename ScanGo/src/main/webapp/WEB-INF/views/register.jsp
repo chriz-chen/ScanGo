@@ -106,7 +106,7 @@
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
 							<sp:input type="text" id="phone" path="phone" placeholder="請輸入手機號碼"  
-							value="111111" />
+							value="0960739160" />
 						</fieldset>
 					</div>
 					<div class="col-12">
