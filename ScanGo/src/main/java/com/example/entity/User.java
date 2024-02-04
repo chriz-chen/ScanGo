@@ -21,7 +21,6 @@ public class User {
 	private Integer userId;
 	private String username; // 使用者帳號
 	private String password;
-	private Integer levelId; // 使用者權限（1: 一般會員-進行購物, 2: 後臺維運人員-上架商品）
 	private String email;
 	private String phone;
 	
@@ -30,6 +29,7 @@ public class User {
 	@Temporal(TemporalType.DATE)            // 指定實體屬性與資料庫中的日期類型對應(不包括時間部分)
 	private Date birthday;
 	
+	private Integer levelId; // 使用者權限（1: 一般會員-進行購物, 2: 後臺維運人員-上架商品）
 	private String authType; // 授權來源
 	private String authId; // 授權Id
 	
