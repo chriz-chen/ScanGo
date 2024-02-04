@@ -92,7 +92,7 @@ body {
 							<div class="product-card">
 								<div class="product-card-img justify-content-center">
 									<a class="hover-switch"
-										href="${pageContext.request.contextPath}/product-info.jsp">
+										>
 										<img class="primary-img"
 										src="/ScanGo/image/product/grocery/tissue/2.jpeg" alt="product-img"
 										style=" border: 1.5px solid #00234D;">
@@ -106,13 +106,13 @@ body {
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html" style="font-size: 20px">好韌真衛生紙
+										<a  style="font-size: 20px">好韌真衛生紙
 											100抽6包</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular" style="font-size: 20px">$120</span>
+										<span class="card-price-regular" style="font-size: 20px">$100</span>
 										<span class="card-price-compare text-decoration-line-through"
-											style="font-size: 18px">$150</span>
+											style="font-size: 18px">$125</span>
 									</div>
 								</div>
 							</div>
@@ -120,7 +120,7 @@ body {
 						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
-									<a class="hover-switch" href="collection-left-sidebar.html">
+									<a class="hover-switch" >
 										<img class="primary-img"
 										src="/ScanGo/image/product/snack/cookies/3.jpeg" alt="product-img"
 										style=" border: 1.5px solid #00234D;">
@@ -133,12 +133,12 @@ body {
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html" style="font-size: 20px">樂事美國經典原味</a>
+										<a  style="font-size: 20px">樂事美國經典原味</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular" style="font-size: 20px">$38</span>
+										<span class="card-price-regular" style="font-size: 20px">$45</span>
 										<span class="card-price-compare text-decoration-line-through"
-											style="font-size: 18px">$45</span>
+											style="font-size: 18px">$50</span>
 									</div>
 								</div>
 							</div>
@@ -146,26 +146,26 @@ body {
 						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
-									<a class="hover-switch" href="collection-left-sidebar.html">
+									<a class="hover-switch" >
 										<img class="primary-img" src="/ScanGo/image/product/snack/soda/5.jpeg"
 										alt="product-img"
 										style=" border: 1.5px solid #00234D;">
 									</a>
 
 									<div class="product-badge">
-										<span class="badge-label badge-percentage rounded">-15%</span>
+										<span class="badge-label badge-percentage rounded">-10%</span>
 									</div>
 
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html" style="font-size: 20px">可口可樂
+										<a  style="font-size: 20px">可口可樂
 											600ml</a>
 									</h3>
 									<div class="product-card-price">
-										<span class="card-price-regular" style="font-size: 20px">$25</span>
+										<span class="card-price-regular" style="font-size: 20px">$35</span>
 										<span class="card-price-compare text-decoration-line-through"
-											style="font-size: 18px">$30</span>
+											style="font-size: 18px">$40</span>
 									</div>
 								</div>
 							</div>
@@ -173,7 +173,7 @@ body {
 						<div class="col-6" data-aos="fade-up" data-aos-duration="700">
 							<div class="product-card">
 								<div class="product-card-img">
-									<a class="hover-switch" href="collection-left-sidebar.html">
+									<a class="hover-switch" >
 										<img class="primary-img"
 										src="/ScanGo/image/product/appliance/season/5.jpeg" alt="product-img"
 										style=" border: 1.5px solid #00234D;">
@@ -186,7 +186,7 @@ body {
 								</div>
 								<div class="product-card-details">
 									<h3 class="product-card-title">
-										<a href="collection-left-sidebar.html" style="font-size: 20px">SHARP夏普
+										<a  style="font-size: 20px">SHARP夏普
 											42吋電視</a>
 									</h3>
 									<div class="product-card-price">
@@ -199,7 +199,7 @@ body {
 						</div>
 						<div class="view-all text-center" data-aos="fade-up"
 							data-aos-duration="700">
-							<a class="btn-primary" href="/ScanGo/imagemap.jsp">VIEW ALL</a>
+							<a class="btn-primary fs-5" href="/ScanGo/imagemap.jsp">查看全部</a>
 						</div>
 					</div>
 				</div>
@@ -308,6 +308,10 @@ body {
 											</li>
 										</ul>
 									</div>
+								</div>
+								<div class="view-all text-center" data-aos="fade-up"
+									data-aos-duration="700">
+									<a class="btn-primary fs-5" href="${ pageContext.request.contextPath }/mvc/register">立即註冊</a>
 								</div>
 							</div>
 						</div>

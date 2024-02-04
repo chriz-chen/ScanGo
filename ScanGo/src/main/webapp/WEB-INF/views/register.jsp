@@ -61,9 +61,9 @@
 							<div class="d-flex justify-content-between">
 								<h4 class="title d-inline">帳號</h4>
 								<sp:errors path="username"
-									cssClass="text-danger text-nowrap text-end" />
+									cssClass="text-danger text-nowrap text-end"/>
 							</div>
-							<sp:input type="text" id="account" path="username"  placeholder="請輸入帳號"/>
+							<sp:input type="text" id="account" path="username"  placeholder="請輸入帳號" value="user999"/>
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -73,7 +73,7 @@
 								<sp:errors path="password"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="password" id="password" path="password"  placeholder="密碼(請使用6位數以上)" />
+							<sp:input type="password" id="password" path="password"  placeholder="密碼(請使用6位數以上)" value="111111"/>
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -84,7 +84,7 @@
 									cssClass="text-danger text-nowrap text-end" />
 						    </div>
 						    <sp:input type="password" id="passwordCheck" path="confirmPassword"  
-						     placeholder="請再次輸入密碼" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" />
+						     placeholder="請再次輸入密碼" style="font-size: 16px; padding: 8px; letter-spacing: 4px;" value="111111"/>
 					    </fieldset>
 					</div>   
 					<div class="col-12">
@@ -95,7 +95,7 @@
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
 							<sp:input type="email" id="email" path="email" placeholder="請輸入信箱"
-							style="font-size: 16px; padding: 8px; letter-spacing: 4px;"/>
+							style="font-size: 16px; padding: 8px; letter-spacing: 4px;" value="user999@gmail.com"/>
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -105,7 +105,8 @@
 								<sp:errors path="phone"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="text" id="phone" path="phone" placeholder="請輸入手機號碼"/>
+							<sp:input type="text" id="phone" path="phone" placeholder="請輸入手機號碼"  
+							value="0960739160" />
 						</fieldset>
 					</div>
 					<div class="col-12">
@@ -115,7 +116,7 @@
 								<sp:errors path="birthday"
 									cssClass="text-danger text-nowrap text-end" />
 							</div>
-							<sp:input type="date" path="birthday" />
+							<sp:input type="date" path="birthday" value="1997-12-12" style="font-size: 17px; letter-spacing: 3px;"/>
 						</fieldset>
 					</div>
 					

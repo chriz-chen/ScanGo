@@ -50,7 +50,4 @@ public class RegisterUser {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthday;
 	
-	
-	//	@ValidFile(message = "請上傳個人大頭照")
-	//	private MultipartFile avator;
 }
