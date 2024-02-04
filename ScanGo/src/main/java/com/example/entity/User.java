@@ -37,7 +37,7 @@ public class User {
 	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	@Temporal(TemporalType.DATE)
 	private Date createDate;
-	
+	 
 	private Level level;
 }
 
