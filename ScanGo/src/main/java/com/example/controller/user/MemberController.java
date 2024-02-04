@@ -26,94 +26,102 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.dao.UserDAO;
 import com.example.entity.User;
 
-/**
- * /ScanGo/mvc/member
- */
 @Controller
-@RequestMapping
+@RequestMapping("/member")
 public class MemberController {
-	
-	private final static String ERROR_MESSAGE = "errorMessage";
-	private final static String SUCCESS_MESSAGE = "successMessage";
-	
-	@Autowired
-	private UserDAO userDAO;
+    
+    private final static String ERROR_MESSAGE = "errorMessage";
+    private final static String SUCCESS_MESSAGE = "successMessage";
+    
+    @Autowired
+    private UserDAO userDAO;
 
-	@GetMapping("/member")
-	public String member(HttpSession session, @ModelAttribute("updateUser")User updateUser) {
-		User user = (User) session.getAttribute("user");
-		return "member";
-	}
-	
-	/**
-     * GET 請求，顯示重設密碼頁面。
-     * @return resetPassword 頁面
+    /**
+     * 進入會員首頁
+     * @param session HttpSession 物件
+     * @param updateUser 用於更新會員資料的 ModelAttribute
+     * @return 會員頁面
      */
-	@GetMapping("/password")
-	public String resetPasswordPage() {
-		return "resetPassword";
-	}
+    @GetMapping
+    public String member(HttpSession session, @ModelAttribute("updateUser") User updateUser) {
+        User user = (User) session.getAttribute("user");
+        return "member";
+    }
+    
+    /**
+     * GET 請求，顯示重設密碼頁面。
+     * @return 重設密碼頁面
+     */
+    @GetMapping("/password")
+    public String resetPasswordPage() {
+        return "resetPassword";
+    }
 
-	/**
-	 * 密碼變更
-	 * @param oldPassword
-	 * @param newPasswords
-	 * @param session
-	 * @param model
-	 * @return
-	 */
-	@PostMapping(value ="/member/change_password", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ResponseBody
-	public Map<String, String> resetPassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("newPasswords") List<String> newPasswords,
-			HttpSession session,Model model) {
+    /**
+     * POST 請求，用於修改密碼。
+     * @param oldPassword 舊密碼
+     * @param newPasswords 新密碼列表
+     * @param session HttpSession 物件
+     * @param model Spring MVC 模型
+     * @return 包含結果的 JSON 對象
+     */
+    @PostMapping(value = "/change_password", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public Map<String, String> resetPassword(@RequestParam("oldPassword") String oldPassword,
+            @RequestParam("newPasswords") List<String> newPasswords, HttpSession session, Model model) {
 
-		Map<String, String> result = new HashMap<>();
-		
-	    // 從 Session 中獲取當前登入用戶的資訊
-	    User user = (User) session.getAttribute("user");
+        Map<String, String> result = new HashMap<>();
 
-	    // 從資料庫中查詢使用者資料
-	    Optional<User> optUser = userDAO.findUserByUsername(user.getUsername());
+        User user = (User) session.getAttribute("user");
 
-	    // 如果使用者不存在或密碼錯誤，返回登入頁面
-	    if (!BCrypt.checkpw(oldPassword, optUser.get().getPassword())) {
-	        result.put(ERROR_MESSAGE, "原密碼錯誤");
-	        return result;
-	    }
+        Optional<User> optUser = userDAO.findUserByUsername(user.getUsername());
 
-	    // 檢查新密碼是否一致
-	    if (!newPasswords.get(0).equals(newPasswords.get(1))) {
-	        result.put(ERROR_MESSAGE, "二次新密碼不一致");
-	        return result;
-	    }
-	    
-	    // 將新密碼進行加密
-	    String encryptedNewPassword = BCrypt.hashpw(newPasswords.get(0), BCrypt.gensalt());
+        // 檢查舊密碼是否正確
+        if (!BCrypt.checkpw(oldPassword, optUser.get().getPassword())) {
+            result.put(ERROR_MESSAGE, "原密碼錯誤");
+            return result;
+        }
 
-	    // 進行密碼變更
-	    user.setPassword(encryptedNewPassword);
-	    userDAO.updateUserPassword(user.getUserId(), encryptedNewPassword);
+        // 檢查新密碼是否一致
+        if (!newPasswords.get(0).equals(newPasswords.get(1))) {
+            result.put(ERROR_MESSAGE, "二次新密碼不一致");
+            return result;
+        }
+        
+        // 將新密碼進行加密
+        String encryptedNewPassword = BCrypt.hashpw(newPasswords.get(0), BCrypt.gensalt());
 
-	    result.put(ERROR_MESSAGE, "");
-	    result.put(SUCCESS_MESSAGE, "密碼修改成功");
-	    return result;
-	}
-	
-	
-	
-	// 修改會員資料
-	// http://localhost:8080/ScanGo/mvc/member/updateProfile
-	
-	@GetMapping("/member/updateProfile")
-	public String updateProfilePage() {
-		return "updateProfile";
-	}
-	
-	@PostMapping("/member/updateProfile")
-	public String updateProfile(@ModelAttribute("user") User user,HttpSession session,
-                                Model model) {
+        // 更新密碼
+        user.setPassword(encryptedNewPassword);
+        userDAO.updateUserPassword(user.getUserId(), encryptedNewPassword);
 
-        // 創建 User 對象，用於更新
+        // 返回成功訊息
+        result.put(ERROR_MESSAGE, "");
+        result.put(SUCCESS_MESSAGE, "密碼修改成功");
+        return result;
+    }
+
+
+    /**
+     * GET 請求，進入會員資料更新頁面
+     * @return 會員資料更新頁面的視圖名稱
+     */
+    @GetMapping("/updateProfile")
+    public String updateProfilePage() {
+        return "updateProfile";
+    }
+
+    /**
+     * POST 請求，更新會員資料
+     * @param user 要更新的會員資料
+     * @param session HttpSession 物件
+     * @param model Spring MVC 模型
+     * @return 跳轉至會員首頁或更新資料頁面的視圖名稱
+     */
+    @PostMapping("/updateProfile")
+    public String updateProfile(@ModelAttribute("user") User user, HttpSession session, Model model) {
+
+    	// 創建一個新的User對象來存儲更新後的使用者資料
         User updatedUser = new User();
         updatedUser.setUsername(user.getUsername());
         updatedUser.setUserId(user.getUserId());
@@ -121,43 +129,45 @@ public class MemberController {
         updatedUser.setPhone(user.getPhone());
         updatedUser.setBirthday(user.getBirthday());
 
-        // 調用 DAO 更新使用者資料
         Boolean updateSuccess = userDAO.updateUserProfile(updatedUser);
 
         if (updateSuccess) {
-        	
-        	User sessionUser = (User)session.getAttribute("user");
-        	User newUser = userDAO.findUserByUserId(sessionUser.getUserId()).get();
-    		session.setAttribute("user", newUser);
-    		
-        	
-            // 更新成功，返回成功訊息
-    		model.addAttribute("user", newUser); 
+            // 如果更新成功，從Session中獲取當前登入的使用者資料
+            User sessionUser = (User) session.getAttribute("user");
+            // 從資料庫中重新獲取更新後的使用者資料
+            User newUser = userDAO.findUserByUserId(sessionUser.getUserId()).get();
+            // 更新Session中的使用者資料
+            session.setAttribute("user", newUser);
+            model.addAttribute("user", newUser); 
             model.addAttribute("message", "使用者資料更新成功");
-            return "member"; // 導向成功頁面
+            
+            return "member";
         } else {
-            // 更新失敗，返回失敗訊息
             model.addAttribute("error", "使用者資料更新失敗");
-            return "updateProfile"; // 導向錯誤頁面
+            return "updateProfile";
         }
     }
 
-
-	// 得到目前所有 session attribute names
-	@GetMapping("/findAllSessionNames")
-	@ResponseBody
-	public String findAllSessionNames(HttpSession session) {
-		StringBuilder names = new StringBuilder();
-		// 目前系統中在使用的 Session 屬性名稱
-		Enumeration<String> sessionAttrNames = session.getAttributeNames();
-		while (sessionAttrNames.hasMoreElements()) {
-			String name = (String) sessionAttrNames.nextElement();
-			names.append(name + "\n");
-		}
-		return names.toString();
-	}
-	
-	
-	
+    /**
+     * GET 請求，查詢所有 Session 屬性名稱
+     * @param session HttpSession 物件
+     * @return 所有 Session 屬性名稱的字串表示形式
+     */
+    @GetMapping("/findAllSessionNames")
+    @ResponseBody
+    public String findAllSessionNames(HttpSession session) {
+        // 創建一個StringBuilder來存儲Session屬性名稱
+        StringBuilder names = new StringBuilder();
+        // 獲取當前Session中所有的屬性名稱
+        Enumeration<String> sessionAttrNames = session.getAttributeNames();
+        while (sessionAttrNames.hasMoreElements()) {
+            // 獲取下一個屬性名稱
+            String name = (String) sessionAttrNames.nextElement();
+            // 將屬性名稱添加到StringBuilder中，並換行
+            names.append(name + "\n");
+        }
+        // 返回Session中所有屬性名稱的字串表示形式
+        return names.toString();
+    }
 
 }

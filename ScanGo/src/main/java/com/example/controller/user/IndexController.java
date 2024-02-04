@@ -11,9 +11,6 @@ public class IndexController {
 	// 登入首頁
 	@GetMapping
 	public String index() {
-		
-		
-		
 		return "index";
 	}
 
