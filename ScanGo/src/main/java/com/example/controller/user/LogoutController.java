@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/logout")
 public class LogoutController {
 
-	@GetMapping
-	public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		session.invalidate();
-		resp.sendRedirect(req.getContextPath()+"/mvc/login");
-	}
+    // 控制使用者登出的方法
+    @GetMapping
+    public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 取得目前使用者的 session 物件
+        HttpSession session = req.getSession();
+        // 使目前使用者的 session 失效，即登出操作
+        session.invalidate();
+        // 將使用者重新導向至登入頁面
+        resp.sendRedirect(req.getContextPath() + "/mvc/login");
+    }
 }

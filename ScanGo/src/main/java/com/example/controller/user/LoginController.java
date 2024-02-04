@@ -31,6 +31,11 @@ import com.example.bean.*;
 import com.example.dao.UserDAO;
 import com.example.entity.User;
 
+// 流程: 顯示登入頁面 --> 生成並顯示驗證碼影像 --> 使用者輸入帳號密碼及驗證碼 
+// --> 使用者提交登入請求 --> 處理使用者登入請求 --> 驗證驗證碼 --> 查詢使用者資料庫 
+// --> 比對使用者密碼 --> 登入成功 --> 存儲使用者資訊於Session --> 重導向到首頁 --> 結束
+
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -38,12 +43,13 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDAO;
 	
-	// 登入首頁
+	// 顯示登入頁面
 	@GetMapping()
 	public String loginPage(@ModelAttribute LoginUser loginUser) {
 		return "login";
 	}
 	
+	// 生成並顯示驗證碼影像
 	@GetMapping("/getcode")
 	private void getCodeImage(HttpSession session, HttpServletResponse response) throws IOException {
 	    // 產生一個驗證碼 code
@@ -96,7 +102,7 @@ public class LoginController {
 	}
 
 	
-	// 前台登入處理
+	// 處理使用者登入請求
 	@PostMapping()
 	public String login(@ModelAttribute @Valid LoginUser loginUser, 
 						BindingResult result,
