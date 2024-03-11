@@ -16,7 +16,7 @@
 7. 結帳完後可查詢歷史訂單，並為訂單評分。
 
 ## 【 專案架構 】
-- 專案架構：Java Spring MVC -> Controller、Repository、Service 三層式架構
+- 後端：Java Spring MVC -> Controller、Repository、Service 三層式架構
 - 渲染模板：JSP
 - 前端：HTML5、CSS3、JavaScript、JQuery、AJAX、Fetch、BootStrap 5
 - 資料庫：MySQL
